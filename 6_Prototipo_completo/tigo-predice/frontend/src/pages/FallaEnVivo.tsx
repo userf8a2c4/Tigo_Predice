@@ -154,7 +154,7 @@ export default function FallaEnVivo() {
               </span>
             ))}
           </div>
-          <div key={fase.narracion} className="aparecer text-base font-semibold leading-snug sm:text-lg xl:text-xl">{fase.narracion}</div>
+          <div key={fase.narracion} className="aparecer min-h-[2lh] text-base font-semibold leading-snug sm:text-lg xl:text-xl">{fase.narracion}</div>
         </div>
         <div className="flex shrink-0 items-center gap-2">
           <select value={velocidad} disabled={corriendo} onChange={(e) => setVelocidad(Number(e.target.value))}
@@ -163,7 +163,7 @@ export default function FallaEnVivo() {
             <option value={2} className="text-slate-900">2×</option>
             <option value={4} className="text-slate-900">4×</option>
           </select>
-          <button onClick={iniciar} disabled={corriendo} className="flex items-center gap-2 rounded-xl bg-celeste px-5 py-3 font-bold text-tigo-900 shadow disabled:opacity-60">
+          <button onClick={iniciar} disabled={corriendo} className="flex w-40 items-center justify-center gap-2 rounded-xl bg-celeste px-5 py-3 font-bold text-tigo-900 shadow disabled:opacity-60">
             <Play size={20} /> {corriendo ? "En curso…" : "Iniciar"}
           </button>
           <button onClick={reiniciar} className="rounded-xl bg-white/15 p-3 hover:bg-white/25" aria-label="Reiniciar" title="Reiniciar">
@@ -172,7 +172,7 @@ export default function FallaEnVivo() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(290px,360px)]">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="space-y-3">
           <Tarjeta className="relative p-2">
             <MapaBase altura="clamp(240px, 46vh, 600px)" centro={centroCiudad} zoom={11.75}>
@@ -238,7 +238,7 @@ export default function FallaEnVivo() {
           </Tarjeta>
         </div>
 
-        <div className="space-y-3">
+        <div className="min-w-0 space-y-3">
           <Telefono conv={conv} alto="clamp(380px, 56vh, 640px)" />
           {mensajes >= 2 && (
             <Tarjeta className="aparecer p-3 text-sm">

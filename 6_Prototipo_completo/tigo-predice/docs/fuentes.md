@@ -45,3 +45,7 @@ Cada supuesto de `config/negocio.toml` está marcado como **"supuesto a validar"
   https://www.elheraldo.hn/honduras/iaip-destaca-beneficios-honduras-ley-proteccion-datos-personales-BP26294115
 - Habeas data (art. 182, reforma por Decreto 10-2013): https://oncae.gob.hn/wp-content/uploads/2024/05/Decreto-10-2013.pdf
 - Detalle y marcos internacionales (GDPR, ISO 27001/27701/42001, SOC 2, NIST, OWASP, MITRE ATLAS): [seguridad_y_privacidad.md](seguridad_y_privacidad.md).
+
+## Regulación y estrategia (octubre 2026)
+- CONATEL, Reglamento de Protección al Usuario NR001/26 (La Gaceta n.º 37,082, 28-feb-2026): avisos de interrupciones (Art. 39, núm. 15), compensación automática y reporte de fallas (Art. 5, núm. 10), bajas sin penalidad (Art. 5, núm. 17 y 18). https://files.conatel.gob.hn/eb9a2f2d-297b-4db3-a385-e827e180e79b.pdf
+- Millicom, prioridades 2026 y guía financiera (resultados del 1T y 2T-2026). Detalle en [estrategia_y_regulacion.md](estrategia_y_regulacion.md).

@@ -69,7 +69,7 @@ backend/app/   main (API) · estado · seguridad · privacidad · llm_client ·
 frontend/      React + Vite + TS + Tailwind + Recharts + Leaflet (GeoJSON local)
 config/        negocio.toml: cada supuesto con unidad, bajo/base/alto, fuente y nota
 docs/          pitch · elevator_pitch · one_pager · preguntas_frecuentes_jurado · guia_demo · formato_concurso · datos_a_pedir_a_tigo · seguridad_y_privacidad ·
-               revision_critica · impacto, cifras.json y listo_para_produccion (generados) · arquitectura · roadmap · fuentes
+               revision_critica · estrategia_y_regulacion · impacto, cifras.json y listo_para_produccion (generados) · arquitectura · roadmap · fuentes
 reports/       modelo.md (Hogar, Móvil y Fase 2)
 tests/         hogar · seguridad (red team) · experimento · roi · guardrails · consistencia de cifras · API (214 en total)
 ```
@@ -80,4 +80,4 @@ tests/         hogar · seguridad (red team) · experimento · roi · guardrails
 - **Agrupamiento:** la potencia asume unidades independientes. En el piloto se usan errores agrupados por nodo (Hogar) y por falla (Móvil).
 - **Integraciones simuladas:** ACS, WhatsApp Business y SSO se conectan en las semanas 0–2.
 
-Más detalle: [docs/revision_critica.md](docs/revision_critica.md) (datos reales y puntos débiles) · [DECISIONES.md](DECISIONES.md)
+Más detalle: [docs/revision_critica.md](docs/revision_critica.md) (datos reales y puntos débiles) · [docs/estrategia_y_regulacion.md](docs/estrategia_y_regulacion.md) (Millicom 2026 y CONATEL NR001/26) · [DECISIONES.md](DECISIONES.md)

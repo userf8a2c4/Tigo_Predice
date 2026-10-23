@@ -169,39 +169,48 @@ Cada pregunta tiene tres partes:
 
 ## E. Privacidad, seguridad y regulación
 
-**29. ¿Están espiando el internet de los clientes?**
+**29. ¿Esto cumple con la regulación de CONATEL?**
+- **Respuesta corta:** Sí, y además ayuda a cumplirla. El Reglamento de Protección al Usuario NR001/26 (La Gaceta, 28-feb-2026) obliga a avisar a tiempo de averías e interrupciones por SMS y otros medios (Art. 39, núm. 15) y a compensar automáticamente las horas sin servicio con un reporte de duración y zonas de cada falla (Art. 5, núm. 10).
+- **Si piden más:** Tigo Predice automatiza el aviso y deja el registro auditable de cada falla. También reduce los casos en que el cliente puede irse sin penalidad: más de 24 horas sin servicio al mes o 10 días sin resolver un reclamo (Art. 5, núm. 17 y 18).
+- **Muéstrelo:** Falla masiva en vivo.
+
+**30. ¿Cómo encaja con la estrategia de Millicom?**
+- **Respuesta corta:** Con sus cuatro prioridades de 2026: mejor servicio, eficiencia, flujo de caja y crecer en valor protegiendo el hogar y a los clientes convergentes.
+- **Si piden más:** No requiere inversión en red, arranca con archivos que Tigo ya genera y tiene salida acotada en 12 semanas.
+
+**31. ¿Están espiando el internet de los clientes?**
 - **Respuesta corta:** No. Solo leemos el desempeño del módem; nunca contenido, navegación, DNS ni los dispositivos del cliente.
 - **Si piden más:** Eso protege el secreto de las comunicaciones del artículo 100 de la Constitución.
 
-**30. ¿Qué ley de datos cumplen, si Honduras no tiene una?**
+**32. ¿Qué ley de datos cumplen, si Honduras no tiene una?**
 - **Respuesta corta:** Usamos el GDPR como estándar, que es la vara más exigente, más la Constitución (artículos 76, 100 y 182, habeas data) y la política de privacidad de Millicom.
 - **Si piden más:** Cuando se apruebe la ley hondureña (pendiente desde 2018), ya la cumpliremos. Legal aprueba una evaluación de impacto antes del primer mensaje.
 - **Muéstrelo:** Listo para producción → Seguridad y privacidad.
 
-**31. ¿Qué tan seguro es el sistema?**
+**33. ¿Qué tan seguro es el sistema?**
 - **Respuesta corta:** Hicimos un red team propio: atacamos la API, encontramos 12 debilidades y las corregimos todas, cada una con su prueba automática.
 - **Si piden más:** El diseño sigue ISO 27001/27701/42001, SOC 2, NIST y OWASP. En producción: SSO con MFA, cifrado con KMS, WAF y una prueba de penetración independiente.
 
-**32. ¿Qué datos van a la IA generativa?**
+**34. ¿Qué datos van a la IA generativa?**
 - **Respuesta corta:** Solo el nombre de pila y el tipo de situación. Nunca el ID, el teléfono ni la ubicación.
 - **Si piden más:** El texto que escribe el cliente se redacta antes de enviarse. En producción se usa un acuerdo de retención cero o la nube corporativa de Tigo.
 
-**33. ¿Y CONATEL?**
+**35. ¿Y CONATEL?**
 - **Respuesta corta:** Los requisitos de aviso de interrupciones y de compensaciones los valida Legal antes del piloto.
 - **Si piden más:** El sistema no toca el contenido de las comunicaciones ni la intervención legal de comunicaciones.
 
 ## F. El equipo y la ejecución
 
-**34. ¿Quién lo va a hacer?**
+**36. ¿Quién lo va a hacer?**
 - **Respuesta corta:** Sandra Jimenez (Asistente de Experiencia B2B), con la propuesta y el prototipo ya construidos. Proponemos sumar un enlace del NOC o de ingeniería de acceso y alguien de datos.
 - **Si piden más:** El prototipo ya funciona: dos demos en vivo, más de 200 pruebas automáticas y un pipeline reproducible desde cero.
 
-**35. ¿Qué necesitan de nosotros, además del dinero?**
+**37. ¿Qué necesitan de nosotros, además del dinero?**
 - **Respuesta corta:** Un patrocinador que quite obstáculos, acceso a los datos en CSV y el visto bueno de Legal.
 
 ## G. Preguntas curvas
 
-**36. Si funciona tan bien, ¿por qué no lo hizo ya Tigo?**
+**38. Si funciona tan bien, ¿por qué no lo hizo ya Tigo?**
 - **Respuesta corta:** Porque la telemetría existe, pero nadie la había convertido en una lista de trabajo semanal medida con grupo control. Es exactamente lo que proponemos probar.
 - **Si piden más:** Si ya existe algo parecido internamente, mejor: lo usamos como punto de partida y aportamos la medición y la IA.
 

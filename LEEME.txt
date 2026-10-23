@@ -1,0 +1,22 @@
+TIGO PREDICE · AI SHARK TANK · TIGO CX MONTH 2026
+«Los chatbots y copilotos atienden la llamada. Tigo Predice evita que ocurra.»
+
+Autoría: Sandra Jimenez · Asistente de Experiencia B2B · sandra.jimenez@tigo.com.hn
+
+PARA EMPEZAR
+   Abra 2_Demo\Demo_Tigo_Predice.html con doble clic (o Abrir_Demo.exe en Windows).
+   Entre a «Hogar en vivo ★» y presione «Iniciar». Funciona sin internet y sin instalar nada.
+
+CARPETAS
+   1_Presentacion            Presentación para el concurso (PowerPoint y PDF), con guion en las notas.
+   2_Demo                    La demo en un solo archivo y su lanzador para Windows.
+   3_Para_el_jurado          Resumen de una página, propuesta, datos reales con fuentes, y
+                             estrategia y regulación (Millicom 2026 y CONATEL NR001/26).
+   4_Preparacion_del_pitch   Elevator pitch, 38 preguntas del jurado, guía visual de la demo
+                             y presentación extendida de respaldo.
+   5_Envio                   Texto del correo de postulación.
+   6_Prototipo_completo      Código del prototipo (ver su README.md).
+
+Las cifras de clientes, precios y costos de referencia son datos públicos con fuente.
+La telemetría, los clientes y los resultados del modelo y del piloto son simulados.
+README.md tiene la misma información con imágenes, para verla en GitHub.

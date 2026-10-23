@@ -108,10 +108,25 @@ export default function Layout() {
           <main className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6">
             <div className="mx-auto w-full max-w-[1800px]">
               <Outlet />
+              <FuenteDatos />
             </div>
           </main>
         </div>
       </div>
     </ConfigContext.Provider>
+  );
+}
+
+/** Fuente de los datos de muestra, visible al pie de cada pantalla. */
+function FuenteDatos() {
+  return (
+    <footer className="mt-6 border-t border-slate-200 pt-3 text-[11px] leading-relaxed text-slate-500">
+      <b>Fuente de los datos de muestra:</b> los clientes, hogares, la telemetría de los módems y las fallas son sintéticos,
+      generados por el prototipo con semilla fija (<code>ml/generar_datos.py</code> y <code>ml/generar_hogar.py</code>) y
+      parámetros de <code>config/negocio.toml</code>. La escala y los costos se calibran con datos públicos: Millicom, Form 20-F
+      2025 (191 mil hogares y 5.0 M de clientes móviles de Tigo Honduras); CONATEL (mercado de internet fijo y líneas
+      móviles); BCH (tipo de cambio); tigo.com.hn (precios de planes); tarifas de WhatsApp Business y costos de centros de
+      contacto en Honduras. Detalle y enlaces en <code>docs/revision_critica.md</code> y <code>docs/fuentes.md</code>.
+    </footer>
   );
 }

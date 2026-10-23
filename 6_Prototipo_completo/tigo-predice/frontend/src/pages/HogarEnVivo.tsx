@@ -171,7 +171,7 @@ export default function HogarEnVivo() {
               </span>
             ))}
           </div>
-          <div key={narracion} className="aparecer text-base font-semibold leading-snug sm:text-lg xl:text-xl">{narracion}</div>
+          <div key={narracion} className="aparecer min-h-[2lh] text-base font-semibold leading-snug sm:text-lg xl:text-xl">{narracion}</div>
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-2">
           <div className="flex rounded-xl bg-white/10 p-1" role="group" aria-label="Caso">
@@ -188,7 +188,7 @@ export default function HogarEnVivo() {
             <option value={2} className="text-slate-900">2×</option>
             <option value={4} className="text-slate-900">4×</option>
           </select>
-          <button onClick={iniciar} disabled={corriendo} className="flex items-center gap-2 rounded-xl bg-celeste px-5 py-3 font-bold text-tigo-900 shadow disabled:opacity-60">
+          <button onClick={iniciar} disabled={corriendo} className="flex w-40 items-center justify-center gap-2 rounded-xl bg-celeste px-5 py-3 font-bold text-tigo-900 shadow disabled:opacity-60">
             <Play size={20} /> {corriendo ? "En curso…" : "Iniciar"}
           </button>
           <button onClick={limpiar} className="rounded-xl bg-white/15 p-3 hover:bg-white/25" aria-label="Reiniciar" title="Reiniciar">
@@ -197,7 +197,7 @@ export default function HogarEnVivo() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(290px,360px)]">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="space-y-3">
           <Tarjeta className="relative p-3">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -253,9 +253,10 @@ export default function HogarEnVivo() {
           </Tarjeta>
         </div>
 
-        <div className="space-y-3">
+        <div className="min-w-0 space-y-3">
+          {/* Alto fijo: las acciones que van apareciendo no empujan el teléfono */}
           {diagnostico ? (
-            <Tarjeta className="aparecer p-4">
+            <Tarjeta className="aparecer p-4 lg:h-[410px] lg:overflow-y-auto">
               <div className="flex items-center gap-2 text-sm font-bold text-tigo"><BrainCircuit size={18} /> Por qué la IA lo marcó ({fechaDe(ev.ia)})</div>
               <ul className="mt-2 space-y-1.5 text-sm">
                 {esc.explicacion.map((m) => (
@@ -278,7 +279,7 @@ export default function HogarEnVivo() {
               )}
             </Tarjeta>
           ) : (
-            <Tarjeta className="p-4 text-sm text-slate-500">
+            <Tarjeta className="p-4 text-sm text-slate-500 lg:h-[410px]">
               La IA califica cada semana a todos los hogares con la telemetría del módem y marca al {pct(esc.presupuesto)} con más
               riesgo. Aquí aparecerá su diagnóstico.
             </Tarjeta>

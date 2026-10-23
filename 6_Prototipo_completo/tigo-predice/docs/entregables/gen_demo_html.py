@@ -7,6 +7,8 @@ Uso:
   1. cd frontend && VITE_ESTATICO=1 npx vite build --base ./ --outDir dist-estatico
   2. Con la API corriendo en http://127.0.0.1:8000:
      python docs/entregables/gen_demo_html.py <salida.html>
+     O, si solo cambió la interfaz, reutilizando los datos de una demo ya generada (sin API):
+     python docs/entregables/gen_demo_html.py <salida.html> --datos-de <Demo_Tigo_Predice.html>
 """
 
 import base64
@@ -33,7 +35,20 @@ def texto_js(v) -> str:
     return str(v)
 
 
-def main(salida: Path) -> None:
+def datos_de_demo(html: Path) -> dict:
+    """Recupera las respuestas incrustadas en una demo ya generada."""
+    texto = html.read_text(encoding="utf-8")
+    inicio = texto.index("window.__DATOS__=") + len("window.__DATOS__=")
+    fin = texto.index(";</script>", inicio)
+    return json.loads(texto[inicio:fin])  # «<\/» es un escape válido en JSON
+
+
+def main(salida: Path, reutilizar: Path | None = None) -> None:
+    datos = datos_de_demo(reutilizar) if reutilizar else recolectar()
+    escribir(salida, datos)
+
+
+def recolectar() -> dict:
     datos = {"/api/sesion": {"requiere": False, "activa": True}}
     for ruta in [
         "/api/salud",
@@ -74,7 +89,10 @@ def main(salida: Path) -> None:
         datos[f"/api/clientes/{c['cliente_id']}"] = pedir(f"/api/clientes/{c['cliente_id']}")
 
     datos["/honduras.geojson"] = json.loads((DIST / "honduras.geojson").read_text(encoding="utf-8"))
+    return datos
 
+
+def escribir(salida: Path, datos: dict) -> None:
     html = (DIST / "index.html").read_text(encoding="utf-8")
     js = (DIST / re.search(r'src="\./(assets/[^"]+\.js)"', html).group(1)).read_text(encoding="utf-8")
     css = (DIST / re.search(r'href="\./(assets/[^"]+\.css)"', html).group(1)).read_text(encoding="utf-8")
@@ -95,4 +113,6 @@ def main(salida: Path) -> None:
 
 
 if __name__ == "__main__":
-    main(Path(sys.argv[1]))
+    args = sys.argv[1:]
+    reutilizar = Path(args[args.index("--datos-de") + 1]) if "--datos-de" in args else None
+    main(Path(args[0]), reutilizar)

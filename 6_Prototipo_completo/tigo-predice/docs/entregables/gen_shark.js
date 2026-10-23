@@ -182,7 +182,7 @@ encabezado(s, "Nuestra idea con IA", "¿Cómo solucionamos el problema?", "La IA
   txt(s, d, { x: x + 0.25, y: 3.75, w: 2.5, h: 1.8, fontSize: 14, color: "334155", valign: "top", objectName: `idead${i}` });
 });
 vidrio(s, 0.6, 5.85, 5.95, 0.9, "movil");
-txt(s, [{ text: "El mismo motor en Móvil: ", options: { bold: true, color: H.amarillo } }, { text: "cuando cae un sitio, aviso por WhatsApp antes de que llamen.", options: { color: "FFFFFF" } }],
+txt(s, [{ text: "El mismo motor en Móvil: ", options: { bold: true, color: H.amarillo } }, { text: "cuando cae un sitio, aviso por WhatsApp o SMS antes de que llamen.", options: { color: "FFFFFF" } }],
   { x: 0.85, y: 5.85, w: 5.5, h: 0.9, fontSize: 15, valign: "middle", objectName: "movil-t" });
 vidrio(s, 6.78, 5.85, 5.95, 0.9, "tecno");
 txt(s, [{ text: "IA: ", options: { bold: true, color: H.amarillo } }, { text: "modelo predictivo calibrado, explicación por variable y Claude redacta los mensajes con controles.", options: { color: "FFFFFF" } }],
@@ -272,7 +272,28 @@ txt(s, [{ text: nb(`−${PH.reduccion} visitas`), options: { fontSize: 26, bold:
   { x: 8.05, y: 4.7, w: 4.5, h: 1.8, valign: "top", paraSpaceAfter: 4, objectName: "pil-r" });
 s.addNotes(`Rango completo: ${C.neto_anio1_rango}. Si todos los supuestos salen mal a la vez, escalar perdería hasta L 3 M. Por eso no pedimos escalar: pedimos un piloto de L 770 mil que lo averigua. El piloto se mide contra un grupo control, con intervalo de confianza: así la decisión se toma con datos de Tigo, no con nuestra simulación.`);
 
-// ───────────── 10 · Cómo se hace realidad
+// ───────────── 10 · Por qué ahora: estrategia de Millicom y regulación vigente
+s = pres.addSlide({ masterName: "SECCION", sectionTitle: "Impacto" });
+encabezado(s, "Por qué ahora", "Estrategia de Millicom 2026 y regulación vigente", "Lo pide la estrategia de Tigo y ya lo exige CONATEL");
+tarjeta(s, 0.6, 2.7, 5.95, 4.05, "millicom");
+txt(s, [
+  { text: "Prioridades de Millicom en 2026", options: { bold: true, fontSize: 19, color: H.navy, breakLine: true } },
+  { text: "Mejor servicio: el cliente no sufre la falla ni tiene que llamar", options: { bullet: { indent: 16 }, breakLine: true } },
+  { text: "Eficiencia y flujo de caja: menos visitas y llamadas, sin inversión en red", options: { bullet: { indent: 16 }, breakLine: true } },
+  { text: "Crecer en valor: protege el hogar y a los clientes convergentes, que tienen cerca de la mitad del churn", options: { bullet: { indent: 16 }, breakLine: true } },
+  { text: "Simplicidad: empieza con archivos diarios del ACS, el NOC y el call center", options: { bullet: { indent: 16 } } },
+], { x: 0.9, y: 2.9, w: 5.4, h: 3.7, fontSize: 15, color: "334155", valign: "top", paraSpaceAfter: 6, objectName: "millicom-t" });
+tarjeta(s, 6.78, 2.7, 5.95, 4.05, "conatel", H.navy);
+txt(s, [
+  { text: "Reglamento NR001/26 de CONATEL", options: { bold: true, fontSize: 19, color: H.celeste, breakLine: true } },
+  { text: "La Gaceta, 28 de febrero de 2026", options: { fontSize: 13, color: H.suave, breakLine: true } },
+  { text: "Art. 39 (15): avisar a tiempo de averías e interrupciones y su plazo de normalización, por SMS y otros medios", options: { bullet: { indent: 16 }, breakLine: true } },
+  { text: "Art. 5 (10): compensación automática y reporte de la duración y las zonas de cada falla", options: { bullet: { indent: 16 }, breakLine: true } },
+  { text: "Art. 5 (17 y 18): con 10 días sin resolver o más de 24 h sin servicio al mes, el cliente se va sin penalidad", options: { bullet: { indent: 16 } } },
+], { x: 7.08, y: 2.9, w: 5.4, h: 3.7, fontSize: 15, color: "FFFFFF", valign: "top", paraSpaceAfter: 6, objectName: "conatel-t" });
+s.addNotes("Esto ya no es solo una buena idea: desde marzo de 2026 CONATEL exige avisar las interrupciones y compensar automáticamente las horas sin servicio con un registro de duración y zonas. Tigo Predice automatiza las dos cosas, y además protege lo que Millicom prioriza este año: servicio, eficiencia y flujo de caja.");
+
+// ───────────── 11 · Cómo se hace realidad
 pres.addSection({ title: "Pedido" });
 s = pres.addSlide({ masterName: "SECCION", sectionTitle: "Pedido" });
 encabezado(s, "Plan", "¿Cómo lo hacemos realidad?", "Piloto de 12 semanas en San Pedro Sula, con GO / NO-GO medible");
