@@ -1,0 +1,9 @@
+# Fin de línea LF en el repositorio (los generadores también escriben LF), CRLF solo para .bat
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.joblib binary
+*.db binary
+*.pptx binary
+*.docx binary
+*.pdf binary

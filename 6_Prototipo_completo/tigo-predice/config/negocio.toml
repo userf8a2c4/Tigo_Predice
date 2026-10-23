@@ -1,0 +1,336 @@
+# =============================================================================
+# Tigo Predice v02 — ÚNICA fuente de verdad de supuestos y parámetros
+#
+# Cada supuesto tiene: unidad, bajo / base / alto, fuente y nota.
+#   fuente = "supuesto a validar" | "benchmark público" | "dato Tigo"
+# "Pon tus números" en la app reemplaza valores y los marca como "dato Tigo".
+# Fuentes detalladas: docs/fuentes.md
+# =============================================================================
+
+[general]
+semilla = 42
+fecha_corte = "2026-10-12"          # "hoy" dentro de la simulación
+clientes_simulados = 20000
+
+# ----------------------------------------------------------------------------
+# FASE 1 · PILOTO DE FALLAS MASIVAS DE RED
+# ----------------------------------------------------------------------------
+[piloto]
+ciudad = "San Pedro Sula"
+dias = 60
+pct_control = 0.15                  # grupo control aleatorio que NO recibe aviso
+sal_asignacion = "tigo-predice-piloto-v02"
+horizonte_horas = 72                # métrica norte: llamadas en 72 h tras la falla
+mensajes_por_afectado = 2           # aviso + cierre al restablecer
+pct_fallas_con_eta = 0.6            # % de fallas en que el NOC tiene hora estimada
+efecto_simulado = 0.20              # efecto "verdadero" SOLO para la simulación sintética
+optout_simulado = 0.006             # tasa de opt-out SOLO para la simulación sintética
+# Criterios de decisión al día 60
+go_reduccion_min = 0.10             # GO si la reducción relativa de llamadas >= 10 %
+go_optout_max = 0.02                # ... y opt-out < 2 %
+alfa = 0.05                         # ... y diferencia significativa (p < alfa)
+poder = 0.80                        # poder estadístico objetivo para el tamaño de muestra
+holdout_escala = 0.05               # al escalar se deja un 5 % de control para seguir midiendo
+
+# --- Volumen -----------------------------------------------------------------
+[supuestos.fallas_mes_piloto]
+unidad = "fallas masivas por mes en la ciudad piloto"
+bajo = 4
+base = 8
+alto = 12
+fuente = "supuesto a validar"
+nota = "Caídas o degradación de sitios que afectan a muchos clientes (energía, fibra, clima). Dato del NOC."
+
+[supuestos.afectados_por_falla]
+unidad = "clientes afectados por falla"
+bajo = 1500
+base = 3000
+alto = 5000
+fuente = "supuesto a validar"
+nota = "Depende de cuántos sitios caen y cuánto dura. Dato del NOC/OSS."
+
+[supuestos.afectados_mes_nacional]
+unidad = "clientes afectados por fallas masivas al mes (todo el país)"
+bajo = 60000
+base = 120000
+alto = 200000
+fuente = "supuesto a validar"
+nota = "~1–4 % de 5.2 M clientes afectados por alguna falla masiva al mes."
+
+[supuestos.tasa_llamada_72h]
+unidad = "% de afectados que llama en 72 h si NO recibe aviso"
+bajo = 0.25
+base = 0.33
+alto = 0.40
+fuente = "benchmark público"
+nota = "MidSouth Fiber: 33 % de suscriptores sin alerta llamó durante la falla (Calix, 2024; n = 99)."
+
+[supuestos.llamadas_por_cliente_que_llama]
+unidad = "llamadas por cliente que llama (incluye reintentos)"
+bajo = 1.2
+base = 1.4
+alto = 1.6
+fuente = "supuesto a validar"
+nota = "Los clientes afectados suelen llamar más de una vez. Dato del call center/IVR."
+
+# --- Efecto ------------------------------------------------------------------
+[supuestos.reduccion_con_aviso]
+unidad = "reducción relativa de llamadas en quienes reciben el aviso"
+bajo = 0.10
+base = 0.20
+alto = 0.35
+fuente = "benchmark público"
+nota = "Rango conservador: KUBRA −18 %, Convey −57 % (eléctrica), MidSouth −88 % (n = 99). Todos de proveedores; el piloto lo mide."
+
+[supuestos.tasa_entrega]
+unidad = "% de tratados que efectivamente recibe y lee el aviso"
+bajo = 0.75
+base = 0.85
+alto = 0.92
+fuente = "supuesto a validar"
+nota = "Clientes con WhatsApp activo y sin opt-out. Dato de canales digitales."
+
+# --- Valor -------------------------------------------------------------------
+[supuestos.costo_por_llamada]
+unidad = "L por llamada atendida (costo total)"
+bajo = 55
+base = 85
+alto = 120
+fuente = "supuesto a validar"
+nota = "Hora de agente LATAM US$12–24 todo incluido ÷ ~8 llamadas efectivas/h ≈ US$3.15 (FusionCX, Retell AI 2026). Dato de Finanzas/CX."
+
+[supuestos.tipo_cambio]
+unidad = "L por US$"
+bajo = 26.5
+base = 27.0
+alto = 27.5
+fuente = "benchmark público"
+nota = "BCH, octubre 2026."
+
+# --- Costos ------------------------------------------------------------------
+[supuestos.costo_whatsapp_mensaje]
+unidad = "L por mensaje (plantilla de utilidad)"
+bajo = 0.25
+base = 0.31
+alto = 0.40
+fuente = "benchmark público"
+nota = "≈ US$0.0113 por plantilla de utilidad, Resto de Latinoamérica, tarifa jul-2026 (Zernio; verificar con Meta)."
+
+[supuestos.desarrollo_piloto]
+unidad = "L, una vez (integración batch CSV + configuración)"
+bajo = 150000
+base = 250000
+alto = 400000
+fuente = "supuesto a validar"
+nota = "El piloto arranca con exportaciones CSV diarias, sin integraciones en tiempo real."
+
+[supuestos.equipo_piloto]
+unidad = "L por 60 días (horas internas NOC, CX, Data, Legal)"
+bajo = 100000
+base = 150000
+alto = 250000
+fuente = "supuesto a validar"
+nota = "Analista de datos a medio tiempo + enlaces del NOC y CX."
+
+[supuestos.infraestructura_mes]
+unidad = "L por mes (nube, LLM, monitoreo)"
+bajo = 20000
+base = 30000
+alto = 50000
+fuente = "supuesto a validar"
+nota = "Servidor pequeño + base de datos + llamadas al LLM (centavos por mensaje)."
+
+[supuestos.desarrollo_nacional]
+unidad = "L, una vez (integración en tiempo real OSS/CRM/WhatsApp)"
+bajo = 600000
+base = 900000
+alto = 1500000
+fuente = "supuesto a validar"
+nota = "Solo si el piloto da GO."
+
+[supuestos.operacion_anual]
+unidad = "L por año (operación y mantenimiento)"
+bajo = 800000
+base = 1200000
+alto = 1600000
+fuente = "supuesto a validar"
+nota = "1 analista/científico de datos + soporte + reentrenamiento mensual."
+
+[supuestos.pct_compensados]
+unidad = "% de afectados que recibe compensación (GB)"
+bajo = 0.0
+base = 0.05
+alto = 0.10
+fuente = "supuesto a validar"
+nota = "Solo fallas largas o clientes priorizados por el modelo; siempre con tope."
+
+[supuestos.costo_compensacion]
+unidad = "L por cliente compensado (costo interno de 2 GB)"
+bajo = 8
+base = 16
+alto = 25
+fuente = "supuesto a validar"
+nota = "Costo marginal interno, no precio de venta."
+
+[topes]
+compensaciones_mes_piloto = 15000   # L
+compensaciones_mes_nacional = 60000 # L
+
+# ----------------------------------------------------------------------------
+# FRENTE HOGAR · ATENCIÓN PROACTIVA (v03)
+# La IA lee la telemetría de los módems, marca los hogares que van a fallar y se
+# corrige a distancia antes de que el cliente llame o haya que mandar un técnico.
+# ----------------------------------------------------------------------------
+[hogar]
+hogares_simulados = 12000
+horizonte_dias = 7                  # la IA predice: llamada técnica o visita en los próximos 7 días
+pct_marcados_semana = 0.02          # presupuesto: cada semana se actúa sobre el 2 % de hogares con más riesgo
+mensajes_por_marcado = 1            # un WhatsApp: "lo corregimos a distancia" u "ofrecemos visita"
+sal_asignacion = "tigo-predice-hogar-v03"
+exito_remoto_simulado = 0.70        # SOLO simulación: % de problemas resolubles a distancia que se corrigen
+evita_llamada_fisico_simulado = 0.5 # SOLO simulación: en problemas físicos, avisar evita la llamada (no la visita)
+optout_simulado = 0.004             # SOLO simulación
+go_reduccion_visitas_min = 0.15     # GO si las visitas en hogares marcados bajan >= 15 % vs. control
+go_ia_vs_regla_min = 1.3            # y la IA captura >= 1.3x lo que captura la regla de umbrales (si no, se usa la regla)
+
+[supuestos.hogares_piloto]
+unidad = "hogares (fibra/HFC) en la ciudad piloto"
+bajo = 25000
+base = 40000
+alto = 50000
+fuente = "supuesto a validar"
+nota = "Tigo Hogar tiene ~175 mil hogares (Millicom 20-F 2025); se asume ~1 de cada 4 en San Pedro Sula. Dato de Tigo Hogar."
+
+[supuestos.tasa_visitas_hogar_mes]
+unidad = "visitas técnicas por hogar al mes"
+bajo = 0.030
+base = 0.043
+alto = 0.060
+fuente = "supuesto a validar"
+nota = "≈ 7,500 visitas/mes sobre 175 mil hogares (3 % a 6 %). Dato de operaciones de campo."
+
+[supuestos.pct_visitas_evitables]
+unidad = "% de visitas evitables (resolubles a distancia o sin falla encontrada)"
+bajo = 0.20
+base = 0.30
+alto = 0.40
+fuente = "supuesto a validar"
+nota = "Códigos de cierre: WiFi/configuración, firmware, reinicio, «sin falla encontrada». Dato de cierres de visitas."
+
+[supuestos.llamadas_por_visita]
+unidad = "llamadas del cliente por cada visita (reporte + seguimiento)"
+bajo = 1.5
+base = 2.0
+alto = 2.5
+fuente = "supuesto a validar"
+nota = "Dato del call center de Hogar."
+
+[supuestos.captura_modelo_hogar]
+unidad = "% de visitas evitables que ocurren en hogares que la IA marcó a tiempo"
+bajo = 0.35
+base = 0.45
+alto = 0.55
+fuente = "supuesto a validar"
+nota = "Con presupuesto del 2 % de hogares por semana. Se valida con 3 meses de telemetría real (análisis retrospectivo)."
+
+[supuestos.reduccion_visitas_marcados]
+unidad = "reducción de visitas evitables en hogares marcados y corregidos a distancia"
+bajo = 0.30
+base = 0.45
+alto = 0.60
+fuente = "benchmark público"
+nota = "Proveedores reportan −20 % (Beegol, todas las visitas) a −60 % (Ksolves, visitas innecesarias); cifras autodeclaradas. El piloto lo mide."
+
+[supuestos.costo_por_visita]
+unidad = "L por visita técnica (técnico, vehículo, tiempo)"
+bajo = 800
+base = 1100
+alto = 1500
+fuente = "supuesto a validar"
+nota = "Dato de Finanzas / operaciones de campo."
+
+[supuestos.desarrollo_hogar_piloto]
+unidad = "L, una vez (CSV diario de telemetría del ACS / gestor de OLT y CMTS + modelo)"
+bajo = 100000
+base = 150000
+alto = 250000
+fuente = "supuesto a validar"
+nota = "Sin integración en tiempo real: exportación diaria y acciones remotas que ejecuta soporte nivel 2."
+
+[supuestos.equipo_hogar_piloto]
+unidad = "L por 60 días (enlace de ingeniería de acceso + soporte remoto nivel 2)"
+bajo = 60000
+base = 100000
+alto = 150000
+fuente = "supuesto a validar"
+nota = "Horas internas adicionales al equipo del piloto móvil."
+
+[supuestos.desarrollo_hogar_nacional]
+unidad = "L, una vez (integración con ACS TR-069, OLT/CMTS y acciones remotas automáticas)"
+bajo = 500000
+base = 800000
+alto = 1300000
+fuente = "supuesto a validar"
+nota = "Solo si el piloto Hogar da GO."
+
+[supuestos.operacion_hogar_anual]
+unidad = "L por año (incremental: reentrenamiento y soporte de la integración)"
+bajo = 250000
+base = 400000
+alto = 600000
+fuente = "supuesto a validar"
+nota = "Se suma a la operación de la plataforma (que ya carga el frente móvil)."
+
+# --- Potencial NO incluido en el caso base (Fase 2) ---------------------------
+[supuestos.margen_contribucion]
+unidad = "% del ARPU que es margen de contribución"
+bajo = 0.45
+base = 0.55
+alto = 0.65
+fuente = "supuesto a validar"
+nota = "Para estimar retención con margen, no con ingreso bruto. Dato de Finanzas."
+
+[supuestos.churn_incremental_evitado]
+unidad = "reducción absoluta de churn mensual en afectados avisados vs. control"
+bajo = 0.000
+base = 0.002
+alto = 0.005
+fuente = "supuesto a validar"
+nota = "Solo se acredita si el piloto lo mide frente al control."
+
+[supuestos.arpu_afectado]
+unidad = "L por mes"
+bajo = 160
+base = 220
+alto = 300
+fuente = "supuesto a validar"
+nota = "ARPU grupo Millicom ~US$6.2 ≈ L 167 (20-F 2025); afectados incluyen hogar."
+
+# ----------------------------------------------------------------------------
+# FASE 2 · CHURN Y RETENCIÓN (prototipo existente, no entra al caso base)
+# ----------------------------------------------------------------------------
+[base_real]                         # Millicom 20-F FY2025
+clientes_moviles = 5000000
+clientes_hogar = 175000
+
+[arpu]                              # L por mes
+prepago = 160.0
+pospago = 620.0
+hogar = 950.0
+
+[vida_util_meses]
+prepago = 18
+pospago = 36
+hogar = 40
+
+[churn_base_mensual]
+prepago = 0.045
+pospago = 0.018
+hogar = 0.022
+
+[reglas]
+dias_entre_mensajes = 7             # máximo 1 mensaje proactivo cada 7 días
+porcentaje_alta = 0.05
+porcentaje_media = 0.15
+valor_alto_clv = 9000.0
+gb_compensacion = 2

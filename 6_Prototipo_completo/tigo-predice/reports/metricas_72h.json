@@ -1,0 +1,552 @@
+{
+  "version": "v20261012",
+  "pregunta": "¿Llamará al call center en las 72 h posteriores a la falla si NO recibe aviso?",
+  "validacion": "Temporal: entrena con fallas de los días 0–59 (16 fallas, 5,619 afectados) y prueba con las de los días 60–89 (5 fallas, 1,784 afectados).",
+  "tasa_base_prueba": 0.372,
+  "llamadas_por_1000_prueba": 522,
+  "modelos": {
+    "regresión logística": {
+      "auc": 0.705,
+      "brier": 0.2232,
+      "precision_top10": 0.68,
+      "recall_top10": 0.183,
+      "llamadas_por_100_contactos_top20": 93.3,
+      "recall_llamadas_top20": 0.357,
+      "lift": [
+        {
+          "decil": 1,
+          "tasa": 0.676,
+          "lift": 1.82,
+          "captura_acumulada": 0.1825
+        },
+        {
+          "decil": 2,
+          "tasa": 0.676,
+          "lift": 1.82,
+          "captura_acumulada": 0.365
+        },
+        {
+          "decil": 3,
+          "tasa": 0.4637,
+          "lift": 1.25,
+          "captura_acumulada": 0.4902
+        },
+        {
+          "decil": 4,
+          "tasa": 0.4134,
+          "lift": 1.11,
+          "captura_acumulada": 0.6018
+        },
+        {
+          "decil": 5,
+          "tasa": 0.3034,
+          "lift": 0.82,
+          "captura_acumulada": 0.6833
+        },
+        {
+          "decil": 6,
+          "tasa": 0.2865,
+          "lift": 0.77,
+          "captura_acumulada": 0.7602
+        },
+        {
+          "decil": 7,
+          "tasa": 0.2865,
+          "lift": 0.77,
+          "captura_acumulada": 0.8371
+        },
+        {
+          "decil": 8,
+          "tasa": 0.2303,
+          "lift": 0.62,
+          "captura_acumulada": 0.8989
+        },
+        {
+          "decil": 9,
+          "tasa": 0.2022,
+          "lift": 0.54,
+          "captura_acumulada": 0.9532
+        },
+        {
+          "decil": 10,
+          "tasa": 0.1742,
+          "lift": 0.47,
+          "captura_acumulada": 1.0
+        }
+      ]
+    },
+    "LightGBM": {
+      "auc": 0.711,
+      "brier": 0.2134,
+      "precision_top10": 0.742,
+      "recall_top10": 0.199,
+      "llamadas_por_100_contactos_top20": 90.8,
+      "recall_llamadas_top20": 0.348,
+      "lift": [
+        {
+          "decil": 1,
+          "tasa": 0.743,
+          "lift": 2.0,
+          "captura_acumulada": 0.2006
+        },
+        {
+          "decil": 2,
+          "tasa": 0.581,
+          "lift": 1.56,
+          "captura_acumulada": 0.3575
+        },
+        {
+          "decil": 3,
+          "tasa": 0.5587,
+          "lift": 1.5,
+          "captura_acumulada": 0.5083
+        },
+        {
+          "decil": 4,
+          "tasa": 0.4078,
+          "lift": 1.1,
+          "captura_acumulada": 0.6184
+        },
+        {
+          "decil": 5,
+          "tasa": 0.2697,
+          "lift": 0.73,
+          "captura_acumulada": 0.6908
+        },
+        {
+          "decil": 6,
+          "tasa": 0.2809,
+          "lift": 0.76,
+          "captura_acumulada": 0.7662
+        },
+        {
+          "decil": 7,
+          "tasa": 0.2416,
+          "lift": 0.65,
+          "captura_acumulada": 0.8311
+        },
+        {
+          "decil": 8,
+          "tasa": 0.2303,
+          "lift": 0.62,
+          "captura_acumulada": 0.8929
+        },
+        {
+          "decil": 9,
+          "tasa": 0.2584,
+          "lift": 0.7,
+          "captura_acumulada": 0.9623
+        },
+        {
+          "decil": 10,
+          "tasa": 0.1404,
+          "lift": 0.38,
+          "captura_acumulada": 1.0
+        }
+      ]
+    },
+    "LightGBM calibrado": {
+      "auc": 0.703,
+      "brier": 0.2078,
+      "precision_top10": 0.753,
+      "recall_top10": 0.202,
+      "llamadas_por_100_contactos_top20": 91.3,
+      "recall_llamadas_top20": 0.35,
+      "lift": [
+        {
+          "decil": 1,
+          "tasa": 0.7542,
+          "lift": 2.03,
+          "captura_acumulada": 0.2036
+        },
+        {
+          "decil": 2,
+          "tasa": 0.5419,
+          "lift": 1.46,
+          "captura_acumulada": 0.3499
+        },
+        {
+          "decil": 3,
+          "tasa": 0.5363,
+          "lift": 1.44,
+          "captura_acumulada": 0.4947
+        },
+        {
+          "decil": 4,
+          "tasa": 0.4078,
+          "lift": 1.1,
+          "captura_acumulada": 0.6048
+        },
+        {
+          "decil": 5,
+          "tasa": 0.3315,
+          "lift": 0.89,
+          "captura_acumulada": 0.6938
+        },
+        {
+          "decil": 6,
+          "tasa": 0.2303,
+          "lift": 0.62,
+          "captura_acumulada": 0.7557
+        },
+        {
+          "decil": 7,
+          "tasa": 0.2416,
+          "lift": 0.65,
+          "captura_acumulada": 0.8205
+        },
+        {
+          "decil": 8,
+          "tasa": 0.2528,
+          "lift": 0.68,
+          "captura_acumulada": 0.8884
+        },
+        {
+          "decil": 9,
+          "tasa": 0.2191,
+          "lift": 0.59,
+          "captura_acumulada": 0.9472
+        },
+        {
+          "decil": 10,
+          "tasa": 0.1966,
+          "lift": 0.53,
+          "captura_acumulada": 1.0
+        }
+      ]
+    }
+  },
+  "regla_operativa": {
+    "auc": 0.608,
+    "brier": null,
+    "precision_top10": 0.624,
+    "recall_top10": 0.167,
+    "llamadas_por_100_contactos_top20": 75.4,
+    "recall_llamadas_top20": 0.289,
+    "lift": [
+      {
+        "decil": 1,
+        "tasa": 0.6257,
+        "lift": 1.68,
+        "captura_acumulada": 0.1689
+      },
+      {
+        "decil": 2,
+        "tasa": 0.4358,
+        "lift": 1.17,
+        "captura_acumulada": 0.2866
+      },
+      {
+        "decil": 3,
+        "tasa": 0.4469,
+        "lift": 1.2,
+        "captura_acumulada": 0.4072
+      },
+      {
+        "decil": 4,
+        "tasa": 0.3352,
+        "lift": 0.9,
+        "captura_acumulada": 0.4977
+      },
+      {
+        "decil": 5,
+        "tasa": 0.3315,
+        "lift": 0.89,
+        "captura_acumulada": 0.5867
+      },
+      {
+        "decil": 6,
+        "tasa": 0.4045,
+        "lift": 1.09,
+        "captura_acumulada": 0.6953
+      },
+      {
+        "decil": 7,
+        "tasa": 0.3258,
+        "lift": 0.88,
+        "captura_acumulada": 0.7828
+      },
+      {
+        "decil": 8,
+        "tasa": 0.2079,
+        "lift": 0.56,
+        "captura_acumulada": 0.8386
+      },
+      {
+        "decil": 9,
+        "tasa": 0.2978,
+        "lift": 0.8,
+        "captura_acumulada": 0.9186
+      },
+      {
+        "decil": 10,
+        "tasa": 0.3034,
+        "lift": 0.82,
+        "captura_acumulada": 1.0
+      }
+    ]
+  },
+  "azar": {
+    "llamadas_por_100_contactos_top20": 50.1
+  },
+  "calibracion": {
+    "LightGBM": [
+      {
+        "prob_media": 0.2028,
+        "tasa_real": 0.1397,
+        "n": 179
+      },
+      {
+        "prob_media": 0.2728,
+        "tasa_real": 0.257,
+        "n": 179
+      },
+      {
+        "prob_media": 0.3193,
+        "tasa_real": 0.2346,
+        "n": 179
+      },
+      {
+        "prob_media": 0.3684,
+        "tasa_real": 0.2458,
+        "n": 179
+      },
+      {
+        "prob_media": 0.4237,
+        "tasa_real": 0.2697,
+        "n": 178
+      },
+      {
+        "prob_media": 0.4888,
+        "tasa_real": 0.2809,
+        "n": 178
+      },
+      {
+        "prob_media": 0.5555,
+        "tasa_real": 0.4045,
+        "n": 178
+      },
+      {
+        "prob_media": 0.6309,
+        "tasa_real": 0.5674,
+        "n": 178
+      },
+      {
+        "prob_media": 0.7032,
+        "tasa_real": 0.5787,
+        "n": 178
+      },
+      {
+        "prob_media": 0.7954,
+        "tasa_real": 0.7416,
+        "n": 178
+      }
+    ],
+    "LightGBM calibrado": [
+      {
+        "prob_media": 0.2672,
+        "tasa_real": 0.1955,
+        "n": 179
+      },
+      {
+        "prob_media": 0.3003,
+        "tasa_real": 0.2291,
+        "n": 179
+      },
+      {
+        "prob_media": 0.3151,
+        "tasa_real": 0.2458,
+        "n": 179
+      },
+      {
+        "prob_media": 0.3312,
+        "tasa_real": 0.2458,
+        "n": 179
+      },
+      {
+        "prob_media": 0.3522,
+        "tasa_real": 0.2303,
+        "n": 178
+      },
+      {
+        "prob_media": 0.3662,
+        "tasa_real": 0.3315,
+        "n": 178
+      },
+      {
+        "prob_media": 0.3985,
+        "tasa_real": 0.4101,
+        "n": 178
+      },
+      {
+        "prob_media": 0.4453,
+        "tasa_real": 0.5337,
+        "n": 178
+      },
+      {
+        "prob_media": 0.507,
+        "tasa_real": 0.5449,
+        "n": 178
+      },
+      {
+        "prob_media": 0.6509,
+        "tasa_real": 0.7528,
+        "n": 178
+      }
+    ]
+  },
+  "estrategias": [
+    {
+      "estrategia": "Hoy: no avisar",
+      "tipo": "base",
+      "contactos": 0,
+      "costo": 0.0,
+      "llamadas_evitadas": 0.0,
+      "llamadas_por_100": null,
+      "costo_por_llamada_evitada": null
+    },
+    {
+      "estrategia": "Avisar por WhatsApp a TODOS los afectados (regla simple)",
+      "tipo": "whatsapp",
+      "contactos": 1784,
+      "costo": 940.0,
+      "llamadas_evitadas": 158.4,
+      "llamadas_por_100": 52.2,
+      "costo_por_llamada_evitada": 5.93
+    },
+    {
+      "estrategia": "Compensar al 20 % elegido por azar",
+      "tipo": "prioridad",
+      "contactos": 357,
+      "costo": 5712.0,
+      "llamadas_capturadas": 179.0,
+      "llamadas_por_100": 50.1,
+      "costo_por_llamada_capturada": 31.91
+    },
+    {
+      "estrategia": "Compensar al 20 % elegido por la regla (hogar primero)",
+      "tipo": "prioridad",
+      "contactos": 357,
+      "costo": 5712.0,
+      "llamadas_capturadas": 269.0,
+      "llamadas_por_100": 75.4,
+      "costo_por_llamada_capturada": 21.23
+    },
+    {
+      "estrategia": "Compensar al 20 % elegido por el modelo",
+      "tipo": "prioridad",
+      "contactos": 357,
+      "costo": 5712.0,
+      "llamadas_capturadas": 326.0,
+      "llamadas_por_100": 91.3,
+      "costo_por_llamada_capturada": 17.52
+    }
+  ],
+  "sesgo": {
+    "zona": [
+      {
+        "grupo": "periurbana",
+        "n": 881,
+        "tasa_real": 0.373,
+        "prob_media": 0.387,
+        "pct_priorizado": 0.169,
+        "auc": 0.683
+      },
+      {
+        "grupo": "rural",
+        "n": 256,
+        "tasa_real": 0.426,
+        "prob_media": 0.417,
+        "pct_priorizado": 0.242,
+        "auc": 0.66
+      },
+      {
+        "grupo": "urbana",
+        "n": 647,
+        "tasa_real": 0.348,
+        "prob_media": 0.392,
+        "pct_priorizado": 0.226,
+        "auc": 0.738
+      }
+    ],
+    "segmento": [
+      {
+        "grupo": "hogar",
+        "n": 190,
+        "tasa_real": 0.632,
+        "prob_media": 0.555,
+        "pct_priorizado": 0.695,
+        "auc": 0.718
+      },
+      {
+        "grupo": "pospago",
+        "n": 526,
+        "tasa_real": 0.399,
+        "prob_media": 0.41,
+        "pct_priorizado": 0.232,
+        "auc": 0.689
+      },
+      {
+        "grupo": "prepago",
+        "n": 1068,
+        "tasa_real": 0.312,
+        "prob_media": 0.356,
+        "pct_priorizado": 0.096,
+        "auc": 0.654
+      }
+    ]
+  },
+  "importancia": [
+    {
+      "variable": "llamadas_red_90d_previas",
+      "nombre": "Llamadas por red (90 d)",
+      "valor": 0.1491
+    },
+    {
+      "variable": "arpu",
+      "nombre": "ARPU",
+      "valor": 0.1294
+    },
+    {
+      "variable": "es_hogar",
+      "nombre": "Es cliente hogar",
+      "valor": 0.1186
+    },
+    {
+      "variable": "antiguedad_meses",
+      "nombre": "Antigüedad",
+      "valor": 0.1172
+    },
+    {
+      "variable": "hora_inicio",
+      "nombre": "Hora de inicio",
+      "valor": 0.0862
+    },
+    {
+      "variable": "sin_resolver_30d_previas",
+      "nombre": "Llamadas sin resolver (30 d)",
+      "valor": 0.0777
+    },
+    {
+      "variable": "es_prepago",
+      "nombre": "Es prepago",
+      "valor": 0.0463
+    },
+    {
+      "variable": "eta_horas",
+      "nombre": "Hora estimada de solución",
+      "valor": 0.0429
+    },
+    {
+      "variable": "caidas_30d_previas",
+      "nombre": "Caídas en su celda (30 d)",
+      "valor": 0.0412
+    },
+    {
+      "variable": "nps_previo",
+      "nombre": "Última calificación",
+      "valor": 0.0404
+    }
+  ],
+  "pct_prioridad": 0.2
+}

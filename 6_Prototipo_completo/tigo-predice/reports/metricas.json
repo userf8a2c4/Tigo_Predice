@@ -1,0 +1,1338 @@
+{
+  "version": "v20261012",
+  "fecha_corte": "2026-10-12",
+  "n_clientes": 20000,
+  "variables": [
+    "caidas_7d",
+    "caidas_30d",
+    "min_sin_servicio_30d",
+    "latencia_ms_7d",
+    "velocidad_pct_plan_7d",
+    "brecha_velocidad_celda",
+    "falla_masiva_activa",
+    "datos_gb_30d",
+    "voz_min_30d",
+    "tendencia_uso",
+    "recargas_30d",
+    "dias_sin_recarga",
+    "dias_atraso",
+    "meses_con_atraso_90d",
+    "bajo_plan_90d",
+    "reclamos_cobro_90d",
+    "llamadas_30d",
+    "llamadas_sin_resolver_30d",
+    "llamadas_red_30d",
+    "llamadas_equipo_30d",
+    "tickets_abiertos",
+    "horas_resolucion_prom",
+    "nps_ultimo",
+    "antiguedad_meses",
+    "arpu",
+    "gama_ord",
+    "es_prepago",
+    "es_pospago",
+    "es_hogar"
+  ],
+  "modelos": {
+    "incidencia": {
+      "objetivo": "llamara_7d",
+      "descripcion": "Probabilidad de que llame o reclame en los próximos 7 días",
+      "baseline_regresion_logistica": {
+        "auc": 0.8003,
+        "umbral_top10": 0.1987,
+        "precision_top10": 0.494,
+        "recall_top10": 0.5346,
+        "tasa_base": 0.0924,
+        "matriz_confusion": {
+          "vn": 4285,
+          "fp": 253,
+          "fn": 215,
+          "vp": 247
+        },
+        "lift": [
+          {
+            "decil": 1,
+            "tasa": 0.494,
+            "lift": 5.35,
+            "captura_acumulada": 0.5346
+          },
+          {
+            "decil": 2,
+            "tasa": 0.118,
+            "lift": 1.28,
+            "captura_acumulada": 0.6623
+          },
+          {
+            "decil": 3,
+            "tasa": 0.062,
+            "lift": 0.67,
+            "captura_acumulada": 0.7294
+          },
+          {
+            "decil": 4,
+            "tasa": 0.048,
+            "lift": 0.52,
+            "captura_acumulada": 0.7814
+          },
+          {
+            "decil": 5,
+            "tasa": 0.034,
+            "lift": 0.37,
+            "captura_acumulada": 0.8182
+          },
+          {
+            "decil": 6,
+            "tasa": 0.034,
+            "lift": 0.37,
+            "captura_acumulada": 0.855
+          },
+          {
+            "decil": 7,
+            "tasa": 0.028,
+            "lift": 0.3,
+            "captura_acumulada": 0.8853
+          },
+          {
+            "decil": 8,
+            "tasa": 0.03,
+            "lift": 0.32,
+            "captura_acumulada": 0.9177
+          },
+          {
+            "decil": 9,
+            "tasa": 0.044,
+            "lift": 0.48,
+            "captura_acumulada": 0.9654
+          },
+          {
+            "decil": 10,
+            "tasa": 0.032,
+            "lift": 0.35,
+            "captura_acumulada": 1.0
+          }
+        ],
+        "roc": [
+          {
+            "fpr": 0.0,
+            "tpr": 0.0
+          },
+          {
+            "fpr": 0.0015,
+            "tpr": 0.0649
+          },
+          {
+            "fpr": 0.0042,
+            "tpr": 0.132
+          },
+          {
+            "fpr": 0.0073,
+            "tpr": 0.2186
+          },
+          {
+            "fpr": 0.011,
+            "tpr": 0.2468
+          },
+          {
+            "fpr": 0.0141,
+            "tpr": 0.2771
+          },
+          {
+            "fpr": 0.0172,
+            "tpr": 0.3182
+          },
+          {
+            "fpr": 0.0216,
+            "tpr": 0.3571
+          },
+          {
+            "fpr": 0.0251,
+            "tpr": 0.381
+          },
+          {
+            "fpr": 0.0295,
+            "tpr": 0.4134
+          },
+          {
+            "fpr": 0.032,
+            "tpr": 0.4416
+          },
+          {
+            "fpr": 0.037,
+            "tpr": 0.4719
+          },
+          {
+            "fpr": 0.0458,
+            "tpr": 0.5065
+          },
+          {
+            "fpr": 0.0524,
+            "tpr": 0.5281
+          },
+          {
+            "fpr": 0.0595,
+            "tpr": 0.5519
+          },
+          {
+            "fpr": 0.0703,
+            "tpr": 0.5714
+          },
+          {
+            "fpr": 0.0888,
+            "tpr": 0.5931
+          },
+          {
+            "fpr": 0.1,
+            "tpr": 0.6147
+          },
+          {
+            "fpr": 0.1144,
+            "tpr": 0.6342
+          },
+          {
+            "fpr": 0.1333,
+            "tpr": 0.6515
+          },
+          {
+            "fpr": 0.1622,
+            "tpr": 0.6688
+          },
+          {
+            "fpr": 0.19,
+            "tpr": 0.6861
+          },
+          {
+            "fpr": 0.2234,
+            "tpr": 0.7013
+          },
+          {
+            "fpr": 0.2503,
+            "tpr": 0.7208
+          },
+          {
+            "fpr": 0.2774,
+            "tpr": 0.7381
+          },
+          {
+            "fpr": 0.2964,
+            "tpr": 0.7554
+          },
+          {
+            "fpr": 0.3372,
+            "tpr": 0.7749
+          },
+          {
+            "fpr": 0.3874,
+            "tpr": 0.7922
+          },
+          {
+            "fpr": 0.4271,
+            "tpr": 0.8095
+          },
+          {
+            "fpr": 0.5004,
+            "tpr": 0.8247
+          },
+          {
+            "fpr": 0.5331,
+            "tpr": 0.842
+          },
+          {
+            "fpr": 0.5848,
+            "tpr": 0.8593
+          },
+          {
+            "fpr": 0.6446,
+            "tpr": 0.8766
+          },
+          {
+            "fpr": 0.6994,
+            "tpr": 0.8939
+          },
+          {
+            "fpr": 0.7371,
+            "tpr": 0.9113
+          },
+          {
+            "fpr": 0.8162,
+            "tpr": 0.9307
+          },
+          {
+            "fpr": 0.8746,
+            "tpr": 0.9481
+          },
+          {
+            "fpr": 0.8971,
+            "tpr": 0.9654
+          },
+          {
+            "fpr": 0.9238,
+            "tpr": 0.9827
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
+          }
+        ]
+      },
+      "lightgbm": {
+        "auc": 0.8285,
+        "umbral_top10": 0.2247,
+        "precision_top10": 0.504,
+        "recall_top10": 0.5455,
+        "tasa_base": 0.0924,
+        "matriz_confusion": {
+          "vn": 4290,
+          "fp": 248,
+          "fn": 210,
+          "vp": 252
+        },
+        "lift": [
+          {
+            "decil": 1,
+            "tasa": 0.504,
+            "lift": 5.45,
+            "captura_acumulada": 0.5455
+          },
+          {
+            "decil": 2,
+            "tasa": 0.12,
+            "lift": 1.3,
+            "captura_acumulada": 0.6753
+          },
+          {
+            "decil": 3,
+            "tasa": 0.072,
+            "lift": 0.78,
+            "captura_acumulada": 0.7532
+          },
+          {
+            "decil": 4,
+            "tasa": 0.042,
+            "lift": 0.45,
+            "captura_acumulada": 0.7987
+          },
+          {
+            "decil": 5,
+            "tasa": 0.052,
+            "lift": 0.56,
+            "captura_acumulada": 0.855
+          },
+          {
+            "decil": 6,
+            "tasa": 0.038,
+            "lift": 0.41,
+            "captura_acumulada": 0.8961
+          },
+          {
+            "decil": 7,
+            "tasa": 0.04,
+            "lift": 0.43,
+            "captura_acumulada": 0.9394
+          },
+          {
+            "decil": 8,
+            "tasa": 0.022,
+            "lift": 0.24,
+            "captura_acumulada": 0.9632
+          },
+          {
+            "decil": 9,
+            "tasa": 0.014,
+            "lift": 0.15,
+            "captura_acumulada": 0.9784
+          },
+          {
+            "decil": 10,
+            "tasa": 0.02,
+            "lift": 0.22,
+            "captura_acumulada": 1.0
+          }
+        ],
+        "roc": [
+          {
+            "fpr": 0.0,
+            "tpr": 0.0
+          },
+          {
+            "fpr": 0.0018,
+            "tpr": 0.0736
+          },
+          {
+            "fpr": 0.0042,
+            "tpr": 0.1407
+          },
+          {
+            "fpr": 0.0059,
+            "tpr": 0.2056
+          },
+          {
+            "fpr": 0.0088,
+            "tpr": 0.2381
+          },
+          {
+            "fpr": 0.011,
+            "tpr": 0.2727
+          },
+          {
+            "fpr": 0.0154,
+            "tpr": 0.3095
+          },
+          {
+            "fpr": 0.0201,
+            "tpr": 0.3463
+          },
+          {
+            "fpr": 0.0223,
+            "tpr": 0.3745
+          },
+          {
+            "fpr": 0.0258,
+            "tpr": 0.4069
+          },
+          {
+            "fpr": 0.0309,
+            "tpr": 0.4437
+          },
+          {
+            "fpr": 0.0353,
+            "tpr": 0.474
+          },
+          {
+            "fpr": 0.0383,
+            "tpr": 0.5022
+          },
+          {
+            "fpr": 0.0465,
+            "tpr": 0.5216
+          },
+          {
+            "fpr": 0.0533,
+            "tpr": 0.5411
+          },
+          {
+            "fpr": 0.0654,
+            "tpr": 0.5606
+          },
+          {
+            "fpr": 0.0738,
+            "tpr": 0.5801
+          },
+          {
+            "fpr": 0.0837,
+            "tpr": 0.6017
+          },
+          {
+            "fpr": 0.1036,
+            "tpr": 0.6169
+          },
+          {
+            "fpr": 0.1113,
+            "tpr": 0.6364
+          },
+          {
+            "fpr": 0.1307,
+            "tpr": 0.658
+          },
+          {
+            "fpr": 0.1556,
+            "tpr": 0.6797
+          },
+          {
+            "fpr": 0.1655,
+            "tpr": 0.697
+          },
+          {
+            "fpr": 0.1897,
+            "tpr": 0.7208
+          },
+          {
+            "fpr": 0.2177,
+            "tpr": 0.7381
+          },
+          {
+            "fpr": 0.2602,
+            "tpr": 0.7554
+          },
+          {
+            "fpr": 0.3089,
+            "tpr": 0.7749
+          },
+          {
+            "fpr": 0.3416,
+            "tpr": 0.79
+          },
+          {
+            "fpr": 0.3731,
+            "tpr": 0.8074
+          },
+          {
+            "fpr": 0.4022,
+            "tpr": 0.8247
+          },
+          {
+            "fpr": 0.442,
+            "tpr": 0.8442
+          },
+          {
+            "fpr": 0.478,
+            "tpr": 0.8615
+          },
+          {
+            "fpr": 0.5106,
+            "tpr": 0.881
+          },
+          {
+            "fpr": 0.5743,
+            "tpr": 0.8983
+          },
+          {
+            "fpr": 0.6194,
+            "tpr": 0.9156
+          },
+          {
+            "fpr": 0.6679,
+            "tpr": 0.9307
+          },
+          {
+            "fpr": 0.71,
+            "tpr": 0.9481
+          },
+          {
+            "fpr": 0.8217,
+            "tpr": 0.9654
+          },
+          {
+            "fpr": 0.9097,
+            "tpr": 0.9827
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
+          }
+        ]
+      },
+      "importancia_shap": [
+        {
+          "variable": "caidas_7d",
+          "grupo": "Red",
+          "valor": 0.2932
+        },
+        {
+          "variable": "velocidad_pct_plan_7d",
+          "grupo": "Red",
+          "valor": 0.2909
+        },
+        {
+          "variable": "llamadas_sin_resolver_30d",
+          "grupo": "Atención",
+          "valor": 0.2036
+        },
+        {
+          "variable": "reclamos_cobro_90d",
+          "grupo": "Facturación",
+          "valor": 0.1073
+        },
+        {
+          "variable": "horas_resolucion_prom",
+          "grupo": "Atención",
+          "valor": 0.0676
+        },
+        {
+          "variable": "llamadas_30d",
+          "grupo": "Atención",
+          "valor": 0.0553
+        },
+        {
+          "variable": "tickets_abiertos",
+          "grupo": "Atención",
+          "valor": 0.0547
+        },
+        {
+          "variable": "datos_gb_30d",
+          "grupo": "Uso",
+          "valor": 0.0536
+        },
+        {
+          "variable": "nps_ultimo",
+          "grupo": "Satisfacción",
+          "valor": 0.0533
+        },
+        {
+          "variable": "caidas_30d",
+          "grupo": "Red",
+          "valor": 0.0512
+        },
+        {
+          "variable": "latencia_ms_7d",
+          "grupo": "Red",
+          "valor": 0.0505
+        },
+        {
+          "variable": "brecha_velocidad_celda",
+          "grupo": "Equipo",
+          "valor": 0.0443
+        }
+      ],
+      "sesgo": {
+        "ciudad": [
+          {
+            "grupo": "Choluteca",
+            "n": 242,
+            "tasa_real": 0.0868,
+            "prob_media": 0.0836,
+            "pct_marcado_top10": 0.0702,
+            "auc": 0.791
+          },
+          {
+            "grupo": "Comayagua",
+            "n": 230,
+            "tasa_real": 0.0957,
+            "prob_media": 0.0808,
+            "pct_marcado_top10": 0.0783,
+            "auc": 0.771
+          },
+          {
+            "grupo": "Danlí",
+            "n": 324,
+            "tasa_real": 0.0957,
+            "prob_media": 0.0904,
+            "pct_marcado_top10": 0.108,
+            "auc": 0.867
+          },
+          {
+            "grupo": "El Progreso",
+            "n": 311,
+            "tasa_real": 0.0354,
+            "prob_media": 0.0577,
+            "pct_marcado_top10": 0.0386,
+            "auc": 0.698
+          },
+          {
+            "grupo": "Juticalpa",
+            "n": 220,
+            "tasa_real": 0.0545,
+            "prob_media": 0.056,
+            "pct_marcado_top10": 0.05,
+            "auc": 0.704
+          },
+          {
+            "grupo": "La Ceiba",
+            "n": 256,
+            "tasa_real": 0.332,
+            "prob_media": 0.3182,
+            "pct_marcado_top10": 0.4922,
+            "auc": 0.902
+          },
+          {
+            "grupo": "San Pedro Sula",
+            "n": 1189,
+            "tasa_real": 0.0908,
+            "prob_media": 0.0976,
+            "pct_marcado_top10": 0.1093,
+            "auc": 0.823
+          },
+          {
+            "grupo": "Santa Rosa de Copán",
+            "n": 101,
+            "tasa_real": 0.1287,
+            "prob_media": 0.144,
+            "pct_marcado_top10": 0.2079,
+            "auc": 0.906
+          },
+          {
+            "grupo": "Siguatepeque",
+            "n": 158,
+            "tasa_real": 0.0759,
+            "prob_media": 0.0908,
+            "pct_marcado_top10": 0.0949,
+            "auc": 0.739
+          },
+          {
+            "grupo": "Tegucigalpa",
+            "n": 1969,
+            "tasa_real": 0.0747,
+            "prob_media": 0.0697,
+            "pct_marcado_top10": 0.0584,
+            "auc": 0.776
+          }
+        ],
+        "segmento": [
+          {
+            "grupo": "hogar",
+            "n": 509,
+            "tasa_real": 0.1198,
+            "prob_media": 0.1112,
+            "pct_marcado_top10": 0.1218,
+            "auc": 0.851
+          },
+          {
+            "grupo": "pospago",
+            "n": 1504,
+            "tasa_real": 0.0977,
+            "prob_media": 0.0979,
+            "pct_marcado_top10": 0.1011,
+            "auc": 0.815
+          },
+          {
+            "grupo": "prepago",
+            "n": 2987,
+            "tasa_real": 0.085,
+            "prob_media": 0.0864,
+            "pct_marcado_top10": 0.0957,
+            "auc": 0.829
+          }
+        ]
+      }
+    },
+    "churn": {
+      "objetivo": "churn_30d",
+      "descripcion": "Probabilidad de abandono/portabilidad en 30 días",
+      "baseline_regresion_logistica": {
+        "auc": 0.8435,
+        "umbral_top10": 0.0831,
+        "precision_top10": 0.214,
+        "recall_top10": 0.5459,
+        "tasa_base": 0.0392,
+        "matriz_confusion": {
+          "vn": 4411,
+          "fp": 393,
+          "fn": 89,
+          "vp": 107
+        },
+        "lift": [
+          {
+            "decil": 1,
+            "tasa": 0.214,
+            "lift": 5.46,
+            "captura_acumulada": 0.5459
+          },
+          {
+            "decil": 2,
+            "tasa": 0.072,
+            "lift": 1.84,
+            "captura_acumulada": 0.7296
+          },
+          {
+            "decil": 3,
+            "tasa": 0.03,
+            "lift": 0.77,
+            "captura_acumulada": 0.8061
+          },
+          {
+            "decil": 4,
+            "tasa": 0.018,
+            "lift": 0.46,
+            "captura_acumulada": 0.852
+          },
+          {
+            "decil": 5,
+            "tasa": 0.014,
+            "lift": 0.36,
+            "captura_acumulada": 0.8878
+          },
+          {
+            "decil": 6,
+            "tasa": 0.016,
+            "lift": 0.41,
+            "captura_acumulada": 0.9286
+          },
+          {
+            "decil": 7,
+            "tasa": 0.008,
+            "lift": 0.2,
+            "captura_acumulada": 0.949
+          },
+          {
+            "decil": 8,
+            "tasa": 0.01,
+            "lift": 0.26,
+            "captura_acumulada": 0.9745
+          },
+          {
+            "decil": 9,
+            "tasa": 0.01,
+            "lift": 0.26,
+            "captura_acumulada": 1.0
+          },
+          {
+            "decil": 10,
+            "tasa": 0.0,
+            "lift": 0.0,
+            "captura_acumulada": 1.0
+          }
+        ],
+        "roc": [
+          {
+            "fpr": 0.0,
+            "tpr": 0.0
+          },
+          {
+            "fpr": 0.001,
+            "tpr": 0.0561
+          },
+          {
+            "fpr": 0.0027,
+            "tpr": 0.0918
+          },
+          {
+            "fpr": 0.004,
+            "tpr": 0.1224
+          },
+          {
+            "fpr": 0.0056,
+            "tpr": 0.1735
+          },
+          {
+            "fpr": 0.009,
+            "tpr": 0.199
+          },
+          {
+            "fpr": 0.0106,
+            "tpr": 0.2296
+          },
+          {
+            "fpr": 0.0121,
+            "tpr": 0.25
+          },
+          {
+            "fpr": 0.0144,
+            "tpr": 0.2755
+          },
+          {
+            "fpr": 0.0183,
+            "tpr": 0.3112
+          },
+          {
+            "fpr": 0.0204,
+            "tpr": 0.3316
+          },
+          {
+            "fpr": 0.0241,
+            "tpr": 0.352
+          },
+          {
+            "fpr": 0.0306,
+            "tpr": 0.3776
+          },
+          {
+            "fpr": 0.0343,
+            "tpr": 0.398
+          },
+          {
+            "fpr": 0.0377,
+            "tpr": 0.4235
+          },
+          {
+            "fpr": 0.0425,
+            "tpr": 0.4439
+          },
+          {
+            "fpr": 0.046,
+            "tpr": 0.4694
+          },
+          {
+            "fpr": 0.0635,
+            "tpr": 0.5051
+          },
+          {
+            "fpr": 0.0714,
+            "tpr": 0.5255
+          },
+          {
+            "fpr": 0.0812,
+            "tpr": 0.5459
+          },
+          {
+            "fpr": 0.0885,
+            "tpr": 0.5714
+          },
+          {
+            "fpr": 0.0968,
+            "tpr": 0.602
+          },
+          {
+            "fpr": 0.106,
+            "tpr": 0.6276
+          },
+          {
+            "fpr": 0.1128,
+            "tpr": 0.648
+          },
+          {
+            "fpr": 0.1313,
+            "tpr": 0.6684
+          },
+          {
+            "fpr": 0.1403,
+            "tpr": 0.6939
+          },
+          {
+            "fpr": 0.1669,
+            "tpr": 0.7143
+          },
+          {
+            "fpr": 0.1894,
+            "tpr": 0.7347
+          },
+          {
+            "fpr": 0.2177,
+            "tpr": 0.7602
+          },
+          {
+            "fpr": 0.2227,
+            "tpr": 0.7857
+          },
+          {
+            "fpr": 0.3114,
+            "tpr": 0.8061
+          },
+          {
+            "fpr": 0.3245,
+            "tpr": 0.8265
+          },
+          {
+            "fpr": 0.373,
+            "tpr": 0.852
+          },
+          {
+            "fpr": 0.3993,
+            "tpr": 0.8724
+          },
+          {
+            "fpr": 0.4908,
+            "tpr": 0.8929
+          },
+          {
+            "fpr": 0.511,
+            "tpr": 0.9133
+          },
+          {
+            "fpr": 0.6041,
+            "tpr": 0.9337
+          },
+          {
+            "fpr": 0.7067,
+            "tpr": 0.9541
+          },
+          {
+            "fpr": 0.7756,
+            "tpr": 0.9745
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
+          }
+        ]
+      },
+      "lightgbm": {
+        "auc": 0.8664,
+        "umbral_top10": 0.0934,
+        "precision_top10": 0.222,
+        "recall_top10": 0.5663,
+        "tasa_base": 0.0392,
+        "matriz_confusion": {
+          "vn": 4415,
+          "fp": 389,
+          "fn": 85,
+          "vp": 111
+        },
+        "lift": [
+          {
+            "decil": 1,
+            "tasa": 0.222,
+            "lift": 5.66,
+            "captura_acumulada": 0.5663
+          },
+          {
+            "decil": 2,
+            "tasa": 0.068,
+            "lift": 1.73,
+            "captura_acumulada": 0.7398
+          },
+          {
+            "decil": 3,
+            "tasa": 0.04,
+            "lift": 1.02,
+            "captura_acumulada": 0.8418
+          },
+          {
+            "decil": 4,
+            "tasa": 0.022,
+            "lift": 0.56,
+            "captura_acumulada": 0.898
+          },
+          {
+            "decil": 5,
+            "tasa": 0.012,
+            "lift": 0.31,
+            "captura_acumulada": 0.9286
+          },
+          {
+            "decil": 6,
+            "tasa": 0.008,
+            "lift": 0.2,
+            "captura_acumulada": 0.949
+          },
+          {
+            "decil": 7,
+            "tasa": 0.014,
+            "lift": 0.36,
+            "captura_acumulada": 0.9847
+          },
+          {
+            "decil": 8,
+            "tasa": 0.006,
+            "lift": 0.15,
+            "captura_acumulada": 1.0
+          },
+          {
+            "decil": 9,
+            "tasa": 0.0,
+            "lift": 0.0,
+            "captura_acumulada": 1.0
+          },
+          {
+            "decil": 10,
+            "tasa": 0.0,
+            "lift": 0.0,
+            "captura_acumulada": 1.0
+          }
+        ],
+        "roc": [
+          {
+            "fpr": 0.0,
+            "tpr": 0.0
+          },
+          {
+            "fpr": 0.0015,
+            "tpr": 0.0663
+          },
+          {
+            "fpr": 0.0035,
+            "tpr": 0.1122
+          },
+          {
+            "fpr": 0.0067,
+            "tpr": 0.1378
+          },
+          {
+            "fpr": 0.0104,
+            "tpr": 0.1684
+          },
+          {
+            "fpr": 0.0123,
+            "tpr": 0.2143
+          },
+          {
+            "fpr": 0.0135,
+            "tpr": 0.2398
+          },
+          {
+            "fpr": 0.0146,
+            "tpr": 0.2653
+          },
+          {
+            "fpr": 0.0167,
+            "tpr": 0.2908
+          },
+          {
+            "fpr": 0.0202,
+            "tpr": 0.3214
+          },
+          {
+            "fpr": 0.025,
+            "tpr": 0.3469
+          },
+          {
+            "fpr": 0.0294,
+            "tpr": 0.3673
+          },
+          {
+            "fpr": 0.0327,
+            "tpr": 0.398
+          },
+          {
+            "fpr": 0.0435,
+            "tpr": 0.4235
+          },
+          {
+            "fpr": 0.0495,
+            "tpr": 0.4439
+          },
+          {
+            "fpr": 0.0547,
+            "tpr": 0.4643
+          },
+          {
+            "fpr": 0.0589,
+            "tpr": 0.4847
+          },
+          {
+            "fpr": 0.0654,
+            "tpr": 0.5051
+          },
+          {
+            "fpr": 0.0722,
+            "tpr": 0.5306
+          },
+          {
+            "fpr": 0.0774,
+            "tpr": 0.551
+          },
+          {
+            "fpr": 0.0826,
+            "tpr": 0.5714
+          },
+          {
+            "fpr": 0.0908,
+            "tpr": 0.5918
+          },
+          {
+            "fpr": 0.0989,
+            "tpr": 0.6122
+          },
+          {
+            "fpr": 0.1126,
+            "tpr": 0.6327
+          },
+          {
+            "fpr": 0.1199,
+            "tpr": 0.6582
+          },
+          {
+            "fpr": 0.1393,
+            "tpr": 0.6837
+          },
+          {
+            "fpr": 0.1572,
+            "tpr": 0.7041
+          },
+          {
+            "fpr": 0.1721,
+            "tpr": 0.7347
+          },
+          {
+            "fpr": 0.1946,
+            "tpr": 0.7551
+          },
+          {
+            "fpr": 0.2161,
+            "tpr": 0.7755
+          },
+          {
+            "fpr": 0.2281,
+            "tpr": 0.8061
+          },
+          {
+            "fpr": 0.2604,
+            "tpr": 0.8265
+          },
+          {
+            "fpr": 0.2825,
+            "tpr": 0.8469
+          },
+          {
+            "fpr": 0.3328,
+            "tpr": 0.8724
+          },
+          {
+            "fpr": 0.3551,
+            "tpr": 0.8929
+          },
+          {
+            "fpr": 0.3918,
+            "tpr": 0.9133
+          },
+          {
+            "fpr": 0.5175,
+            "tpr": 0.9388
+          },
+          {
+            "fpr": 0.5933,
+            "tpr": 0.9592
+          },
+          {
+            "fpr": 0.6357,
+            "tpr": 0.9796
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
+          }
+        ]
+      },
+      "importancia_shap": [
+        {
+          "variable": "llamadas_sin_resolver_30d",
+          "grupo": "Atención",
+          "valor": 0.3324
+        },
+        {
+          "variable": "tendencia_uso",
+          "grupo": "Uso",
+          "valor": 0.2651
+        },
+        {
+          "variable": "caidas_30d",
+          "grupo": "Red",
+          "valor": 0.2101
+        },
+        {
+          "variable": "antiguedad_meses",
+          "grupo": "Perfil",
+          "valor": 0.1901
+        },
+        {
+          "variable": "arpu",
+          "grupo": "Perfil",
+          "valor": 0.1714
+        },
+        {
+          "variable": "dias_atraso",
+          "grupo": "Facturación",
+          "valor": 0.1595
+        },
+        {
+          "variable": "nps_ultimo",
+          "grupo": "Satisfacción",
+          "valor": 0.1534
+        },
+        {
+          "variable": "datos_gb_30d",
+          "grupo": "Uso",
+          "valor": 0.1337
+        },
+        {
+          "variable": "min_sin_servicio_30d",
+          "grupo": "Red",
+          "valor": 0.1267
+        },
+        {
+          "variable": "dias_sin_recarga",
+          "grupo": "Uso",
+          "valor": 0.1244
+        },
+        {
+          "variable": "recargas_30d",
+          "grupo": "Uso",
+          "valor": 0.0661
+        },
+        {
+          "variable": "llamadas_red_30d",
+          "grupo": "Atención",
+          "valor": 0.0565
+        }
+      ],
+      "sesgo": {
+        "ciudad": [
+          {
+            "grupo": "Choluteca",
+            "n": 230,
+            "tasa_real": 0.0348,
+            "prob_media": 0.037,
+            "pct_marcado_top10": 0.0957,
+            "auc": 0.798
+          },
+          {
+            "grupo": "Comayagua",
+            "n": 234,
+            "tasa_real": 0.0214,
+            "prob_media": 0.0336,
+            "pct_marcado_top10": 0.0769,
+            "auc": 0.912
+          },
+          {
+            "grupo": "Danlí",
+            "n": 296,
+            "tasa_real": 0.0405,
+            "prob_media": 0.0346,
+            "pct_marcado_top10": 0.0777,
+            "auc": 0.859
+          },
+          {
+            "grupo": "El Progreso",
+            "n": 320,
+            "tasa_real": 0.0187,
+            "prob_media": 0.0253,
+            "pct_marcado_top10": 0.05,
+            "auc": 0.884
+          },
+          {
+            "grupo": "Juticalpa",
+            "n": 189,
+            "tasa_real": 0.0265,
+            "prob_media": 0.0163,
+            "pct_marcado_top10": 0.0106,
+            "auc": 0.763
+          },
+          {
+            "grupo": "La Ceiba",
+            "n": 277,
+            "tasa_real": 0.0866,
+            "prob_media": 0.081,
+            "pct_marcado_top10": 0.2671,
+            "auc": 0.89
+          },
+          {
+            "grupo": "San Pedro Sula",
+            "n": 1263,
+            "tasa_real": 0.0475,
+            "prob_media": 0.0542,
+            "pct_marcado_top10": 0.1496,
+            "auc": 0.855
+          },
+          {
+            "grupo": "Santa Rosa de Copán",
+            "n": 105,
+            "tasa_real": 0.0571,
+            "prob_media": 0.0492,
+            "pct_marcado_top10": 0.1333,
+            "auc": 0.896
+          },
+          {
+            "grupo": "Siguatepeque",
+            "n": 164,
+            "tasa_real": 0.0488,
+            "prob_media": 0.0366,
+            "pct_marcado_top10": 0.0793,
+            "auc": 0.883
+          },
+          {
+            "grupo": "Tegucigalpa",
+            "n": 1922,
+            "tasa_real": 0.0323,
+            "prob_media": 0.0308,
+            "pct_marcado_top10": 0.0671,
+            "auc": 0.866
+          }
+        ],
+        "segmento": [
+          {
+            "grupo": "hogar",
+            "n": 536,
+            "tasa_real": 0.028,
+            "prob_media": 0.0233,
+            "pct_marcado_top10": 0.0597,
+            "auc": 0.916
+          },
+          {
+            "grupo": "pospago",
+            "n": 1511,
+            "tasa_real": 0.0172,
+            "prob_media": 0.0247,
+            "pct_marcado_top10": 0.0609,
+            "auc": 0.88
+          },
+          {
+            "grupo": "prepago",
+            "n": 2953,
+            "tasa_real": 0.0525,
+            "prob_media": 0.0505,
+            "pct_marcado_top10": 0.1273,
+            "auc": 0.843
+          }
+        ]
+      }
+    }
+  }
+}

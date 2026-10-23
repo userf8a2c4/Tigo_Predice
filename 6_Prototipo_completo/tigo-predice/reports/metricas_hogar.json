@@ -1,0 +1,589 @@
+{
+  "version": "v20261012",
+  "pregunta": "¿Este hogar llamará por un problema técnico o necesitará una visita en los próximos 7 días?",
+  "validacion": "Temporal: entrena con 6 semanas (días 19–54, 72,000 hogar-semana) y prueba con las 4 siguientes (días 61–82, 48,000 hogar-semana).",
+  "presupuesto": 0.02,
+  "tasa_base_prueba": 0.0153,
+  "visitas_por_1000_prueba": 9.4,
+  "pct_visitas_evitables_prueba": 0.335,
+  "modelos": {
+    "regresión logística": {
+      "auc": 0.8,
+      "brier": 0.0102,
+      "marcados_por_semana": 240,
+      "precision": 0.425,
+      "captura_eventos": 0.556,
+      "captura_visitas": 0.738,
+      "captura_visitas_evitables": 0.457,
+      "captura_visitas_prevenibles": 0.744,
+      "visitas_por_100_marcados": 34.7,
+      "visitas_evitables_por_100_marcados": 7.2,
+      "lift": [
+        {
+          "decil": 1,
+          "tasa": 0.0977,
+          "lift": 6.39,
+          "captura_acumulada": 0.639
+        },
+        {
+          "decil": 2,
+          "tasa": 0.0085,
+          "lift": 0.56,
+          "captura_acumulada": 0.6948
+        },
+        {
+          "decil": 3,
+          "tasa": 0.006,
+          "lift": 0.4,
+          "captura_acumulada": 0.7343
+        },
+        {
+          "decil": 4,
+          "tasa": 0.0054,
+          "lift": 0.35,
+          "captura_acumulada": 0.7698
+        },
+        {
+          "decil": 5,
+          "tasa": 0.0056,
+          "lift": 0.37,
+          "captura_acumulada": 0.8065
+        },
+        {
+          "decil": 6,
+          "tasa": 0.004,
+          "lift": 0.26,
+          "captura_acumulada": 0.8324
+        },
+        {
+          "decil": 7,
+          "tasa": 0.0056,
+          "lift": 0.37,
+          "captura_acumulada": 0.8692
+        },
+        {
+          "decil": 8,
+          "tasa": 0.0075,
+          "lift": 0.49,
+          "captura_acumulada": 0.9183
+        },
+        {
+          "decil": 9,
+          "tasa": 0.0058,
+          "lift": 0.38,
+          "captura_acumulada": 0.9564
+        },
+        {
+          "decil": 10,
+          "tasa": 0.0067,
+          "lift": 0.44,
+          "captura_acumulada": 1.0
+        }
+      ]
+    },
+    "LightGBM": {
+      "auc": 0.81,
+      "brier": 0.0092,
+      "marcados_por_semana": 240,
+      "precision": 0.454,
+      "captura_eventos": 0.594,
+      "captura_visitas": 0.774,
+      "captura_visitas_evitables": 0.503,
+      "captura_visitas_prevenibles": 0.822,
+      "visitas_por_100_marcados": 36.4,
+      "visitas_evitables_por_100_marcados": 7.9,
+      "lift": [
+        {
+          "decil": 1,
+          "tasa": 0.1015,
+          "lift": 6.63,
+          "captura_acumulada": 0.6635
+        },
+        {
+          "decil": 2,
+          "tasa": 0.005,
+          "lift": 0.33,
+          "captura_acumulada": 0.6962
+        },
+        {
+          "decil": 3,
+          "tasa": 0.006,
+          "lift": 0.4,
+          "captura_acumulada": 0.7357
+        },
+        {
+          "decil": 4,
+          "tasa": 0.0069,
+          "lift": 0.45,
+          "captura_acumulada": 0.7807
+        },
+        {
+          "decil": 5,
+          "tasa": 0.006,
+          "lift": 0.4,
+          "captura_acumulada": 0.8202
+        },
+        {
+          "decil": 6,
+          "tasa": 0.0048,
+          "lift": 0.31,
+          "captura_acumulada": 0.8515
+        },
+        {
+          "decil": 7,
+          "tasa": 0.0046,
+          "lift": 0.3,
+          "captura_acumulada": 0.8815
+        },
+        {
+          "decil": 8,
+          "tasa": 0.0048,
+          "lift": 0.31,
+          "captura_acumulada": 0.9128
+        },
+        {
+          "decil": 9,
+          "tasa": 0.0063,
+          "lift": 0.41,
+          "captura_acumulada": 0.9537
+        },
+        {
+          "decil": 10,
+          "tasa": 0.0071,
+          "lift": 0.46,
+          "captura_acumulada": 1.0
+        }
+      ]
+    },
+    "LightGBM calibrado": {
+      "auc": 0.813,
+      "brier": 0.0092,
+      "marcados_por_semana": 240,
+      "precision": 0.457,
+      "captura_eventos": 0.598,
+      "captura_visitas": 0.778,
+      "captura_visitas_evitables": 0.517,
+      "captura_visitas_prevenibles": 0.844,
+      "visitas_por_100_marcados": 36.6,
+      "visitas_evitables_por_100_marcados": 8.1,
+      "lift": [
+        {
+          "decil": 1,
+          "tasa": 0.1008,
+          "lift": 6.59,
+          "captura_acumulada": 0.6594
+        },
+        {
+          "decil": 2,
+          "tasa": 0.0056,
+          "lift": 0.37,
+          "captura_acumulada": 0.6962
+        },
+        {
+          "decil": 3,
+          "tasa": 0.0069,
+          "lift": 0.45,
+          "captura_acumulada": 0.7411
+        },
+        {
+          "decil": 4,
+          "tasa": 0.0058,
+          "lift": 0.38,
+          "captura_acumulada": 0.7793
+        },
+        {
+          "decil": 5,
+          "tasa": 0.0069,
+          "lift": 0.45,
+          "captura_acumulada": 0.8243
+        },
+        {
+          "decil": 6,
+          "tasa": 0.005,
+          "lift": 0.33,
+          "captura_acumulada": 0.8569
+        },
+        {
+          "decil": 7,
+          "tasa": 0.005,
+          "lift": 0.33,
+          "captura_acumulada": 0.8896
+        },
+        {
+          "decil": 8,
+          "tasa": 0.0042,
+          "lift": 0.27,
+          "captura_acumulada": 0.9169
+        },
+        {
+          "decil": 9,
+          "tasa": 0.0067,
+          "lift": 0.44,
+          "captura_acumulada": 0.9605
+        },
+        {
+          "decil": 10,
+          "tasa": 0.006,
+          "lift": 0.4,
+          "captura_acumulada": 1.0
+        }
+      ]
+    }
+  },
+  "regla_umbrales": {
+    "auc": 0.669,
+    "brier": null,
+    "marcados_por_semana": 240,
+    "precision": 0.267,
+    "captura_eventos": 0.349,
+    "captura_visitas": 0.51,
+    "captura_visitas_evitables": 0.258,
+    "captura_visitas_prevenibles": 0.411,
+    "visitas_por_100_marcados": 24.0,
+    "visitas_evitables_por_100_marcados": 4.1,
+    "lift": [
+      {
+        "decil": 1,
+        "tasa": 0.0642,
+        "lift": 4.2,
+        "captura_acumulada": 0.4196
+      },
+      {
+        "decil": 2,
+        "tasa": 0.011,
+        "lift": 0.72,
+        "captura_acumulada": 0.4918
+      },
+      {
+        "decil": 3,
+        "tasa": 0.0104,
+        "lift": 0.68,
+        "captura_acumulada": 0.5599
+      },
+      {
+        "decil": 4,
+        "tasa": 0.0125,
+        "lift": 0.82,
+        "captura_acumulada": 0.6417
+      },
+      {
+        "decil": 5,
+        "tasa": 0.0063,
+        "lift": 0.41,
+        "captura_acumulada": 0.6826
+      },
+      {
+        "decil": 6,
+        "tasa": 0.0077,
+        "lift": 0.5,
+        "captura_acumulada": 0.733
+      },
+      {
+        "decil": 7,
+        "tasa": 0.0106,
+        "lift": 0.69,
+        "captura_acumulada": 0.8025
+      },
+      {
+        "decil": 8,
+        "tasa": 0.011,
+        "lift": 0.72,
+        "captura_acumulada": 0.8747
+      },
+      {
+        "decil": 9,
+        "tasa": 0.0094,
+        "lift": 0.61,
+        "captura_acumulada": 0.936
+      },
+      {
+        "decil": 10,
+        "tasa": 0.0098,
+        "lift": 0.64,
+        "captura_acumulada": 1.0
+      }
+    ]
+  },
+  "umbrales": {
+    "margen_min_7d": "margen de señal < 3 dB",
+    "reinicios_7d": "≥ 5 reinicios en 7 días",
+    "desconexiones_7d": "≥ 15 micro-cortes en 7 días",
+    "retrans_7d": "retransmisiones WiFi > 25 %"
+  },
+  "azar": {
+    "auc": 0.5,
+    "brier": null,
+    "marcados_por_semana": 240,
+    "precision": 0.02,
+    "captura_eventos": 0.026,
+    "captura_visitas": 0.029,
+    "captura_visitas_evitables": 0.033,
+    "captura_visitas_prevenibles": 0.022,
+    "visitas_por_100_marcados": 1.4,
+    "visitas_evitables_por_100_marcados": 0.5,
+    "lift": [
+      {
+        "decil": 1,
+        "tasa": 0.0194,
+        "lift": 1.27,
+        "captura_acumulada": 0.1267
+      },
+      {
+        "decil": 2,
+        "tasa": 0.0152,
+        "lift": 0.99,
+        "captura_acumulada": 0.2262
+      },
+      {
+        "decil": 3,
+        "tasa": 0.0146,
+        "lift": 0.95,
+        "captura_acumulada": 0.3215
+      },
+      {
+        "decil": 4,
+        "tasa": 0.0152,
+        "lift": 0.99,
+        "captura_acumulada": 0.421
+      },
+      {
+        "decil": 5,
+        "tasa": 0.0154,
+        "lift": 1.01,
+        "captura_acumulada": 0.5218
+      },
+      {
+        "decil": 6,
+        "tasa": 0.014,
+        "lift": 0.91,
+        "captura_acumulada": 0.6131
+      },
+      {
+        "decil": 7,
+        "tasa": 0.011,
+        "lift": 0.72,
+        "captura_acumulada": 0.6853
+      },
+      {
+        "decil": 8,
+        "tasa": 0.0181,
+        "lift": 1.19,
+        "captura_acumulada": 0.8038
+      },
+      {
+        "decil": 9,
+        "tasa": 0.0165,
+        "lift": 1.08,
+        "captura_acumulada": 0.9114
+      },
+      {
+        "decil": 10,
+        "tasa": 0.0135,
+        "lift": 0.89,
+        "captura_acumulada": 1.0
+      }
+    ]
+  },
+  "ia_vs_regla": 2.0,
+  "deteccion_temprana": 0.513,
+  "calibracion": {
+    "LightGBM": [
+      {
+        "prob_media": 0.0038,
+        "tasa_real": 0.0071,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0046,
+        "tasa_real": 0.0063,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0051,
+        "tasa_real": 0.0048,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0055,
+        "tasa_real": 0.0046,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.006,
+        "tasa_real": 0.0048,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0065,
+        "tasa_real": 0.006,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0072,
+        "tasa_real": 0.0069,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0082,
+        "tasa_real": 0.006,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0102,
+        "tasa_real": 0.005,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.1009,
+        "tasa_real": 0.1015,
+        "n": 4800
+      }
+    ],
+    "LightGBM calibrado": [
+      {
+        "prob_media": 0.0037,
+        "tasa_real": 0.0067,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0046,
+        "tasa_real": 0.006,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0051,
+        "tasa_real": 0.0044,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0055,
+        "tasa_real": 0.0048,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0058,
+        "tasa_real": 0.005,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0063,
+        "tasa_real": 0.0069,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0068,
+        "tasa_real": 0.006,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.008,
+        "tasa_real": 0.0065,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.0101,
+        "tasa_real": 0.0058,
+        "n": 4800
+      },
+      {
+        "prob_media": 0.1024,
+        "tasa_real": 0.1008,
+        "n": 4800
+      }
+    ]
+  },
+  "sesgo": {
+    "tecnologia": [
+      {
+        "grupo": "HFC",
+        "n": 18992,
+        "tasa_real": 0.0174,
+        "prob_media": 0.0169,
+        "pct_marcado": 0.0236,
+        "captura_visitas_evitables": 0.533,
+        "auc": 0.814
+      },
+      {
+        "grupo": "fibra",
+        "n": 29008,
+        "tasa_real": 0.0139,
+        "prob_media": 0.0151,
+        "pct_marcado": 0.0177,
+        "captura_visitas_evitables": 0.505,
+        "auc": 0.811
+      }
+    ],
+    "zona": [
+      {
+        "grupo": "periurbana",
+        "n": 16356,
+        "tasa_real": 0.0157,
+        "prob_media": 0.0177,
+        "pct_marcado": 0.0217,
+        "captura_visitas_evitables": 0.511,
+        "auc": 0.85
+      },
+      {
+        "grupo": "urbana",
+        "n": 31644,
+        "tasa_real": 0.0151,
+        "prob_media": 0.0149,
+        "pct_marcado": 0.0191,
+        "captura_visitas_evitables": 0.519,
+        "auc": 0.794
+      }
+    ]
+  },
+  "importancia": [
+    {
+      "variable": "pendiente_margen_14d",
+      "nombre": "Tendencia de la señal (14 d)",
+      "valor": 0.2151
+    },
+    {
+      "variable": "desconexiones_7d",
+      "nombre": "Micro-cortes (7 d)",
+      "valor": 0.1778
+    },
+    {
+      "variable": "pendiente_latencia_14d",
+      "nombre": "Tendencia de la latencia (14 d)",
+      "valor": 0.1688
+    },
+    {
+      "variable": "fec_7d",
+      "nombre": "Errores de transmisión (7 d)",
+      "valor": 0.1017
+    },
+    {
+      "variable": "pendiente_retrans_14d",
+      "nombre": "Tendencia del WiFi (14 d)",
+      "valor": 0.0851
+    },
+    {
+      "variable": "margen_ult",
+      "nombre": "Margen de señal hoy",
+      "valor": 0.0555
+    },
+    {
+      "variable": "reinicios_7d",
+      "nombre": "Reinicios del módem (7 d)",
+      "valor": 0.0523
+    },
+    {
+      "variable": "visitas_90d",
+      "nombre": "Visitas técnicas (90 d)",
+      "valor": 0.0327
+    },
+    {
+      "variable": "desconexiones_nodo_7d",
+      "nombre": "Micro-cortes en el nodo (vecinos)",
+      "valor": 0.0314
+    },
+    {
+      "variable": "latencia_7d",
+      "nombre": "Latencia (7 d)",
+      "valor": 0.0175
+    }
+  ]
+}

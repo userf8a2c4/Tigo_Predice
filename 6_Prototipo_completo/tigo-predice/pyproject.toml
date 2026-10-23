@@ -1,0 +1,29 @@
+[project]
+name = "tigo-predice"
+version = "1.0.0"
+description = "IA que detecta clientes de Tigo Honduras en riesgo y actúa antes de que llamen"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas", "numpy", "scikit-learn", "lightgbm", "shap", "joblib",
+    "fastapi", "uvicorn", "sqlalchemy", "anthropic",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "httpx", "ruff"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+filterwarnings = ["ignore:LightGBM binary classifier with TreeExplainer:UserWarning"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S"]
+ignore = ["B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S105", "S106"]
+"docs/entregables/gen_guias.py" = ["E501"]  # textos y CSS de la guía (contenido, no lógica)

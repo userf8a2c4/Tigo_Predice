@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+lightgbm
+shap
+joblib
+fastapi
+uvicorn
+sqlalchemy
+anthropic
+pytest
+httpx
+ruff
