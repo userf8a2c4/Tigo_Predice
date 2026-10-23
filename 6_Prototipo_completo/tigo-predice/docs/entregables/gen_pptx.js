@@ -22,7 +22,7 @@ const HEX = { navy: "00377B", celeste: "00C8FF", gris: "5B6575", rojo: "E0303A",
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
 pres.title = "Tigo Predice v03 — Tigo CX Month";
-pres.author = "Tigo Predice";
+pres.author = "Sandra Jimenez";
 pres.theme = { headFontFace: "Calibri", bodyFontFace: "Calibri" };
 const S = pres.SchemeColor;
 
@@ -81,7 +81,7 @@ s.addText("Los chatbots y copilotos atienden la llamada. Tigo Predice evita que 
 txt(s, "TIGO CX MONTH · CONCURSO SHARKS DE IA", { x: 0.8, y: 1.2, w: 8, h: 0.4, fontSize: 14, bold: true, color: "00C8FF", charSpacing: 2, margin: 0, objectName: "evento" });
 txt(s, "La IA que detecta el problema antes que el cliente, y lo resuelve antes de que llame o de que haya que mandar un técnico.", { x: 0.8, y: 4.75, w: 11.2, h: 0.8, fontSize: 18, color: "FFFFFF", margin: 0, objectName: "lema" });
 txt(s, "Atención proactiva · Piloto Hogar + Móvil · San Pedro Sula · 60 días · grupo control", { x: 0.8, y: 5.65, w: 11, h: 0.4, fontSize: 15, color: "CADCFC", margin: 0, objectName: "sub" });
-txt(s, "Presenta: [Nombre] · [Área] · Octubre 2026", { x: 0.8, y: 6.4, w: 9, h: 0.4, fontSize: 15, color: "CADCFC", margin: 0, objectName: "presenta" });
+txt(s, "Presenta: Sandra Jimenez · Asistente de Experiencia B2B · Octubre 2026", { x: 0.8, y: 6.4, w: 9, h: 0.4, fontSize: 15, color: "CADCFC", margin: 0, objectName: "presenta" });
 s.addNotes("Saludo. 'En 5 minutos les muestro cómo resolver problemas antes de que el cliente llame o de mandar un técnico.'");
 
 // 2 Dolor
@@ -255,6 +255,6 @@ txt(s, "Hogar + Móvil: integración por CSV, equipo, infraestructura, mensajes 
 s = pres.addSlide({ masterName: "CIERRE", sectionTitle: "Cierre" });
 s.addText("Los chatbots atienden la llamada. Tigo Predice evita que ocurra", { placeholder: "title" });
 s.addText("…y evita la visita.", { placeholder: "body" });
-txt(s, "Tigo Predice · [Nombre] · [Correo]", { x: 0.8, y: 6.3, w: 9, h: 0.4, fontSize: 16, color: "FFFFFF", margin: 0, objectName: "contacto" });
+txt(s, "Tigo Predice · Sandra Jimenez · sandra.jimenez@tigo.com.hn", { x: 0.8, y: 6.3, w: 9, h: 0.4, fontSize: 16, color: "FFFFFF", margin: 0, objectName: "contacto" });
 
 pres.writeFile({ fileName: SALIDA }).then(async () => { await applyTheme(SALIDA, THEME); console.log("OK", SALIDA); });

@@ -5,8 +5,8 @@
 **Nombre de la idea:**
 Tigo Predice: la IA que resuelve antes de que el cliente llame
 
-**Participante(s):**
-[Nombre completo] · [Área] · [Correo] · [Extensión]
+**Participante:**
+Sandra Jimenez · Asistente de Experiencia B2B · sandra.jimenez@tigo.com.hn
 
 **Categoría principal:**
 Experiencia del Cliente / CX

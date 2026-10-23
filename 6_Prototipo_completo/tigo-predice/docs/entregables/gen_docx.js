@@ -19,7 +19,6 @@ const h1 = (text) => new Paragraph({
   children: [new TextRun({ text, font: "Calibri", size: 28, bold: true, color: AZUL })],
 });
 const bullet = (runs) => new Paragraph({ numbering: { reference: "vinetas", level: 0 }, spacing: { after: 60 }, children: Array.isArray(runs) ? runs : [t(runs)] });
-const rellenar = (text) => t(text, { highlight: "yellow", bold: true });
 const borde = { style: BorderStyle.SINGLE, size: 4, color: "D5DCE6" };
 const bordes = { top: borde, bottom: borde, left: borde, right: borde };
 const imagen = (archivo, titulo, ancho = 600) => new Paragraph({
@@ -53,7 +52,7 @@ const contenido = [
 
   tabla([
     ["Nombre de la idea", "Tigo Predice: la IA que resuelve antes de que el cliente llame"],
-    ["Participante(s)", [rellenar("[Nombre completo] · [Área] · [Correo] · [Extensión]")]],
+    ["Autoría", [t("Sandra Jimenez · Asistente de Experiencia B2B · sandra.jimenez@tigo.com.hn")]],
     ["Categoría principal", "Experiencia del Cliente / CX"],
     ["Otras categorías", "Red y Operaciones · Eficiencia / Reducción de Costos · Self-Service y Canales Digitales · Analítica"],
     ["Propuesta", "Piloto de 60 días en San Pedro Sula: Hogar (telemetría de módems) + Móvil (fallas masivas), con grupo control del 15 %"],
@@ -131,7 +130,7 @@ const contenido = [
 ];
 
 const doc = new Document({
-  creator: "Tigo Predice", title: "Propuesta Tigo Predice v03 — Tigo CX Month",
+  creator: "Sandra Jimenez", title: "Propuesta Tigo Predice v03 — Tigo CX Month",
   styles: { default: { document: { run: { font: "Calibri", size: 22 } } } },
   numbering: { config: [{ reference: "vinetas", levels: [{ level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 540, hanging: 270 } } } }] }] },
   sections: [{

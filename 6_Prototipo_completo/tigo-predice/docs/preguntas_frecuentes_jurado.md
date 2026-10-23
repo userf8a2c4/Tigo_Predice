@@ -193,7 +193,7 @@ Cada pregunta tiene tres partes:
 ## F. El equipo y la ejecución
 
 **34. ¿Quién lo va a hacer?**
-- **Respuesta corta:** *[Nombre del equipo]*. Proponemos sumar un enlace del NOC o de ingeniería de acceso y alguien de datos.
+- **Respuesta corta:** Sandra Jimenez (Asistente de Experiencia B2B), con la propuesta y el prototipo ya construidos. Proponemos sumar un enlace del NOC o de ingeniería de acceso y alguien de datos.
 - **Si piden más:** El prototipo ya funciona: dos demos en vivo, más de 200 pruebas automáticas y un pipeline reproducible desde cero.
 
 **35. ¿Qué necesitan de nosotros, además del dinero?**

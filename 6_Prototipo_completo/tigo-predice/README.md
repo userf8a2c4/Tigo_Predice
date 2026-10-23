@@ -12,7 +12,7 @@ Atención proactiva con IA para Tigo Honduras, en dos frentes con el mismo motor
 
 En ambos, un **grupo control aleatorio del 15 %** mide el efecto real.
 
-Propuesta para **Tigo CX Month · Sharks** (octubre 2026). ⚠️ **Datos simulados — supuestos a validar con Tigo.**
+Propuesta para **Tigo CX Month · Sharks** (octubre 2026), de Sandra Jimenez (Asistente de Experiencia B2B, sandra.jimenez@tigo.com.hn). ⚠️ **Datos simulados — supuestos a validar con Tigo.**
 
 ## Arranque (Windows, 3 pasos)
 1. Tener **Python 3.11+** y **Node 18+** (solo la primera vez).

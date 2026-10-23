@@ -8,6 +8,8 @@ Propuesta para **AI Shark Tank · Tigo CX Month 2026**. Tigo Predice es atenció
 
 En ambos frentes, un grupo control aleatorio del 15 % mide el efecto real.
 
+**Autoría:** Sandra Jimenez · Asistente de Experiencia B2B · sandra.jimenez@tigo.com.hn
+
 **Categoría:** Experiencia del cliente / CX (también Red y operaciones, y Eficiencia / reducción de costos).
 
 ## Contenido
@@ -38,6 +40,5 @@ En ambos frentes, un grupo control aleatorio del 15 % mide el efecto real.
 - **Simulado:** la telemetría, los clientes y los resultados del modelo y del piloto. Muestran cómo se medirá, no un resultado real.
 
 ## Antes de enviar
-- Poner los nombres del equipo en las diapositivas 1 y 12, en el correo y en la propuesta.
 - Confirmar la dirección de correo con el afiche original.
 - Si el correo rechaza el `.exe` o el `.html`, compartir el paquete por OneDrive.

@@ -28,7 +28,7 @@ const EMOJI = "Segoe UI Emoji";
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE"; // 13.33 × 7.5 in
 pres.title = "Tigo Predice — AI Shark Tank · Tigo CX Month";
-pres.author = "Tigo Predice";
+pres.author = "Sandra Jimenez";
 pres.theme = { headFontFace: "Calibri", bodyFontFace: "Calibri" };
 const S = pres.SchemeColor;
 const fondo = { path: FONDO };
@@ -94,10 +94,10 @@ txt(s, [
   { text: "💰 ", options: { fontFace: EMOJI } }, { text: "Eficiencia / reducción de costos" },
 ], { x: 0.8, y: 4.75, w: 11.7, h: 0.45, fontSize: 18, color: H.suave, objectName: "categoria" });
 txt(s, [
-  { text: "Integrantes: ", options: { bold: true, color: "FFFFFF" } },
-  { text: "[Nombre 1] · [Nombre 2] · [Nombre 3]", options: { color: H.amarillo } },
+  { text: "Presenta: ", options: { bold: true, color: "FFFFFF" } },
+  { text: "Sandra Jimenez · Asistente de Experiencia B2B", options: { color: "FFFFFF" } },
 ], { x: 0.8, y: 5.35, w: 11.7, h: 0.45, fontSize: 18, color: H.suave, objectName: "integrantes" });
-s.addNotes("Saludo breve y una sola frase: 'En los próximos minutos les muestro cómo evitar la llamada y la visita del técnico antes de que el cliente note la falla.' (Completar los nombres del equipo antes de enviar.)");
+s.addNotes("Saludo breve y una sola frase: 'En los próximos minutos les muestro cómo evitar la llamada y la visita del técnico antes de que el cliente note la falla.'");
 
 // ───────────── 2 · Categoría y apuesta
 s = pres.addSlide({ masterName: "SECCION", sectionTitle: "Apertura" });
@@ -321,7 +321,7 @@ s.addNotes(`Pedir con claridad: ${C.piloto_costo_base}, 12 semanas, datos y un e
 s = pres.addSlide({ masterName: "CIERRE", sectionTitle: "Pedido" });
 s.addText([{ text: "Los chatbots atienden la llamada.", options: { breakLine: true } }, { text: "Tigo Predice evita que ocurra" }], { placeholder: "title" });
 s.addText("…y evita la visita.", { placeholder: "body" });
-txt(s, [{ text: "Tigo Predice · ", options: { bold: true, color: "FFFFFF" } }, { text: "[Nombre 1] · [Nombre 2] · [Nombre 3]", options: { color: H.amarillo } }],
+txt(s, [{ text: "Tigo Predice · ", options: { bold: true, color: "FFFFFF" } }, { text: "Sandra Jimenez · sandra.jimenez@tigo.com.hn", options: { color: "FFFFFF" } }],
   { x: 0.8, y: 6.2, w: 11.7, h: 0.45, fontSize: 18, objectName: "contacto" });
 s.addNotes("Pausa. Bajar el ritmo para la frase final. Luego: 'Gracias. ¿Preguntas?' (El documento de preguntas frecuentes del jurado tiene las respuestas preparadas.)");
 
