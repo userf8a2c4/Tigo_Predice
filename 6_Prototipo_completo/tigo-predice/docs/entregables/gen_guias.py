@@ -14,6 +14,7 @@ import html
 import shutil
 import subprocess  # noqa: S404 - solo para imprimir con Edge, con rutas fijas y sin shell
 import sys
+import tempfile
 from pathlib import Path
 
 from markdown_it import MarkdownIt
@@ -106,7 +107,7 @@ PAGINAS = [
             (1395, 220, "Por qué lo marcó", "Motivos en lenguaje simple (contribuciones SHAP del modelo)."),
             (1395, 490, "Acciones remotas", "Firmware de madrugada, cambio de canal WiFi y verificación a los 3 días."),
             (1395, 760, "WhatsApp", "«Ya la corregimos a distancia, sin que tuviera que llamar», con opción AGENTE."),
-            (278, 710, "Resultado", "4 días antes de la llamada, visita evitada, L 1,270 de ahorro por L 0.31."),
+            (278, 710, "Resultado", "4 días antes de la llamada, visita evitada, L 780 de ahorro por L 0.31."),
         ],
     },
     {
@@ -167,7 +168,12 @@ PAGINAS = [
         "intro": "Solo beneficio duro. Si el jurado da un dato real, ingréselo en vivo: es el momento más convincente.",
         "marcas": [
             (278, 232, "Neto año 1", "Ambos frentes, escenario base, con inversión."),
-            (620, 325, "Equilibrio por frente", "Hogar y Móvil se pagan con solo 9 % de reducción."),
+            (
+                620,
+                325,
+                "Equilibrio por frente",
+                "Móvil se paga con 12 % menos llamadas; Hogar, con 22 % menos visitas evitables.",
+            ),
             (1060, 326, "Visitas al mes", "Escriba el dato real (solo números, sin comas)."),
             (1316, 306, "Costo por visita", "En lempiras. Lo mismo con llamadas y costo por llamada."),
             (1046, 476, "Recalcular", "Todo se recalcula al instante y aparece «usando dato Tigo»."),
@@ -263,7 +269,7 @@ RECORRIDO = [
     ("2:30", "Modelo de IA", "Señalar 52 % vs. 26 %", "«Medida contra la regla, no contra nada»"),
     ("2:50", "Resultados del piloto", "GO y −19 %", "«Simulado: así se medirá»"),
     ("3:10", "Falla masiva (opcional)", "/falla?final", "«El mismo motor en móvil»"),
-    ("3:40", "Caso de negocio", "L 10 M y 9 %", "«Solo beneficio duro»"),
+    ("3:40", "Caso de negocio", "L 4.3 M; equilibrio 12 % y 22 %", "«Solo beneficio duro»"),
     ("4:20", "Listo para producción", "Seguridad", "«Red team propio, GDPR como vara»"),
     ("4:40", "Diapositiva final", "El pedido", "«12 semanas, L 770 mil, GO/NO-GO»"),
 ]
@@ -425,7 +431,8 @@ def imprimir(html_path: Path, pdf_path: Path) -> None:
     if edge is None:
         print("Edge no encontrado: quedó el HTML", html_path)
         return
-    perfil = html_path.parent / ".perfil_edge"
+    # Perfil temporal con ruta corta: con rutas largas Edge no puede crear su caché y no imprime
+    perfil = Path(tempfile.gettempdir()) / "tigo_edge"
     subprocess.run(  # noqa: S603 - ejecutable fijo, argumentos sin shell
         [
             str(edge),

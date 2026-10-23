@@ -26,7 +26,7 @@ pct_fallas_con_eta = 0.6            # % de fallas en que el NOC tiene hora estim
 efecto_simulado = 0.20              # efecto "verdadero" SOLO para la simulación sintética
 optout_simulado = 0.006             # tasa de opt-out SOLO para la simulación sintética
 # Criterios de decisión al día 60
-go_reduccion_min = 0.10             # GO si la reducción relativa de llamadas >= 10 %
+go_reduccion_min = 0.12             # GO si la reducción relativa de llamadas >= 12 % (no menos que el punto de equilibrio)
 go_optout_max = 0.02                # ... y opt-out < 2 %
 alfa = 0.05                         # ... y diferencia significativa (p < alfa)
 poder = 0.80                        # poder estadístico objetivo para el tamaño de muestra
@@ -55,7 +55,7 @@ bajo = 60000
 base = 120000
 alto = 200000
 fuente = "supuesto a validar"
-nota = "~1–4 % de 5.2 M clientes afectados por alguna falla masiva al mes."
+nota = "~1–4 % de los 5.0 M clientes móviles (Millicom 20-F 2025) afectados por alguna falla masiva al mes."
 
 [supuestos.tasa_llamada_72h]
 unidad = "% de afectados que llama en 72 h si NO recibe aviso"
@@ -92,29 +92,29 @@ nota = "Clientes con WhatsApp activo y sin opt-out. Dato de canales digitales."
 
 # --- Valor -------------------------------------------------------------------
 [supuestos.costo_por_llamada]
-unidad = "L por llamada atendida (costo total)"
-bajo = 55
-base = 85
-alto = 120
-fuente = "supuesto a validar"
-nota = "Hora de agente LATAM US$12–24 todo incluido ÷ ~8 llamadas efectivas/h ≈ US$3.15 (FusionCX, Retell AI 2026). Dato de Finanzas/CX."
+unidad = "L por llamada atendida por un agente (costo total)"
+bajo = 40
+base = 65
+alto = 95
+fuente = "benchmark público"
+nota = "Centro de contacto en Honduras: US$11–16 por hora de agente, todo incluido (Globalify y TDS, 2026) ÷ 5–7 llamadas técnicas atendidas por hora ≈ US$2.4 ≈ L 65. Dato de Finanzas/CX."
 
 [supuestos.tipo_cambio]
 unidad = "L por US$"
-bajo = 26.5
+bajo = 26.8
 base = 27.0
-alto = 27.5
+alto = 27.3
 fuente = "benchmark público"
-nota = "BCH, octubre 2026."
+nota = "BCH: L 26.87 compra / L 27.01 venta (7-sep-2026); el BCH prevé ~L 27 durante 2026."
 
 # --- Costos ------------------------------------------------------------------
 [supuestos.costo_whatsapp_mensaje]
 unidad = "L por mensaje (plantilla de utilidad)"
-bajo = 0.25
+bajo = 0.30
 base = 0.31
-alto = 0.40
+alto = 0.36
 fuente = "benchmark público"
-nota = "≈ US$0.0113 por plantilla de utilidad, Resto de Latinoamérica, tarifa jul-2026 (Zernio; verificar con Meta)."
+nota = "US$0.0113–0.0130 por plantilla de utilidad, Resto de Latinoamérica (tarifas oct-2026 publicadas por Zernio, Flowcall, SleekFlow; verificar con Meta). Desde oct-2026 también se cobran los mensajes de servicio."
 
 [supuestos.desarrollo_piloto]
 unidad = "L, una vez (integración batch CSV + configuración)"
@@ -199,23 +199,23 @@ bajo = 25000
 base = 40000
 alto = 50000
 fuente = "supuesto a validar"
-nota = "Tigo Hogar tiene ~175 mil hogares (Millicom 20-F 2025); se asume ~1 de cada 4 en San Pedro Sula. Dato de Tigo Hogar."
+nota = "Tigo Honduras tiene 191 mil relaciones de clientes de hogar (Millicom 20-F 2025); se asume ~1 de cada 5 en San Pedro Sula. Dato de Tigo Hogar."
 
 [supuestos.tasa_visitas_hogar_mes]
-unidad = "visitas técnicas por hogar al mes"
-bajo = 0.030
-base = 0.043
-alto = 0.060
+unidad = "visitas técnicas de reparación por hogar al mes"
+bajo = 0.020
+base = 0.030
+alto = 0.045
 fuente = "supuesto a validar"
-nota = "≈ 7,500 visitas/mes sobre 175 mil hogares (3 % a 6 %). Dato de operaciones de campo."
+nota = "≈ 5,700 visitas/mes sobre 191 mil hogares. No hay un benchmark público confiable por suscriptor: es el primer dato a pedir a operaciones de campo."
 
 [supuestos.pct_visitas_evitables]
 unidad = "% de visitas evitables (resolubles a distancia o sin falla encontrada)"
-bajo = 0.20
-base = 0.30
-alto = 0.40
-fuente = "supuesto a validar"
-nota = "Códigos de cierre: WiFi/configuración, firmware, reinicio, «sin falla encontrada». Dato de cierres de visitas."
+bajo = 0.17
+base = 0.25
+alto = 0.35
+fuente = "benchmark público"
+nota = "«Sin falla encontrada»: 17–20 % de las visitas en telecom (estimación de la industria citada por Firstsource y TechSee), más WiFi/firmware resolubles a distancia. Se confirma con los códigos de cierre de Tigo."
 
 [supuestos.llamadas_por_visita]
 unidad = "llamadas del cliente por cada visita (reporte + seguimiento)"
@@ -242,12 +242,12 @@ fuente = "benchmark público"
 nota = "Proveedores reportan −20 % (Beegol, todas las visitas) a −60 % (Ksolves, visitas innecesarias); cifras autodeclaradas. El piloto lo mide."
 
 [supuestos.costo_por_visita]
-unidad = "L por visita técnica (técnico, vehículo, tiempo)"
-bajo = 800
-base = 1100
-alto = 1500
+unidad = "L por visita técnica evitable (técnico, vehículo, despacho; sin materiales)"
+bajo = 450
+base = 650
+alto = 1000
 fuente = "supuesto a validar"
-nota = "Dato de Finanzas / operaciones de campo."
+nota = "Cálculo para Honduras: técnico ~L 18 mil/mes + 30 % de cargas, vehículo y combustible ~L 10 mil/mes, 20 % de supervisión y despacho, ~4.5 visitas/día ⇒ ~L 400–650. En EE. UU. una visita cuesta US$150–300 (AEX, 2026). Dato de Finanzas."
 
 [supuestos.desarrollo_hogar_piloto]
 unidad = "L, una vez (CSV diario de telemetría del ACS / gestor de OLT y CMTS + modelo)"
@@ -304,19 +304,19 @@ bajo = 160
 base = 220
 alto = 300
 fuente = "supuesto a validar"
-nota = "ARPU grupo Millicom ~US$6.2 ≈ L 167 (20-F 2025); afectados incluyen hogar."
+nota = "Ingresos por servicios de Tigo Honduras ~US$148–150 M por trimestre (Millicom, 1T-2025 y 1T-2026) ⇒ ~L 230 por cliente móvil al mes; los afectados incluyen hogar."
 
 # ----------------------------------------------------------------------------
 # FASE 2 · CHURN Y RETENCIÓN (prototipo existente, no entra al caso base)
 # ----------------------------------------------------------------------------
-[base_real]                         # Millicom 20-F FY2025
+[base_real]                         # Millicom 20-F FY2025 (al 31-dic-2025)
 clientes_moviles = 5000000
-clientes_hogar = 175000
+clientes_hogar = 191000              # «191,000 customer relationships» (184,000 en 2024)
 
 [arpu]                              # L por mes
 prepago = 160.0
 pospago = 620.0
-hogar = 950.0
+hogar = 800.0                       # planes reales de tigo.com.hn: L 599 (100 Mbps) a L 1,399 (400 Mbps), con ISV
 
 [vida_util_meses]
 prepago = 18

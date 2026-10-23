@@ -1,6 +1,6 @@
 # Datos a pedir a Tigo (los que convierten el caso en definitivo)
 
-Lista corta y priorizada. Los **cuatro primeros** se ingresan en **Pon tus números** de la app y el caso de negocio deja de ser un supuesto.
+Lista corta y priorizada según el análisis de sensibilidad (ver [revision_critica.md](revision_critica.md)). Los **cuatro primeros** se ingresan en **Pon tus números** de la app y el caso de negocio deja de ser un supuesto.
 
 | # | Dato | Para qué | Quién lo tiene |
 |---|---|---|---|
@@ -15,6 +15,7 @@ Lista corta y priorizada. Los **cuatro primeros** se ingresan en **Pon tus núme
 | 9 | % de clientes con WhatsApp y consentimiento para mensajes de servicio | Tasa de entrega real | Canales digitales / CRM |
 | 10 | Aviso de privacidad y contrato de servicio vigentes (gestión remota del equipo) | Cumplimiento (ver `seguridad_y_privacidad.md`) | Legal / Privacidad |
 | 11 | Churn mensual de afectados vs. no afectados | Potencial de retención (Fase 2) | BI / Finanzas |
+| 12 | **% de módems que reportan telemetría** (TR-069 en GPON, CMTS en HFC) y cada cuánto | Si la cobertura es baja, el beneficio de Hogar baja en proporción | Ingeniería de acceso |
 
 **Formato sugerido para empezar:**
 - Exportaciones CSV diarias, sin integraciones.

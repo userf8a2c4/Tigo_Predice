@@ -80,8 +80,8 @@ Tasa base en prueba: **37%** de afectados llama · **522 llamadas por cada 1,000
 | Estrategia de orden | AUC | Brier (↓ mejor) | Precisión top 10 % | Recall top 10 % | Llamadas capturadas por 100 contactos (top 20%) |
 |---|---|---|---|---|---|
 | regresión logística | 0.705 | 0.223 | 0.680 | 0.183 | 93 |
-| LightGBM | 0.711 | 0.213 | 0.742 | 0.199 | 91 |
-| LightGBM calibrado | 0.703 | 0.208 | 0.753 | 0.202 | 91 |
+| LightGBM | 0.712 | 0.213 | 0.770 | 0.207 | 92 |
+| LightGBM calibrado | 0.703 | 0.208 | 0.753 | 0.202 | 92 |
 | regla operativa | 0.608 | — | 0.624 | 0.167 | 75 |
 | azar | 0.500 | — | — | — | 50 |
 
@@ -98,22 +98,22 @@ Tasa base en prueba: **37%** de afectados llama · **522 llamadas por cada 1,000
 | Avisar por WhatsApp a TODOS los afectados (regla simple) | 1,784 | 940 | 158 | 52 | 5.93 |
 | Compensar al 20 % elegido por azar | 357 | 5,712 | 179 | 50 | 32 |
 | Compensar al 20 % elegido por la regla (hogar primero) | 357 | 5,712 | 269 | 75 | 21 |
-| Compensar al 20 % elegido por el modelo | 357 | 5,712 | 326 | 91 | 18 |
+| Compensar al 20 % elegido por el modelo | 357 | 5,712 | 328 | 92 | 17 |
 
 ### Calibración (LightGBM calibrado, isotónica)
 
 | Probabilidad media predicha | Tasa real | Afectados |
 |---|---|---|
 | 0.267 | 0.196 | 179 |
-| 0.300 | 0.229 | 179 |
-| 0.315 | 0.246 | 179 |
-| 0.331 | 0.246 | 179 |
-| 0.352 | 0.230 | 178 |
-| 0.366 | 0.332 | 178 |
-| 0.399 | 0.410 | 178 |
-| 0.445 | 0.534 | 178 |
-| 0.507 | 0.545 | 178 |
-| 0.651 | 0.753 | 178 |
+| 0.298 | 0.201 | 179 |
+| 0.315 | 0.268 | 179 |
+| 0.333 | 0.218 | 179 |
+| 0.352 | 0.264 | 178 |
+| 0.367 | 0.360 | 178 |
+| 0.396 | 0.365 | 178 |
+| 0.444 | 0.539 | 178 |
+| 0.503 | 0.562 | 178 |
+| 0.655 | 0.747 | 178 |
 
 ### Sesgo: % priorizado vs. tasa real
 
@@ -121,32 +121,32 @@ Tasa base en prueba: **37%** de afectados llama · **522 llamadas por cada 1,000
 
 | Zona | Afectados | Tasa real | Prob. media | % priorizado | AUC |
 |---|---|---|---|---|---|
-| periurbana | 881 | 0.373 | 0.387 | 0.169 | 0.683 |
-| rural | 256 | 0.426 | 0.417 | 0.242 | 0.660 |
-| urbana | 647 | 0.348 | 0.392 | 0.226 | 0.738 |
+| periurbana | 881 | 0.373 | 0.387 | 0.166 | 0.686 |
+| rural | 256 | 0.426 | 0.418 | 0.246 | 0.662 |
+| urbana | 647 | 0.348 | 0.391 | 0.229 | 0.737 |
 
 **Por segmento:**
 
 | Segmento | Afectados | Tasa real | Prob. media | % priorizado | AUC |
 |---|---|---|---|---|---|
-| hogar | 190 | 0.632 | 0.555 | 0.695 | 0.718 |
-| pospago | 526 | 0.399 | 0.410 | 0.232 | 0.689 |
-| prepago | 1,068 | 0.312 | 0.356 | 0.096 | 0.654 |
+| hogar | 190 | 0.632 | 0.554 | 0.668 | 0.734 |
+| pospago | 526 | 0.399 | 0.409 | 0.224 | 0.689 |
+| prepago | 1,068 | 0.312 | 0.356 | 0.105 | 0.655 |
 
 ### Variables más influyentes (ganancia LightGBM)
 
 | Variable | Peso relativo |
 |---|---|
-| Llamadas por red (90 d) | 0.149 |
-| ARPU | 0.129 |
-| Es cliente hogar | 0.119 |
-| Antigüedad | 0.117 |
+| Llamadas por red (90 d) | 0.148 |
+| ARPU | 0.130 |
+| Es cliente hogar | 0.121 |
+| Antigüedad | 0.111 |
 | Hora de inicio | 0.086 |
-| Llamadas sin resolver (30 d) | 0.078 |
-| Es prepago | 0.046 |
+| Llamadas sin resolver (30 d) | 0.079 |
+| Es prepago | 0.044 |
 | Hora estimada de solución | 0.043 |
 | Caídas en su celda (30 d) | 0.041 |
-| Última calificación | 0.040 |
+| Última calificación | 0.041 |
 
 ---
 ## Fase 2 (visión, NO entra al caso base) · Modelos de 7 y 30 días
@@ -160,8 +160,8 @@ Tasa base en prueba: **37%** de afectados llama · **522 llamadas por cada 1,000
 
 | Modelo | AUC baseline (reg. logística) | AUC LightGBM | Tasa base | Precisión top 10 % | Recall top 10 % | Lift decil 1 |
 |---|---|---|---|---|---|---|
-| Fase 2 · Riesgo de incidencia general (llamará en 7 días) | 0.800 | 0.829 | 0.092 | 0.504 | 0.545 | 5.45 |
-| Fase 2 · Riesgo de churn (abandono en 30 días) | 0.844 | 0.866 | 0.039 | 0.222 | 0.566 | 5.66 |
+| Fase 2 · Riesgo de incidencia general (llamará en 7 días) | 0.800 | 0.829 | 0.092 | 0.500 | 0.541 | 5.41 |
+| Fase 2 · Riesgo de churn (abandono en 30 días) | 0.844 | 0.866 | 0.039 | 0.220 | 0.561 | 5.61 |
 
 **Cómo leerlo:** si contactamos solo al 10 % de clientes con mayor riesgo, encontramos varias veces más casos reales que contactando al azar (lift).
 
@@ -173,38 +173,38 @@ _Probabilidad de que llame o reclame en los próximos 7 días_
 
 | | Predicho: no | Predicho: sí |
 |---|---|---|
-| **Real: no** | 4,290 | 248 |
-| **Real: sí** | 210 | 252 |
+| **Real: no** | 4,288 | 250 |
+| **Real: sí** | 212 | 250 |
 
 ### Curva de lift por decil
 
 | Decil | Tasa real | Lift | % capturado acumulado |
 |---|---|---|---|
-| 1 | 0.504 | 5.45 | 0.545 |
-| 2 | 0.120 | 1.30 | 0.675 |
-| 3 | 0.072 | 0.780 | 0.753 |
-| 4 | 0.042 | 0.450 | 0.799 |
-| 5 | 0.052 | 0.560 | 0.855 |
-| 6 | 0.038 | 0.410 | 0.896 |
-| 7 | 0.040 | 0.430 | 0.939 |
-| 8 | 0.022 | 0.240 | 0.963 |
-| 9 | 0.014 | 0.150 | 0.978 |
-| 10 | 0.020 | 0.220 | 1.00 |
+| 1 | 0.500 | 5.41 | 0.541 |
+| 2 | 0.126 | 1.36 | 0.677 |
+| 3 | 0.072 | 0.780 | 0.755 |
+| 4 | 0.044 | 0.480 | 0.803 |
+| 5 | 0.048 | 0.520 | 0.855 |
+| 6 | 0.040 | 0.430 | 0.898 |
+| 7 | 0.034 | 0.370 | 0.935 |
+| 8 | 0.026 | 0.280 | 0.963 |
+| 9 | 0.012 | 0.130 | 0.976 |
+| 10 | 0.022 | 0.240 | 1.00 |
 
 ### Variables más influyentes (SHAP promedio)
 
 | Variable | Grupo | Impacto |
 |---|---|---|
 | caidas_7d | Red | 0.293 |
-| velocidad_pct_plan_7d | Red | 0.291 |
-| llamadas_sin_resolver_30d | Atención | 0.204 |
+| velocidad_pct_plan_7d | Red | 0.290 |
+| llamadas_sin_resolver_30d | Atención | 0.206 |
 | reclamos_cobro_90d | Facturación | 0.107 |
 | horas_resolucion_prom | Atención | 0.068 |
-| llamadas_30d | Atención | 0.055 |
-| tickets_abiertos | Atención | 0.055 |
-| datos_gb_30d | Uso | 0.054 |
-| nps_ultimo | Satisfacción | 0.053 |
-| caidas_30d | Red | 0.051 |
+| caidas_30d | Red | 0.058 |
+| nps_ultimo | Satisfacción | 0.055 |
+| llamadas_30d | Atención | 0.054 |
+| tickets_abiertos | Atención | 0.053 |
+| datos_gb_30d | Uso | 0.052 |
 | latencia_ms_7d | Red | 0.051 |
 | brecha_velocidad_celda | Equipo | 0.044 |
 
@@ -216,23 +216,23 @@ Se compara el % de clientes marcados (top 10 %) con la tasa real del grupo. Un g
 
 | Ciudad | Clientes (prueba) | Tasa real | Prob. media | % marcado | AUC |
 |---|---|---|---|---|---|
-| Choluteca | 242 | 0.087 | 0.084 | 0.070 | 0.791 |
-| Comayagua | 230 | 0.096 | 0.081 | 0.078 | 0.771 |
-| Danlí | 324 | 0.096 | 0.090 | 0.108 | 0.867 |
-| El Progreso | 311 | 0.035 | 0.058 | 0.039 | 0.698 |
-| Juticalpa | 220 | 0.054 | 0.056 | 0.050 | 0.704 |
-| La Ceiba | 256 | 0.332 | 0.318 | 0.492 | 0.902 |
-| San Pedro Sula | 1,189 | 0.091 | 0.098 | 0.109 | 0.823 |
-| Santa Rosa de Copán | 101 | 0.129 | 0.144 | 0.208 | 0.906 |
-| Siguatepeque | 158 | 0.076 | 0.091 | 0.095 | 0.739 |
-| Tegucigalpa | 1,969 | 0.075 | 0.070 | 0.058 | 0.776 |
+| Choluteca | 242 | 0.087 | 0.083 | 0.070 | 0.787 |
+| Comayagua | 230 | 0.096 | 0.080 | 0.078 | 0.776 |
+| Danlí | 324 | 0.096 | 0.091 | 0.108 | 0.870 |
+| El Progreso | 311 | 0.035 | 0.058 | 0.035 | 0.708 |
+| Juticalpa | 220 | 0.054 | 0.056 | 0.050 | 0.691 |
+| La Ceiba | 256 | 0.332 | 0.319 | 0.492 | 0.902 |
+| San Pedro Sula | 1,189 | 0.091 | 0.097 | 0.112 | 0.821 |
+| Santa Rosa de Copán | 101 | 0.129 | 0.144 | 0.208 | 0.908 |
+| Siguatepeque | 158 | 0.076 | 0.091 | 0.089 | 0.737 |
+| Tegucigalpa | 1,969 | 0.075 | 0.070 | 0.058 | 0.777 |
 
 **Por segmento:**
 
 | Segmento | Clientes (prueba) | Tasa real | Prob. media | % marcado | AUC |
 |---|---|---|---|---|---|
-| hogar | 509 | 0.120 | 0.111 | 0.122 | 0.851 |
-| pospago | 1,504 | 0.098 | 0.098 | 0.101 | 0.815 |
+| hogar | 509 | 0.120 | 0.111 | 0.124 | 0.853 |
+| pospago | 1,504 | 0.098 | 0.098 | 0.100 | 0.816 |
 | prepago | 2,987 | 0.085 | 0.086 | 0.096 | 0.829 |
 
 ## Fase 2 · Riesgo de churn (abandono en 30 días)
@@ -243,40 +243,40 @@ _Probabilidad de abandono/portabilidad en 30 días_
 
 | | Predicho: no | Predicho: sí |
 |---|---|---|
-| **Real: no** | 4,415 | 389 |
-| **Real: sí** | 85 | 111 |
+| **Real: no** | 4,414 | 390 |
+| **Real: sí** | 86 | 110 |
 
 ### Curva de lift por decil
 
 | Decil | Tasa real | Lift | % capturado acumulado |
 |---|---|---|---|
-| 1 | 0.222 | 5.66 | 0.566 |
-| 2 | 0.068 | 1.73 | 0.740 |
-| 3 | 0.040 | 1.02 | 0.842 |
-| 4 | 0.022 | 0.560 | 0.898 |
-| 5 | 0.012 | 0.310 | 0.929 |
-| 6 | 0.008 | 0.200 | 0.949 |
-| 7 | 0.014 | 0.360 | 0.985 |
-| 8 | 0.006 | 0.150 | 1.00 |
-| 9 | 0 | 0 | 1.00 |
+| 1 | 0.220 | 5.61 | 0.561 |
+| 2 | 0.074 | 1.89 | 0.750 |
+| 3 | 0.036 | 0.920 | 0.842 |
+| 4 | 0.026 | 0.660 | 0.908 |
+| 5 | 0.008 | 0.200 | 0.929 |
+| 6 | 0.010 | 0.260 | 0.954 |
+| 7 | 0.010 | 0.260 | 0.980 |
+| 8 | 0.006 | 0.150 | 0.995 |
+| 9 | 0.002 | 0.050 | 1.00 |
 | 10 | 0 | 0 | 1.00 |
 
 ### Variables más influyentes (SHAP promedio)
 
 | Variable | Grupo | Impacto |
 |---|---|---|
-| llamadas_sin_resolver_30d | Atención | 0.332 |
-| tendencia_uso | Uso | 0.265 |
-| caidas_30d | Red | 0.210 |
-| antiguedad_meses | Perfil | 0.190 |
-| arpu | Perfil | 0.171 |
-| dias_atraso | Facturación | 0.160 |
-| nps_ultimo | Satisfacción | 0.153 |
-| datos_gb_30d | Uso | 0.134 |
-| min_sin_servicio_30d | Red | 0.127 |
-| dias_sin_recarga | Uso | 0.124 |
-| recargas_30d | Uso | 0.066 |
-| llamadas_red_30d | Atención | 0.057 |
+| llamadas_sin_resolver_30d | Atención | 0.328 |
+| tendencia_uso | Uso | 0.262 |
+| caidas_30d | Red | 0.203 |
+| antiguedad_meses | Perfil | 0.191 |
+| dias_atraso | Facturación | 0.158 |
+| arpu | Perfil | 0.155 |
+| nps_ultimo | Satisfacción | 0.148 |
+| datos_gb_30d | Uso | 0.139 |
+| dias_sin_recarga | Uso | 0.138 |
+| min_sin_servicio_30d | Red | 0.134 |
+| llamadas_red_30d | Atención | 0.065 |
+| recargas_30d | Uso | 0.059 |
 
 ### Revisión de sesgo por zona y segmento
 
@@ -286,24 +286,24 @@ Se compara el % de clientes marcados (top 10 %) con la tasa real del grupo. Un g
 
 | Ciudad | Clientes (prueba) | Tasa real | Prob. media | % marcado | AUC |
 |---|---|---|---|---|---|
-| Choluteca | 230 | 0.035 | 0.037 | 0.096 | 0.798 |
-| Comayagua | 234 | 0.021 | 0.034 | 0.077 | 0.912 |
-| Danlí | 296 | 0.041 | 0.035 | 0.078 | 0.859 |
-| El Progreso | 320 | 0.019 | 0.025 | 0.050 | 0.884 |
-| Juticalpa | 189 | 0.026 | 0.016 | 0.011 | 0.763 |
-| La Ceiba | 277 | 0.087 | 0.081 | 0.267 | 0.890 |
-| San Pedro Sula | 1,263 | 0.048 | 0.054 | 0.150 | 0.855 |
-| Santa Rosa de Copán | 105 | 0.057 | 0.049 | 0.133 | 0.896 |
-| Siguatepeque | 164 | 0.049 | 0.037 | 0.079 | 0.883 |
-| Tegucigalpa | 1,922 | 0.032 | 0.031 | 0.067 | 0.866 |
+| Choluteca | 230 | 0.035 | 0.037 | 0.100 | 0.794 |
+| Comayagua | 234 | 0.021 | 0.034 | 0.073 | 0.911 |
+| Danlí | 296 | 0.041 | 0.035 | 0.078 | 0.849 |
+| El Progreso | 320 | 0.019 | 0.025 | 0.056 | 0.884 |
+| Juticalpa | 189 | 0.026 | 0.016 | 0.016 | 0.761 |
+| La Ceiba | 277 | 0.087 | 0.080 | 0.256 | 0.893 |
+| San Pedro Sula | 1,263 | 0.048 | 0.054 | 0.150 | 0.854 |
+| Santa Rosa de Copán | 105 | 0.057 | 0.050 | 0.143 | 0.901 |
+| Siguatepeque | 164 | 0.049 | 0.037 | 0.079 | 0.878 |
+| Tegucigalpa | 1,922 | 0.032 | 0.031 | 0.067 | 0.867 |
 
 **Por segmento:**
 
 | Segmento | Clientes (prueba) | Tasa real | Prob. media | % marcado | AUC |
 |---|---|---|---|---|---|
-| hogar | 536 | 0.028 | 0.023 | 0.060 | 0.916 |
-| pospago | 1,511 | 0.017 | 0.025 | 0.061 | 0.880 |
-| prepago | 2,953 | 0.052 | 0.051 | 0.127 | 0.843 |
+| hogar | 536 | 0.028 | 0.023 | 0.060 | 0.917 |
+| pospago | 1,511 | 0.017 | 0.025 | 0.058 | 0.875 |
+| prepago | 2,953 | 0.052 | 0.051 | 0.129 | 0.843 |
 
 ### Metodología (Fase 2)
 

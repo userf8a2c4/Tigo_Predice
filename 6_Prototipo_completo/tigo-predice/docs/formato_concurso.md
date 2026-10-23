@@ -15,7 +15,7 @@ Experiencia del Cliente / CX
 Red y Operaciones · Eficiencia / Reducción de Costos · Self-Service y Canales Digitales · Analítica y toma de decisiones
 
 **Problema:**
-Los problemas de internet del hogar avisan en la telemetría del módem días antes de que el cliente los sufra, pero hoy solo se miran cuando cruzan un umbral. El cliente llama, espera y se agenda un técnico, aunque 3 de cada 10 visitas son evitables (supuesto a validar). En móvil, cuando cae un sitio, 1 de cada 3 afectados llama si no recibe aviso (benchmark público). Llamadas y visitas que cuestan, saturan y deterioran la experiencia.
+Los problemas de internet del hogar avisan en la telemetría del módem días antes de que el cliente los sufra, pero hoy solo se miran cuando cruzan un umbral. El cliente llama, espera y se agenda un técnico, aunque 1 de cada 4 visitas es evitable (supuesto a validar; la industria reporta 17–20 % de visitas «sin falla encontrada»). En móvil, cuando cae un sitio, 1 de cada 3 afectados llama si no recibe aviso (benchmark público). Llamadas y visitas que cuestan, saturan y deterioran la experiencia.
 
 **Solución:**
 - **Frente Hogar (principal).** Cada semana un modelo de IA califica la telemetría de todos los módems y marca al 2 % con más riesgo de llamar o necesitar visita en 7 días, con la explicación de por qué. Si el problema es de WiFi o firmware, se corrige a distancia y el cliente recibe un WhatsApp. Si es físico, se agenda la visita antes del corte y el técnico llega con el diagnóstico.
@@ -27,7 +27,7 @@ Los problemas de internet del hogar avisan en la telemetría del módem días an
 **¿Cómo usa la IA?**
 - **IA predictiva (corazón del producto):**
   - Modelo de machine learning sobre la telemetría de módems, con validación temporal.
-  - Comparado con la regla de umbrales: anticipa el 52 % de las visitas evitables, contra 26 % de la regla (2.0×, simulado).
+  - Comparado con la regla de umbrales: anticipa el 52 % de las visitas evitables, contra 26 % de la regla (2.0×, en datos simulados; se valida con telemetría real en las semanas 0–2).
   - Explica cada caso por variables (SHAP).
 - **IA generativa (Claude):**
   - Redacta los avisos con guardrails (usted, sin datos sensibles, sin horas inventadas, siempre opción de hablar con una persona).
@@ -42,13 +42,13 @@ Los problemas de internet del hogar avisan en la telemetría del módem días an
   - El call center recibe menos llamadas repetitivas.
 
 **Inversión estimada:**
-- **Piloto de 60 días en San Pedro Sula (Hogar + Móvil):** **L 770 mil** (≈ US$ 28 mil), con un rango de L 470 mil a L 1.2 M.
+- **Piloto de 60 días en San Pedro Sula (Hogar + Móvil):** **L 770 mil** (≈ US$ 28 mil), con un rango de L 480 mil a L 1.2 M.
 - **Si da GO:** integración nacional única de L 1.7 M para ambos frentes y un costo recurrente de unos L 3.6 M al año.
 
 **Impacto esperado (caso conservador, solo beneficio duro):**
-- **Hogar** se paga en el primer año con solo 9 % menos visitas evitables en los hogares marcados: unas 5,200 visitas evitadas al año, apenas un 6 % del total.
-- **Móvil:** con solo 9 % menos llamadas en los avisados, la plataforma se paga en el primer año, con unas 110,000 llamadas evitadas al año.
-- **Juntos:** **L 10 M netos en el año 1** (rango −L 23 mil a L 25 M). La retención es potencial adicional y no se incluye hasta medirla.
+- **Hogar** se paga en el primer año con 22 % menos visitas evitables en los hogares marcados. En el caso base se evitan unas 3,300 visitas al año, apenas un 5 % del total.
+- **Móvil:** con 12 % menos llamadas en los avisados, la plataforma se paga en el primer año, con unas 110,000 llamadas evitadas al año.
+- **Juntos:** **L 4.3 M netos en el año 1** (rango −L 3 M a L 14 M), con costos hondureños (visita L 650, llamada L 65). La retención es potencial adicional y no se incluye hasta medirla.
 
 **KPIs:**
 - **Métricas norte:**

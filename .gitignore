@@ -1,0 +1,13 @@
+# Paquete para enviar por correo (se arma a partir de estas carpetas)
+*.zip
+
+# Archivos temporales de Windows y Office
+Thumbs.db
+desktop.ini
+~$*
+
+# Entornos y cachés (el prototipo tiene además su propio .gitignore)
+.venv/
+__pycache__/
+node_modules/
+.env

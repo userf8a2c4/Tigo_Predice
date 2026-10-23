@@ -1,5 +1,5 @@
 // Presentación v03 (Hogar + Móvil). Uso: node gen_pptx.js <salida.pptx> <docs/capturas> <datos_deck.json>
-// Requiere APPLY_THEME (ruta a apply_theme.js de la skill pptx) y NODE_PATH con pptxgenjs.
+// Requiere NODE_PATH con pptxgenjs y APPLY_THEME: ruta a un módulo que escribe los colores de THEME en el tema del .pptx.
 const path = require("path");
 const fs = require("fs");
 const pptxgen = require("pptxgenjs");
@@ -96,7 +96,7 @@ s.addText("El módem avisa días antes. Hoy nadie lo escucha", { placeholder: "t
   txt(s, [{ text: h, options: { bold: true, color: S.text2, breakLine: true } }, { text: d }], { x: 1.6, y: y - 0.05, w: 5.5, h: 0.95, fontSize: 17, margin: 0, valign: "top", objectName: `pt${i}` });
 });
 tarjeta(s, 7.6, 1.55, 5.1, 4.5, "dato");
-cifra(s, 7.95, 1.85, 4.5, "3 de cada 10", "visitas técnicas son evitables: WiFi, firmware o «sin falla encontrada» (supuesto a validar)", "c1", S.text2, 44);
+cifra(s, 7.95, 1.85, 4.5, "1 de cada 4", "visitas técnicas son evitables: WiFi, firmware o «sin falla encontrada» (supuesto a validar)", "c1", S.text2, 44);
 cifra(s, 7.95, 3.75, 4.5, nb(`${C.costo_por_visita} + 2 llamadas`), `por visita (supuestos) · ${C.hogar_visitas_mes} visitas al mes en ${C.hogares_nacional} hogares`, "c2", S.accent2, 36);
 txt(s, "Y en móvil: cuando cae un sitio, 1 de cada 3 afectados llama si no recibe aviso (benchmark público).", { x: 0.6, y: 5.6, w: 6.6, h: 0.6, fontSize: 14, italic: true, color: HEX.gris, margin: 0, objectName: "movil" });
 s.addNotes("Contar la escena de Karla. Decir 'supuesto' sin miedo: es lo que da credibilidad.");
@@ -134,7 +134,7 @@ pres.addSection({ title: "Demo" });
 s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "Demo" });
 s.addText("Demo «Hogar en vivo»: 80 segundos", { placeholder: "title" });
 s.addImage({ path: path.join(CAPT, "hogar.png"), x: 0.6, y: 1.4, w: 7.7, h: 4.33, objectName: "captura", altText: "Pantalla Hogar en vivo" });
-["26/09: empieza el problema; Karla no nota nada", "28/09: la IA lo marca (top 2 %), la regla no ve nada", "Explica por qué: el WiFi empeora día a día", "Se corrige a distancia + WhatsApp", "02/10: sin Tigo Predice, Karla habría llamado", nb("Visita evitada: L 1,270 por L 0.31")].forEach((t1, i) => {
+["26/09: empieza el problema; Karla no nota nada", "28/09: la IA lo marca (top 2 %), la regla no ve nada", "Explica por qué: el WiFi empeora día a día", "Se corrige a distancia + WhatsApp", "02/10: sin Tigo Predice, Karla habría llamado", nb("Visita evitada: L 780 por L 0.31")].forEach((t1, i) => {
   circulo(s, 8.7, 1.5 + i * 0.8, 0.5, String(i + 1), `d${i}`);
   txt(s, t1, { x: 9.35, y: 1.45 + i * 0.8, w: 3.4, h: 0.6, fontSize: 14, valign: "middle", margin: 0, objectName: `dt${i}` });
 });
@@ -171,7 +171,7 @@ s.addText("Móvil: el mismo motor en fallas masivas", { placeholder: "title" });
 s.addImage({ path: path.join(CAPT, "falla.png"), x: 0.6, y: 1.4, w: 7.7, h: 4.33, objectName: "captura-falla", altText: "Pantalla Falla masiva en vivo" });
 tarjetas(s, [
   ["Aviso en minutos", "Causa en palabras simples y hora del NOC solo si la tiene. Cierre al restablecer."],
-  [nb("−15 % de llamadas"), nb("IC 95 %: 12 % a 19 % en la simulación del piloto (efecto supuesto de 20 %).")],
+  [nb("−16 % de llamadas"), nb("IC 95 %: 12 % a 19 % en la simulación del piloto (efecto supuesto de 20 %).")],
   [nb(`Se paga con ${C.equilibrio_anio1}`), "de reducción de llamadas en los avisados. Benchmarks públicos: 18 % a 88 %."],
 ], 8.6, 1.45, 4.1, 1.35, 1.5, "m", 16);
 
@@ -181,7 +181,7 @@ s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "Negocio" });
 s.addText(nb(`${C.neto_anio1_base} netos en el año 1, solo beneficio duro`), { placeholder: "title" });
 cifra(s, 0.6, 1.55, 3.8, nb(C.hogar_equilibrio_anio1), "menos visitas evitables y el frente Hogar se paga en el año 1 (caso base 45 %)", "eqh");
 cifra(s, 0.6, 3.15, 3.8, nb(C.equilibrio_anio1), "menos llamadas y el frente Móvil se paga en el año 1 (caso base 20 %)", "eqm", S.accent2);
-cifra(s, 0.6, 4.75, 3.8, nb(C.neto_anio1_rango), "rango conservador a optimista (el peor caso queda en equilibrio)", "rng", HEX.gris, 26);
+cifra(s, 0.6, 4.75, 3.8, nb(C.neto_anio1_rango), "rango conservador a optimista (con costos hondureños)", "rng", HEX.gris, 26);
 const esc = ["Conservador", "Base", "Optimista"];
 const k = ["conservador", "base", "optimista"];
 s.addChart(pres.charts.BAR, [
@@ -206,7 +206,7 @@ s.addText("Piloto de 12 semanas con GO / NO-GO por frente", { placeholder: "titl
   txt(s, d, { x, y: 2.5, w: 3.8, h: 1.1, fontSize: 14, margin: 0, valign: "top", objectName: `fd${i}` });
 });
 tarjeta(s, 0.6, 3.85, 6.0, 2.45, "go", "E8F7EE");
-txt(s, [{ text: "GO Hogar si…", options: { bold: true, color: HEX.verde, fontSize: 20, breakLine: true } }, { text: "Visitas en marcados −15 % o más, significativo, opt-out < 2 %", options: { bullet: true, breakLine: true } }, { text: "La IA supera a la regla por 1.3× (si no, se usa la regla)", options: { bullet: true, breakLine: true } }, { text: "GO Móvil si…", options: { bold: true, color: HEX.verde, fontSize: 20, breakLine: true } }, { text: "Llamadas −10 % o más, significativo, opt-out < 2 %", options: { bullet: true } }], { x: 0.9, y: 3.95, w: 5.5, h: 2.3, fontSize: 15, margin: 0, valign: "top", paraSpaceAfter: 3, objectName: "go-t" });
+txt(s, [{ text: "GO Hogar si…", options: { bold: true, color: HEX.verde, fontSize: 20, breakLine: true } }, { text: "Visitas en marcados −15 % o más, significativo, opt-out < 2 %", options: { bullet: true, breakLine: true } }, { text: "La IA supera a la regla por 1.3× (si no, se usa la regla)", options: { bullet: true, breakLine: true } }, { text: "GO Móvil si…", options: { bold: true, color: HEX.verde, fontSize: 20, breakLine: true } }, { text: "Llamadas −12 % o más, significativo, opt-out < 2 %", options: { bullet: true } }], { x: 0.9, y: 3.95, w: 5.5, h: 2.3, fontSize: 15, margin: 0, valign: "top", paraSpaceAfter: 3, objectName: "go-t" });
 tarjeta(s, 6.9, 3.85, 5.8, 2.45, "nogo", "FDECEC");
 txt(s, [{ text: "NO-GO si…", options: { bold: true, color: HEX.rojo, fontSize: 20, breakLine: true } }, { text: "No hay diferencia significativa", options: { bullet: true, breakLine: true } }, { text: "El efecto no supera el mínimo", options: { bullet: true, breakLine: true } }, { text: "Los clientes rechazan los mensajes. Se detiene con costo acotado", options: { bullet: true } }], { x: 7.2, y: 3.95, w: 5.3, h: 2.3, fontSize: 15, margin: 0, valign: "top", paraSpaceAfter: 3, objectName: "nogo-t" });
 

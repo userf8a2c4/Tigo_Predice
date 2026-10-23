@@ -69,12 +69,14 @@ def test_potencia(client):
 def test_roi_y_tus_numeros(client):
     base = client.get("/api/roi").json()
     assert set(base["escenarios"]) == {"conservador", "base", "optimista"} and base["tornado"]
-    tus = client.get("/api/roi?costo_por_llamada=170").json()
+    doble = 2 * base["escenarios"]["base"]["supuestos"]["costo_por_llamada"]
+    tus = client.get(f"/api/roi?costo_por_llamada={doble}").json()
     assert tus["escenarios"]["base"]["fuentes"]["costo_por_llamada"] == "dato Tigo"
     assert tus["escenarios"]["base"]["movil"]["nacional"]["beneficio_duro_anio"] == pytest.approx(
         base["escenarios"]["base"]["movil"]["nacional"]["beneficio_duro_anio"] * 2, rel=0.01
     )
-    h = client.get("/api/roi?costo_por_visita=2200").json()["escenarios"]["base"]
+    visita = 2 * base["escenarios"]["base"]["supuestos"]["costo_por_visita"]
+    h = client.get(f"/api/roi?costo_por_visita={visita}").json()["escenarios"]["base"]
     assert h["fuentes"]["costo_por_visita"] == "dato Tigo"
     assert (
         h["hogar"]["nacional"]["beneficio_duro_anio"]

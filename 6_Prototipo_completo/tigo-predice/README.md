@@ -19,7 +19,7 @@ Propuesta para **Tigo CX Month · Sharks** (octubre 2026). ⚠️ **Datos simula
 2. Doble clic en **`iniciar_demo.bat`**. La primera vez instala las versiones fijadas (`requirements.lock`), genera los datos, entrena y firma los modelos y compila la interfaz. Toma unos 4 minutos; después arranca en unos 5 segundos.
 3. Se abre **http://127.0.0.1:8000** → **Hogar en vivo ★** → **▶ Iniciar**.
 
-**Sin servidor:** `entrega/Demo_Tigo_Predice.html` es la misma demo en un solo archivo que se abre con doble clic, por ejemplo para enviarla al jurado. Se genera con `docs/entregables/gen_demo_html.py`; «Pon tus números» solo funciona en la versión completa.
+**Sin servidor:** `2_Demo/Demo_Tigo_Predice.html` (en la carpeta del proyecto, junto a `1_Presentacion` … `5_Envio`, donde están todos los entregables) es la misma demo en un solo archivo que se abre con doble clic, por ejemplo para enviarla al jurado. Se genera con `docs/entregables/gen_demo_html.py`; «Pon tus números» solo funciona en la versión completa.
 
 Funciona **sin internet y sin clave de API** («Modo plantillas»). Para que Claude redacte los mensajes («Modo IA»), copie `.env.ejemplo` como `.env` y agregue `ANTHROPIC_API_KEY`.
 
@@ -43,13 +43,13 @@ Tareas: `.\tareas.ps1 preparar | test | lint | seguridad | dev | front`.
 | Fase 2 (visión) | Churn y WhatsApp/tickets. **No entran al caso base** |
 
 ## Cifras clave (escenario base, `docs/cifras.json`)
-- **Neto año 1 (Hogar + Móvil):** **L 10 M**, con un rango de −L 23 mil a L 25 M. Solo beneficio duro.
+- **Neto año 1 (Hogar + Móvil):** **L 4.3 M**, con un rango de −L 3 M a L 14 M. Solo beneficio duro, con costos hondureños (visita L 650, llamada L 65) y la base real de Tigo Honduras (191 mil hogares, 5.0 M móviles).
 - **Equilibrio:**
-  - Hogar se paga con **9 %** menos visitas evitables en los hogares marcados (equivale a solo 6 % del total de visitas en el caso base).
-  - Móvil se paga con **9 %** menos llamadas.
-- **IA vs. regla de umbrales:** anticipa **52 %** de las visitas evitables frente a 26 % (2.0×). La mitad, sin ninguna alarma previa.
+  - Hogar se paga con **22 %** menos visitas evitables en los hogares marcados (el caso base evita un 5 % del total de visitas).
+  - Móvil se paga con **12 %** menos llamadas.
+- **IA vs. regla de umbrales (datos simulados):** anticipa **52 %** de las visitas evitables frente a 26 % (2.0×). Se valida con telemetría real antes del piloto.
 - **Piloto de 60 días:** **L 770 mil** (≈ US$ 28 mil).
-- **Simulación del piloto:** Hogar −19 % de visitas (IC 95 %: 12–25 %) y −56 % de llamadas técnicas; Móvil −15 % de llamadas. Son resultados **simulados**.
+- **Simulación del piloto:** Hogar −19 % de visitas (IC 95 %: 12–25 %) y −56 % de llamadas técnicas; Móvil −16 % de llamadas. Son resultados **simulados**.
 
 ## Seguridad y privacidad
 Diseñado con la vara de un hiperescalador. Detalle en [docs/seguridad_y_privacidad.md](docs/seguridad_y_privacidad.md):
@@ -69,7 +69,7 @@ backend/app/   main (API) · estado · seguridad · privacidad · llm_client ·
 frontend/      React + Vite + TS + Tailwind + Recharts + Leaflet (GeoJSON local)
 config/        negocio.toml: cada supuesto con unidad, bajo/base/alto, fuente y nota
 docs/          pitch · elevator_pitch · one_pager · preguntas_frecuentes_jurado · guia_demo · formato_concurso · datos_a_pedir_a_tigo · seguridad_y_privacidad ·
-               estudio_evaluacion · impacto, cifras.json y listo_para_produccion (generados) · arquitectura · roadmap · fuentes
+               revision_critica · impacto, cifras.json y listo_para_produccion (generados) · arquitectura · roadmap · fuentes
 reports/       modelo.md (Hogar, Móvil y Fase 2)
 tests/         hogar · seguridad (red team) · experimento · roi · guardrails · consistencia de cifras · API (214 en total)
 ```
@@ -80,4 +80,4 @@ tests/         hogar · seguridad (red team) · experimento · roi · guardrails
 - **Agrupamiento:** la potencia asume unidades independientes. En el piloto se usan errores agrupados por nodo (Hogar) y por falla (Móvil).
 - **Integraciones simuladas:** ACS, WhatsApp Business y SSO se conectan en las semanas 0–2.
 
-Más detalle: [DECISIONES.md](DECISIONES.md) · [docs/estudio_evaluacion.md](docs/estudio_evaluacion.md)
+Más detalle: [docs/revision_critica.md](docs/revision_critica.md) (datos reales y puntos débiles) · [DECISIONES.md](DECISIONES.md)

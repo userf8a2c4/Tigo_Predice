@@ -61,7 +61,7 @@ const contenido = [
   ], [2600, 6760], { cabecera: false, primeraNegrita: true }),
 
   h1("1. El problema"),
-  bullet([t("Hogar: ", { bold: true, color: AZUL }), t("los problemas de internet se ven en la telemetría del módem días antes de que el cliente los sufra (señal que baja, WiFi saturado, reinicios), pero hoy solo se miran cuando cruzan un umbral. El cliente llama, espera y se agenda un técnico, aunque 3 de cada 10 visitas son evitables (supuesto a validar con los códigos de cierre).")]),
+  bullet([t("Hogar: ", { bold: true, color: AZUL }), t("los problemas de internet se ven en la telemetría del módem días antes de que el cliente los sufra (señal que baja, WiFi saturado, reinicios), pero hoy solo se miran cuando cruzan un umbral. El cliente llama, espera y se agenda un técnico, aunque 1 de cada 4 visitas es evitable (supuesto a validar con los códigos de cierre; la industria reporta 17–20 % «sin falla encontrada»).")]),
   bullet([t("Móvil: ", { bold: true, color: AZUL }), t("cuando cae un sitio, el NOC lo sabe en minutos, pero los clientes se enteran por la falla. Un benchmark público indica que 1 de cada 3 afectados llama si no recibe aviso.")]),
 
   h1("2. La solución"),
@@ -69,7 +69,7 @@ const contenido = [
   p([t("Frente Móvil. ", { bold: true }), t("En fallas masivas, WhatsApp en minutos con la causa en palabras simples, la hora del NOC (solo si la tiene) y un mensaje de cierre.")]),
   p([t("Medición. ", { bold: true }), t("En ambos frentes, un grupo control aleatorio del 15 % mide el efecto real.")]),
   imagen("hogar.png", "Demo Hogar en vivo"),
-  pie("Demo «Hogar en vivo»: la IA marca el hogar el 28/09 (la regla de umbrales recién el 03/10 y el cliente habría llamado el 02/10), explica por qué y se corrige a distancia: visita evitada, L 1,270 de ahorro por L 0.31. Datos simulados."),
+  pie("Demo «Hogar en vivo»: la IA marca el hogar el 28/09 (la regla de umbrales recién el 03/10 y el cliente habría llamado el 02/10), explica por qué y se corrige a distancia: visita evitada, L 780 de ahorro por L 0.31. Datos simulados."),
 
   h1("3. ¿Cómo usa la IA?"),
   bullet([t("IA predictiva (corazón del producto): ", { bold: true }), t(`modelo de machine learning sobre la telemetría de módems, con validación temporal. Con el mismo presupuesto anticipa el ${C.hogar_ia_captura} de las visitas evitables, frente al ${C.hogar_regla_captura} de una regla de umbrales (${C.hogar_ia_vs_regla}; AUC ${C.hogar_ia_auc}). El ${C.hogar_deteccion_temprana} de lo que anticipa todavía no tenía ninguna alarma. Cada caso se explica por variables (SHAP).`)]),
@@ -104,8 +104,8 @@ const contenido = [
   bullet("Semanas 0–2: CSV del ACS/OLT, NOC, CRM, call center y campo; análisis retrospectivo (¿la IA le gana a la regla con 3 meses reales?); plantillas y evaluación de impacto aprobadas."),
   bullet("Semanas 3–10: Hogar (la IA marca el 2 % semanal; soporte N2 corrige a distancia) y Móvil (avisos y cierres), con 15 % de control."),
   bullet("Semanas 11–12: análisis con IC 95 % y decisión GO/NO-GO por frente al comité."),
-  p([t("GO Hogar ", { bold: true, color: VERDE }), t("si las visitas en hogares marcados bajan ≥ 15 %, significativo y con opt-out < 2 % (si la IA no supera a la regla por 1.3×, se usa la regla). "), t("GO Móvil ", { bold: true, color: VERDE }), t("si las llamadas bajan ≥ 10 %, significativo y con opt-out < 2 %. "), t("NO-GO ", { bold: true, color: ROJO }), t("en cualquier otro caso.")]),
-  p([t("Simulación del diseño (datos sintéticos, efectos supuestos): ", { italics: true }), t("Hogar −19 % de visitas (IC 95 % 12 % a 25 %) y −56 % de llamadas técnicas; Móvil −15 % de llamadas (IC 95 % 12 % a 19 %).", { italics: true })]),
+  p([t("GO Hogar ", { bold: true, color: VERDE }), t("si las visitas en hogares marcados bajan ≥ 15 %, significativo y con opt-out < 2 % (si la IA no supera a la regla por 1.3×, se usa la regla). "), t("GO Móvil ", { bold: true, color: VERDE }), t("si las llamadas bajan ≥ 12 % (su punto de equilibrio), significativo y con opt-out < 2 %. "), t("NO-GO ", { bold: true, color: ROJO }), t("en cualquier otro caso.")]),
+  p([t("Simulación del diseño (datos sintéticos, efectos supuestos): ", { italics: true }), t("Hogar −19 % de visitas (IC 95 % 12 % a 25 %) y −56 % de llamadas técnicas; Móvil −16 % de llamadas (IC 95 % 12 % a 19 %).", { italics: true })]),
 
   h1("7. Seguridad y privacidad (vara de hiperescalador)"),
   bullet([t("Datos mínimos: ", { bold: true }), t("solo desempeño del módem y de la línea; nunca contenido de comunicaciones, navegación ni dispositivos del cliente.")]),

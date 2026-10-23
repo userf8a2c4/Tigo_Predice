@@ -12,7 +12,7 @@
 - **Hogar:** GO si las visitas en hogares marcados bajan ≥ 15 %, de forma significativa (p < 0.05) y con opt-out < 2 %. Si la IA no supera a la regla de umbrales por 1.3×, se usa la regla.
 - **Móvil:** GO si las llamadas en 72 h bajan ≥ 10 %, de forma significativa y con opt-out < 2 %.
 
-**Inversión:** L 770 mil (rango L 470 mil a L 1.2 M). Ver [impacto.md](impacto.md).
+**Inversión:** L 770 mil (rango L 480 mil a L 1.2 M). Ver [impacto.md](impacto.md).
 
 ## Fase 2 · Churn de prepago y retención (solo si la Fase 1 da GO)
 - Los modelos de 7 y 30 días que ya existen en el prototipo, reentrenados con **validación temporal**.

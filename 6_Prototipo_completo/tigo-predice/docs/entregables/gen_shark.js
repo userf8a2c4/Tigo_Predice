@@ -1,7 +1,7 @@
 // Presentación para AI Shark Tank (Tigo CX Month), con las secciones que pide el formato del concurso:
 // categoría, problema, usuario, idea con IA e impacto esperado, más el pedido a los Sharks.
 // Uso: node gen_shark.js <salida.pptx> <docs/capturas> <datos_deck.json> <fondo.png>
-// Requiere APPLY_THEME (ruta a apply_theme.js de la skill pptx) y NODE_PATH con pptxgenjs.
+// Requiere NODE_PATH con pptxgenjs y APPLY_THEME: ruta a un módulo que escribe los colores de THEME en el tema del .pptx.
 const path = require("path");
 const fs = require("fs");
 const pptxgen = require("pptxgenjs");
@@ -47,7 +47,7 @@ pres.defineSlideMaster({
     { text: { text: "AI Shark Tank · Tigo CX Month", options: { x: 8.33, y: 0.46, w: 4.4, h: 0.5, fontSize: 15, bold: true, color: "FFFFFF", align: "right", valign: "middle", margin: 0 } } },
     { placeholder: { options: { name: "pregunta", type: "body", x: 0.6, y: 1.25, w: 12.1, h: 0.4, fontSize: 17, bold: true, color: H.celeste, valign: "middle", align: "left", margin: 0 }, text: "" } },
     { placeholder: { options: { name: "title", type: "title", x: 0.6, y: 1.65, w: 12.1, h: 0.85, fontSize: 30, bold: true, color: S.background1, valign: "top", align: "left", margin: 0 }, text: "" } },
-    { text: { text: "Tigo Predice · Datos simulados: supuestos a validar con Tigo", options: { x: 0.6, y: 7.02, w: 8, h: 0.3, fontSize: 10, color: H.pie, margin: 0 } } },
+    { text: { text: "Tigo Predice · Clientes: Millicom 20-F 2025 · Costos y efectos: supuestos a validar con Tigo", options: { x: 0.6, y: 7.02, w: 8, h: 0.3, fontSize: 10, color: H.pie, margin: 0 } } },
   ],
   slideNumber: { x: 12.2, y: 7.02, w: 0.5, h: 0.3, fontSize: 10, color: H.pie, align: "right" },
 });
@@ -138,23 +138,23 @@ PASOS.forEach(([t, d], i) => {
   txt(s, [{ text: t, options: { bold: true, fontSize: 17, color: "FFFFFF", breakLine: true } }, { text: d, options: { fontSize: 14, color: H.suave } }],
     { x, y: 3.6, w: 2.85, h: 1.4, valign: "top", paraSpaceAfter: 4, objectName: `pasot${i}` });
 });
-[[nb(C.hogar_visitas_mes), "visitas técnicas a hogares cada mes"], ["3 de cada 10", "no encuentran falla física: se podían resolver a distancia"],
+[[nb(C.hogar_visitas_mes), `visitas técnicas al mes en ${nb(C.hogares_nacional)} hogares (estimado)`], ["1 de cada 4", nb("visitas se podían evitar (la industria: 17–20 % «sin falla»)")],
   [nb(C.costo_por_visita), "por visita, más 2 llamadas al call center antes de agendarla"]].forEach(([v, e], i) => {
   const x = 0.6 + i * 4.08;
   tarjeta(s, x, 5.2, 3.97, 1.55, `dato${i}`);
   txt(s, v, { x: x + 0.3, y: 5.32, w: 3.4, h: 0.7, fontSize: 34, bold: true, color: i === 1 ? H.rojo : H.azul, objectName: `datov${i}` });
   txt(s, e, { x: x + 0.3, y: 6.02, w: 3.4, h: 0.6, fontSize: 14, color: H.gris, valign: "top", objectName: `datoe${i}` });
 });
-s.addNotes("Contar la historia: un hogar empieza a tener problemas de WiFi. El módem lo reporta, pero nadie lo mira hasta que cruza un umbral. El cliente llama, esperamos, mandamos un técnico, y en 3 de cada 10 visitas no hay nada físico que arreglar. Decir con naturalidad que las cifras son supuestos a validar con Tigo.");
+s.addNotes("Contar la historia: un hogar empieza a tener problemas de WiFi. El módem lo reporta, pero nadie lo mira hasta que cruza un umbral. El cliente llama, esperamos, mandamos un técnico, y en 1 de cada 4 visitas no hay nada físico que arreglar. Tigo tiene 191 mil hogares, según el 20-F 2025 de Millicom. Decir con naturalidad que las cifras son supuestos a validar con Tigo.");
 
 // ───────────── 4 · Usuario
 pres.addSection({ title: "Usuario" });
 s = pres.addSlide({ masterName: "SECCION", sectionTitle: "Usuario" });
 encabezado(s, "Usuario", "¿A quién le afecta?", "Afecta al cliente, a quienes lo atienden y al negocio");
-[["🏠", "Cliente de Internet Hogar", `Pierde el servicio, llama, espera y debe quedarse en casa para el técnico. ${nb(C.hogares_nacional)} hogares (supuesto).`],
-  ["📱", "Cliente móvil en una falla masiva", "No sabe qué pasa ni cuándo vuelve el servicio: 1 de cada 3 afectados llama si no recibe aviso."],
+[["🏠", "Cliente de Internet Hogar", `Pierde el servicio, llama, espera y debe quedarse en casa para el técnico. ${nb(C.hogares_nacional)} hogares de Tigo (Millicom, 2025).`],
+  ["📱", "Cliente móvil en una falla masiva", "5.0 M de clientes. En una falla masiva no sabe qué pasa: sin aviso, 1 de cada 3 afectados llama."],
   ["🎧", "Agentes del call center", "Atienden llamadas repetidas sobre fallas que la red ya conocía y no pueden resolver."],
-  ["🛠️", "Técnicos de campo", "3 de cada 10 visitas son a hogares sin falla física: tiempo que no llega a quien sí lo necesita."]].forEach(([e, t, d], i) => {
+  ["🛠️", "Técnicos de campo", "1 de cada 4 visitas es a un hogar sin falla física: tiempo que no llega a quien sí lo necesita."]].forEach(([e, t, d], i) => {
   const x = 0.6 + i * 3.06;
   tarjeta(s, x, 2.75, 2.95, 3.0, `u${i}`);
   txt(s, e, { x: x + 0.25, y: 2.92, w: 0.8, h: 0.65, fontSize: 32, fontFace: EMOJI, objectName: `ue${i}` });
@@ -198,7 +198,7 @@ s.addImage({ path: path.join(CAPT, "hogar.png"), x: 0.6, y: 2.65, w: 7.4, h: 4.1
   ["Explica el porqué", "el WiFi empeora día a día"],
   ["Se corrige a distancia", "y llega un WhatsApp al cliente"],
   ["02/10: habría llamado", "la regla alarmaba recién el 03/10"],
-  [nb("Visita evitada"), nb("L 1,270 de ahorro por L 0.31")]].forEach(([t, d], i) => {
+  [nb("Visita evitada"), nb("L 780 de ahorro por L 0.31")]].forEach(([t, d], i) => {
   const y = 2.62 + i * 0.84;
   circulo(s, 8.4, y + 0.05, 0.48, String(i + 1), `d${i}`, i === 4 ? H.amarillo : H.celeste);
   txt(s, [{ text: t, options: { bold: true, color: "FFFFFF", breakLine: true } }, { text: d, options: { fontSize: 14, color: H.suave } }],
@@ -208,31 +208,31 @@ s.addNotes("Si hay pantalla, mostrar la demo 'Hogar en vivo' (77 segundos) o el 
 
 // ───────────── 7 · Por qué IA
 s = pres.addSlide({ masterName: "SECCION", sectionTitle: "Idea con IA" });
-encabezado(s, "Nuestra idea con IA", "¿Por qué IA y no una regla?", "Con el mismo presupuesto, anticipa el doble que las alarmas");
+encabezado(s, "Nuestra idea con IA", "¿Por qué IA y no una regla?", "En la simulación, anticipa el doble que las alarmas de hoy");
 tarjeta(s, 0.6, 2.7, 7.0, 4.05, "graf-fondo");
 const cv = D.captura_visitas_evitables;
 s.addChart(pres.charts.BAR, [{ name: "% de visitas evitables anticipadas", labels: Object.keys(cv), values: Object.values(cv) }], {
   x: 0.75, y: 2.8, w: 6.7, h: 3.85, barDir: "bar", chartColors: [H.azul], showTitle: true,
-  title: "% de visitas evitables anticipadas (2 % marcado por semana)", showValue: true, dataLabelPosition: "outEnd",
+  title: "% de visitas evitables anticipadas (simulado)", showValue: true, dataLabelPosition: "outEnd",
   dataLabelFormatCode: "0\" %\"", showLegend: false, valAxisMaxVal: 100, valAxisMinVal: 0, ...ejes, objectName: "graf-modelo" });
 [[`${C.hogar_ia_vs_regla} lo que ve la regla`, nb(`La IA anticipa ${C.hogar_ia_captura} de las visitas evitables; la alarma por umbral, ${C.hogar_regla_captura}.`)],
   [nb(`${C.hogar_deteccion_temprana} sin ninguna alarma`), "La IA ve tendencias: la señal que baja, el WiFi que empeora. La regla ve cuando ya es tarde."],
-  ["Con salida honesta", "Si con datos reales no supera a la regla por 1.3×, el piloto usa la regla. No hay pérdida."]].forEach(([t, d], i) => {
+  ["Hipótesis, no promesa", "Se valida con 3 meses de telemetría real en las semanas 0–2. Si no supera a la regla por 1.3×, se usa la regla."]].forEach(([t, d], i) => {
   const y = 2.7 + i * 1.38;
   vidrio(s, 7.9, y, 4.83, 1.25, `pq${i}`);
   txt(s, [{ text: t, options: { bold: true, fontSize: 19, color: i === 0 ? H.amarillo : "FFFFFF", breakLine: true } }, { text: d, options: { fontSize: 14, color: H.suave } }],
     { x: 8.15, y: y + 0.12, w: 4.4, h: 1.05, valign: "top", paraSpaceAfter: 2, objectName: `pqt${i}` });
 });
-s.addNotes("No medimos la IA contra nada: la medimos contra lo que Tigo ya tiene, la alarma por umbral. Mismo presupuesto, el doble de visitas anticipadas. Y si con datos reales no gana, usamos la regla: el piloto igual sirve.");
+s.addNotes("No medimos la IA contra nada: la medimos contra lo que Tigo ya tiene, la alarma por umbral. En datos simulados, con el mismo presupuesto, anticipa el doble. Decirlo claro: es una hipótesis que validamos con datos reales en dos semanas. Y si con datos reales no gana, usamos la regla: el piloto igual sirve.");
 
 // ───────────── 8 · Impacto
 pres.addSection({ title: "Impacto" });
 s = pres.addSlide({ masterName: "SECCION", sectionTitle: "Impacto" });
-encabezado(s, "Impacto esperado", "¿Qué beneficio se obtiene?", `${C.neto_anio1_base} netos en el año 1, contando solo ahorro duro`);
+encabezado(s, "Impacto esperado", "¿Qué beneficio se obtiene?", `${C.neto_anio1_base} netos el año 1, con costos reales de Honduras`);
 [[nb(C.neto_anio1_base), "netos en el año 1 (escenario base, ya descontada la inversión)", H.amarillo, H.navy],
   [C.hogar_visitas_evitadas_anio_base, "visitas técnicas evitadas al año", "FFFFFF", H.azul],
   [llamadasTotales, "llamadas menos al call center al año (Hogar + Móvil)", "FFFFFF", H.azul],
-  [nb(C.equilibrio_anio1), "de reducción basta para que cada frente se pague", "FFFFFF", H.azul]].forEach(([v, e, fill, col], i) => {
+  [nb(C.equilibrio_anio1), `menos llamadas y Móvil se paga en el año 1 (Hogar: ${C.hogar_equilibrio_anio1})`, "FFFFFF", H.azul]].forEach(([v, e, fill, col], i) => {
   const x = 0.6 + i * 3.06;
   tarjeta(s, x, 2.7, 2.95, 1.85, `imp${i}`, fill);
   txt(s, v, { x: x + 0.25, y: 2.82, w: 2.6, h: 0.8, fontSize: 40, bold: true, color: col, objectName: `impv${i}` });
@@ -246,11 +246,11 @@ encabezado(s, "Impacto esperado", "¿Qué beneficio se obtiene?", `${C.neto_anio
   txt(s, [{ text: t, options: { bold: true, fontSize: 18, color: H.celeste, breakLine: true } }, { text: d, options: { fontSize: 15, color: "FFFFFF" } }],
     { x: x + 0.25, y: 4.95, w: 3.45, h: 1.7, valign: "top", paraSpaceAfter: 6, objectName: `bent${i}` });
 });
-s.addNotes(`Solo contamos beneficio duro: visitas y llamadas evitadas por su costo. ${C.neto_anio1_base} netos en el año 1 en el escenario base. Cada frente se paga con apenas ${C.equilibrio_anio1} de reducción. La retención y el NPS son upside, no están en el número.`);
+s.addNotes(`Solo contamos beneficio duro: visitas y llamadas evitadas por su costo. ${C.neto_anio1_base} netos en el año 1 en el escenario base. Usamos la base real de Tigo Honduras y costos hondureños: visita ${C.costo_por_visita}, llamada ${C.costo_por_llamada}. Móvil se paga con ${C.equilibrio_anio1} menos llamadas y Hogar con ${C.hogar_equilibrio_anio1} menos visitas evitables. La retención y el NPS son upside, no están en el número.`);
 
 // ───────────── 9 · Escenarios y medición
 s = pres.addSlide({ masterName: "SECCION", sectionTitle: "Impacto" });
-encabezado(s, "Impacto esperado", "¿Y si los supuestos fallan?", "En el peor escenario queda en equilibrio; en el base deja L 10 M");
+encabezado(s, "Impacto esperado", "¿Y si los supuestos fallan?", "Si todo sale mal se pierden L 3 M: por eso, primero un piloto");
 tarjeta(s, 0.6, 2.7, 6.9, 4.05, "esc-fondo");
 const esc = ["Conservador", "Base", "Optimista"];
 const kk = ["conservador", "base", "optimista"];
@@ -270,7 +270,7 @@ txt(s, [{ text: nb(`−${PH.reduccion} visitas`), options: { fontSize: 26, bold:
   { text: nb(`IC 95 %: ${PH.ic} · llamadas técnicas −${PH.reduccion_llamadas}`), options: { fontSize: 14, color: H.suave, breakLine: true } },
   { text: "Simulado: muestra cómo se medirá, no promete un número.", options: { fontSize: 13, italic: true, color: H.pie } }],
   { x: 8.05, y: 4.7, w: 4.5, h: 1.8, valign: "top", paraSpaceAfter: 4, objectName: "pil-r" });
-s.addNotes(`Rango completo: ${C.neto_anio1_rango}. Incluso con todos los supuestos en su valor bajo, queda en equilibrio. El piloto se mide contra un grupo control, con intervalo de confianza: así la decisión se toma con datos de Tigo, no con nuestra simulación.`);
+s.addNotes(`Rango completo: ${C.neto_anio1_rango}. Si todos los supuestos salen mal a la vez, escalar perdería hasta L 3 M. Por eso no pedimos escalar: pedimos un piloto de L 770 mil que lo averigua. El piloto se mide contra un grupo control, con intervalo de confianza: así la decisión se toma con datos de Tigo, no con nuestra simulación.`);
 
 // ───────────── 10 · Cómo se hace realidad
 pres.addSection({ title: "Pedido" });
@@ -286,7 +286,7 @@ encabezado(s, "Plan", "¿Cómo lo hacemos realidad?", "Piloto de 12 semanas en S
 });
 tarjeta(s, 0.6, 4.85, 5.95, 1.9, "go");
 txt(s, [{ text: "GO si…", options: { bold: true, color: H.verde, fontSize: 19, breakLine: true } },
-  { text: nb("las visitas bajan 15 % o más (llamadas 10 % en Móvil), con significancia"), options: { bullet: { indent: 16 }, breakLine: true } },
+  { text: nb("las visitas bajan 15 % o más (llamadas 12 % en Móvil), con significancia"), options: { bullet: { indent: 16 }, breakLine: true } },
   { text: nb("menos de 2 % de clientes pide no recibir mensajes"), options: { bullet: { indent: 16 }, breakLine: true } },
   { text: "la IA supera a la regla por 1.3× (si no, se usa la regla)", options: { bullet: { indent: 16 } } }],
   { x: 0.85, y: 4.97, w: 5.5, h: 1.7, fontSize: 14, color: "334155", valign: "top", paraSpaceAfter: 2, objectName: "go-t" });

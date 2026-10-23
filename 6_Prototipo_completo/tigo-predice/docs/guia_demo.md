@@ -19,7 +19,7 @@
 | 2:30 | Modelo de IA | Señalar 52 % vs. 26 % | «Medida contra la regla, no contra nada» |
 | 2:50 | Resultados del piloto | GO y −19 % | «Simulado: así se medirá» |
 | 3:10 | Falla masiva (opcional) | /falla?final | «El mismo motor en móvil» |
-| 3:40 | Caso de negocio | L 10 M y 9 % | «Solo beneficio duro» |
+| 3:40 | Caso de negocio | L 4.3 M; equilibrio 12 % y 22 % | «Solo beneficio duro» |
 | 4:20 | Listo para producción | Seguridad | «Red team propio, GDPR como vara» |
 | 4:40 | Diapositiva final | El pedido | «12 semanas, L 770 mil, GO/NO-GO» |
 
@@ -66,7 +66,7 @@ Así termina la demo. Si algo falla en vivo, abra /hogar?final y explique esta p
 6. **Por qué lo marcó.** Motivos en lenguaje simple (contribuciones SHAP del modelo).
 7. **Acciones remotas.** Firmware de madrugada, cambio de canal WiFi y verificación a los 3 días.
 8. **WhatsApp.** «Ya la corregimos a distancia, sin que tuviera que llamar», con opción AGENTE.
-9. **Resultado.** 4 días antes de la llamada, visita evitada, L 1,270 de ahorro por L 0.31.
+9. **Resultado.** 4 días antes de la llamada, visita evitada, L 780 de ahorro por L 0.31.
 
 ## Hogar en vivo ★: la lista de trabajo de hoy
 
@@ -116,7 +116,7 @@ Solo beneficio duro. Si el jurado da un dato real, ingréselo en vivo: es el mom
 ![Caso de negocio y «Pon tus números»](capturas/negocio.png)
 
 1. **Neto año 1.** Ambos frentes, escenario base, con inversión.
-2. **Equilibrio por frente.** Hogar y Móvil se pagan con solo 9 % de reducción.
+2. **Equilibrio por frente.** Móvil se paga con 12 % menos llamadas; Hogar, con 22 % menos visitas evitables.
 3. **Visitas al mes.** Escriba el dato real (solo números, sin comas).
 4. **Costo por visita.** En lempiras. Lo mismo con llamadas y costo por llamada.
 5. **Recalcular.** Todo se recalcula al instante y aparece «usando dato Tigo».

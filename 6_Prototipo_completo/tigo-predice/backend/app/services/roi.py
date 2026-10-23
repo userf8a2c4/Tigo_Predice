@@ -369,7 +369,7 @@ def cifras(cfg: dict) -> dict:
         "costo_recurrente_anio_base": L(b["nacional"]["costo_recurrente_anio"]),
         "inversion_unica_base": L(b["nacional"]["inversion_unica"]),
         "roi_anio1_base": f"{b['nacional']['roi_anio1']:.1f}×",
-        "payback_base": f"{b['nacional']['payback_meses']:.0f} meses" if b["nacional"]["payback_meses"] else "—",
+        "payback_base": f"{math.ceil(b['nacional']['payback_meses'])} meses" if b["nacional"]["payback_meses"] else "—",
         "piloto_costo_base": L(b["piloto"]["costo_total"]),
         "piloto_costo_usd": f"US$ {sig(b['piloto']['costo_total'] / tc) / 1000:,.0f} mil",
         "piloto_costo_rango": rango(o["piloto"]["costo_total"], c["piloto"]["costo_total"]),
@@ -426,7 +426,7 @@ def reporte_markdown(cfg: dict) -> str:
         return f"| {nombre} | " + " | ".join(f(es[e]) for e in orden) + " |"
 
     pct = lambda v: f"{v * 100:.0f} %"  # noqa: E731
-    pago = lambda n: f"{n['payback_meses']:.0f} meses" if n["payback_meses"] else "no se recupera"  # noqa: E731
+    pago = lambda n: f"{math.ceil(n['payback_meses'])} meses" if n["payback_meses"] else "no se recupera"  # noqa: E731
     out = [
         "# Impacto esperado — Tigo Predice v03 (caso conservador)",
         "",

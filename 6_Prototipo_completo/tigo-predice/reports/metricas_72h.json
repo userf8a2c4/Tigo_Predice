@@ -33,14 +33,14 @@
         },
         {
           "decil": 4,
-          "tasa": 0.4134,
-          "lift": 1.11,
-          "captura_acumulada": 0.6018
+          "tasa": 0.4078,
+          "lift": 1.1,
+          "captura_acumulada": 0.6003
         },
         {
           "decil": 5,
-          "tasa": 0.3034,
-          "lift": 0.82,
+          "tasa": 0.309,
+          "lift": 0.83,
           "captura_acumulada": 0.6833
         },
         {
@@ -51,20 +51,20 @@
         },
         {
           "decil": 7,
-          "tasa": 0.2865,
-          "lift": 0.77,
-          "captura_acumulada": 0.8371
+          "tasa": 0.2921,
+          "lift": 0.79,
+          "captura_acumulada": 0.8386
         },
         {
           "decil": 8,
           "tasa": 0.2303,
           "lift": 0.62,
-          "captura_acumulada": 0.8989
+          "captura_acumulada": 0.9005
         },
         {
           "decil": 9,
-          "tasa": 0.2022,
-          "lift": 0.54,
+          "tasa": 0.1966,
+          "lift": 0.53,
           "captura_acumulada": 0.9532
         },
         {
@@ -76,41 +76,41 @@
       ]
     },
     "LightGBM": {
-      "auc": 0.711,
-      "brier": 0.2134,
-      "precision_top10": 0.742,
-      "recall_top10": 0.199,
-      "llamadas_por_100_contactos_top20": 90.8,
-      "recall_llamadas_top20": 0.348,
+      "auc": 0.712,
+      "brier": 0.2131,
+      "precision_top10": 0.77,
+      "recall_top10": 0.207,
+      "llamadas_por_100_contactos_top20": 91.9,
+      "recall_llamadas_top20": 0.352,
       "lift": [
         {
           "decil": 1,
-          "tasa": 0.743,
-          "lift": 2.0,
-          "captura_acumulada": 0.2006
+          "tasa": 0.7654,
+          "lift": 2.06,
+          "captura_acumulada": 0.2066
         },
         {
           "decil": 2,
-          "tasa": 0.581,
-          "lift": 1.56,
-          "captura_acumulada": 0.3575
+          "tasa": 0.5642,
+          "lift": 1.52,
+          "captura_acumulada": 0.359
         },
         {
           "decil": 3,
-          "tasa": 0.5587,
-          "lift": 1.5,
-          "captura_acumulada": 0.5083
+          "tasa": 0.5475,
+          "lift": 1.47,
+          "captura_acumulada": 0.5068
         },
         {
           "decil": 4,
-          "tasa": 0.4078,
-          "lift": 1.1,
-          "captura_acumulada": 0.6184
+          "tasa": 0.3966,
+          "lift": 1.07,
+          "captura_acumulada": 0.6139
         },
         {
           "decil": 5,
-          "tasa": 0.2697,
-          "lift": 0.73,
+          "tasa": 0.2865,
+          "lift": 0.77,
           "captura_acumulada": 0.6908
         },
         {
@@ -121,37 +121,37 @@
         },
         {
           "decil": 7,
-          "tasa": 0.2416,
-          "lift": 0.65,
-          "captura_acumulada": 0.8311
+          "tasa": 0.2303,
+          "lift": 0.62,
+          "captura_acumulada": 0.8281
         },
         {
           "decil": 8,
-          "tasa": 0.2303,
-          "lift": 0.62,
-          "captura_acumulada": 0.8929
+          "tasa": 0.2472,
+          "lift": 0.67,
+          "captura_acumulada": 0.8944
         },
         {
           "decil": 9,
-          "tasa": 0.2584,
-          "lift": 0.7,
-          "captura_acumulada": 0.9623
+          "tasa": 0.2303,
+          "lift": 0.62,
+          "captura_acumulada": 0.9563
         },
         {
           "decil": 10,
-          "tasa": 0.1404,
-          "lift": 0.38,
+          "tasa": 0.1629,
+          "lift": 0.44,
           "captura_acumulada": 1.0
         }
       ]
     },
     "LightGBM calibrado": {
       "auc": 0.703,
-      "brier": 0.2078,
+      "brier": 0.2077,
       "precision_top10": 0.753,
       "recall_top10": 0.202,
-      "llamadas_por_100_contactos_top20": 91.3,
-      "recall_llamadas_top20": 0.35,
+      "llamadas_por_100_contactos_top20": 91.9,
+      "recall_llamadas_top20": 0.352,
       "lift": [
         {
           "decil": 1,
@@ -161,56 +161,56 @@
         },
         {
           "decil": 2,
-          "tasa": 0.5419,
-          "lift": 1.46,
-          "captura_acumulada": 0.3499
+          "tasa": 0.5475,
+          "lift": 1.47,
+          "captura_acumulada": 0.3514
         },
         {
           "decil": 3,
           "tasa": 0.5363,
           "lift": 1.44,
-          "captura_acumulada": 0.4947
+          "captura_acumulada": 0.4962
         },
         {
           "decil": 4,
-          "tasa": 0.4078,
-          "lift": 1.1,
-          "captura_acumulada": 0.6048
+          "tasa": 0.3799,
+          "lift": 1.02,
+          "captura_acumulada": 0.5988
         },
         {
           "decil": 5,
-          "tasa": 0.3315,
-          "lift": 0.89,
-          "captura_acumulada": 0.6938
+          "tasa": 0.3427,
+          "lift": 0.92,
+          "captura_acumulada": 0.6908
         },
         {
           "decil": 6,
-          "tasa": 0.2303,
-          "lift": 0.62,
-          "captura_acumulada": 0.7557
+          "tasa": 0.2753,
+          "lift": 0.74,
+          "captura_acumulada": 0.7647
         },
         {
           "decil": 7,
-          "tasa": 0.2416,
-          "lift": 0.65,
-          "captura_acumulada": 0.8205
+          "tasa": 0.2135,
+          "lift": 0.57,
+          "captura_acumulada": 0.822
         },
         {
           "decil": 8,
-          "tasa": 0.2528,
-          "lift": 0.68,
-          "captura_acumulada": 0.8884
+          "tasa": 0.2753,
+          "lift": 0.74,
+          "captura_acumulada": 0.8959
         },
         {
           "decil": 9,
-          "tasa": 0.2191,
-          "lift": 0.59,
-          "captura_acumulada": 0.9472
+          "tasa": 0.2022,
+          "lift": 0.54,
+          "captura_acumulada": 0.9502
         },
         {
           "decil": 10,
-          "tasa": 0.1966,
-          "lift": 0.53,
+          "tasa": 0.1854,
+          "lift": 0.5,
           "captura_acumulada": 1.0
         }
       ]
@@ -292,53 +292,53 @@
   "calibracion": {
     "LightGBM": [
       {
-        "prob_media": 0.2028,
-        "tasa_real": 0.1397,
+        "prob_media": 0.2031,
+        "tasa_real": 0.1676,
         "n": 179
       },
       {
-        "prob_media": 0.2728,
-        "tasa_real": 0.257,
+        "prob_media": 0.2714,
+        "tasa_real": 0.2291,
         "n": 179
       },
       {
-        "prob_media": 0.3193,
-        "tasa_real": 0.2346,
+        "prob_media": 0.3169,
+        "tasa_real": 0.2402,
         "n": 179
       },
       {
-        "prob_media": 0.3684,
-        "tasa_real": 0.2458,
+        "prob_media": 0.3673,
+        "tasa_real": 0.2291,
         "n": 179
       },
       {
-        "prob_media": 0.4237,
-        "tasa_real": 0.2697,
+        "prob_media": 0.4225,
+        "tasa_real": 0.2865,
         "n": 178
       },
       {
-        "prob_media": 0.4888,
+        "prob_media": 0.4884,
         "tasa_real": 0.2809,
         "n": 178
       },
       {
-        "prob_media": 0.5555,
-        "tasa_real": 0.4045,
+        "prob_media": 0.5547,
+        "tasa_real": 0.4157,
         "n": 178
       },
       {
-        "prob_media": 0.6309,
-        "tasa_real": 0.5674,
+        "prob_media": 0.6317,
+        "tasa_real": 0.5449,
         "n": 178
       },
       {
-        "prob_media": 0.7032,
-        "tasa_real": 0.5787,
+        "prob_media": 0.7011,
+        "tasa_real": 0.5562,
         "n": 178
       },
       {
-        "prob_media": 0.7954,
-        "tasa_real": 0.7416,
+        "prob_media": 0.7941,
+        "tasa_real": 0.7697,
         "n": 178
       }
     ],
@@ -349,48 +349,48 @@
         "n": 179
       },
       {
-        "prob_media": 0.3003,
-        "tasa_real": 0.2291,
+        "prob_media": 0.2985,
+        "tasa_real": 0.2011,
         "n": 179
       },
       {
-        "prob_media": 0.3151,
-        "tasa_real": 0.2458,
+        "prob_media": 0.3145,
+        "tasa_real": 0.2682,
         "n": 179
       },
       {
-        "prob_media": 0.3312,
-        "tasa_real": 0.2458,
+        "prob_media": 0.3325,
+        "tasa_real": 0.2179,
         "n": 179
       },
       {
-        "prob_media": 0.3522,
-        "tasa_real": 0.2303,
+        "prob_media": 0.3517,
+        "tasa_real": 0.264,
         "n": 178
       },
       {
-        "prob_media": 0.3662,
-        "tasa_real": 0.3315,
+        "prob_media": 0.3668,
+        "tasa_real": 0.3596,
         "n": 178
       },
       {
-        "prob_media": 0.3985,
-        "tasa_real": 0.4101,
+        "prob_media": 0.396,
+        "tasa_real": 0.3652,
         "n": 178
       },
       {
-        "prob_media": 0.4453,
-        "tasa_real": 0.5337,
+        "prob_media": 0.4441,
+        "tasa_real": 0.5393,
         "n": 178
       },
       {
-        "prob_media": 0.507,
-        "tasa_real": 0.5449,
+        "prob_media": 0.5033,
+        "tasa_real": 0.5618,
         "n": 178
       },
       {
-        "prob_media": 0.6509,
-        "tasa_real": 0.7528,
+        "prob_media": 0.6552,
+        "tasa_real": 0.7472,
         "n": 178
       }
     ]
@@ -437,9 +437,9 @@
       "tipo": "prioridad",
       "contactos": 357,
       "costo": 5712.0,
-      "llamadas_capturadas": 326.0,
-      "llamadas_por_100": 91.3,
-      "costo_por_llamada_capturada": 17.52
+      "llamadas_capturadas": 328.0,
+      "llamadas_por_100": 91.9,
+      "costo_por_llamada_capturada": 17.41
     }
   ],
   "sesgo": {
@@ -449,24 +449,24 @@
         "n": 881,
         "tasa_real": 0.373,
         "prob_media": 0.387,
-        "pct_priorizado": 0.169,
-        "auc": 0.683
+        "pct_priorizado": 0.166,
+        "auc": 0.686
       },
       {
         "grupo": "rural",
         "n": 256,
         "tasa_real": 0.426,
-        "prob_media": 0.417,
-        "pct_priorizado": 0.242,
-        "auc": 0.66
+        "prob_media": 0.418,
+        "pct_priorizado": 0.246,
+        "auc": 0.662
       },
       {
         "grupo": "urbana",
         "n": 647,
         "tasa_real": 0.348,
-        "prob_media": 0.392,
-        "pct_priorizado": 0.226,
-        "auc": 0.738
+        "prob_media": 0.391,
+        "pct_priorizado": 0.229,
+        "auc": 0.737
       }
     ],
     "segmento": [
@@ -474,16 +474,16 @@
         "grupo": "hogar",
         "n": 190,
         "tasa_real": 0.632,
-        "prob_media": 0.555,
-        "pct_priorizado": 0.695,
-        "auc": 0.718
+        "prob_media": 0.554,
+        "pct_priorizado": 0.668,
+        "auc": 0.734
       },
       {
         "grupo": "pospago",
         "n": 526,
         "tasa_real": 0.399,
-        "prob_media": 0.41,
-        "pct_priorizado": 0.232,
+        "prob_media": 0.409,
+        "pct_priorizado": 0.224,
         "auc": 0.689
       },
       {
@@ -491,8 +491,8 @@
         "n": 1068,
         "tasa_real": 0.312,
         "prob_media": 0.356,
-        "pct_priorizado": 0.096,
-        "auc": 0.654
+        "pct_priorizado": 0.105,
+        "auc": 0.655
       }
     ]
   },
@@ -500,22 +500,22 @@
     {
       "variable": "llamadas_red_90d_previas",
       "nombre": "Llamadas por red (90 d)",
-      "valor": 0.1491
+      "valor": 0.1482
     },
     {
       "variable": "arpu",
       "nombre": "ARPU",
-      "valor": 0.1294
+      "valor": 0.1295
     },
     {
       "variable": "es_hogar",
       "nombre": "Es cliente hogar",
-      "valor": 0.1186
+      "valor": 0.1213
     },
     {
       "variable": "antiguedad_meses",
       "nombre": "Antigüedad",
-      "valor": 0.1172
+      "valor": 0.1111
     },
     {
       "variable": "hora_inicio",
@@ -525,17 +525,17 @@
     {
       "variable": "sin_resolver_30d_previas",
       "nombre": "Llamadas sin resolver (30 d)",
-      "valor": 0.0777
+      "valor": 0.0794
     },
     {
       "variable": "es_prepago",
       "nombre": "Es prepago",
-      "valor": 0.0463
+      "valor": 0.0439
     },
     {
       "variable": "eta_horas",
       "nombre": "Hora estimada de solución",
-      "valor": 0.0429
+      "valor": 0.0433
     },
     {
       "variable": "caidas_30d_previas",
@@ -545,7 +545,7 @@
     {
       "variable": "nps_previo",
       "nombre": "Última calificación",
-      "valor": 0.0404
+      "valor": 0.0409
     }
   ],
   "pct_prioridad": 0.2

@@ -13,7 +13,7 @@
 ## 0:00 – 0:15 · El gancho
 *[Mirar al jurado. Pausa antes de empezar.]*
 
-> Estimamos que cada mes Tigo manda unos **7,500 técnicos** a los hogares. En **3 de cada 10** visitas, el técnico no encuentra nada físico: cambia el canal del WiFi o actualiza el módem, y se va.
+> Estimamos que cada mes Tigo manda unos **5,700 técnicos** a sus 191 mil hogares. En **1 de cada 4** visitas, el técnico no encuentra nada físico: cambia el canal del WiFi o actualiza el módem, y se va.
 > Eso se podía resolver a distancia… **una semana antes.**
 
 ## 0:15 – 0:35 · El problema
@@ -26,12 +26,12 @@
 > - Cada semana califica a todos los hogares y marca al **2 %** que va a fallar, con la explicación de por qué.
 > - Si es WiFi o firmware, se **corrige a distancia** y al cliente le llega un WhatsApp. Si es físico, el técnico va **una sola vez y con el diagnóstico**.
 >
-> Y no la medimos contra nada: con el mismo presupuesto, la IA anticipa el **52 %** de las visitas evitables; las alarmas por umbral, el **26 %**. El mismo motor avisa a los clientes móviles en fallas masivas.
+> Y no la medimos contra nada: en nuestra simulación, con el mismo presupuesto, la IA anticipa el **52 %** de las visitas evitables; las alarmas por umbral, el **26 %**. Lo validamos con datos reales antes de gastar en el piloto. El mismo motor avisa a los clientes móviles en fallas masivas.
 
 ## 1:05 – 1:30 · El negocio, con honestidad
 > Contamos solo **beneficio duro**: visitas y llamadas evitadas.
-> - En el escenario base son **10 millones de lempiras netos** el primer año.
-> - Cada frente se paga con apenas **9 %** de reducción.
+> - Con costos hondureños, el escenario base deja **4.3 millones de lempiras netos** el primer año.
+> - Móvil se paga con **12 %** menos llamadas, y Hogar con **22 %** menos visitas evitables.
 >
 > Hoy todo es simulado, y lo decimos. Por eso el piloto tiene **grupo control**.
 
@@ -47,17 +47,17 @@
 ---
 
 ## Versión de 30 segundos (para el pasillo o el ascensor)
-> Cada mes Tigo manda miles de técnicos a hogares, y 3 de cada 10 visitas se podían resolver a distancia. Los módems avisan días antes, pero nadie lo escucha. Tigo Predice es una IA que marca cada semana a los hogares que van a fallar y los corrige antes de que el cliente llame. Anticipa el doble que las alarmas por umbral. Pido un piloto de 12 semanas con grupo control: si no funciona, se detiene.
+> Cada mes Tigo manda miles de técnicos a hogares, y 1 de cada 4 visitas se podía resolver a distancia. Los módems avisan días antes, pero nadie lo escucha. Tigo Predice es una IA que marca cada semana a los hogares que van a fallar y los corrige antes de que el cliente llame. En la simulación anticipa el doble que las alarmas por umbral, y eso se valida con datos reales. Pido un piloto de 12 semanas con grupo control: si no funciona, se detiene.
 
 ## Las 8 cifras que hay que saber de memoria
 | Cifra | Qué es |
 |---|---|
-| **7,500** | visitas técnicas a hogares al mes (supuesto) |
-| **3 de cada 10** | visitas evitables (supuesto a validar con códigos de cierre) |
+| **191 mil** | hogares de Tigo Honduras (Millicom, 2025); unas **5,700** visitas técnicas al mes (supuesto) |
+| **1 de cada 4** | visitas evitables (la industria reporta 17–20 % sin falla; se valida con códigos de cierre) |
 | **2 %** | hogares que la IA marca cada semana |
-| **52 % vs. 26 %** | visitas evitables que anticipa la IA vs. la regla de umbrales (2.0×) |
-| **L 10 M** | neto año 1, escenario base, solo beneficio duro (rango −L 23 mil a L 25 M) |
-| **9 %** | reducción con la que cada frente se paga en el año 1 |
+| **52 % vs. 26 %** | visitas evitables que anticipa la IA vs. la regla de umbrales (2.0×, simulado) |
+| **L 4.3 M** | neto año 1, escenario base, solo beneficio duro (rango −L 3 M a L 14 M) |
+| **12 % · 22 %** | reducción con la que se paga cada frente en el año 1 (Móvil · Hogar) |
 | **L 770 mil** | inversión del piloto (≈ US$ 28 mil) |
 | **12 semanas** | duración del piloto, con decisión GO/NO-GO por frente |
 

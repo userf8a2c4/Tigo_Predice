@@ -4,7 +4,7 @@
 *La IA que detecta el problema antes que el cliente, y lo resuelve antes de que llame o de que haya que mandar un técnico.*
 
 **Problema.**
-- **Hogar:** los módems avisan días antes de fallar (señal que baja, WiFi saturado, reinicios), pero hoy solo se mira cuando cruza un umbral. El cliente llama y se manda un técnico, aunque 3 de cada 10 visitas son evitables (supuesto).
+- **Hogar:** los módems avisan días antes de fallar (señal que baja, WiFi saturado, reinicios), pero hoy solo se mira cuando cruza un umbral. El cliente llama y se manda un técnico, aunque 1 de cada 4 visitas es evitable (supuesto; la industria reporta 17–20 % «sin falla encontrada»).
 - **Móvil:** cuando cae un sitio, 1 de cada 3 afectados llama si no recibe aviso (benchmark público).
 
 **Solución (piloto Fase 1, San Pedro Sula, 60 días).**
@@ -16,19 +16,19 @@
 
 | | Valor | Nota |
 |---|---|---|
-| Neto año 1 (Hogar + Móvil, base) | **L 10 M** | Rango −L 23 mil a L 25 M · solo beneficio duro |
-| Neto anual en régimen | **L 12 M** | Año 2 en adelante |
-| Punto de equilibrio | Hogar **9 %** · Móvil **9 %** | Reducción mínima para que cada frente se pague en el año 1 |
-| IA vs. regla de umbrales | **2.0×** | Anticipa 52 % de las visitas evitables vs. 26 % (simulado) |
-| Visitas evitadas al año (Hogar) | **5,200** | Rango 2,700 a 8,500 · solo 6 % del total de visitas |
+| Neto año 1 (Hogar + Móvil, base) | **L 4.3 M** | Rango −L 3 M a L 14 M · solo beneficio duro, costos hondureños |
+| Neto anual en régimen | **L 6 M** | Año 2 en adelante |
+| Punto de equilibrio | Hogar **22 %** · Móvil **12 %** | Reducción mínima para que cada frente se pague en el año 1 |
+| IA vs. regla de umbrales | **2.0×** | Anticipa 52 % de las visitas evitables vs. 26 % (datos simulados; se valida en las semanas 0–2) |
+| Visitas evitadas al año (Hogar) | **3,300** | Rango 1,700 a 5,400 · solo 5 % del total de visitas |
 | Llamadas evitadas al año (Móvil) | **110,000** | Rango 47,000 a 200,000 |
-| Inversión del piloto (60 días) | **L 770 mil** (≈ US$ 28 mil) | Rango L 470 mil a L 1.2 M |
-| Simulación del piloto | Hogar **−19 %** visitas · Móvil **−15 %** llamadas | Efectos supuestos; **resultado simulado** |
+| Inversión del piloto (60 días) | **L 770 mil** (≈ US$ 28 mil) | Rango L 480 mil a L 1.2 M |
+| Simulación del piloto | Hogar **−19 %** visitas · Móvil **−16 %** llamadas | Efectos supuestos; **resultado simulado** |
 | Potencial no incluido | L 3.4 M al año en retención (margen) | Vale cero hasta medirlo contra el control |
 
 **Criterios de decisión (semana 12, por frente).**
 - **Hogar:** GO si las visitas bajan ≥ 15 %, de forma significativa y con opt-out < 2 %. Si la IA no supera a la regla por 1.3×, se usa la regla.
-- **Móvil:** GO si las llamadas bajan ≥ 10 %, de forma significativa y con opt-out < 2 %.
+- **Móvil:** GO si las llamadas bajan ≥ 12 % (su punto de equilibrio), de forma significativa y con opt-out < 2 %.
 
 **Seguridad y privacidad (vara de hiperescalador).**
 - No se lee contenido, navegación ni los dispositivos del cliente.

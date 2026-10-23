@@ -16,12 +16,12 @@ Cada supuesto de `config/negocio.toml` está marcado como **"supuesto a validar"
 - Plantilla de **utilidad**, Resto de Latinoamérica: **≈ US$0.0113 por mensaje** (tarifa del 1-jul-2026, según Zernio, fuente secundaria). Las plantillas de utilidad dentro de la ventana de atención son gratuitas, pero los avisos proactivos se envían fuera de ella. **Verificar** con https://developers.facebook.com/docs/whatsapp/pricing
 
 ## Tamaño de la base
-- Tigo Honduras: **~5.0 M de clientes móviles** y **~175 mil de hogar** (Millicom, Form 20-F 2025).
+- Tigo Honduras: **5.0 M de clientes móviles** y **191 mil relaciones de clientes de hogar** (184 mil en 2024), Millicom Form 20-F 2025. Empresa conjunta (Celtel) con 66.67 % de Millicom. Ingresos del 1T-2026: US$158 M (6-K). Detalle en [revision_critica.md](revision_critica.md).
   https://www.sec.gov/Archives/edgar/data/912958/000162828026020831/tigo-20251231.htm
 - Tigo tenía el 66 % de las líneas móviles en el primer trimestre de 2025, según CONATEL vía DPL News.
 
 ## Costo por llamada
-- Agente de LATAM nearshore: US$12–24 por hora todo incluido (FusionCX, Retell AI, 2026). Con ~8 llamadas efectivas por hora, sale ≈ US$3.15, unos **L 85**. Supuesto a validar con Finanzas.
+- Centro de contacto en Honduras: US$11–16 por hora de agente, todo incluido (Globalify y TDS, 2026). Con 5–7 llamadas técnicas atendidas por hora sale ≈ US$2.4, unos **L 65**. Supuesto a validar con Finanzas.
 
 ## Tipo de cambio
 - ≈ **L 27 por US$** (BCH, octubre 2026).
