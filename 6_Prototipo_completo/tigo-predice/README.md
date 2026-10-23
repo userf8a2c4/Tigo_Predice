@@ -52,7 +52,7 @@ Tareas: `.\tareas.ps1 preparar | test | lint | seguridad | dev | front`.
 - **Simulación del piloto:** Hogar −19 % de visitas (IC 95 %: 12–25 %) y −56 % de llamadas técnicas; Móvil −16 % de llamadas. Son resultados **simulados**.
 
 ## Seguridad y privacidad
-Diseñado con la vara de un hiperescalador. Detalle en [docs/seguridad_y_privacidad.md](docs/seguridad_y_privacidad.md):
+Diseñado con marcos internacionales de seguridad y privacidad. Detalle en [docs/seguridad_y_privacidad.md](docs/seguridad_y_privacidad.md):
 - **Marcos:** GDPR como estándar (Honduras aún no tiene ley integral), ISO 27001/27701/42001, SOC 2, NIST CSF/AI RMF, OWASP ASVS/API/LLM y MITRE ATLAS.
 - **Datos:** sin contenido de comunicaciones ni navegación; datos mínimos.
 - **Controles de acceso:** sesión firmada y revocable, roles y CSRF.

@@ -1,4 +1,4 @@
-# Por qué Tigo Honduras no puede ignorar Tigo Predice
+# Por qué Tigo Predice es oportuno para Tigo Honduras
 
 Tigo Predice responde a tres cosas a la vez: lo que hoy prioriza Millicom, lo que ya exige CONATEL y lo que un comité tipo Shark Tank necesita ver para invertir.
 
@@ -50,13 +50,13 @@ El área B2B de Millicom crece con fuerza: los servicios digitales para empresas
 
 Para una empresa, una caída cuesta ventas y afecta el cumplimiento del contrato. La misma plataforma puede avisar a cada cliente empresarial apenas cae su enlace, con la causa y la hora estimada, y anticipar degradaciones en sus sitios. Esta fase **no entra en el caso base**: se propone después del GO del piloto.
 
-## 5. Seguridad y privacidad: la vara no baja
+## 5. Seguridad y privacidad
 
-Tigo Predice se diseñó con el estándar de un hiperescalador:
+Tigo Predice se diseñó con marcos internacionales de seguridad y privacidad:
 - **Marcos:** GDPR como referencia, ISO 27001/27701/42001, SOC 2, NIST CSF y AI RMF, OWASP ASVS, API y LLM, y MITRE ATLAS.
 - **Pruebas propias:** 12 ataques probados y corregidos.
 
-No se ajusta a la baja para encajar en procesos existentes. Si algún proceso interno todavía no llega a ese nivel, el piloto lo deja en evidencia y propone cómo cerrarlo; el producto no se adapta hacia abajo.
+Antes del primer mensaje a clientes, estos controles se revisan con los equipos de Seguridad de la Información, Privacidad y Legal de Tigo para alinearlos con sus políticas internas.
 
 ## Fuentes
 - CONATEL, Resolución NR001/26, Reglamento de Protección al Usuario y/o Suscriptor (La Gaceta n.º 37,082, 28-feb-2026): https://files.conatel.gob.hn/eb9a2f2d-297b-4db3-a385-e827e180e79b.pdf (listado en https://conatel.gob.hn/normativas)

@@ -1,29 +1,8 @@
-# Revisión crítica y datos reales (22 de octubre de 2026)
+# Datos reales, supuestos y riesgos
 
-Esta revisión contrasta cada supuesto del sistema con datos públicos de Tigo Honduras, de Millicom y del mercado hondureño, y lista los puntos débiles que encontramos. Hay supuestos que no tienen fuente pública; esos siguen marcados como **«supuesto a validar»** y encabezan la lista de datos a pedir a Tigo.
+Este documento reúne los datos públicos de Tigo Honduras y del mercado hondureño que usa el caso de negocio, los supuestos que todavía hay que validar con Tigo y los riesgos identificados con su mitigación. Los supuestos sin fuente pública están marcados como **«supuesto a validar»** y encabezan la lista de datos a solicitar.
 
-## 1. Qué cambió en los números
-
-| Supuesto | Antes | Ahora | Por qué |
-|---|---|---|---|
-| Hogares de Tigo Honduras | 175 mil | **191 mil** | El 20-F 2025 de Millicom dice 191,000 relaciones de clientes de hogar (184,000 en 2024). El dato anterior era un error nuestro. |
-| Visitas técnicas por hogar al mes | 4.3 % (7,500/mes) | **3 % (≈ 5,700/mes)** | No hay un benchmark público confiable; bajamos al centro de un rango prudente y lo marcamos como el primer dato a pedir. |
-| Visitas evitables | 30 % | **25 %** (17 % a 35 %) | La industria estima que el 17–20 % de las visitas termina «sin falla encontrada»; se suman los problemas de WiFi y firmware que se resuelven a distancia. |
-| Costo por visita evitable | L 1,100 | **L 650** (L 450 a L 1,000) | Cálculo con costos hondureños: técnico, cargas sociales, vehículo, combustible y despacho, a unas 4.5 visitas por día. |
-| Costo por llamada atendida | L 85 | **L 65** (L 40 a L 95) | Un centro de contacto en Honduras cuesta US$11–16 por hora de agente, todo incluido; con 5–7 llamadas técnicas por hora sale ≈ US$2.4. |
-| WhatsApp por mensaje | L 0.25 a L 0.40 | **L 0.30 a L 0.36** | Tarifa de utilidad de octubre de 2026: US$0.0113–0.0130. Desde ese mes Meta también cobra los mensajes de servicio. |
-| Tipo de cambio | L 27.0 | **L 27.0** (L 26.8 a L 27.3) | BCH: L 26.87 compra y L 27.01 venta (7 de septiembre de 2026). |
-| ARPU de hogar (Fase 2) | L 950 | **L 800** | Planes publicados en tigo.com.hn: L 599 (100 Mbps) a L 1,399 (400 Mbps), con ISV. |
-| Criterio GO de Móvil | −10 % de llamadas | **−12 %** | Con costos reales, Móvil se paga con 11.5 %; el GO no puede exigir menos que el punto de equilibrio. |
-
-**Resultado:**
-- **Neto del año 1 (escenario base):** pasa de L 10 M a **L 4.3 M**. El rango va de −L 3 M a L 14 M.
-- **Punto de equilibrio:** Hogar ahora se paga con 22 % menos visitas evitables en los hogares marcados (antes 9 %), y Móvil con 12 % menos llamadas (antes 9 %).
-- **Piloto:** sigue costando L 770 mil.
-
-El caso es más chico, pero cada cifra se puede defender frente a un comité.
-
-## 2. Tigo Honduras en datos públicos
+## 1. Tigo Honduras en datos públicos
 
 | Dato | Valor | Fuente |
 |---|---|---|
@@ -38,26 +17,38 @@ El caso es más chico, pero cada cifra se puede defender frente a un comité.
 | Salario mínimo promedio 2026 | L 14,917.20 | Secretaría de Trabajo, La Gaceta |
 | Ley de datos personales | Sigue sin aprobarse (proyecto pendiente desde 2018) | IAIP, El Heraldo |
 
-**Escala:** los ingresos por servicios de Tigo Honduras rondan US$600 M al año, unos L 16 mil millones. El neto base de Tigo Predice (L 4.3 M) es cerca del **0.03 %** de esos ingresos. Hay que decirlo con naturalidad: el valor principal es la experiencia del cliente, con menos fallas sufridas, llamadas y visitas, y el ahorro alcanza para que el proyecto se pague solo.
+**Escala:** los ingresos por servicios de Tigo Honduras rondan US$600 M al año, unos L 16 mil millones. El beneficio neto base de Tigo Predice (L 4.3 M en el año 1) cubre su propio costo; su valor principal es la experiencia del cliente: menos fallas sufridas, menos llamadas y menos visitas.
 
-## 3. Puntos débiles y qué hicimos
+## 2. Supuestos del caso de negocio (escenario base)
 
-| # | Punto débil | Riesgo | Estado |
+| Supuesto | Valor usado | Rango | Fuente o cálculo |
 |---|---|---|---|
-| 1 | Base de hogares mal citada (175 mil en lugar de 191 mil) | Pierde credibilidad si el jurado conoce el dato | **Corregido** |
-| 2 | Costos de visita y llamada con niveles de otros países | Infla el ahorro un 40–70 % | **Corregido** con cálculo hondureño y rangos |
-| 3 | 30 % de visitas evitables, por encima del benchmark (17–20 % sin falla) | Infla el ahorro de Hogar | **Corregido** a 25 % |
-| 4 | Frecuencia de visitas (4.3 % al mes) sin respaldo | Es una de las variables más sensibles | **Mitigado:** baja a 3 % y es el primer dato a pedir |
-| 5 | El GO de Móvil (10 %) quedaba por debajo del nuevo equilibrio (11.5 %) | Se podría «aprobar» algo que pierde plata | **Corregido** a 12 % |
-| 6 | «En el peor escenario queda en equilibrio» ya no es cierto: el conservador da −L 3 M | Afirmación falsa frente al jurado | **Corregido:** el mensaje ahora es que un piloto de L 770 mil evita apostar L 1.7 M a ciegas |
-| 7 | La ventaja de la IA sobre la regla (2.0×) sale de datos sintéticos donde nosotros pusimos la señal | No es evidencia; un jurado técnico lo detecta | **Mitigado:** se presenta como hipótesis y se valida en las semanas 0–2 con 3 meses de telemetría real; si no gana por 1.3×, se usa la regla |
-| 8 | Los efectos de referencia son de proveedores (avisos −18 % a −88 %; visitas −20 % a −60 %) y algunos con muestras chicas (MidSouth, n = 99) | Pueden estar sesgados al alza | **Mitigado:** el caso base usa el extremo bajo y el piloto lo mide con grupo control |
-| 9 | No sabemos qué parte de los módems reporta telemetría (TR-069 en GPON, CMTS en HFC) | Si la cobertura es baja, el beneficio de Hogar baja en proporción | **Pendiente:** pregunta para ingeniería de acceso |
-| 10 | Capacidad operativa: el 2 % semanal son ~3,800 hogares por semana en el país y ~800 en San Pedro Sula | Hecho a mano no escala | **Mitigado:** en el piloto, ~160 acciones por día hábil (2–3 agentes de soporte nivel 2 o lotes del ACS); a nivel nacional, solo con acciones automáticas |
-| 11 | El costo por llamada depende de si el call center es propio o tercerizado y de cuánto resuelve el IVR | Puede cambiar el caso de Móvil | **Pendiente:** dato de Finanzas/CX; el tornado ya lo muestra entre las tres variables que más pesan |
-| 12 | Desde octubre de 2026 Meta cobra también los mensajes de servicio | Sube un poco el costo de mensajería | **Incluido** en el rango (L 0.30 a L 0.36) |
+| Hogares de Tigo Honduras | 191 mil | — | Millicom, Form 20-F 2025 |
+| Visitas técnicas por hogar al mes | 3 % (≈ 5,700 al mes) | 2 % a 4.5 % | Supuesto a validar con operaciones de campo; no hay un referente público confiable |
+| Visitas evitables | 25 % | 17 % a 35 % | La industria estima que el 17–20 % de las visitas termina «sin falla encontrada», más los problemas de WiFi y firmware que se resuelven a distancia |
+| Costo por visita evitable | L 650 | L 450 a L 1,000 | Cálculo con costos hondureños: técnico, cargas sociales, vehículo, combustible y despacho, a unas 4.5 visitas por día |
+| Costo por llamada atendida | L 65 | L 40 a L 95 | Centro de contacto en Honduras: US$11–16 por hora de agente, todo incluido, con 5–7 llamadas técnicas por hora |
+| WhatsApp por mensaje | L 0.31 | L 0.30 a L 0.36 | Tarifa de utilidad de octubre de 2026: US$0.0113–0.0130 |
+| Tipo de cambio | L 27.0 por US$ | L 26.8 a L 27.3 | BCH: L 26.87 compra y L 27.01 venta (7 de septiembre de 2026) |
+| ARPU de hogar | L 800 | — | Planes publicados en tigo.com.hn |
+| Criterio GO de Móvil | −12 % de llamadas | — | Al menos el punto de equilibrio (11.5 %) |
 
-## 4. Lo que más mueve el resultado (tornado, escenario base)
+**Resultado:** el escenario base deja **L 4.3 M netos en el año 1**, con un rango de −L 3 M a L 14 M. Hogar se paga con 22 % menos visitas evitables en los hogares marcados y Móvil con 12 % menos llamadas. El piloto cuesta L 770 mil.
+
+## 3. Riesgos identificados y mitigación
+
+| # | Riesgo | Mitigación |
+|---|---|---|
+| 1 | La frecuencia real de visitas técnicas puede diferir del supuesto | Es el primer dato a solicitar a operaciones de campo; el caso se recalcula con él |
+| 2 | La ventaja de la IA sobre la regla de umbrales (2.0×) proviene de datos simulados | Se valida en las semanas 0–2 con 3 meses de telemetría real; si la IA no supera a la regla por 1.3×, se usa la regla |
+| 3 | Los efectos de referencia (avisos de −18 % a −88 %; visitas de −20 % a −60 %) son de proveedores y algunos con muestras pequeñas | El caso base usa valores conservadores y el piloto mide el efecto real con grupo control |
+| 4 | Se desconoce qué parte de los módems reporta telemetría (TR-069 en GPON, CMTS en HFC) | Pregunta para ingeniería de acceso; si la cobertura es menor, el beneficio de Hogar se ajusta en proporción |
+| 5 | Capacidad operativa: el 2 % semanal equivale a ~3,800 hogares por semana en el país y ~800 en San Pedro Sula | En el piloto, ~160 acciones por día hábil (2–3 agentes de soporte nivel 2 o lotes del ACS); a nivel nacional, con acciones automáticas |
+| 6 | El costo por llamada depende de si el centro de contacto es propio o tercerizado y de cuánto resuelve el IVR | Dato a solicitar a Finanzas/CX; el análisis de sensibilidad lo muestra entre las tres variables que más pesan |
+| 7 | Desde octubre de 2026 Meta cobra también los mensajes de servicio | Incluido en el rango de costo de mensajería |
+| 8 | En el escenario conservador, escalar sin validar podría perder hasta L 3 M | Por eso se propone primero un piloto acotado de L 770 mil con criterios GO / NO-GO |
+
+## 4. Lo que más mueve el resultado (análisis de sensibilidad, escenario base)
 
 | Supuesto | Neto año 1 con valor bajo | con valor alto |
 |---|---|---|
@@ -67,11 +58,11 @@ El caso es más chico, pero cada cifra se puede defender frente a un comité.
 | Tasa de llamadas en 72 h sin aviso (25 % a 40 %) | L 2.6 M | L 5.8 M |
 | Visitas técnicas por hogar al mes (2 % a 4.5 %) | L 3.4 M | L 5.6 M |
 
-**Conclusión:** los cinco datos que más importan son el efecto real del aviso (lo mide el piloto), el volumen de afectados por fallas masivas (NOC), el costo por llamada (Finanzas), la tasa de llamadas sin aviso (call center) y la frecuencia de visitas (campo). Están al principio de [datos_a_pedir_a_tigo.md](datos_a_pedir_a_tigo.md).
+**Conclusión:** los cinco datos que más importan son el efecto real del aviso (lo mide el piloto), el volumen de afectados por fallas masivas (NOC), el costo por llamada (Finanzas), la tasa de llamadas sin aviso (centro de contacto) y la frecuencia de visitas (campo). Están al principio de [datos_a_pedir_a_tigo.md](datos_a_pedir_a_tigo.md).
 
-## Fuentes de esta revisión
-- Millicom, Form 20-F 2025 (SEC): https://www.sec.gov/Archives/edgar/data/912958/000162828026020831/tigo-20251231.htm (191,000 relaciones de hogar; 5.0 M móviles; empresa conjunta del 66.67 %). Verificado con la búsqueda de texto completo de EDGAR.
-- Millicom, 6-K del 1T-2026 (SEC): https://www.sec.gov/Archives/edgar/data/912958/000095010326007169/dp246578_6k.htm (ingresos de Honduras de US$158 M; EBITDA del 51.6 %).
+## Fuentes
+- Millicom, Form 20-F 2025 (SEC): https://www.sec.gov/Archives/edgar/data/912958/000162828026020831/tigo-20251231.htm
+- Millicom, 6-K del 1T-2026 (SEC): https://www.sec.gov/Archives/edgar/data/912958/000095010326007169/dp246578_6k.htm
 - CONATEL vía DPL News: https://dplnews.com/honduras-alcanza-record-de-suscriptores-internet-fijo/ y https://dplnews.com/suscriptores-telefonia-movil-siguen-a-la-baja-honduras/
 - Planes de Tigo Honduras: https://www.tigo.com.hn/internet
 - BCH vía El Heraldo: https://www.elheraldo.hn/economia/precio-dolar-hoy-lunes-7-septiembre-honduras-FI31934818

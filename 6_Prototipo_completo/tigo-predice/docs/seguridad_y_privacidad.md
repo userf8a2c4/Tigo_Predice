@@ -1,7 +1,7 @@
 # Seguridad, privacidad y cumplimiento — Tigo Predice v03
 
 > **Alcance y honestidad.** Este documento describe cómo Tigo Predice se diseñó y se probó para cumplir con el
-> estándar que exigiría un hiperescalador como Amazon/AWS. **No es asesoría legal ni una certificación**: la
+> marcos internacionales de seguridad y privacidad. **No es asesoría legal ni una certificación**: la
 > validación legal la hace Legal y Privacidad de Tigo/Millicom, y una certificación (ISO, SOC 2) solo la otorga
 > una auditoría independiente. Cada control indica si **ya está implementado y probado en el prototipo** o si
 > **es un requisito para producción** con dueño y semana del plan.
@@ -11,7 +11,7 @@
 
 ## 1. Resumen para el comité
 
-- **La vara:** los mismos marcos que usa un proveedor de nube de primer nivel: ISO/IEC 27001, 27017, 27018, 27701 y 42001,
+- **Marcos de referencia:** ISO/IEC 27001, 27017, 27018, 27701 y 42001,
   SOC 2, NIST CSF 2.0, NIST AI RMF, OWASP (API y LLM), el pilar de seguridad de AWS Well-Architected y el
   **GDPR como estándar de referencia**.
 - **Honduras no tiene todavía una ley integral de protección de datos** para el sector privado: el proyecto está
@@ -67,7 +67,7 @@
 | Marco | Uso en el proyecto |
 |---|---|
 | Política Global de Privacidad de Millicom | Política del grupo (con sede en Luxemburgo y que cotiza en Nasdaq): marco interno obligatorio |
-| GDPR (Reglamento UE 2016/679) | **Estándar de referencia**. Se usan sus principios (art. 5), bases legales (art. 6), transparencia (art. 13), decisiones automatizadas (art. 22), privacidad desde el diseño (art. 25), seguridad (art. 32) y evaluación de impacto (art. 35). Su aplicación directa a los datos de Honduras no es automática; aquí se adopta como vara |
+| GDPR (Reglamento UE 2016/679) | **Estándar de referencia**. Se usan sus principios (art. 5), bases legales (art. 6), transparencia (art. 13), decisiones automatizadas (art. 22), privacidad desde el diseño (art. 25), seguridad (art. 32) y evaluación de impacto (art. 35). Su aplicación directa a los datos de Honduras no es automática; aquí se adopta como referencia |
 | Estándares de Protección de Datos Personales para los Estados Iberoamericanos (RIPD, 2017) | Referencia regional: principios y derechos alineados con el GDPR |
 | Directrices de privacidad de la OCDE y Convenio 108+ | Referencia de principios |
 | ISO/IEC 27001:2022 · 27017 · 27018 · 27701 | Sistema de gestión de seguridad y de privacidad, y controles para la nube y para datos personales en la nube |
@@ -140,7 +140,7 @@ Plazo de respuesta propuesto: 15 días hábiles, a confirmar con Legal.
 
 - **Qué decide la IA:** a qué hogares atender primero cada semana y por qué (con explicación por variables, SHAP).
 - **Qué no decide:** precios, cortes, cobros, crédito, ofertas comerciales ni sanciones.
-- **Supervisión humana y vara objetiva:** si con datos reales la IA no supera a la regla de umbrales por 1.3×, se usa
+- **Supervisión humana y criterio objetivo:** si con datos reales la IA no supera a la regla de umbrales por 1.3×, se usa
   la regla. Ese es un criterio del GO/NO-GO.
 - **Sesgo:** se monitorea por tecnología (fibra/HFC) y zona (urbana/periurbana). Se exige que el % marcado sea
   proporcional a la tasa real y que ningún grupo quede sin captura.
@@ -231,7 +231,7 @@ El prototipo **falla en modo seguro** mientras tanto: sin configuración, solo a
 
 ---
 
-## 8. Arquitectura de seguridad para producción (nivel hiperescalador)
+## 8. Arquitectura de seguridad para producción (marcos internacionales)
 
 | Dominio | Control |
 |---|---|

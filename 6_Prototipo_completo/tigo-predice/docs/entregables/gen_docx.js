@@ -106,7 +106,7 @@ const contenido = [
   p([t("GO Hogar ", { bold: true, color: VERDE }), t("si las visitas en hogares marcados bajan ≥ 15 %, significativo y con opt-out < 2 % (si la IA no supera a la regla por 1.3×, se usa la regla). "), t("GO Móvil ", { bold: true, color: VERDE }), t("si las llamadas bajan ≥ 12 % (su punto de equilibrio), significativo y con opt-out < 2 %. "), t("NO-GO ", { bold: true, color: ROJO }), t("en cualquier otro caso.")]),
   p([t("Simulación del diseño (datos sintéticos, efectos supuestos): ", { italics: true }), t("Hogar −19 % de visitas (IC 95 % 12 % a 25 %) y −56 % de llamadas técnicas; Móvil −16 % de llamadas (IC 95 % 12 % a 19 %).", { italics: true })]),
 
-  h1("7. Seguridad y privacidad (vara de hiperescalador)"),
+  h1("7. Seguridad y privacidad (marcos internacionales)"),
   bullet([t("Datos mínimos: ", { bold: true }), t("solo desempeño del módem y de la línea; nunca contenido de comunicaciones, navegación ni dispositivos del cliente.")]),
   bullet([t("Marco: ", { bold: true }), t("GDPR como estándar de referencia (Honduras aún no tiene ley integral), Constitución (arts. 76, 100 y 182), política de Millicom, ISO 27001/27701/42001, SOC 2, NIST y OWASP.")]),
   bullet([t("Red team propio: ", { bold: true }), t("12 ataques confirmados y corregidos (sesiones robadas, falta de roles, CSRF, phishing por IA, modelos alterados, entre otros), cada uno con su prueba automática.")]),

@@ -30,7 +30,7 @@
 - **Hogar:** GO si las visitas bajan ≥ 15 %, de forma significativa y con opt-out < 2 %. Si la IA no supera a la regla por 1.3×, se usa la regla.
 - **Móvil:** GO si las llamadas bajan ≥ 12 % (su punto de equilibrio), de forma significativa y con opt-out < 2 %.
 
-**Seguridad y privacidad (vara de hiperescalador).**
+**Seguridad y privacidad (marcos internacionales).**
 - No se lee contenido, navegación ni los dispositivos del cliente.
 - GDPR como estándar, porque Honduras aún no tiene ley integral, más ISO 27001/27701/42001, SOC 2 y OWASP.
 - Datos mínimos, sesión segura y bitácoras.

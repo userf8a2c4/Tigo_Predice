@@ -20,7 +20,7 @@
 | 2:50 | Resultados del piloto | GO y −19 % | «Simulado: así se medirá» |
 | 3:10 | Falla masiva (opcional) | /falla?final | «El mismo motor en móvil» |
 | 3:40 | Caso de negocio | L 4.3 M; equilibrio 12 % y 22 % | «Solo beneficio duro» |
-| 4:20 | Listo para producción | Seguridad | «Red team propio, GDPR como vara» |
+| 4:20 | Listo para producción | Seguridad | «Red team propio, GDPR como referencia» |
 | 4:40 | Diapositiva final | El pedido | «12 semanas, L 770 mil, GO/NO-GO» |
 
 ## Inicio: el mapa de la app

@@ -212,10 +212,10 @@ txt(s, [{ text: "NO-GO si…", options: { bold: true, color: HEX.rojo, fontSize:
 
 // 11 Seguridad y privacidad
 s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "Piloto" });
-s.addText("Seguridad y privacidad con la vara de un hiperescalador", { placeholder: "title" });
+s.addText("Seguridad y privacidad con marcos internacionales", { placeholder: "title" });
 tarjetas(s, [
   ["Datos mínimos", "Solo desempeño del módem y la línea. Nunca contenido, navegación ni dispositivos del cliente (art. 100 de la Constitución)."],
-  ["Estándar más exigente", "GDPR como vara (Honduras aún no tiene ley integral), ISO 27001/27701/42001, SOC 2, NIST, OWASP API y LLM."],
+  ["Estándar más exigente", "GDPR como referencia (Honduras aún no tiene ley integral), ISO 27001/27701/42001, SOC 2, NIST, OWASP API y LLM."],
   ["Al LLM, casi nada", "Nombre de pila saneado y tipo de situación. Sin ID, teléfono ni ubicación. Guardrail anti-phishing."],
 ], 0.6, 1.5, 6.0, 1.45, 1.6, "sp", 17);
 tarjeta(s, 6.9, 1.5, 5.8, 4.65, "red-team", HEX.navy);

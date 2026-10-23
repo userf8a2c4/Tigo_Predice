@@ -11,7 +11,7 @@ Cada pregunta tiene tres partes:
 **Reglas de oro**
 1. **Corto, honesto y con número.** Primero la respuesta, después el detalle.
 2. Si no lo sabe: *«No lo sé todavía; el piloto está diseñado para medirlo.»* Nunca invente una cifra.
-3. Diga **«supuesto»** y **«simulado»** sin pedir disculpas: es su ventaja frente a propuestas infladas.
+3. Diga **«supuesto»** y **«simulado»** con naturalidad: muestra que las cifras tienen respaldo.
 4. Si la pregunta es una crítica justa, **dé la razón primero** («Es un buen punto…») y luego responda.
 5. **Nunca diga** «garantizado», «seguro», «sin riesgo» ni «100 %».
 
@@ -120,7 +120,7 @@ Cada pregunta tiene tres partes:
 
 **19. L 4.3 M al año, ¿no es poco para Tigo Honduras?**
 - **Respuesta corta:** Es poco frente a unos L 16 mil millones de ingresos por servicios al año, y lo decimos. El ahorro alcanza para que el proyecto se pague solo; el valor de fondo es la experiencia: clientes que no sufren la falla, no llaman y no esperan al técnico.
-- **Si piden más:** El caso no incluye retención ni NPS hasta medirlos, y la misma plataforma sirve después para otros usos (churn, priorización de red). Preferimos un número chico y defendible a uno grande e inflado.
+- **Si piden más:** El caso no incluye retención ni NPS hasta medirlos, y la misma plataforma sirve después para otros usos (churn, priorización de red). Preferimos un número conservador y verificable.
 
 **20. ¿Estos números son reales o inventados?**
 - **Respuesta corta:** La base de clientes es real: 191 mil hogares y 5.0 M de clientes móviles, según el 20-F 2025 de Millicom. Los costos están calculados con datos hondureños, y el tipo de cambio es el del BCH.
@@ -183,7 +183,7 @@ Cada pregunta tiene tres partes:
 - **Si piden más:** Eso protege el secreto de las comunicaciones del artículo 100 de la Constitución.
 
 **32. ¿Qué ley de datos cumplen, si Honduras no tiene una?**
-- **Respuesta corta:** Usamos el GDPR como estándar, que es la vara más exigente, más la Constitución (artículos 76, 100 y 182, habeas data) y la política de privacidad de Millicom.
+- **Respuesta corta:** Usamos el GDPR como estándar, que es el marco más exigente, más la Constitución (artículos 76, 100 y 182, habeas data) y la política de privacidad de Millicom.
 - **Si piden más:** Cuando se apruebe la ley hondureña (pendiente desde 2018), ya la cumpliremos. Legal aprueba una evaluación de impacto antes del primer mensaje.
 - **Muéstrelo:** Listo para producción → Seguridad y privacidad.
 

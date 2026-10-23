@@ -54,8 +54,8 @@ Pestaña **Caso de negocio**:
 
 Si hay tiempo, use **Pon tus números**: *"Denme visitas por mes y costo por visita, y el caso queda definitivo en vivo."*
 
-## 4:20 – 4:40 · Seguridad y privacidad, a nivel de hiperescalador
-> "No leemos contenido, ni navegación, ni los dispositivos del cliente: solo el desempeño del módem. Honduras todavía no tiene ley integral de datos, así que usamos el GDPR como vara, además de ISO 27001/27701/42001, SOC 2 y OWASP. Sesión segura, datos mínimos, bitácoras y **más de 200 pruebas automáticas**, incluido un red team propio."
+## 4:20 – 4:40 · Seguridad y privacidad con marcos internacionales
+> "No leemos contenido, ni navegación, ni los dispositivos del cliente: solo el desempeño del módem. Honduras todavía no tiene ley integral de datos, así que usamos el GDPR como referencia, además de ISO 27001/27701/42001, SOC 2 y OWASP. Sesión segura, datos mínimos, bitácoras y **más de 200 pruebas automáticas**, incluido un red team propio."
 
 ## 4:40 – 5:00 · El pedido a los Sharks
 > "Les pido, por **12 semanas** en San Pedro Sula:

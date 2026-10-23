@@ -317,7 +317,7 @@ txt(s, [{ text: "Privacidad y seguridad desde el día 1", options: { bold: true,
   { text: "GDPR como estándar, ISO 27001/27701/42001 y OWASP", options: { bullet: { indent: 16 }, breakLine: true } },
   { text: "Red team propio: 12 ataques probados y corregidos", options: { bullet: { indent: 16 } } }],
   { x: 7.03, y: 4.97, w: 5.5, h: 1.7, fontSize: 14, color: "FFFFFF", valign: "top", paraSpaceAfter: 2, objectName: "seg-t" });
-s.addNotes("El riesgo está acotado: 12 semanas, una ciudad y criterios de éxito definidos antes de empezar. Si no funciona, se detiene. Honduras aún no tiene una ley integral de datos personales, así que usamos GDPR como vara.");
+s.addNotes("El riesgo está acotado: 12 semanas, una ciudad y criterios de éxito definidos antes de empezar. Si no funciona, se detiene. Honduras aún no tiene una ley integral de datos personales, así que usamos GDPR como referencia.");
 
 // ───────────── 11 · Pedido
 s = pres.addSlide({ masterName: "SECCION", sectionTitle: "Pedido" });

@@ -64,7 +64,7 @@
 ## Consejos de entrega
 - **Empiece con la historia, no con la tecnología.** La palabra «IA» aparece recién en el segundo 35.
 - **Una cifra por frase.** Haga una pausa corta después de cada número importante.
-- **Diga «estimamos», «supuesto» y «simulado» sin pedir disculpas.** Un comité confía más en quien conoce los límites de sus números.
+- **Diga «estimamos», «supuesto» y «simulado» con naturalidad.** Un comité confía más en quien conoce los límites de sus números.
 - **No diga** «garantizado», «seguro», «ahorro asegurado» ni «100 % preciso».
 - **Si se pasa de tiempo**, recorte la frase del frente móvil: el pitch se sostiene solo con Hogar.
 - **Ensaye 3 veces con cronómetro**, una de ellas frente a alguien que no conozca el proyecto.

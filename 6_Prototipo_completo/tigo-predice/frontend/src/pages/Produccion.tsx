@@ -50,7 +50,7 @@ export default function Produccion() {
       <Tarjeta className="p-5">
         <Titulo><span className="flex items-center gap-2"><LockKeyhole size={18} /> Seguridad y privacidad: prototipo y producción</span></Titulo>
         <p className="mb-3 text-sm text-slate-600">
-          Vara de un hiperescalador: ISO 27001/27701/42001, SOC 2, NIST, OWASP (API y LLM) y GDPR como estándar de referencia.
+          Marcos internacionales: ISO 27001/27701/42001, SOC 2, NIST, OWASP (API y LLM) y GDPR como estándar de referencia.
           Detalle, marco legal de Honduras y evaluación de impacto en <b>docs/seguridad_y_privacidad.md</b>.
         </p>
         <div className="overflow-x-auto">
