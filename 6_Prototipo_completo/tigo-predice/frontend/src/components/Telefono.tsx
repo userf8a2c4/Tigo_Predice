@@ -58,7 +58,8 @@ export default function Telefono({
         </div>
       </div>
 
-      <div ref={chat} className="fondo-chat flex-1 space-y-2 overflow-y-auto px-3 py-3">
+      <div ref={chat} tabIndex={0} role="log" aria-label="Conversación de WhatsApp"
+        className="fondo-chat flex-1 space-y-2 overflow-y-auto px-3 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-celeste">
         {!conv && (
           <div className="mt-10 text-center text-sm text-slate-500">
             Aquí aparecerán los mensajes proactivos que Tigo Predice envía a los clientes.

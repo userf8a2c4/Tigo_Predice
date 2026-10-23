@@ -8,11 +8,14 @@
   --color-celeste: #00c8ff;
   --color-celeste-50: #e6f9ff;
   --color-fondo: #f3f6fb;
-  --color-alerta: #e0303a;
+  --color-alerta: #b42318; /* 5.3:1 sobre su fondo tenue; 6.5:1 sobre blanco */
   --color-ambar: #f2a20c;
-  --color-exito: #16a35a;
+  --color-exito: #0f7a43; /* 5.4:1 sobre blanco */
   --color-whatsapp: #075e54;
   --color-burbuja: #dcf8c6;
+  /* Grises de texto secundario oscurecidos para WCAG 2.2 AA (mínimo 4.5:1 también sobre fondos grises) */
+  --color-slate-400: #5b6b80;
+  --color-slate-500: #556579;
   --font-sans: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
 }
 

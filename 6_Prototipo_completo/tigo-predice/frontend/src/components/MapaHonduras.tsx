@@ -13,7 +13,13 @@ const NOMBRE_DEPTO: Record<string, string> = { "Bay Islands": "Islas de la Bahí
 const ETIQUETAS = ["Tegucigalpa", "San Pedro Sula", "La Ceiba", "Choluteca", "Juticalpa", "Santa Rosa de Copán"];
 
 export const iconoPulso = (color: "rojo" | "verde" = "rojo") =>
-  L.divIcon({ className: "", html: `<div class="pulso ${color === "verde" ? "pulso-verde" : ""}"></div>`, iconSize: [18, 18], iconAnchor: [9, 9] });
+  L.divIcon({
+    className: "",
+    // Contenedor de 24 px (WCAG 2.2, criterio 2.5.8) con el punto de 18 px centrado
+    html: `<div style="width:24px;height:24px;display:flex;align-items:center;justify-content:center"><div class="pulso ${color === "verde" ? "pulso-verde" : ""}"></div></div>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+  });
 
 /** Encuadra Honduras o vuela a un punto; se reajusta si cambia el tamaño del contenedor. */
 function Vista({ centro, zoom, margenSuperior }: { centro?: [number, number]; zoom?: number; margenSuperior: number }) {
@@ -110,9 +116,9 @@ export default function MapaHonduras({ mapa, altura = 420 }: { mapa: Mapa; altur
       {mapa.celdas
         .filter((c) => c.falla_activa)
         .map((c) => (
-          <Marker key={c.celda_id} position={[c.lat, c.lon]} icon={iconoPulso()}>
-            <Tooltip>Falla masiva activa · sitio {c.celda_id}</Tooltip>
-          </Marker>
+          // Informativos (la leyenda del mapa los explica): no son controles, así no compiten como objetivos táctiles
+          <Marker key={c.celda_id} position={[c.lat, c.lon]} icon={iconoPulso()} interactive={false} keyboard={false}
+            title={`Falla masiva activa en el sitio ${c.celda_id}`} />
         ))}
     </MapaBase>
   );

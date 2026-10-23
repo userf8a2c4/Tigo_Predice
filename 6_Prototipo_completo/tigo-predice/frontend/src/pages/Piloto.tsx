@@ -7,8 +7,8 @@ import { Cargando, ErrorCaja, Pestanas, Tarjeta, Titulo, type Frente } from "../
 import { EJES, GRILLA, entero, pct } from "../formato";
 import { useDatos } from "../hooks";
 
-const ROJO = "#e0303a";
-const VERDE = "#16a35a";
+const ROJO = "#c0262f"; // 6:1 sobre blanco (WCAG 2.2 AA)
+const VERDE = "#0f7a43"; // 5.4:1 sobre blanco (WCAG 2.2 AA)
 
 export default function Piloto() {
   const [frente, setFrente] = useState<Frente>("hogar");

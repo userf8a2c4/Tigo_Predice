@@ -44,3 +44,9 @@ export function useAncho() {
   }, []);
   return ancho;
 }
+
+/** `?final` abre directo el resultado de una demo, tanto en la URL normal como después del `#` (versión sin servidor). */
+export function pideFinal() {
+  const enHash = window.location.hash.split("?")[1] ?? "";
+  return new URLSearchParams(window.location.search).has("final") || new URLSearchParams(enHash).has("final");
+}

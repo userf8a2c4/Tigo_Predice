@@ -4,12 +4,12 @@ TIGO PREDICE · AI SHARK TANK · TIGO CX MONTH 2026
 Autoría: Sandra Jimenez · Asistente de Experiencia B2B · sandra.jimenez@tigo.com.hn
 
 PARA EMPEZAR
-   Abra 2_Demo\Demo_Tigo_Predice.html con doble clic (o Abrir_Demo.exe en Windows).
+   Abra 2_Demo\Demo_Tigo_Predice.html con doble clic. Se abre en el navegador.
    Entre a «Hogar en vivo ★» y presione «Iniciar». Funciona sin internet y sin instalar nada.
 
 CARPETAS
    1_Presentacion            Presentación para el concurso (PowerPoint y PDF), con guion en las notas.
-   2_Demo                    La demo en un solo archivo y su lanzador para Windows.
+   2_Demo                    La demo en un solo archivo HTML.
    3_Para_el_jurado          Resumen de una página, propuesta, datos reales con fuentes, y
                              estrategia y regulación (Millicom 2026 y CONATEL NR001/26).
    4_Preparacion_del_pitch   Elevator pitch, 38 preguntas del jurado, guía visual de la demo

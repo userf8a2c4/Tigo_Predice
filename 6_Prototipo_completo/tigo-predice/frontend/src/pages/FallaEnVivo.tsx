@@ -8,10 +8,10 @@ import { MapaBase, iconoPulso } from "../components/MapaHonduras";
 import Telefono from "../components/Telefono";
 import { Cargando, ErrorCaja, Tarjeta } from "../components/ui";
 import { EJES, GRILLA, entero, pct } from "../formato";
-import { useDatos } from "../hooks";
+import { pideFinal, useDatos } from "../hooks";
 
-const ROJO = "#e0303a";
-const VERDE = "#16a35a";
+const ROJO = "#c0262f"; // 6:1 sobre blanco (WCAG 2.2 AA)
+const VERDE = "#0f7a43"; // 5.4:1 sobre blanco (WCAG 2.2 AA)
 const PASOS = ["Falla", "Afectados", "Control", "Aviso", "72 horas", "Resultado"];
 const SEG_POR_HORA = 2.2; // cada punto de la línea de tiempo (18 puntos ≈ 40 s)
 
@@ -52,7 +52,7 @@ export default function FallaEnVivo() {
 
   // ?final abre directo el resultado (respaldo del presentador y revisión visual)
   useEffect(() => {
-    if (!esc || !new URLSearchParams(window.location.search).has("final")) return;
+    if (!esc || !pideFinal()) return;
     setVuelo(true);
     setCaido(true);
     setMostrarGrupos(true);
@@ -149,7 +149,7 @@ export default function FallaEnVivo() {
           <div className="mb-1.5 flex flex-wrap gap-1.5">
             {PASOS.map((t, i) => (
               <span key={t} className={clsx("rounded-full px-2.5 py-0.5 text-xs font-semibold",
-                i < fase.paso ? "bg-celeste/30 text-white" : i === fase.paso ? "bg-celeste text-tigo-900" : "bg-white/10 text-white/50")}>
+                i < fase.paso ? "bg-celeste/30 text-white" : i === fase.paso ? "bg-celeste text-tigo-900" : "bg-white/10 text-white/75")}>
                 {i + 1}. {t}
               </span>
             ))}
@@ -180,7 +180,7 @@ export default function FallaEnVivo() {
                 <>
                   <Circle center={[esc.sitio.lat, esc.sitio.lon]} radius={esc.sitio.radio_km * 1000}
                     pathOptions={{ color: restablecido ? VERDE : ROJO, weight: 2, dashArray: "6 6", fillOpacity: 0.06 }} />
-                  <Marker position={[esc.sitio.lat, esc.sitio.lon]} icon={iconoPulso(restablecido ? "verde" : "rojo")}>
+                  <Marker position={[esc.sitio.lat, esc.sitio.lon]} title="Sitio con falla masiva" icon={iconoPulso(restablecido ? "verde" : "rojo")}>
                     <Tooltip>Sitios {esc.sitio.celdas.join(", ")}</Tooltip>
                   </Marker>
                 </>

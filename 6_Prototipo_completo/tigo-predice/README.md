@@ -56,7 +56,7 @@ Diseñado con la vara de un hiperescalador. Detalle en [docs/seguridad_y_privaci
 - **Marcos:** GDPR como estándar (Honduras aún no tiene ley integral), ISO 27001/27701/42001, SOC 2, NIST CSF/AI RMF, OWASP ASVS/API/LLM y MITRE ATLAS.
 - **Datos:** sin contenido de comunicaciones ni navegación; datos mínimos.
 - **Controles de acceso:** sesión firmada y revocable, roles y CSRF.
-- **Integridad:** modelos firmados con SHA-256 y dependencias fijadas y auditadas.
+- **Integridad:** huella SHA-256 de cada modelo verificada antes de cargarlo, y dependencias fijadas y auditadas.
 - **Red team propio:** 12 ataques corregidos, cada uno con su prueba.
 
 ## Estructura

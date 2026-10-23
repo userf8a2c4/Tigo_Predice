@@ -66,7 +66,7 @@ export default function Layout() {
           <Logo />
           <div className="mt-6 px-3 text-[11px] font-semibold uppercase tracking-wider text-celeste">Fase 1 · Piloto Hogar + Móvil</div>
           <nav className="mt-1 space-y-0.5">{NAV_PILOTO.map((n) => <Enlace key={n.a} {...n} />)}</nav>
-          <div className="mt-5 px-3 text-[11px] font-semibold uppercase tracking-wider text-white/50">Fase 2 · Visión</div>
+          <div className="mt-5 px-3 text-[11px] font-semibold uppercase tracking-wider text-white/75">Fase 2 · Visión</div>
           <nav className="mt-1 space-y-0.5 opacity-80">{NAV_FASE2.map((n) => <Enlace key={n.a} {...n} />)}</nav>
           <div className="mt-auto space-y-1.5 rounded-xl bg-tigo-900/60 p-3 text-xs text-white/70">
             <div>Modelo: <span className="font-semibold text-white">{config?.modelo ?? "…"}</span></div>
@@ -105,7 +105,7 @@ export default function Layout() {
               </NavLink>
             ))}
           </nav>
-          <main className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6">
+          <main tabIndex={0} className="flex-1 overflow-y-auto p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-celeste sm:p-4 lg:p-6">
             <div className="mx-auto w-full max-w-[1800px]">
               <Outlet />
               <FuenteDatos />

@@ -50,6 +50,7 @@ export default function Clientes() {
 
   const selector = (k: keyof typeof f, opciones: Record<string, string> | string[], todos: string) => (
     <select
+      aria-label={todos}
       value={f[k]}
       onChange={(e) => cambiar(k, e.target.value)}
       className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"

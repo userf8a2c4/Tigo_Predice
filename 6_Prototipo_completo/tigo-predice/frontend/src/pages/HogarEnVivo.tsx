@@ -6,10 +6,10 @@ import { api, type Conversacion } from "../api";
 import Telefono from "../components/Telefono";
 import { Cargando, ErrorCaja, Tarjeta, Titulo } from "../components/ui";
 import { EJES, GRILLA, SERIES, entero, pct, pctRiesgo } from "../formato";
-import { useDatos } from "../hooks";
+import { pideFinal, useDatos } from "../hooks";
 
-const ROJO = "#e0303a";
-const VERDE = "#16a35a";
+const ROJO = "#c0262f"; // 6:1 sobre blanco (WCAG 2.2 AA)
+const VERDE = "#0f7a43"; // 5.4:1 sobre blanco (WCAG 2.2 AA)
 const PASOS = ["Hogar sano", "La IA lo marca", "Diagnóstico", "Acción", "Sin vs. con", "Resultado"];
 const SEG_POR_DIA = 2.1;
 type Caso = "remoto" | "tecnico";
@@ -50,7 +50,7 @@ export default function HogarEnVivo() {
 
   // ?final abre directo el resultado (respaldo del presentador y revisión visual)
   useEffect(() => {
-    if (!esc || !new URLSearchParams(window.location.search || window.location.hash.split("?")[1]).has("final")) return;
+    if (!esc || !pideFinal()) return;
     setIdx(esc.sin.length - 1);
     setPaso(5);
     setDiagnostico(true);
@@ -166,7 +166,7 @@ export default function HogarEnVivo() {
           <div className="mb-1.5 flex flex-wrap gap-1.5">
             {PASOS.map((t, i) => (
               <span key={t} className={clsx("rounded-full px-2.5 py-0.5 text-xs font-semibold",
-                i < paso ? "bg-celeste/30 text-white" : i === paso ? "bg-celeste text-tigo-900" : "bg-white/10 text-white/50")}>
+                i < paso ? "bg-celeste/30 text-white" : i === paso ? "bg-celeste text-tigo-900" : "bg-white/10 text-white/75")}>
                 {i + 1}. {t}
               </span>
             ))}

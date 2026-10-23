@@ -22,7 +22,7 @@ Los módems de Tigo Hogar avisan días antes de fallar (señal que baja, WiFi sa
 • Caso conservador (solo beneficio duro, con costos hondureños y la base real de 191 mil hogares y 5.0 M de clientes móviles): L 4.3 M netos en el año 1 en el escenario base (rango −L 3 M a L 14 M). Los supuestos se validan con datos de Tigo antes de escalar.
 • Propuesta: piloto de 12 semanas en San Pedro Sula por L 770 mil, con criterios GO/NO-GO medibles por frente.
 • Seguridad y privacidad: sin contenido de comunicaciones; GDPR como estándar de referencia, ISO 27001/27701/42001 y OWASP, con un red team propio y 12 ataques corregidos.
-• Ya tengo un prototipo funcional que puedo demostrar en vivo en 80 segundos. Adjunto una versión que se abre con doble clic en cualquier computadora, sin instalar nada.
+• Ya tengo un prototipo funcional que puedo demostrar en vivo en 80 segundos. Adjunto una versión que se abre con doble clic en el navegador, sin instalar nada ni necesitar internet.
 
 Quedo atento(a) a cualquier consulta y con gusto presento la demo a los Sharks.
 

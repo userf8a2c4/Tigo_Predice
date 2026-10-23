@@ -32,7 +32,7 @@
   - límite de peticiones y parámetros acotados;
   - búsqueda sin regex;
   - guardrail anti-phishing y nombres saneados antes del LLM;
-  - **firma SHA-256 de los modelos** antes de cargarlos;
+  - **huella SHA-256 de cada modelo verificada** antes de cargarlo;
   - dependencias fijadas y auditadas;
   - bitácoras de mensajes (90 días) y de accesos (solo el auditor las lee);
   - logs sin datos de consulta, minimización en pantallas, consentimiento y opt-out.
