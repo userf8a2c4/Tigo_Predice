@@ -33,7 +33,7 @@ PAGINAS = [
     {
         "titulo": "Inicio: el mapa de la app",
         "imagen": "inicio.png",
-        "intro": "La primera pantalla resume la propuesta. Úsela para abrir la presentación (10 segundos) y saltar a la demo.",
+        "intro": "La primera pantalla resume la propuesta. Desde aquí, el botón Presentar abre el modo presentación.",
         "marcas": [
             (
                 118,
@@ -257,21 +257,26 @@ CRONOLOGIA = [
     ("~23", "Corrección remota y WhatsApp", "~70 · ~77", "Resultado del hogar y frase final"),
 ]
 ANTES = [
-    "Doble clic en <b>iniciar_demo.bat</b> la noche anterior (la primera vez tarda ~4 minutos; después, 5 segundos).",
-    "Se abre <b>http://127.0.0.1:8000</b>. Arriba debe decir «Datos simulados» y «Modo plantillas» o «Modo IA».",
-    "Abra <b>Hogar en vivo</b>, caso «A distancia», velocidad 1× y presione ↺.",
-    "Navegador en pantalla completa (F11), zoom 90–100 %, notificaciones apagadas.",
-    "Deje abiertas en otras pestañas <b>/hogar?final</b> y <b>/falla?final</b>, y tenga el PDF del pitch a mano.",
+    "Abra <b>Demo_Tigo_Predice.html</b> con doble clic: no necesita internet ni instalar nada. "
+    "(Con el prototipo completo, <b>iniciar_demo.bat</b> abre la misma app en http://127.0.0.1:8000.)",
+    "Presione <b>Presentar</b>, arriba a la derecha. El modo presentación queda en pausa en la primera escena.",
+    "Presione <b>F</b> para pantalla completa. En Teams, comparta la pantalla o la ventana del navegador.",
+    "Apague las notificaciones y tenga a mano el guion de la presentación (PDF aparte).",
+    "Cuando le den la palabra, presione <b>Espacio</b>: la presentación avanza sola y dura 4:32.",
 ]
+# Mismo orden y duración que frontend/src/escenas.ts
 RECORRIDO = [
-    ("0:00", "Inicio", "Posicionamiento", "«Los chatbots atienden la llamada…»"),
-    ("1:10", "Hogar en vivo", "▶ Iniciar y leer la franja", "«La IA lo marca antes que la regla y que la llamada»"),
-    ("2:30", "Modelo de IA", "Señalar 52 % vs. 26 %", "«Medida contra la regla, no contra nada»"),
-    ("2:50", "Resultados del piloto", "GO y −19 %", "«Simulado: así se medirá»"),
-    ("3:10", "Falla masiva (opcional)", "/falla?final", "«El mismo motor en móvil»"),
-    ("3:40", "Caso de negocio", "L 4.3 M; equilibrio 12 % y 22 %", "«Solo beneficio duro»"),
-    ("4:20", "Listo para producción", "Seguridad", "«Red team propio, GDPR como referencia»"),
-    ("4:40", "Diapositiva final", "El pedido", "«12 semanas, L 770 mil, GO/NO-GO»"),
+    ("0:00", "Inicio", "Frase de Tigo Predice", "Saludo breve"),
+    ("0:10", "Karla", "Su historia y lo que cuesta", "«Llama, espera, llega un técnico… y no era necesario»"),
+    ("0:36", "No es un caso aislado", "Hogares, visitas y cuántas se evitan", "«Estimaciones a validar con Tigo»"),
+    ("0:56", "Nuestra idea", "Detecta, resuelve y avisa", "«Escuchar al módem a tiempo»"),
+    ("1:16", "Demo en vivo", "Hogar en vivo corre sola (80 s)", "Acompañe la franja azul"),
+    ("2:36", "IA vs. regla", "52 % vs. 26 % (simulado)", "«Si no gana con datos reales, usamos la regla»"),
+    ("2:56", "Móvil", "WhatsApp de falla masiva y CONATEL", "«Cumplimos y ahorramos a la vez»"),
+    ("3:18", "Caso de negocio", "L 4.3 M; equilibrio 22 % y 12 %", "«Solo lo que se puede medir»"),
+    ("3:44", "Confianza", "Privacidad y grupo control", "«Solo el desempeño del módem»"),
+    ("3:58", "El pedido", "12 semanas, L 770 mil", "«Ustedes deciden con números reales»"),
+    ("4:24", "Cierre", "Gracias y contacto", "«Tigo Predice evita que ocurra»"),
 ]
 
 CSS_BASE = f"""
@@ -336,15 +341,16 @@ table.t {{ font-size: 10.5px; }}
         "<div class='dos'><div class='caja'><h3>Antes de presentar</h3><ol>"
         + "".join(f"<li>{x}</li>" for x in ANTES)
         + "</ol></div><div class='caja'><h3>Plan B</h3><ol>"
+        "<li>Si el modo presentación falla: abra <b>Hogar en vivo</b>, presione Iniciar y siga el mismo orden.</li>"
         "<li>Si la demo se traba: presione ↺ o abra <b>/hogar?final</b> y explique el resultado.</li>"
-        "<li>Si la computadora falla: video de respaldo o el PDF del pitch.</li>"
+        "<li>Si la computadora falla: el elevator pitch de 2 minutos, sin pantalla.</li>"
         "<li>Si se cae internet: no pasa nada; el prototipo funciona sin internet.</li>"
         "<li>Si la pantalla es chica: zoom del navegador al 80–90 %.</li></ol>"
         "<p style='font-size:12px;color:#5b6575'>Los números rojos de cada captura corresponden a la leyenda de la "
         "derecha. Todo usa datos simulados.</p></div></div></section>",
-        "<section class='pagina'><div class='cab'><h2>Recorrido recomendado (5 minutos)</h2><span>Tigo Predice</span></div>"
-        "<p class='intro'>Orden sugerido de pantallas durante el pitch. El guion completo está en el documento del pitch.</p>"
-        "<table class='recorrido'><tr><th>Min.</th><th>Pantalla</th><th>Qué hacer</th><th>Frase clave</th></tr>"
+        "<section class='pagina'><div class='cab'><h2>Modo presentación (4:32)</h2><span>Tigo Predice</span></div>"
+        "<p class='intro'>Botón <b>Presentar</b>: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte.</p>"
+        "<table class='recorrido'><tr><th>Min.</th><th>Escena</th><th>En pantalla</th><th>Idea</th></tr>"
         + "".join(
             f"<tr><td>{a}</td><td><b>{b}</b></td><td>{c}</td><td><i>{d}</i></td></tr>" for a, b, c, d in RECORRIDO
         )
@@ -391,9 +397,13 @@ def guia_markdown() -> str:
     L += [f"{i}. {x.replace('<b>', '**').replace('</b>', '**')}" for i, x in enumerate(ANTES, start=1)]
     L += [
         "",
-        "## Recorrido recomendado (5 minutos)",
+        "## Modo presentación (4:32)",
         "",
-        "| Min. | Pantalla | Qué hacer | Frase clave |",
+        "Botón **Presentar**: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las "
+        "cifras. Espacio pausa; ← y → (o un control remoto) cambian de "
+        "escena; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).",
+        "",
+        "| Min. | Escena | En pantalla | Idea |",
         "|---|---|---|---|",
     ]
     L += [f"| {a} | {b} | {c} | {d} |" for a, b, c, d in RECORRIDO]
@@ -460,12 +470,16 @@ def main() -> None:
     (salida / "pitch.html").write_text(
         doc_html(DOCS / "elevator_pitch.md", "Elevator pitch", True), encoding="utf-8", newline="\n"
     )
+    (salida / "guion.html").write_text(
+        doc_html(DOCS / "pitch.md", "Guion de la presentación", True), encoding="utf-8", newline="\n"
+    )
     (salida / "faq.html").write_text(
         doc_html(DOCS / "preguntas_frecuentes_jurado.md", "Preguntas frecuentes", False), encoding="utf-8", newline="\n"
     )
     imprimir(salida / "guia.html", salida / "Guia_Visual_Demo.pdf")
     imprimir(salida / "pitch.html", salida / "Elevator_Pitch_2_min.pdf")
     imprimir(salida / "faq.html", salida / "Preguntas_Frecuentes_Jurado.pdf")
+    imprimir(salida / "guion.html", salida / "Guion_de_la_presentacion.pdf")
 
 
 if __name__ == "__main__":

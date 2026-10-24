@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import type { Config } from "./api";
+import type { Escena } from "./escenas";
 
 /** Carga datos de la API y permite recargarlos. Vuelve a cargar cuando cambian `deps`. */
 export function useDatos<T>(cargar: () => Promise<T>, deps: unknown[] = []) {
@@ -50,3 +51,11 @@ export function pideFinal() {
   const enHash = window.location.hash.split("?")[1] ?? "";
   return new URLSearchParams(window.location.search).has("final") || new URLSearchParams(enHash).has("final");
 }
+
+/** Modo presentación: escena en curso (null si no se está presentando) y cómo abrirlo desde cualquier pantalla. */
+export interface EstadoPresentacion {
+  escena: Escena["id"] | null;
+  abrir: () => void;
+}
+export const PresentacionContext = createContext<EstadoPresentacion>({ escena: null, abrir: () => undefined });
+export const usePresentacion = () => useContext(PresentacionContext);

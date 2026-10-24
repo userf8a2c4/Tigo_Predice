@@ -1,15 +1,17 @@
-import { BrainCircuit, FlaskConical, PlayCircle, Radio, Router, Scale, Wallet } from "lucide-react";
+import { BrainCircuit, FlaskConical, MonitorPlay, PlayCircle, Radio, Router, Scale, Wallet } from "lucide-react";
+import { DURACION_TOTAL, reloj } from "../escenas";
 import { Link } from "react-router-dom";
 import { api } from "../api";
 import MapaHonduras from "../components/MapaHonduras";
 import { Cargando, ErrorCaja, Tarjeta, Titulo } from "../components/ui";
 import { pct } from "../formato";
-import { useConfig, useDatos } from "../hooks";
+import { useConfig, useDatos, usePresentacion } from "../hooks";
 
 export default function Inicio() {
   const { datos: d, error } = useDatos(api.inicio);
   const mapa = useDatos(api.mapa);
   const config = useConfig();
+  const { abrir } = usePresentacion();
   const pctMarcados = Number(config?.hogar?.pct_marcados_semana ?? 0.02);
   const pctControl = Number(config?.piloto?.pct_control ?? 0.15);
   if (error) return <ErrorCaja error={error} />;
@@ -28,6 +30,9 @@ export default function Inicio() {
           <b>Móvil:</b> en fallas masivas, aviso por WhatsApp antes de que llamen. En los dos, un grupo control mide el efecto real.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
+          <button onClick={abrir} className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-bold text-tigo shadow hover:brightness-95">
+            <MonitorPlay size={20} /> Modo presentación ({reloj(DURACION_TOTAL)} min)
+          </button>
           <Link to="/hogar" className="inline-flex items-center gap-2 rounded-xl bg-celeste px-5 py-3 font-bold text-tigo-900 shadow hover:brightness-105">
             <PlayCircle size={20} /> Ver Hogar en vivo (80 s)
           </Link>
@@ -46,7 +51,7 @@ export default function Inicio() {
         <Cifra icono={FlaskConical} t="Inversión del piloto" v={c.piloto_costo_base} s={`≈ ${c.piloto_costo_usd} · rango ${c.piloto_costo_rango}`} />
       </div>
 
-      <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1fr_1fr]">
+      <div id="como-funciona" className="grid scroll-mt-4 grid-cols-1 gap-5 xl:grid-cols-[1fr_1fr]">
         <Tarjeta className="p-5">
           <Titulo extra={<span className="flex items-center gap-1 text-xs font-semibold text-tigo"><Router size={14} /> Frente principal</span>}>
             Hogar: cómo funciona

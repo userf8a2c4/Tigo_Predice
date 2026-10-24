@@ -6,7 +6,7 @@ import { api, type Conversacion } from "../api";
 import Telefono from "../components/Telefono";
 import { Cargando, ErrorCaja, Tarjeta, Titulo } from "../components/ui";
 import { EJES, GRILLA, SERIES, entero, pct, pctRiesgo } from "../formato";
-import { pideFinal, useDatos } from "../hooks";
+import { pideFinal, useDatos, usePresentacion } from "../hooks";
 
 const ROJO = "#c0262f"; // 6:1 sobre blanco (WCAG 2.2 AA)
 const VERDE = "#0f7a43"; // 5.4:1 sobre blanco (WCAG 2.2 AA)
@@ -20,6 +20,10 @@ interface Hito {
 }
 
 export default function HogarEnVivo() {
+  // En el modo presentación se ocultan los controles y la demo arranca sola en su escena
+  const { escena } = usePresentacion();
+  const presentando = escena !== null;
+  const auto = escena === "demo";
   const [caso, setCaso] = useState<Caso>("remoto");
   const { datos: esc, error } = useDatos(() => api.hogar(caso), [caso]);
   const [velocidad, setVelocidad] = useState(1);
@@ -32,6 +36,7 @@ export default function HogarEnVivo() {
   const [mensaje, setMensaje] = useState(false);
   const [final, setFinal] = useState(0);
   const timers = useRef<number[]>([]);
+  const tarjetaDiag = useRef<HTMLDivElement>(null);
 
   const limpiar = useCallback(() => {
     timers.current.forEach((t) => window.clearTimeout(t));
@@ -118,6 +123,25 @@ export default function HogarEnVivo() {
     hitos.forEach((h) => timers.current.push(window.setTimeout(h.fn, (h.t * 1000) / velocidad)));
   };
 
+  // Las acciones nuevas quedan a la vista aunque la tarjeta tenga alto fijo
+  useEffect(() => {
+    tarjetaDiag.current?.scrollTo({ top: tarjetaDiag.current.scrollHeight, behavior: "smooth" });
+  }, [acciones]);
+
+  // En el modo presentación la demo arranca sola, un instante después de cargar
+  const iniciarRef = useRef(iniciar);
+  useEffect(() => {
+    iniciarRef.current = iniciar;
+  });
+  useEffect(() => {
+    if (!auto || !esc) return;
+    const id = window.setTimeout(() => iniciarRef.current(), 600);
+    return () => {
+      window.clearTimeout(id);
+      limpiar();
+    };
+  }, [auto, esc, limpiar]);
+
   const datos = useMemo(() => {
     if (!esc) return [];
     const remoto = esc.caso === "remoto";
@@ -158,6 +182,8 @@ export default function HogarEnVivo() {
   const fechaDe = (d: number | null) => (d === null ? "—" : esc.sin.find((x) => x.dia === d)?.fecha ?? "—");
   const senales = esc.sin.map((x) => x.senal).concat(esc.hogar.senal_umbral);
   const rangoSenal = [Math.floor(Math.min(...senales)) - 1, Math.ceil(Math.max(...senales)) + 1];
+  // En el modo presentación todo cabe en una pantalla de 1366×768, teléfono incluido
+  const altoDiag = presentando ? "lg:h-[26vh]" : "lg:h-[410px]";
 
   return (
     <div className="space-y-3">
@@ -171,9 +197,11 @@ export default function HogarEnVivo() {
               </span>
             ))}
           </div>
-          <div key={narracion} className="aparecer min-h-[2lh] text-base font-semibold leading-snug sm:text-lg xl:text-xl">{narracion}</div>
+          <div key={narracion} className="aparecer min-h-[2lh] text-base font-semibold leading-snug sm:text-lg xl:text-xl">
+            {presentando && paso < 0 && !corriendo ? `Así ve el sistema el hogar de ${esc.hogar.nombre}: ${esc.hogar.tecnologia}, ${esc.ciudad}.` : narracion}
+          </div>
         </div>
-        <div className="flex shrink-0 flex-wrap items-center gap-2">
+        {!presentando && <div className="flex shrink-0 flex-wrap items-center gap-2">
           <div className="flex rounded-xl bg-white/10 p-1" role="group" aria-label="Caso">
             {(["remoto", "tecnico"] as const).map((c) => (
               <button key={c} disabled={corriendo} onClick={() => setCaso(c)}
@@ -194,7 +222,7 @@ export default function HogarEnVivo() {
           <button onClick={limpiar} className="rounded-xl bg-white/15 p-3 hover:bg-white/25" aria-label="Reiniciar" title="Reiniciar">
             <RotateCcw size={20} />
           </button>
-        </div>
+        </div>}
       </div>
 
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_360px]">
@@ -256,7 +284,7 @@ export default function HogarEnVivo() {
         <div className="min-w-0 space-y-3">
           {/* Alto fijo: las acciones que van apareciendo no empujan el teléfono */}
           {diagnostico ? (
-            <Tarjeta className="aparecer p-4 lg:h-[410px] lg:overflow-y-auto">
+            <div ref={tarjetaDiag} className={clsx("tarjeta aparecer p-4 lg:overflow-y-auto", altoDiag)}>
               <div className="flex items-center gap-2 text-sm font-bold text-tigo"><BrainCircuit size={18} /> Por qué la IA lo marcó ({fechaDe(ev.ia)})</div>
               <ul className="mt-2 space-y-1.5 text-sm">
                 {esc.explicacion.map((m) => (
@@ -277,17 +305,17 @@ export default function HogarEnVivo() {
                   ))}
                 </ul>
               )}
-            </Tarjeta>
+            </div>
           ) : (
-            <Tarjeta className="p-4 text-sm text-slate-500 lg:h-[410px]">
+            <Tarjeta className={clsx("p-4 text-sm text-slate-500", altoDiag)}>
               La IA califica cada semana a todos los hogares con la telemetría del módem y marca al {pct(esc.presupuesto)} con más
               riesgo. Aquí aparecerá su diagnóstico.
             </Tarjeta>
           )}
-          <Telefono conv={conv} alto="clamp(300px, 44vh, 520px)" />
+          <Telefono conv={conv} alto={presentando ? "clamp(260px, 38vh, 520px)" : "clamp(300px, 44vh, 520px)"} />
         </div>
       </div>
-      <ListaHoy />
+      {!presentando && <ListaHoy />}
       <div className="text-xs text-slate-400">{esc.aviso}</div>
     </div>
   );
@@ -297,7 +325,7 @@ function ListaHoy() {
   const { datos: l } = useDatos(api.hogarHoy);
   if (!l) return null;
   return (
-    <Tarjeta className="overflow-x-auto p-4">
+    <Tarjeta className="p-4" desplazable="Lista de trabajo de hoy">
       <Titulo extra={<span className="text-xs text-slate-500">datos simulados al {l.fecha}</span>}>
         Lista de trabajo de hoy · soporte nivel 2 · {l.ciudad}
       </Titulo>

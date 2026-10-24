@@ -73,7 +73,7 @@ function ModeloHogar({ datos }: { datos: ModeloInfo }) {
         </Tarjeta>
       </div>
 
-      <Tarjeta className="overflow-x-auto p-5">
+      <Tarjeta className="p-5" desplazable="Comparación con el presupuesto semanal">
         <Titulo>Comparación con el presupuesto semanal ({pct(m.presupuesto)} de hogares, ~{ia.marcados_por_semana} marcados por semana en la muestra)</Titulo>
         <table className="w-full min-w-[760px] text-sm">
           <thead><tr className="text-left text-xs uppercase tracking-wide text-slate-500"><th className="pb-2">Estrategia</th><th>AUC</th><th>Precisión</th><th>Captura de eventos</th><th>Captura de visitas evitables</th><th>Visitas por 100 marcados</th></tr></thead>
@@ -203,7 +203,7 @@ function ModeloMovil({ datos }: { datos: ModeloInfo }) {
         </Tarjeta>
       </div>
 
-      <Tarjeta className="overflow-x-auto p-5">
+      <Tarjeta className="p-5" desplazable="Costo-efectividad por estrategia">
         <Titulo>Costo-efectividad por estrategia (supuestos base)</Titulo>
         <table className="w-full min-w-[760px] text-sm">
           <thead><tr className="text-left text-xs uppercase tracking-wide text-slate-500"><th className="pb-2">Estrategia</th><th>Contactos</th><th>Costo</th><th>Llamadas evitadas / capturadas</th><th>Llamadas por 100 contactos</th><th>Costo por llamada</th></tr></thead>

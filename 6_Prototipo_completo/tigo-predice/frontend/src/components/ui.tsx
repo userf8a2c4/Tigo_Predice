@@ -4,8 +4,15 @@ import type { ReactNode } from "react";
 import type { Factor, Prioridad } from "../api";
 import { colorRiesgo, pct } from "../formato";
 
-export function Tarjeta({ children, className }: { children: ReactNode; className?: string }) {
-  return <div className={clsx("tarjeta", className)}>{children}</div>;
+/** `desplazable`: nombre de la región cuando el contenido se desplaza a lo ancho; así se puede recorrer con el teclado. */
+export function Tarjeta({ children, className, desplazable }: { children: ReactNode; className?: string; desplazable?: string }) {
+  if (!desplazable) return <div className={clsx("tarjeta", className)}>{children}</div>;
+  return (
+    <div role="region" aria-label={desplazable} tabIndex={0}
+      className={clsx("tarjeta overflow-x-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-celeste", className)}>
+      {children}
+    </div>
+  );
 }
 
 export function Titulo({ children, extra }: { children: ReactNode; extra?: ReactNode }) {

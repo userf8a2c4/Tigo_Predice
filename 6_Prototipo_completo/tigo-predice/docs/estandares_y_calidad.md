@@ -20,7 +20,7 @@ Revisión del 23 de octubre de 2026. Cada fila dice qué se cumple, con qué evi
 ## 2. Accesibilidad: WCAG 2.2 nivel AA
 
 - **Herramienta:** axe-core 4.10.2 con las reglas de WCAG 2.0, 2.1 y 2.2 niveles A y AA.
-- **Alcance:** las 11 pantallas de la demo, incluidas las dos demos en vivo con su resultado final.
+- **Alcance:** las 11 pantallas de la demo, incluidas las dos demos en vivo con su resultado final, y las 11 escenas del modo presentación (22 vistas).
 - **Resultado:** 0 infracciones automáticas.
 - **Correcciones hechas:**
   - contraste de los textos secundarios y de los colores de éxito y alerta, ahora de 4.5:1 o más;
@@ -44,7 +44,7 @@ Revisión del 23 de octubre de 2026. Cada fila dice qué se cumple, con qué evi
 ## 4. Pruebas
 
 - **Python:** 230 pruebas (unitarias, API, seguridad y consistencia de cifras). Pasaron completas el 22 de octubre de 2026.
-- **Interfaz:** 7 pruebas; pasan el 23 de octubre de 2026.
+- **Interfaz:** 11 pruebas; pasan el 23 de octubre de 2026.
 - **Limitación honesta:** el 23 de octubre, el Control inteligente de aplicaciones de Windows bloqueó una librería de scikit-learn en la computadora de desarrollo. Por eso las pruebas de Python no se pudieron repetir ese día. Los cambios de ese día en Python fueron de configuración (regla BLE, certifi) y de texto, y no tocaron la lógica.
 
 ## 5. Pendientes para llegar al máximo nivel

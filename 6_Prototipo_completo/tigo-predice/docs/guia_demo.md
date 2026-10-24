@@ -4,28 +4,33 @@
 
 ## Antes de presentar
 
-1. Doble clic en **iniciar_demo.bat** la noche anterior (la primera vez tarda ~4 minutos; después, 5 segundos).
-2. Se abre **http://127.0.0.1:8000**. Arriba debe decir «Datos simulados» y «Modo plantillas» o «Modo IA».
-3. Abra **Hogar en vivo**, caso «A distancia», velocidad 1× y presione ↺.
-4. Navegador en pantalla completa (F11), zoom 90–100 %, notificaciones apagadas.
-5. Deje abiertas en otras pestañas **/hogar?final** y **/falla?final**, y tenga el PDF del pitch a mano.
+1. Abra **Demo_Tigo_Predice.html** con doble clic: no necesita internet ni instalar nada. (Con el prototipo completo, **iniciar_demo.bat** abre la misma app en http://127.0.0.1:8000.)
+2. Presione **Presentar**, arriba a la derecha. El modo presentación queda en pausa en la primera escena.
+3. Presione **F** para pantalla completa. En Teams, comparta la pantalla o la ventana del navegador.
+4. Apague las notificaciones y tenga a mano el guion de la presentación (PDF aparte).
+5. Cuando le den la palabra, presione **Espacio**: la presentación avanza sola y dura 4:32.
 
-## Recorrido recomendado (5 minutos)
+## Modo presentación (4:32)
 
-| Min. | Pantalla | Qué hacer | Frase clave |
+Botón **Presentar**: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).
+
+| Min. | Escena | En pantalla | Idea |
 |---|---|---|---|
-| 0:00 | Inicio | Posicionamiento | «Los chatbots atienden la llamada…» |
-| 1:10 | Hogar en vivo | ▶ Iniciar y leer la franja | «La IA lo marca antes que la regla y que la llamada» |
-| 2:30 | Modelo de IA | Señalar 52 % vs. 26 % | «Medida contra la regla, no contra nada» |
-| 2:50 | Resultados del piloto | GO y −19 % | «Simulado: así se medirá» |
-| 3:10 | Falla masiva (opcional) | /falla?final | «El mismo motor en móvil» |
-| 3:40 | Caso de negocio | L 4.3 M; equilibrio 12 % y 22 % | «Solo beneficio duro» |
-| 4:20 | Listo para producción | Seguridad | «Red team propio, GDPR como referencia» |
-| 4:40 | Diapositiva final | El pedido | «12 semanas, L 770 mil, GO/NO-GO» |
+| 0:00 | Inicio | Frase de Tigo Predice | Saludo breve |
+| 0:10 | Karla | Su historia y lo que cuesta | «Llama, espera, llega un técnico… y no era necesario» |
+| 0:36 | No es un caso aislado | Hogares, visitas y cuántas se evitan | «Estimaciones a validar con Tigo» |
+| 0:56 | Nuestra idea | Detecta, resuelve y avisa | «Escuchar al módem a tiempo» |
+| 1:16 | Demo en vivo | Hogar en vivo corre sola (80 s) | Acompañe la franja azul |
+| 2:36 | IA vs. regla | 52 % vs. 26 % (simulado) | «Si no gana con datos reales, usamos la regla» |
+| 2:56 | Móvil | WhatsApp de falla masiva y CONATEL | «Cumplimos y ahorramos a la vez» |
+| 3:18 | Caso de negocio | L 4.3 M; equilibrio 22 % y 12 % | «Solo lo que se puede medir» |
+| 3:44 | Confianza | Privacidad y grupo control | «Solo el desempeño del módem» |
+| 3:58 | El pedido | 12 semanas, L 770 mil | «Ustedes deciden con números reales» |
+| 4:24 | Cierre | Gracias y contacto | «Tigo Predice evita que ocurra» |
 
 ## Inicio: el mapa de la app
 
-La primera pantalla resume la propuesta. Úsela para abrir la presentación (10 segundos) y saltar a la demo.
+La primera pantalla resume la propuesta. Desde aquí, el botón Presentar abre el modo presentación.
 
 ![Inicio: el mapa de la app](capturas/inicio.png)
 

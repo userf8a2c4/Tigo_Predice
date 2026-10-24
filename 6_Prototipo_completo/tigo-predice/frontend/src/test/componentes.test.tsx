@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import type { Conversacion } from "../api";
 import Telefono from "../components/Telefono";
 import { Factores, PrioridadBadge } from "../components/ui";
+import { DURACION_TOTAL, ESCENAS, reloj } from "../escenas";
 import { colorRiesgo, lempiras, lempirasCorto, lempirasSig, pct, pctRiesgo, rangoL, sig } from "../formato";
 
 describe("redondeo sin falsa precisión", () => {
@@ -72,5 +73,30 @@ describe("componentes", () => {
     render(<Telefono conv={conv} />);
     expect(screen.getByText("Gracias por avisar")).toBeInTheDocument();
     expect(screen.getByText("✅ Llamada evitada")).toBeInTheDocument();
+  });
+});
+
+describe("modo presentación", () => {
+  it("cabe en los 5 minutos del concurso, con margen", () => {
+    expect(DURACION_TOTAL).toBeLessThanOrEqual(285);
+    expect(reloj(DURACION_TOTAL)).toBe("4:32");
+  });
+
+  it("deja a la demo en vivo el tiempo que dura (~77 s a 1×)", () => {
+    expect(ESCENAS.find((e) => e.id === "demo")?.seg).toBeGreaterThanOrEqual(78);
+  });
+});
+
+describe("escenas de la presentación", () => {
+  it("cada escena abre una pantalla que existe en el sistema", () => {
+    const rutas = ["/", "/hogar", "/falla", "/piloto", "/negocio", "/modelo", "/produccion"];
+    for (const e of ESCENAS) expect(rutas).toContain(e.ruta.split("?")[0]);
+  });
+
+  it("la demo en vivo corre en Hogar en vivo, después de presentar a Karla", () => {
+    const k = ESCENAS.findIndex((e) => e.id === "karla");
+    const d = ESCENAS.findIndex((e) => e.id === "demo");
+    expect(d).toBeGreaterThan(k);
+    expect(ESCENAS[d].ruta).toBe("/hogar");
   });
 });

@@ -15,9 +15,11 @@ En ambos, un **grupo control aleatorio del 15 %** mide el efecto real.
 Propuesta para **Tigo CX Month · Sharks** (octubre 2026), de Sandra Jimenez (Asistente de Experiencia B2B, sandra.jimenez@tigo.com.hn). ⚠️ **Datos simulados — supuestos a validar con Tigo.**
 
 ## Arranque (Windows, 3 pasos)
-1. Tener **Python 3.11+** y **Node 18+** (solo la primera vez).
-2. Doble clic en **`iniciar_demo.bat`**. La primera vez instala las versiones fijadas (`requirements.lock`), genera los datos, entrena y firma los modelos y compila la interfaz. Toma unos 4 minutos; después arranca en unos 5 segundos.
+1. Tener **Python** y **Node** (probado con Python 3.15 y Node 24 en Windows 11).
+2. Doble clic en **`iniciar_demo.bat`**. La primera vez instala las versiones fijadas (`requirements.lock`), genera los datos, entrena los modelos, registra su huella SHA-256 y compila la interfaz. Toma unos 4 minutos; después arranca en unos 5 segundos.
 3. Se abre **http://127.0.0.1:8000** → **Hogar en vivo ★** → **▶ Iniciar**.
+
+**Modo presentación:** el botón **Presentar** recorre el sistema en 4:32 (escenas en `frontend/src/escenas.ts`). Cada escena abre una pantalla real y una tarjeta a la izquierda muestra la idea y las cifras. Espacio pausa, ← y → cambian de escena y Esc sale. El guion de quien presenta está en `docs/pitch.md`.
 
 **Sin servidor:** `2_Demo/Demo_Tigo_Predice.html` (en la carpeta del proyecto, junto a `1_Presentacion` … `5_Envio`, donde están todos los entregables) es la misma demo en un solo archivo que se abre con doble clic, por ejemplo para enviarla al jurado. Se genera con `docs/entregables/gen_demo_html.py`; «Pon tus números» solo funciona en la versión completa.
 

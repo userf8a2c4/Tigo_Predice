@@ -1,8 +1,11 @@
 import clsx from "clsx";
-import { BrainCircuit, Calculator, FlaskConical, Home, MessageCircle, Radio, Router, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { BrainCircuit, Calculator, FlaskConical, Home, MessageCircle, MonitorPlay, Radio, Router, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { api } from "../api";
-import { ConfigContext, useDatos } from "../hooks";
+import { ESCENAS } from "../escenas";
+import { ConfigContext, PresentacionContext, useDatos } from "../hooks";
+import { BarraPresentacion, PanelEscena, useReproductor } from "./Presentador";
 
 const NAV_PILOTO = [
   { a: "/", texto: "Inicio", icono: Home },
@@ -58,11 +61,22 @@ export default function Layout() {
   const { datos: config } = useDatos(api.config);
   const navegar = useNavigate();
   const modoIA = config?.llm_modo === "IA";
+  // Modo presentación: la pantalla real sigue a la vista; la tarjeta de cada escena ocupa la columna del menú
+  const [presentando, setPresentando] = useState(false);
+  const principal = useRef<HTMLElement>(null);
+  const salir = useCallback(() => setPresentando(false), []);
+  const r = useReproductor(presentando, principal, salir);
+  const presentacion = useMemo(
+    () => ({ escena: presentando ? ESCENAS[r.pos.i].id : null, abrir: () => setPresentando(true) }),
+    [presentando, r.pos.i],
+  );
 
   return (
     <ConfigContext.Provider value={config}>
-      <div className="flex h-full">
-        <aside className="hidden w-64 shrink-0 flex-col bg-tigo p-4 text-white lg:flex">
+    <PresentacionContext.Provider value={presentacion}>
+      <div className="flex h-full flex-col">
+      <div className="flex min-h-0 flex-1">
+        {presentando ? <PanelEscena r={r} /> : <aside className="hidden w-64 shrink-0 flex-col bg-tigo p-4 text-white lg:flex">
           <Logo />
           <div className="mt-6 px-3 text-[11px] font-semibold uppercase tracking-wider text-celeste">Fase 1 · Piloto Hogar + Móvil</div>
           <nav className="mt-1 space-y-0.5">{NAV_PILOTO.map((n) => <Enlace key={n.a} {...n} />)}</nav>
@@ -73,7 +87,7 @@ export default function Layout() {
             <div title={config?.llm_estado}>Mensajes: <span className="font-semibold text-white">{config?.llm_estado ?? "…"}</span></div>
             <div>Concurso Tigo CX Month · Sharks</div>
           </div>
-        </aside>
+        </aside>}
 
         <div className="flex min-w-0 flex-1 flex-col">
           <header className="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-white px-4 py-2.5 lg:px-6">
@@ -88,8 +102,13 @@ export default function Layout() {
             >
               <Sparkles size={12} /> {config ? (modoIA ? "Modo IA" : "Modo plantillas") : "…"}
             </span>
+            <button onClick={() => setPresentando((v) => !v)}
+              className="ml-auto flex items-center gap-2 rounded-xl bg-tigo px-4 py-2 text-sm font-bold text-white shadow hover:brightness-110"
+              title={presentando ? "Salir del modo presentación (Esc)" : "Modo presentación (menos de 5 minutos)"}>
+              <MonitorPlay size={16} /> <span className="hidden sm:inline">{presentando ? "Salir de la presentación" : "Presentar"}</span>
+            </button>
             <button onClick={() => navegar("/hogar")}
-              className="ml-auto flex items-center gap-2 rounded-xl bg-celeste px-4 py-2 text-sm font-bold text-tigo-900 shadow hover:brightness-105">
+              className="flex items-center gap-2 rounded-xl bg-celeste px-4 py-2 text-sm font-bold text-tigo-900 shadow hover:brightness-105">
               <Router size={16} /> <span className="hidden sm:inline">Hogar en vivo</span>
             </button>
             <button onClick={() => navegar("/falla")}
@@ -97,7 +116,7 @@ export default function Layout() {
               <Radio size={16} /> <span className="hidden xl:inline">Falla masiva</span>
             </button>
           </header>
-          <nav className="flex gap-1 overflow-x-auto border-b border-slate-200 bg-white px-2 py-1.5 lg:hidden">
+          <nav className={clsx("flex gap-1 overflow-x-auto border-b border-slate-200 bg-white px-2 py-1.5 lg:hidden", presentando && "hidden")}>
             {[...NAV_PILOTO, ...NAV_FASE2].map(({ a, texto }) => (
               <NavLink key={a} to={a} end={a === "/"}
                 className={({ isActive }) => clsx("whitespace-nowrap rounded-lg px-3 py-1.5 text-sm", isActive ? "bg-tigo text-white" : "text-slate-600")}>
@@ -105,7 +124,7 @@ export default function Layout() {
               </NavLink>
             ))}
           </nav>
-          <main tabIndex={0} className="flex-1 overflow-y-auto p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-celeste sm:p-4 lg:p-6">
+          <main ref={principal} tabIndex={0} className="flex-1 overflow-y-auto p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-celeste sm:p-4 lg:p-6">
             <div className="mx-auto w-full max-w-[1800px]">
               <Outlet />
               <FuenteDatos />
@@ -113,6 +132,9 @@ export default function Layout() {
           </main>
         </div>
       </div>
+      {presentando && <BarraPresentacion r={r} salir={salir} />}
+      </div>
+    </PresentacionContext.Provider>
     </ConfigContext.Provider>
   );
 }

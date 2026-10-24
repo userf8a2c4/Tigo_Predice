@@ -14,7 +14,7 @@
 *[Mirar al jurado. Pausa antes de empezar.]*
 
 > Estimamos que cada mes Tigo manda unos **5,700 técnicos** a sus 191 mil hogares. En **1 de cada 4** visitas, el técnico no encuentra nada físico: cambia el canal del WiFi o actualiza el módem, y se va.
-> Eso se podía resolver a distancia… **una semana antes.**
+> Eso se podía resolver a distancia… **días antes.**
 
 ## 0:15 – 0:35 · El problema
 > Los módems avisan días antes de fallar: la señal baja, el WiFi se satura, se reinician solos. Pero hoy solo miramos cuando cruzan un umbral, y para entonces el cliente ya está llamando al call center.
@@ -47,7 +47,7 @@
 ---
 
 ## Versión de 30 segundos (para el pasillo o el ascensor)
-> Cada mes Tigo manda miles de técnicos a hogares, y 1 de cada 4 visitas se podía resolver a distancia. Los módems avisan días antes, pero nadie lo escucha. Tigo Predice es una IA que marca cada semana a los hogares que van a fallar y los corrige antes de que el cliente llame. En la simulación anticipa el doble que las alarmas por umbral, y eso se valida con datos reales. Pido un piloto de 12 semanas con grupo control: si no funciona, se detiene.
+> Cada mes Tigo manda miles de técnicos a hogares, y 1 de cada 4 visitas se podía resolver a distancia. Los módems avisan días antes, y esa señal se puede aprovechar mejor. Tigo Predice es una IA que marca cada semana a los hogares que van a fallar y los corrige antes de que el cliente llame. En la simulación anticipa el doble que las alarmas por umbral, y eso se valida con datos reales. Pido un piloto de 12 semanas con grupo control: si no funciona, se detiene.
 
 ## Las 8 cifras que hay que saber de memoria
 | Cifra | Qué es |

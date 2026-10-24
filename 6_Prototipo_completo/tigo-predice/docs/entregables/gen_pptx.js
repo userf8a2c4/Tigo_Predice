@@ -87,7 +87,7 @@ s.addNotes("Saludo. 'En 5 minutos les muestro cómo resolver problemas antes de 
 // 2 Dolor
 pres.addSection({ title: "Problema" });
 s = pres.addSlide({ masterName: "CONTENIDO", sectionTitle: "Problema" });
-s.addText("El módem avisa días antes. Hoy nadie lo escucha", { placeholder: "title" });
+s.addText("El módem avisa días antes: escuchémoslo a tiempo", { placeholder: "title" });
 [["Día 1", "El WiFi de Karla empieza a empeorar. La telemetría del módem ya lo muestra."],
   ["Día 6", "Karla no aguanta más: llama, espera y le agendan un técnico."],
   ["Día 8", "El técnico va, no encuentra nada físico, cambia el canal del WiFi y se va."]].forEach(([h, d], i) => {

@@ -102,7 +102,7 @@ export default function Clientes() {
       )}
       {lista.error && <ErrorCaja error={lista.error} />}
 
-      <Tarjeta className="overflow-x-auto">
+      <Tarjeta desplazable="Lista de clientes">
         <table className="w-full min-w-[960px] text-left text-sm">
           <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
             <tr>

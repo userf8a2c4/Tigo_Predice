@@ -161,7 +161,7 @@ export default function CasoNegocio() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.2fr_1fr]">
-        <Tarjeta className="overflow-x-auto p-5">
+        <Tarjeta className="p-5" desplazable="Escalamiento nacional (anual)">
           <Titulo>Escalamiento nacional (anual)</Titulo>
           <table className="w-full min-w-[520px] text-sm">
             <thead><tr className="text-right text-xs uppercase tracking-wide text-slate-500"><th className="text-left" />{COLUMNAS.map((k) => <th key={k} className="pb-2">{k}</th>)}</tr></thead>
@@ -253,7 +253,7 @@ export default function CasoNegocio() {
       </div>
 
       {config && (
-        <Tarjeta className="overflow-x-auto p-5">
+        <Tarjeta className="p-5" desplazable="Supuestos y su fuente">
           <Titulo>Supuestos (bajo · base · alto) y su fuente</Titulo>
           <table className="w-full min-w-[900px] text-sm">
             <thead><tr className="text-left text-xs uppercase tracking-wide text-slate-500"><th className="pb-2">Supuesto</th><th>Bajo</th><th>Base</th><th>Alto</th><th>Fuente</th><th>Nota</th></tr></thead>

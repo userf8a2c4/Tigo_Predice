@@ -29,7 +29,7 @@ export default function Produccion() {
 
       <Tarjeta className="p-5">
         <Titulo><span className="flex items-center gap-2"><Database size={18} /> Integración: qué dato, de dónde y cada cuánto</span></Titulo>
-        <div className="overflow-x-auto">
+        <div role="region" aria-label="Integración de datos" tabIndex={0} className="overflow-x-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-celeste">
           <table className="w-full min-w-[820px] text-sm">
             <thead><tr className="text-left text-xs uppercase tracking-wide text-slate-500"><th className="pb-2">Fuente</th><th>Dato</th><th>Piloto</th><th /><th>Producción</th></tr></thead>
             <tbody>
@@ -53,7 +53,7 @@ export default function Produccion() {
           Marcos internacionales: ISO 27001/27701/42001, SOC 2, NIST, OWASP (API y LLM) y GDPR como estándar de referencia.
           Detalle, marco legal de Honduras y evaluación de impacto en <b>docs/seguridad_y_privacidad.md</b>.
         </p>
-        <div className="overflow-x-auto">
+        <div role="region" aria-label="Controles de seguridad" tabIndex={0} className="overflow-x-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-celeste">
           <table className="w-full min-w-[720px] text-sm">
             <thead><tr className="text-left text-xs uppercase tracking-wide text-slate-500"><th className="pb-2">Control</th><th>Prototipo</th><th>Producción</th></tr></thead>
             <tbody>
@@ -106,7 +106,7 @@ export default function Produccion() {
 
       <Tarjeta className="p-5">
         <Titulo><span className="flex items-center gap-2"><TriangleAlert size={18} /> Matriz de riesgos</span></Titulo>
-        <div className="overflow-x-auto">
+        <div role="region" aria-label="Matriz de riesgos" tabIndex={0} className="overflow-x-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-celeste">
           <table className="w-full min-w-[820px] text-sm">
             <thead><tr className="text-left text-xs uppercase tracking-wide text-slate-500"><th className="pb-2">Riesgo</th><th>Probabilidad</th><th>Impacto</th><th>Mitigación</th></tr></thead>
             <tbody>

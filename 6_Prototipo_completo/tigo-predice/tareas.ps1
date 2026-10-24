@@ -3,7 +3,7 @@
 
   Uso:  .\tareas.ps1 <tarea>
 
-  preparar   Genera datos, entrena, firma los modelos y evalúa (todo el pipeline de IA)
+  preparar   Genera datos, entrena, registra la huella SHA-256 de los modelos y evalúa (todo el pipeline de IA)
   datos      Genera los datos sintéticos (móvil + hogar, semilla fija)
   entrenar   Entrena los modelos (móvil 72 h, hogar 7 días y Fase 2) y los firma (SHA-256)
   evaluar    Escribe reports/modelo.md

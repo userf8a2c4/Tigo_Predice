@@ -211,7 +211,7 @@ Cada pregunta tiene tres partes:
 ## G. Preguntas curvas
 
 **38. Si funciona tan bien, ¿por qué no lo hizo ya Tigo?**
-- **Respuesta corta:** Porque la telemetría existe, pero nadie la había convertido en una lista de trabajo semanal medida con grupo control. Es exactamente lo que proponemos probar.
+- **Respuesta corta:** Porque la telemetría existe y todavía no se usa como una lista de trabajo semanal medida con grupo control. Es exactamente lo que proponemos probar.
 - **Si piden más:** Si ya existe algo parecido internamente, mejor: lo usamos como punto de partida y aportamos la medición y la IA.
 
 ---

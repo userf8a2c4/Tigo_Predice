@@ -145,7 +145,7 @@ PASOS.forEach(([t, d], i) => {
   txt(s, v, { x: x + 0.3, y: 5.32, w: 3.4, h: 0.7, fontSize: 34, bold: true, color: i === 1 ? H.rojo : H.azul, objectName: `datov${i}` });
   txt(s, e, { x: x + 0.3, y: 6.02, w: 3.4, h: 0.6, fontSize: 14, color: H.gris, valign: "top", objectName: `datoe${i}` });
 });
-s.addNotes("Contar la historia: un hogar empieza a tener problemas de WiFi. El módem lo reporta, pero nadie lo mira hasta que cruza un umbral. El cliente llama, esperamos, mandamos un técnico, y en 1 de cada 4 visitas no hay nada físico que arreglar. Tigo tiene 191 mil hogares, según el 20-F 2025 de Millicom. Decir con naturalidad que las cifras son supuestos a validar con Tigo.");
+s.addNotes("Contar la historia: un hogar empieza a tener problemas de WiFi. El módem lo reporta, y hoy esa señal se revisa cuando cruza un umbral. El cliente llama, esperamos, mandamos un técnico, y en 1 de cada 4 visitas no hay nada físico que arreglar. Tigo tiene 191 mil hogares, según el 20-F 2025 de Millicom. Decir con naturalidad que las cifras son supuestos a validar con Tigo.");
 
 // ───────────── 4 · Usuario
 pres.addSection({ title: "Usuario" });

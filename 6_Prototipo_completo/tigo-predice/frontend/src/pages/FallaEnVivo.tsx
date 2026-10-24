@@ -8,7 +8,7 @@ import { MapaBase, iconoPulso } from "../components/MapaHonduras";
 import Telefono from "../components/Telefono";
 import { Cargando, ErrorCaja, Tarjeta } from "../components/ui";
 import { EJES, GRILLA, entero, pct } from "../formato";
-import { pideFinal, useDatos } from "../hooks";
+import { pideFinal, useDatos, usePresentacion } from "../hooks";
 
 const ROJO = "#c0262f"; // 6:1 sobre blanco (WCAG 2.2 AA)
 const VERDE = "#0f7a43"; // 5.4:1 sobre blanco (WCAG 2.2 AA)
@@ -19,6 +19,7 @@ type Fase = { paso: number; narracion: string };
 
 export default function FallaEnVivo() {
   const { datos: esc, error } = useDatos(api.falla);
+  const presentando = usePresentacion().escena !== null;
   const [fase, setFase] = useState<Fase>({ paso: -1, narracion: "Presione ▶ para simular una falla masiva de red." });
   const [velocidad, setVelocidad] = useState(1);
   const [corriendo, setCorriendo] = useState(false);
@@ -156,7 +157,7 @@ export default function FallaEnVivo() {
           </div>
           <div key={fase.narracion} className="aparecer min-h-[2lh] text-base font-semibold leading-snug sm:text-lg xl:text-xl">{fase.narracion}</div>
         </div>
-        <div className="flex shrink-0 items-center gap-2">
+        {!presentando && <div className="flex shrink-0 items-center gap-2">
           <select value={velocidad} disabled={corriendo} onChange={(e) => setVelocidad(Number(e.target.value))}
             className="rounded-lg bg-white/15 px-2 py-2 text-sm text-white" aria-label="Velocidad">
             <option value={1} className="text-slate-900">1× (~90 s)</option>
@@ -169,7 +170,7 @@ export default function FallaEnVivo() {
           <button onClick={reiniciar} className="rounded-xl bg-white/15 p-3 hover:bg-white/25" aria-label="Reiniciar" title="Reiniciar">
             <RotateCcw size={20} />
           </button>
-        </div>
+        </div>}
       </div>
 
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_360px]">

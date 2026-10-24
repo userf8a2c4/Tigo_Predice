@@ -1,77 +1,96 @@
-# Guion del pitch v03 — 5 minutos frente a los Sharks
+# Guion de la presentación — 5 minutos frente a los Sharks
 
 **Tigo Predice** · *"Los chatbots y copilotos atienden la llamada. Tigo Predice evita que ocurra."*
-*La IA que detecta el problema antes que el cliente, y lo resuelve antes de que llame o de que haya que mandar un técnico.*
 
-> **Antes de empezar:**
-> - Abra la app (`iniciar_demo.bat`) en **Hogar en vivo ★**, caso **A distancia**, velocidad 1×, y presione ↺.
-> - Tenga a mano el video de respaldo y las URL `…/hogar?final` y `…/falla?final`, que abren directo el resultado.
-> - Todas las cifras son **simuladas o supuestas a validar con Tigo**, y así hay que decirlo.
+**Formato del concurso:** lunes 26 de octubre, de 9:00 a 11:00 a. m. Hay **5 minutos para presentar** y **5 minutos de preguntas**. T1 (Plaza Tigo) presenta en persona en la sala Talanga; T2 y T3, por Microsoft Teams.
 
----
+## La idea de este guion
+- **Usted cuenta la historia; la pantalla muestra los números.** No hace falta memorizar ninguna cifra. Si quiere decir una, léala de la pantalla.
+- La presentación es el **Modo presentación** de la demo. Cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta muestra la idea y las cifras. Avanza sola y dura **4:32**, así que quedan unos segundos de margen.
+- Cada escena tiene una sola idea. Diga esa idea con sus palabras: no hace falta repetir el texto de abajo al pie de la letra.
 
-## 0:00 – 0:40 · El dolor
-> "Karla trabaja desde su casa en San Pedro Sula, con internet de fibra. Desde hace una semana su WiFi empeora y el módem se reinicia solo. Un día no aguanta más: llama, espera, le agendan un técnico. El técnico va, no encuentra nada físico, cambia el canal del WiFi y se va.
-> Esa visita cuesta, según nuestro cálculo con costos hondureños, unos **L 650** (técnico, vehículo y despacho), más **dos llamadas**. Y se podía resolver a distancia, **una semana antes**, sin que Karla sufriera nada.
-> Tigo tiene **191 mil hogares** (Millicom, 2025). Estimamos unas **5,700 visitas al mes**, y que **1 de cada 4 es evitable**: la industria reporta que el 17–20 % de las visitas termina «sin falla encontrada». Ambos datos se validan con los códigos de cierre de Tigo."
+## Antes de empezar
+1. Abra `Demo_Tigo_Predice.html` con doble clic. No necesita internet.
+2. Presione el botón **Presentar** (arriba a la derecha). La presentación queda en pausa en la primera escena.
+3. Presione **F** para pantalla completa.
+4. En Teams, comparta **la pantalla** o la ventana del navegador.
+5. Cuando le den la palabra, presione **Espacio** y empiece a hablar.
 
-## 0:40 – 1:10 · Qué es y por qué ahora
-- Los módems **ya reportan su telemetría**: señal, errores, reinicios, WiFi. Hoy solo se mira cuando cruza un umbral, y casi siempre es tarde.
-- **IA predictiva:** cada semana califica a todos los hogares y marca al **2 %** que va a fallar, días antes.
-- **Acción remota + WhatsApp:** se corrige a distancia; si es físico, el técnico va **una sola vez y con el diagnóstico**.
-- **El mismo motor sirve en móvil:** en una falla masiva, aviso por WhatsApp antes de que llamen.
+| Tecla | Qué hace |
+|---|---|
+| Espacio | Reproduce o pausa |
+| → o Av Pág | Pasa a la siguiente escena (sirve con un control remoto de presentaciones) |
+| ← o Re Pág | Vuelve a la escena anterior |
+| F | Pantalla completa |
+| Inicio | Vuelve a la primera escena |
+| Esc | Sale del modo presentación |
 
-## 1:10 – 2:30 · Demo "Hogar en vivo" (80 s)
-Presione **▶ Iniciar** y lea la franja azul. Los momentos clave:
-1. **26/09:** empieza el problema. La telemetría cambia, pero Karla todavía no nota nada.
-2. **28/09: la IA lo marca** (riesgo 13 %, dentro del 2 % más alto de la ciudad). **La regla de umbrales todavía no ve nada.** A la derecha aparece **por qué**: el WiFi empeora día a día y la lentitud va en aumento.
-3. **Corrección remota:** firmware y canal WiFi, de madrugada. Le llega un WhatsApp: *"ya la corregimos a distancia, sin que tuviera que llamar"*.
-4. **Dos mundos:** en rojo, sin Tigo Predice, el **02/10 Karla habría llamado**, el **03/10** recién la regla habría alarmado y el **04/10** se habría enviado un técnico. En verde, el WiFi ya está sano.
-5. **Resultado:** visita evitada y 2 llamadas evitadas, **L 780** de ahorro por **L 0.31** (un WhatsApp).
-
-*Si sobra tiempo:* en el caso **Con técnico**, la IA marca la señal de fibra **10 días antes** de la llamada y el técnico llega una sola vez.
-*Abajo está la **lista de trabajo de hoy** para soporte: 100 hogares marcados en la ciudad. **57 no tienen ninguna alarma de umbral**: solo la IA los ve.*
-
-## 2:30 – 3:10 · La IA, medida contra la regla (no contra nada)
-Pestaña **Modelo de IA → Hogar**:
-> "En datos simulados y con el mismo presupuesto, la IA anticipa el **52 %** de las visitas evitables y la regla de umbrales el **26 %**: **2.0×**. Es nuestra hipótesis, y la validamos en las dos primeras semanas con 3 meses de telemetría real. La mitad de lo que la IA anticipa **todavía no tenía ninguna alarma**.
-> Y somos honestos: una regresión logística simple llega al 46 %. Si con datos reales la IA no le gana a la regla por 1.3×, **usamos la regla**. Ese es un criterio del GO."
-
-Pestaña **Resultados del piloto → Hogar**:
-> "Simulamos 60 días con grupo control: **−19 % de visitas** (IC 95 % 12 % a 25 %) y **−56 % de llamadas técnicas** en los hogares marcados, con 97 % de poder estadístico. **Es simulado:** muestra cómo se va a medir."
-
-## 3:10 – 3:40 · Móvil: el mismo motor
-> "Cuando cae un sitio, el mismo motor avisa por WhatsApp a los afectados. En la simulación, **−16 % de llamadas** (IC 12 % a 19 %)."
-*(Opcional: abra **Falla masiva en vivo** con `?final`.)*
-
-## 3:40 – 4:20 · Caso de negocio conservador
-Pestaña **Caso de negocio**:
-> "Solo contamos **beneficio duro**: visitas y llamadas evitadas por su costo. La retención vale cero hasta medirla.
-> - **Hogar** se paga con **22 %** menos visitas evitables en los hogares marcados; el caso base supone 45 % y los proveedores reportan de 20 % a 60 %.
-> - **Móvil** se paga con **12 %** menos llamadas en los avisados.
-> - **Juntos: L 4.3 M netos en el año 1** (rango −L 3 M a L 14 M), con costos hondureños reales.
-> - Si todo sale mal se pierden hasta L 3 M. Por eso no pedimos L 1.7 M para escalar: pedimos un piloto de L 770 mil que lo averigua con datos."
-
-Si hay tiempo, use **Pon tus números**: *"Denme visitas por mes y costo por visita, y el caso queda definitivo en vivo."*
-
-## 4:20 – 4:40 · Seguridad y privacidad con marcos internacionales
-> "No leemos contenido, ni navegación, ni los dispositivos del cliente: solo el desempeño del módem. Honduras todavía no tiene ley integral de datos, así que usamos el GDPR como referencia, además de ISO 27001/27701/42001, SOC 2 y OWASP. Sesión segura, datos mínimos, bitácoras y **más de 200 pruebas automáticas**, incluido un red team propio."
-
-## 4:40 – 5:00 · El pedido a los Sharks
-> "Les pido, por **12 semanas** en San Pedro Sula:
-> 1. **Datos:** CSV diarios del NOC, del ACS/OLT, del CRM, del call center y de las órdenes de campo.
-> 2. **Equipo:** un patrocinador, un enlace del NOC, uno de ingeniería de acceso, soporte nivel 2 y un analista de datos al 50 %.
-> 3. **Canal y cumplimiento:** plantillas de WhatsApp, evaluación de impacto y visto bueno de Legal.
-> 4. **Inversión:** **L 770 mil** (≈ US$ 28 mil), con un rango de L 480 mil a L 1.2 M.
-> En la semana 12, con números reales, ustedes deciden GO o NO-GO por frente."
-
-**Cierre:** *"Los chatbots atienden la llamada. Tigo Predice evita que ocurra, y evita la visita. Gracias."*
+Si se adelanta o se atrasa, use → o ←: la escena empieza de nuevo y el reloj de abajo se ajusta solo.
 
 ---
 
-## Consejos
-- Diga **"simulado"** y **"supuesto"** sin miedo: es lo que da credibilidad frente a un comité.
-- Si dicen "esto ya existe" (Xfinity, AT&T): *"Sí, es una práctica probada que Tigo Honduras aún no tiene. Lo nuevo es medirla con grupo control y que la IA le gane a la regla."*
-- Si preguntan "¿por qué no basta una regla?": *"La regla anticipa la mitad. Y si con datos reales no le ganamos, usamos la regla."*
-- Para preguntas difíciles, vea [preguntas_frecuentes_jurado.md](preguntas_frecuentes_jurado.md).
-- Versión corta: [elevator_pitch.md](elevator_pitch.md) (2 minutos). Cómo usar la app en vivo: [guia_demo.md](guia_demo.md).
+## 0:00 · Inicio (10 s)
+- **En pantalla:** la pantalla de Inicio del sistema y la frase «Los chatbots y copilotos atienden la llamada. Tigo Predice evita que ocurra».
+- **Usted cuenta:** un saludo breve. *«Les quiero contar la historia de una clienta, y de cómo evitar que se repita.»*
+
+## 0:10 · Karla (26 s)
+- **En pantalla:** el hogar de Karla en Hogar en vivo, todavía sano. En la tarjeta, tres pasos (el WiFi falla, llama dos veces, llega un técnico que no encuentra nada) y lo que eso le cuesta a Tigo: L 780.
+- **Usted cuenta:** Karla trabaja desde su casa. Su internet empieza a fallar y aguanta unos días. Llama, espera, vuelve a llamar. Le mandan un técnico, que no encuentra nada físico, cambia el canal del WiFi y se va. A Tigo le cuesta dinero, y a Karla, la paciencia.
+- **Para pasar:** *«Y Karla no es la única.»*
+
+## 0:36 · No es un caso aislado (20 s)
+- **En pantalla:** el Inicio del sistema. En la tarjeta, 191,000 hogares, unas 5,700 visitas técnicas al mes y 1 de cada 4 que se podía resolver sin técnico.
+- **Usted cuenta:** lea las tres cifras de la tarjeta, de arriba abajo. Diga una vez, con naturalidad, que son estimaciones a validar con Tigo.
+
+## 0:56 · Nuestra idea (20 s)
+- **En pantalla:** la sección «Hogar: cómo funciona» y el mapa de fallas de Móvil. En la tarjeta: Detecta, Resuelve y Avisa.
+- **Usted cuenta:** los módems ya avisan días antes de fallar, pero hoy esa señal solo se revisa cuando cruza un umbral. Nuestra idea es escucharla a tiempo. La IA detecta el problema, se corrige a distancia y el cliente recibe un WhatsApp. Si hace falta un técnico, va una sola vez y sabiendo qué arreglar.
+- **Para pasar:** *«Veamos qué habría pasado con Karla.»*
+
+## 1:16 · Demo en vivo (80 s)
+- **En pantalla:** Hogar en vivo corre sola. La franja azul de arriba narra cada momento y la tarjeta resume los cuatro pasos.
+- **Usted cuenta:** casi nada; deje que la pantalla hable. Acompañe solo cuatro momentos:
+1. **La IA la marca.** La regla de umbrales todavía no ve nada. A la derecha aparece por qué.
+2. **La corrección de madrugada.** Le llega el WhatsApp a Karla.
+3. **Los dos mundos.** En rojo, sin Tigo Predice, Karla habría llamado y se habría enviado un técnico. En verde, su WiFi ya está bien.
+4. **El resultado.** Visita evitada y llamadas evitadas, por el costo de un mensaje.
+
+## 2:36 · IA vs. regla (20 s)
+- **En pantalla:** la pantalla Modelo de IA. En la tarjeta, 2.0× más visitas evitables anticipadas: la IA 52 % y la regla de umbrales 26 % (simulado).
+- **Usted cuenta:** hoy ya existen alarmas por umbral, así que la pregunta justa es si la IA ve más que esas alarmas. En la simulación ve el doble. Si con datos reales no gana, usamos la regla: el producto funciona igual.
+
+## 2:56 · Móvil (22 s)
+- **En pantalla:** el resultado de Falla masiva en vivo, con los WhatsApp que reciben los clientes. En la tarjeta, el efecto simulado en llamadas y la exigencia de CONATEL.
+- **Usted cuenta:** el mismo motor sirve en móvil. Cuando cae un sitio, el cliente se entera por Tigo antes de llamar. Avisar de las averías ya es una obligación del reglamento de CONATEL: así cumplimos y ahorramos a la vez.
+
+## 3:18 · Caso de negocio (26 s)
+- **En pantalla:** la pantalla Caso de negocio. En la tarjeta, L 4.3 M netos en el año 1 (rango −L 3 M a L 14 M); Hogar se paga con 22 % menos visitas evitables y Móvil con 12 % menos llamadas.
+- **Usted cuenta:** solo contamos lo que se puede medir: visitas y llamadas evitadas. La retención no suma hasta medirla. Señale los puntos de equilibrio: basta con poco para que se pague.
+
+## 3:44 · Confianza (14 s)
+- **En pantalla:** la pantalla Listo para producción. En la tarjeta: solo el desempeño del módem, grupo control y marcos internacionales.
+- **Usted cuenta:** no leemos contenido ni navegación del cliente, solo cómo funciona su módem. Y todo se mide con grupo control.
+
+## 3:58 · El pedido (26 s)
+- **En pantalla:** la pantalla Resultados del piloto, con la decisión GO / NO-GO. En la tarjeta, 12 semanas en San Pedro Sula, L 770 mil (≈ US$ 28 mil, rango L 480 mil a L 1.2 M), y datos más un equipo pequeño.
+- **Usted cuenta:** lo que pedimos es acotado: una ciudad, doce semanas, datos que Tigo ya tiene y un equipo pequeño. En la semana 12, con números reales, ustedes deciden si sigue o no.
+
+## 4:24 · Cierre (8 s)
+- **En pantalla:** el Inicio del sistema. En la tarjeta, la frase de Tigo Predice, «Gracias» y su contacto.
+- **Usted cuenta:** *«Los chatbots atienden la llamada. Tigo Predice evita que ocurra. Gracias.»*
+
+---
+
+## Los 5 minutos de preguntas
+- Salga del modo presentación con **Esc**: vuelve el menú y la demo queda abierta para responder con la pantalla.
+  - **Caso de negocio:** escenarios y «Pon tus números».
+  - **Modelo de IA:** la IA frente a la regla.
+  - **Resultados del piloto:** cómo se mide con grupo control.
+  - **Listo para producción:** datos, equipo y riesgos.
+- Si preguntan por una cifra, búsquela en la pantalla en lugar de recordarla.
+- Respuestas preparadas: [preguntas_frecuentes_jurado.md](preguntas_frecuentes_jurado.md).
+- Versión corta, sin pantalla: [elevator_pitch.md](elevator_pitch.md) (2 minutos). Cómo usar la demo fuera de la presentación: [guia_demo.md](guia_demo.md).
+
+## Si algo falla
+- **La presentación no abre:** abra **Hogar en vivo**, presione **Iniciar** y cuente la historia con este mismo orden.
+- **No hay computadora:** use el elevator pitch.
