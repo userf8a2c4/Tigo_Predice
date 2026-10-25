@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Tigo Predice · Resumen ejecutivo</title>
+<style>
+  @page { size: Letter; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Calibri, "Segoe UI", Arial, sans-serif; color: #0f1b2d; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .hoja { width: 8.5in; height: 11in; padding: 0.4in 0.5in; display: flex; flex-direction: column; gap: 10px; }
+  header { background: #00377b; color: #fff; border-radius: 14px; padding: 16px 22px; }
+  .evento { color: #00c8ff; font-size: 11px; font-weight: 700; letter-spacing: 2px; }
+  h1 { margin: 4px 0 3px; font-size: 36px; line-height: 1; }
+  .lema { color: #00c8ff; font-style: italic; font-size: 16px; font-weight: 600; }
+  .sub { color: #fff; font-size: 13px; margin-top: 3px; }
+  .problema { font-size: 12.3px; line-height: 1.4; margin-top: 8px; color: #dce7f7; }
+  h2 { font-size: 14.5px; color: #00377b; margin: 0 0 5px; }
+  .tres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+  .card { background: #eef3f9; border-radius: 12px; padding: 10px 12px; font-size: 11.8px; line-height: 1.36; }
+  .num { display: inline-flex; width: 22px; height: 22px; border-radius: 50%; background: #00c8ff; color: #00377b; font-weight: 800; align-items: center; justify-content: center; margin-right: 6px; }
+  .card b.t { font-size: 15px; color: #00377b; }
+  .cifras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+  .cifra { border: 1px solid #d5dce6; border-radius: 12px; padding: 8px 10px; }
+  .cifra .v { font-size: 22px; font-weight: 800; color: #00377b; line-height: 1.1; white-space: nowrap; }
+  .cifra .e { font-size: 10.6px; color: #5b6575; }
+  .dos { display: grid; grid-template-columns: 1.15fr 1fr; gap: 13px; align-items: start; }
+  img { width: 100%; border-radius: 10px; border: 1px solid #d5dce6; }
+  ul { margin: 0; padding-left: 16px; font-size: 11.8px; line-height: 1.38; }
+  li { margin-bottom: 2px; }
+  .pedido { background: #00377b; color: #fff; border-radius: 12px; padding: 10px 14px; font-size: 11.8px; line-height: 1.38; }
+  .pedido h2 { color: #00c8ff; }
+  .pedido .monto { font-size: 24px; font-weight: 800; }
+  .go { display: flex; gap: 8px; font-size: 11px; }
+  .go div { flex: 1; border-radius: 10px; padding: 7px 9px; }
+  .si { background: #e8f7ee; color: #0f5d34; }
+  .no { background: #fdecec; color: #8a1c22; }
+  .seg { background: #eef3f9; border-radius: 10px; padding: 7px 10px; font-size: 11px; line-height: 1.35; }
+  .nota { font-size: 10.3px; color: #5b6575; }
+  footer { margin-top: auto; font-size: 10px; color: #5b6575; display: flex; justify-content: space-between; }
+  .rellenar { background: #fff3a6; padding: 0 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="hoja">
+  <header>
+    <div class="evento">TIGO CX MONTH · CONCURSO SHARKS DE IA · ATENCIÓN PROACTIVA HOGAR + MÓVIL</div>
+    <h1>Tigo Predice</h1>
+    <div class="lema">Los chatbots y copilotos atienden la llamada. Tigo Predice evita que ocurra.</div>
+    <div class="sub">La IA que detecta el problema antes que el cliente, y lo resuelve antes de que llame o de que haya que mandar un técnico.</div>
+    <div class="problema"><b>El problema:</b> los módems avisan días antes de fallar (señal que baja, WiFi saturado, reinicios), pero hoy solo se miran cuando cruzan un umbral. El cliente llama y se manda un técnico, aunque <b>1 de cada 4 visitas es evitable</b> (supuesto: {{hogar_visitas_mes}} visitas al mes en {{hogares_nacional}} hogares, {{costo_por_visita}} cada una). En móvil, 1 de cada 3 afectados por una falla masiva llama si no recibe aviso.</div>
+  </header>
+
+  <section class="tres">
+    <div class="card"><span class="num">1</span><b class="t">Detecta</b><br>Cada semana la IA califica la telemetría de todos los módems y marca al 2 % con más riesgo de llamar o necesitar visita en 7 días, con su porqué.</div>
+    <div class="card"><span class="num">2</span><b class="t">Resuelve</b><br>WiFi o firmware: se corrige a distancia y llega un WhatsApp. Físico: el técnico va una sola vez y con el diagnóstico. En móvil, aviso en fallas masivas.</div>
+    <div class="card"><span class="num">3</span><b class="t">Mide</b><br>Un <b>15 % de control aleatorio</b> en cada frente. Métricas norte: visitas por 1,000 hogares marcados y llamadas por 1,000 afectados, tratados vs. control.</div>
+  </section>
+
+  <section>
+    <h2>Caso de negocio conservador: solo beneficio duro (visitas y llamadas evitadas × su costo)</h2>
+    <div class="cifras">
+      <div class="cifra"><div class="v">{{neto_anio1_base}}</div><div class="e">neto año 1, Hogar + Móvil (base) · rango {{neto_anio1_rango}}</div></div>
+      <div class="cifra"><div class="v">{{hogar_equilibrio_anio1}} · {{equilibrio_anio1}}</div><div class="e">equilibrio: menos visitas evitables (Hogar) y menos llamadas (Móvil) para pagarse en el año 1</div></div>
+      <div class="cifra"><div class="v">{{hogar_ia_vs_regla}}</div><div class="e">la IA anticipa {{hogar_ia_captura}} de las visitas evitables; la regla de umbrales, {{hogar_regla_captura}} (simulado)</div></div>
+      <div class="cifra"><div class="v">{{piloto_costo_base}}</div><div class="e">inversión del piloto (≈ {{piloto_costo_usd}}) · rango {{piloto_costo_rango}}</div></div>
+    </div>
+    <div class="nota" style="margin-top:4px">Hogar: {{hogar_visitas_evitadas_anio_base}} visitas evitadas al año (solo {{hogar_reduccion_total_visitas}} del total). Móvil: {{llamadas_evitadas_anio_base}} llamadas evitadas. Retención ({{potencial_retencion_base}}/año en margen) <b>no incluida</b> hasta medirla.</div>
+  </section>
+
+  <section class="dos">
+    <div>
+      <h2>Demo «Hogar en vivo» (prototipo funcional)</h2>
+      <img src="hogar.png" alt="Pantalla Hogar en vivo de Tigo Predice">
+      <div class="nota" style="margin-top:4px">La IA marca el hogar el 28/09; la regla de umbrales recién el 03/10 y el cliente habría llamado el 02/10. Se corrige a distancia: visita evitada. Piloto simulado: <b>−19 % de visitas</b> (IC 95 % 12–25 %) y −56 % de llamadas técnicas. <b>Resultados simulados.</b></div>
+      <div class="seg" style="margin-top:6px"><b>Seguridad y privacidad:</b> sin contenido de comunicaciones ni navegación; GDPR como estándar (Honduras aún no tiene ley integral), ISO 27001/27701/42001, SOC 2 y OWASP; red team propio con 12 ataques corregidos.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div>
+        <h2>Piloto de 12 semanas en San Pedro Sula</h2>
+        <ul>
+          <li>Semanas 0–2: CSV del ACS/OLT, NOC, CRM, call center y campo; análisis retrospectivo (¿la IA le gana a la regla con datos reales?); evaluación de impacto.</li>
+          <li>Semanas 3–10: Hogar (la IA marca el 2 % semanal; soporte N2 corrige) y Móvil (avisos), con 15 % de control.</li>
+          <li>Semanas 11–12: efecto con IC 95 % y decisión por frente al comité.</li>
+        </ul>
+      </div>
+      <div class="go">
+        <div class="si"><b>GO</b> Hogar: visitas −15 % o más, significativo, opt-out &lt; 2 % (si la IA no supera a la regla por 1.3×, se usa la regla). Móvil: llamadas −12 % o más (su equilibrio).</div>
+        <div class="no"><b>NO-GO</b> en cualquier otro caso: se detiene con un costo acotado.</div>
+      </div>
+      <div class="pedido">
+        <h2>Lo que pedimos</h2>
+        <div class="monto">{{piloto_costo_base}}</div>
+        12 semanas, CSV diarios del NOC, ACS/OLT, CRM, call center y campo; un patrocinador, enlaces del NOC y de ingeniería de acceso, soporte N2, un analista al 50 % y plantillas de WhatsApp aprobadas.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Contacto: Sandra Michel Jimenez Zelaya · Asistente de Experiencia B2B · sandra.jimenez@tigo.com.hn</span>
+    <span>Datos simulados — supuestos a validar con Tigo · Octubre 2026</span>
+  </footer>
+</div>
+</body>
+</html>

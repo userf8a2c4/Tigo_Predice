@@ -1,24 +1,25 @@
 TIGO PREDICE · AI SHARK TANK · TIGO CX MONTH 2026
 «Los chatbots y copilotos atienden la llamada. Tigo Predice evita que ocurra.»
 
-Autoría: Sandra Jimenez · Asistente de Experiencia B2B · sandra.jimenez@tigo.com.hn
+Autoría: Sandra Michel Jimenez Zelaya · Asistente de Experiencia B2B · sandra.jimenez@tigo.com.hn
 
 PARA EMPEZAR
-   Abra 2_Demo\index.html con doble clic. Se abre en el navegador.
+   Abra 1_Demo\index.html con doble clic. Se abre en el navegador.
    Entre a «Hogar en vivo ★» y presione «Iniciar». Funciona sin internet y sin instalar nada.
    Para presentar: botón «Presentar» (arriba a la derecha). Recorre el sistema en 4:32;
-   Espacio pausa, las flechas cambian de escena y Esc sale. El guion está en 4_Preparacion_del_pitch.
+   Espacio pausa, las flechas cambian de escena y Esc sale. El guion está en 2_Documentos\1_Presentacion.
 
 CARPETAS
-   1_Presentacion            Presentación para el concurso (PowerPoint y PDF), con guion en las notas.
-   2_Demo                    La demo en un solo archivo HTML (index.html). La carpeta completa
-                             está lista para subirla a la raíz de un dominio (hosting estático).
-   3_Para_el_jurado          Resumen de una página, propuesta, datos reales con fuentes, y
+   1_Demo                    La demo (sitio web, index.html). En el dominio se ve solo la demo:
+                             el .htaccess de la raíz cierra todo lo demás del repositorio.
+   2_Documentos
+      1_Presentacion         Guion de la presentación, elevator pitch y presentación de respaldo.
+      2_Para_el_jurado       Resumen de una página, propuesta, datos reales con fuentes, y
                              estrategia y regulación (Millicom 2026 y CONATEL NR001/26).
-   4_Preparacion_del_pitch   Guion de la presentación, elevator pitch, 38 preguntas del jurado,
-                             guía visual de la demo y presentación extendida de respaldo.
-   5_Envio                   Texto del correo de postulación.
-   6_Prototipo_completo      Código del prototipo (ver su README.md).
+      3_Preguntas_y_respaldo 38 preguntas del jurado, guía visual de la demo y presentación extendida.
+      4_Envio                Texto del correo de postulación.
+      5_Referencias          Afiche del concurso.
+   3_Prototipo_completo      Código del prototipo (ver su README.md).
 
 Las cifras de clientes, precios y costos de referencia son datos públicos con fuente.
 La telemetría, los clientes y los resultados del modelo y del piloto son simulados.

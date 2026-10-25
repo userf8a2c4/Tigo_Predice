@@ -11,7 +11,7 @@
 ![Accesibilidad](https://img.shields.io/badge/WCAG%202.2%20AA-0%20infracciones%20(axe--core)-2BB673)
 ![Marcos de referencia](https://img.shields.io/badge/marcos%20de%20referencia-OWASP%20Top%2010%3A2025%20%C2%B7%20GDPR%20%C2%B7%20ISO%2027001-00377B)
 
-**[Cómo ver la demo](#cómo-ver-la-demo)** · **[Presentación](1_Presentacion/AI_Shark_Tank_Tigo_Predice.pdf)** · **[Resumen de una página](3_Para_el_jurado/OnePager_Tigo_Predice.pdf)** · **[Datos y fuentes](3_Para_el_jurado/Datos_Reales_y_Revision.pdf)** · **[Estrategia y regulación](3_Para_el_jurado/Estrategia_y_Regulacion.pdf)**
+**[Cómo ver la demo](#cómo-ver-la-demo)** · **[Presentación](2_Documentos/1_Presentacion/AI_Shark_Tank_Tigo_Predice.pdf)** · **[Resumen de una página](2_Documentos/2_Para_el_jurado/OnePager_Tigo_Predice.pdf)** · **[Datos y fuentes](2_Documentos/2_Para_el_jurado/Datos_Reales_y_Revision.pdf)** · **[Estrategia y regulación](2_Documentos/2_Para_el_jurado/Estrategia_y_Regulacion.pdf)**
 
 </div>
 
@@ -75,26 +75,29 @@ Solo ahorro duro, con costos hondureños, escenarios y punto de equilibrio. En e
 > [!NOTE]
 > GitHub no ejecuta archivos HTML: si abre `index.html` aquí, verá su código. La demo se abre en su computadora o se publica en un hosting estático.
 
-1. **Descargue el archivo.** Abra [`2_Demo/index.html`](2_Demo/index.html) y use el botón **Download raw file**, o descargue todo el repositorio con **Code → Download ZIP** y descomprímalo.
+1. **Descargue el archivo.** Abra [`1_Demo/index.html`](1_Demo/index.html) y use el botón **Download raw file**, o descargue todo el repositorio con **Code → Download ZIP** y descomprímalo.
 2. **Ábralo con doble clic.** Se abre en el navegador, sin internet y sin instalar nada. Probado en Windows 11 con Microsoft Edge, incluso sin conexión a la red.
 3. Entre a **Hogar en vivo ★** y presione **▶ Iniciar**. La historia dura unos 80 segundos. Explore también **Falla masiva en vivo**, **Resultados del piloto** y **Caso de negocio**.
 
 ### Modo presentación
 
-El botón **Presentar** (arriba a la derecha) recorre el sistema en **4:32**, dentro de los 5 minutos del concurso. Cada escena abre una pantalla real y, a la izquierda, una tarjeta muestra la idea y las cifras, para que quien presenta cuente la historia sin memorizar números. Espacio pausa; ← y → (o un control remoto de presentaciones) cambian de escena; Esc vuelve a la demo para las preguntas. El guion va aparte: [`Guion_de_la_presentacion.pdf`](4_Preparacion_del_pitch/Guion_de_la_presentacion.pdf).
+El botón **Presentar** (arriba a la derecha) recorre el sistema en **4:32**, dentro de los 5 minutos del concurso. Cada escena abre una pantalla real y, a la izquierda, una tarjeta muestra la idea y las cifras, para que quien presenta cuente la historia sin memorizar números. Espacio pausa; ← y → (o un control remoto de presentaciones) cambian de escena; Esc vuelve a la demo para las preguntas. El guion va aparte: [`Guion_de_la_presentacion.pdf`](2_Documentos/1_Presentacion/Guion_de_la_presentacion.pdf).
 
 <img src="assets/readme/presentacion.png" alt="Modo presentación: tarjeta con la idea a la izquierda y la demo Hogar en vivo a la derecha" width="100%">
 
 ### Publicarla en un dominio
 
-Todo lo de la demo está en la carpeta [`2_Demo`](2_Demo), lista para un hosting estático. Suba **todo su contenido**, incluidos `.htaccess` y `.well-known`, a la raíz del dominio. No necesita servidor de aplicaciones, base de datos ni internet adicional: los datos van dentro de `index.html`.
+Todo lo de la demo está en la carpeta [`1_Demo`](1_Demo). Hay dos formas de publicarla:
 
-Si el hosting publica desde GitHub (por ejemplo, Hostinger), conecte un repositorio **aparte** que tenga solo el contenido de `2_Demo` en su raíz. Si conecta este repositorio, todo lo que contiene (código, documentos y PDF) quedaría público en el dominio. Al cambiar la demo, copie de nuevo el contenido de `2_Demo` a ese repositorio.
+- **Este repositorio conectado al hosting** (por ejemplo, Hostinger con GitHub). El [`.htaccess`](.htaccess) de la raíz hace que el dominio muestre la demo directamente: la dirección queda solo como el dominio, sin carpetas, sin `www` y sin `index.html`. Todo lo demás del repositorio (documentos, código, PDF y `.git`) no se sirve: responde 403.
+- **Cualquier otro hosting estático:** suba el contenido de `1_Demo`, incluidos `.htaccess` y `.well-known`, a la raíz del dominio.
+
+En los dos casos no hace falta servidor de aplicaciones, base de datos ni internet adicional: los datos van dentro de `index.html`. Dentro de la demo, la dirección del navegador no cambia al pasar de una pantalla a otra.
 
 | Archivo | Para qué sirve |
 |---|---|
 | `index.html` | La demo completa, con su política de seguridad de contenido: solo corren sus propios scripts (verificados por hash) y no se conecta a ningún servidor externo |
-| `.htaccess` | Cabeceras de seguridad, redirección a HTTPS y bloqueo de archivos ocultos (como `.git`) en hostings con Apache o LiteSpeed (Hostinger, cPanel y similares) |
+| `.htaccess` | Cabeceras de seguridad, redirección a HTTPS y bloqueo de archivos ocultos en hostings con Apache o LiteSpeed (Hostinger, cPanel y similares) |
 | `_headers` | Las mismas cabeceras en Netlify y Cloudflare Pages |
 | `robots.txt` | Pide a los buscadores no indexarla; la página también lleva `noindex` |
 | `.well-known/security.txt` | Contacto para reportar problemas de seguridad (RFC 9116) |
@@ -120,28 +123,28 @@ Probada abriéndola con doble clic y desde un servidor web local: sin errores y 
 
 | Carpeta | Qué tiene |
 |---|---|
-| [`1_Presentacion`](1_Presentacion) | Presentación de respaldo para el concurso (13 diapositivas, con guion en las notas), en PowerPoint y PDF |
-| [`2_Demo`](2_Demo) | La demo en un solo archivo HTML: se descarga y se abre con doble clic, sin servidor ni internet |
-| [`3_Para_el_jurado`](3_Para_el_jurado) | Resumen de una página, propuesta completa, datos reales con fuentes, y estrategia y regulación |
-| [`4_Preparacion_del_pitch`](4_Preparacion_del_pitch) | Guion del modo presentación, elevator pitch de 2 minutos, 38 preguntas probables del jurado, guía visual de la demo y presentación extendida |
-| [`5_Envio`](5_Envio) | Texto del correo de postulación |
-| [`6_Prototipo_completo/tigo-predice`](6_Prototipo_completo/tigo-predice) | Código del prototipo: modelos de IA, API, interfaz, experimento del piloto, caso de negocio y pruebas |
-| [`_referencias`](_referencias) | Afiche del concurso |
+| [`1_Demo`](1_Demo) | La demo (sitio web): se abre con doble clic o se publica en el dominio |
+| [`2_Documentos/1_Presentacion`](2_Documentos/1_Presentacion) | Guion del modo presentación, elevator pitch de 2 minutos y presentación de respaldo (13 diapositivas, PowerPoint y PDF) |
+| [`2_Documentos/2_Para_el_jurado`](2_Documentos/2_Para_el_jurado) | Resumen de una página, propuesta completa, datos reales con fuentes, y estrategia y regulación |
+| [`2_Documentos/3_Preguntas_y_respaldo`](2_Documentos/3_Preguntas_y_respaldo) | 38 preguntas probables del jurado, guía visual de la demo y presentación extendida |
+| [`2_Documentos/4_Envio`](2_Documentos/4_Envio) | Texto del correo de postulación |
+| [`2_Documentos/5_Referencias`](2_Documentos/5_Referencias) | Afiche del concurso |
+| [`3_Prototipo_completo/tigo-predice`](3_Prototipo_completo/tigo-predice) | Código del prototipo: modelos de IA, API, interfaz, experimento del piloto, caso de negocio y pruebas |
 
 <details>
 <summary><b>Prototipo completo: cómo ejecutarlo</b></summary>
 
 <br>
 
-Probado en Windows 11 con Python 3.15 y Node 24: doble clic en `6_Prototipo_completo/tigo-predice/iniciar_demo.bat` y abrir http://127.0.0.1:8000. La primera vez instala las versiones fijadas, genera los datos, entrena los modelos, registra su huella SHA-256 y compila la interfaz (unos 4 minutos); después arranca en segundos.
+Probado en Windows 11 con Python 3.15 y Node 24: doble clic en `3_Prototipo_completo/tigo-predice/iniciar_demo.bat` y abrir http://127.0.0.1:8000. La primera vez instala las versiones fijadas, genera los datos, entrena los modelos, registra su huella SHA-256 y compila la interfaz (unos 4 minutos); después arranca en segundos.
 
-Si el **Control inteligente de aplicaciones** de Windows está activo, puede bloquear librerías científicas sin firma (como scikit-learn) y el prototipo completo no arrancará. La demo de `2_Demo` no tiene ese problema.
+Si el **Control inteligente de aplicaciones** de Windows está activo, puede bloquear librerías científicas sin firma (como scikit-learn) y el prototipo completo no arrancará. La demo de `1_Demo` no tiene ese problema.
 
 - **Stack:** Python (FastAPI, LightGBM con calibración isotónica y explicaciones SHAP, SQLite) y React con Vite, TypeScript, Tailwind y Recharts.
 - **Pruebas:** 230 de Python (última ejecución completa: 22-oct-2026) y 11 de la interfaz, más análisis estático con reglas de seguridad y auditoría de dependencias sin vulnerabilidades conocidas.
 - **Reproducible:** el pipeline completo regenera los mismos datos, modelos y cifras desde cero.
 
-Detalles en el [README del prototipo](6_Prototipo_completo/tigo-predice/README.md).
+Detalles en el [README del prototipo](3_Prototipo_completo/tigo-predice/README.md).
 </details>
 
 <details>
@@ -152,10 +155,10 @@ Detalles en el [README del prototipo](6_Prototipo_completo/tigo-predice/README.m
 - **Marcos de referencia:** GDPR (Honduras aún no tiene ley integral de datos personales), ISO 27001/27701/42001, SOC 2, NIST CSF y AI RMF, OWASP ASVS, API y LLM, y MITRE ATLAS.
 - **Datos mínimos:** solo el desempeño del módem y de la línea; nunca contenido, navegación ni los dispositivos del cliente.
 - **Controles:** sesión firmada (HMAC) y revocable, roles, protección CSRF, cabeceras de seguridad, bitácoras seudonimizadas y huella SHA-256 de cada modelo verificada antes de cargarlo.
-- **Estándares:** mapeo al OWASP Top 10:2025, accesibilidad WCAG 2.2 AA sin infracciones automáticas (axe-core), SBOM CycloneDX y política de seguridad ([`SECURITY.md`](SECURITY.md)). Detalle y pendientes en [`docs/estandares_y_calidad.md`](6_Prototipo_completo/tigo-predice/docs/estandares_y_calidad.md).
+- **Estándares:** mapeo al OWASP Top 10:2025, accesibilidad WCAG 2.2 AA sin infracciones automáticas (axe-core), SBOM CycloneDX y política de seguridad ([`SECURITY.md`](SECURITY.md)). Detalle y pendientes en [`docs/estandares_y_calidad.md`](3_Prototipo_completo/tigo-predice/docs/estandares_y_calidad.md).
 - **Red team propio:** 12 ataques probados y corregidos, cada uno con su prueba automática.
 
-Detalle en [`docs/seguridad_y_privacidad.md`](6_Prototipo_completo/tigo-predice/docs/seguridad_y_privacidad.md).
+Detalle en [`docs/seguridad_y_privacidad.md`](3_Prototipo_completo/tigo-predice/docs/seguridad_y_privacidad.md).
 </details>
 
 <details>
@@ -167,9 +170,9 @@ Detalle en [`docs/seguridad_y_privacidad.md`](6_Prototipo_completo/tigo-predice/
 - **Supuesto, a validar con Tigo:** visitas técnicas al mes, porcentaje de visitas evitables, costo real por visita y por llamada, y el efecto de los avisos.
 - **Simulado:** la telemetría, los clientes y los resultados del modelo y del piloto.
 
-Fuentes completas en [`3_Para_el_jurado/Datos_Reales_y_Revision.pdf`](3_Para_el_jurado/Datos_Reales_y_Revision.pdf).
+Fuentes completas en [`2_Documentos/2_Para_el_jurado/Datos_Reales_y_Revision.pdf`](2_Documentos/2_Para_el_jurado/Datos_Reales_y_Revision.pdf).
 </details>
 
 ## Autoría
 
-**Sandra Jimenez** · Asistente de Experiencia B2B · Tigo Honduras · [sandra.jimenez@tigo.com.hn](mailto:sandra.jimenez@tigo.com.hn)
+**Sandra Michel Jimenez Zelaya** · Asistente de Experiencia B2B · Tigo Honduras · [sandra.jimenez@tigo.com.hn](mailto:sandra.jimenez@tigo.com.hn)

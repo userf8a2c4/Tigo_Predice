@@ -1,9 +1,0 @@
-/*
-  Content-Security-Policy: default-src 'none'; script-src 'sha256-GPPTq8ydPGuO8cU+AyCv0N4KkSz1hozYlrarDgIemo0=' 'sha256-izzpiGXKBbDHBou5sdGMcarvD0OFtVKmMDRMawHhFXw='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
-  Strict-Transport-Security: max-age=31536000
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: no-referrer
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  Cross-Origin-Opener-Policy: same-origin
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: no-cache

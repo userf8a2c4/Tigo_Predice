@@ -1,0 +1,21 @@
+DirectoryIndex index.html
+Options -Indexes
+
+RedirectMatch 404 ^/\.(?!well-known/)
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'none'; script-src 'sha256-GPPTq8ydPGuO8cU+AyCv0N4KkSz1hozYlrarDgIemo0=' 'sha256-tWr4kUbvp1sxLtiqrS+KhJ5y96FTVvrP842bEVzmrt0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "no-referrer"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set X-Robots-Tag "noindex, nofollow"
+  Header always set Cache-Control "no-cache"
+</IfModule>

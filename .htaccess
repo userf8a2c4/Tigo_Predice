@@ -1,0 +1,36 @@
+# Generado por gen_demo_html.py.
+# El hosting publica el repositorio completo (Hostinger conectado a GitHub):
+# la raíz del dominio muestra la demo de 1_Demo/ y nada más del repositorio se sirve.
+DirectoryIndex index.html
+Options -Indexes
+
+RewriteEngine On
+
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# La dirección es solo el dominio: sin www, sin /index.html y sin carpetas
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1/ [L,R=301]
+RewriteCond %{THE_REQUEST} \s/+(1_Demo(/|\s|\?)|index\.html)
+RewriteRule ^ / [L,R=301]
+
+# Lo único público: la demo y sus archivos de sitio
+RewriteRule ^(index\.html)?$ 1_Demo/index.html [L]
+RewriteRule ^robots\.txt$ 1_Demo/robots.txt [L]
+RewriteRule ^\.well-known/security\.txt$ 1_Demo/.well-known/security.txt [L]
+
+# Todo lo demás del repositorio (código, documentos, PDF, .git) no se sirve
+RewriteCond %{THE_REQUEST} !\s/+(index\.html|robots\.txt|\.well-known/security\.txt)?(\s|\?)
+RewriteRule ^ - [F]
+
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'none'; script-src 'sha256-GPPTq8ydPGuO8cU+AyCv0N4KkSz1hozYlrarDgIemo0=' 'sha256-tWr4kUbvp1sxLtiqrS+KhJ5y96FTVvrP842bEVzmrt0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "no-referrer"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set X-Robots-Tag "noindex, nofollow"
+  Header always set Cache-Control "no-cache"
+</IfModule>

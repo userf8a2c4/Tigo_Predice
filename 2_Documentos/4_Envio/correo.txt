@@ -1,0 +1,34 @@
+PARA: josue.marquez@tigo.com.hn   <-- VERIFICAR antes de enviar. En la foto del afiche (2_Documentos/5_Referencias/afiche_CX_Month.jpg)
+      parece decir «josue.marquez», no «joane.marquez»; la imagen está borrosa. Confírmelo con el afiche original.
+ASUNTO: Propuesta Tigo CX Month — "Tigo Predice": la IA que resuelve antes de que el cliente llame
+ADJUNTOS: 2_Documentos/1_Presentacion/AI_Shark_Tank_Tigo_Predice.pptx (y su .pdf)  <-- con las secciones del formato del concurso
+          2_Documentos/2_Para_el_jurado/OnePager_Tigo_Predice.pdf · Propuesta_Tigo_Predice.pdf
+          1_Demo/index.html  <-- la demo; se abre con doble clic, sin instalar nada.
+          (Al adjuntarla puede renombrarla, por ejemplo, Tigo_Predice_Demo.html.)
+          Si el correo bloquea el .html, mejor comparta por OneDrive el archivo Tigo_Predice_AI_Shark_Tank.zip
+          (clic derecho > Compartir > Copiar vínculo) y pegue el vínculo en el correo.
+
+------------------------------------------------------------
+
+Buenos días:
+
+Reciba un cordial saludo. Le comparto mi propuesta para el reto de IA del Tigo CX Month:
+
+TIGO PREDICE — «Los chatbots y copilotos atienden la llamada. Tigo Predice evita que ocurra.»
+
+Los módems de Tigo Hogar avisan días antes de fallar (señal que baja, WiFi saturado, reinicios), pero hoy esa telemetría solo se mira cuando cruza un umbral. Tigo Predice usa IA para calificar cada semana a todos los hogares, marcar al 2 % que va a fallar y explicar por qué. Si es WiFi o firmware, se corrige a distancia; si es físico, el técnico va una sola vez y con el diagnóstico. El mismo motor avisa por WhatsApp a los clientes móviles afectados por fallas masivas. Un grupo control aleatorio mide el efecto real.
+
+• Categoría principal: Experiencia del cliente / CX. También aporta a Red y operaciones y a Eficiencia / reducción de costos.
+• La IA, medida contra la regla: anticipa el 52 % de las visitas técnicas evitables, frente al 26 % de las alarmas por umbral (en datos simulados; se valida con telemetría real).
+• Caso conservador (solo beneficio duro, con costos hondureños y la base real de 191 mil hogares y 5.0 M de clientes móviles): L 4.3 M netos en el año 1 en el escenario base (rango −L 3 M a L 14 M). Los supuestos se validan con datos de Tigo antes de escalar.
+• Propuesta: piloto de 12 semanas en San Pedro Sula por L 770 mil, con criterios GO/NO-GO medibles por frente.
+• Seguridad y privacidad: sin contenido de comunicaciones; GDPR como estándar de referencia, ISO 27001/27701/42001 y OWASP, con un red team propio y 12 ataques corregidos.
+• Ya tengo un prototipo funcional que puedo demostrar en vivo en 80 segundos. Adjunto una versión que se abre con doble clic en el navegador, sin instalar nada ni necesitar internet.
+
+Quedo atento(a) a cualquier consulta y con gusto presento la demo a los Sharks.
+
+Saludos cordiales,
+
+Sandra Michel Jimenez Zelaya
+Asistente de Experiencia B2B · Tigo Honduras
+sandra.jimenez@tigo.com.hn

@@ -18,6 +18,6 @@ No publique el detalle en issues públicos hasta que esté corregido.
 
 ## Prácticas del proyecto
 - Dependencias con versiones fijadas (`requirements.lock` y `package-lock.json`) y auditadas con `pip-audit` y `npm audit`.
-- Inventario de componentes (SBOM) en formato CycloneDX en `6_Prototipo_completo/tigo-predice/sbom/`.
+- Inventario de componentes (SBOM) en formato CycloneDX en `3_Prototipo_completo/tigo-predice/sbom/`.
 - Análisis estático con reglas de seguridad (ruff, reglas S y BLE) y pruebas automáticas de ataque.
-- Detalle en `6_Prototipo_completo/tigo-predice/docs/seguridad_y_privacidad.md` y `docs/estandares_y_calidad.md`.
+- Detalle en `3_Prototipo_completo/tigo-predice/docs/seguridad_y_privacidad.md` y `docs/estandares_y_calidad.md`.
