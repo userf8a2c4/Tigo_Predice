@@ -4,7 +4,7 @@
 
 ## Antes de presentar
 
-1. Abra **Demo_Tigo_Predice.html** con doble clic: no necesita internet ni instalar nada. (Con el prototipo completo, **iniciar_demo.bat** abre la misma app en http://127.0.0.1:8000.)
+1. Abra **2_Demo/index.html** con doble clic: no necesita internet ni instalar nada. (Con el prototipo completo, **iniciar_demo.bat** abre la misma app en http://127.0.0.1:8000.)
 2. Presione **Presentar**, arriba a la derecha. El modo presentación queda en pausa en la primera escena.
 3. Presione **F** para pantalla completa. En Teams, comparta la pantalla o la ventana del navegador.
 4. Apague las notificaciones y tenga a mano el guion de la presentación (PDF aparte).

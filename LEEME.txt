@@ -4,14 +4,15 @@ TIGO PREDICE · AI SHARK TANK · TIGO CX MONTH 2026
 Autoría: Sandra Jimenez · Asistente de Experiencia B2B · sandra.jimenez@tigo.com.hn
 
 PARA EMPEZAR
-   Abra 2_Demo\Demo_Tigo_Predice.html con doble clic. Se abre en el navegador.
+   Abra 2_Demo\index.html con doble clic. Se abre en el navegador.
    Entre a «Hogar en vivo ★» y presione «Iniciar». Funciona sin internet y sin instalar nada.
    Para presentar: botón «Presentar» (arriba a la derecha). Recorre el sistema en 4:32;
    Espacio pausa, las flechas cambian de escena y Esc sale. El guion está en 4_Preparacion_del_pitch.
 
 CARPETAS
    1_Presentacion            Presentación para el concurso (PowerPoint y PDF), con guion en las notas.
-   2_Demo                    La demo en un solo archivo HTML.
+   2_Demo                    La demo en un solo archivo HTML (index.html). La carpeta completa
+                             está lista para subirla a la raíz de un dominio (hosting estático).
    3_Para_el_jurado          Resumen de una página, propuesta, datos reales con fuentes, y
                              estrategia y regulación (Millicom 2026 y CONATEL NR001/26).
    4_Preparacion_del_pitch   Guion de la presentación, elevator pitch, 38 preguntas del jurado,

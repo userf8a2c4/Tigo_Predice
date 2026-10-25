@@ -73,9 +73,9 @@ Solo ahorro duro, con costos hondureños, escenarios y punto de equilibrio. En e
 ## Cómo ver la demo
 
 > [!NOTE]
-> GitHub no ejecuta archivos HTML: si abre `Demo_Tigo_Predice.html` aquí, verá su código. La demo se abre en su computadora.
+> GitHub no ejecuta archivos HTML: si abre `index.html` aquí, verá su código. La demo se abre en su computadora o se publica en un hosting estático.
 
-1. **Descargue el archivo.** Abra [`2_Demo/Demo_Tigo_Predice.html`](2_Demo/Demo_Tigo_Predice.html) y use el botón **Download raw file**, o descargue todo el repositorio con **Code → Download ZIP** y descomprímalo.
+1. **Descargue el archivo.** Abra [`2_Demo/index.html`](2_Demo/index.html) y use el botón **Download raw file**, o descargue todo el repositorio con **Code → Download ZIP** y descomprímalo.
 2. **Ábralo con doble clic.** Se abre en el navegador, sin internet y sin instalar nada. Probado en Windows 11 con Microsoft Edge, incluso sin conexión a la red.
 3. Entre a **Hogar en vivo ★** y presione **▶ Iniciar**. La historia dura unos 80 segundos. Explore también **Falla masiva en vivo**, **Resultados del piloto** y **Caso de negocio**.
 
@@ -84,6 +84,22 @@ Solo ahorro duro, con costos hondureños, escenarios y punto de equilibrio. En e
 El botón **Presentar** (arriba a la derecha) recorre el sistema en **4:32**, dentro de los 5 minutos del concurso. Cada escena abre una pantalla real y, a la izquierda, una tarjeta muestra la idea y las cifras, para que quien presenta cuente la historia sin memorizar números. Espacio pausa; ← y → (o un control remoto de presentaciones) cambian de escena; Esc vuelve a la demo para las preguntas. El guion va aparte: [`Guion_de_la_presentacion.pdf`](4_Preparacion_del_pitch/Guion_de_la_presentacion.pdf).
 
 <img src="assets/readme/presentacion.png" alt="Modo presentación: tarjeta con la idea a la izquierda y la demo Hogar en vivo a la derecha" width="100%">
+
+### Publicarla en un dominio
+
+Todo lo de la demo está en la carpeta [`2_Demo`](2_Demo), lista para un hosting estático. Suba **todo su contenido**, incluidos `.htaccess` y `.well-known`, a la raíz del dominio. No necesita servidor de aplicaciones, base de datos ni internet adicional: los datos van dentro de `index.html`.
+
+Si el hosting publica desde GitHub (por ejemplo, Hostinger), conecte un repositorio **aparte** que tenga solo el contenido de `2_Demo` en su raíz. Si conecta este repositorio, todo lo que contiene (código, documentos y PDF) quedaría público en el dominio. Al cambiar la demo, copie de nuevo el contenido de `2_Demo` a ese repositorio.
+
+| Archivo | Para qué sirve |
+|---|---|
+| `index.html` | La demo completa, con su política de seguridad de contenido: solo corren sus propios scripts (verificados por hash) y no se conecta a ningún servidor externo |
+| `.htaccess` | Cabeceras de seguridad, redirección a HTTPS y bloqueo de archivos ocultos (como `.git`) en hostings con Apache o LiteSpeed (Hostinger, cPanel y similares) |
+| `_headers` | Las mismas cabeceras en Netlify y Cloudflare Pages |
+| `robots.txt` | Pide a los buscadores no indexarla; la página también lleva `noindex` |
+| `.well-known/security.txt` | Contacto para reportar problemas de seguridad (RFC 9116) |
+
+Probada abriéndola con doble clic y desde un servidor web local: sin errores y sin violaciones de la política de seguridad. Que el hosting aplique `.htaccess` o `_headers` depende del proveedor.
 
 ## Cifras clave (escenario base)
 

@@ -1,26 +1,37 @@
 """Arma la demo en un solo archivo HTML que se abre con doble clic, sin servidor, sin internet y sin instalar nada.
 
 Toma las respuestas de la API que corre en esta máquina y las incrusta en la página junto con el JavaScript y el CSS
-de la versión sin servidor del frontend.
+de la versión sin servidor del frontend. Junto al HTML escribe lo necesario para publicar la carpeta tal cual en un
+hosting estático (se sube completa a la raíz del dominio):
+  - política de seguridad de contenido (CSP) con el hash de cada script, dentro del mismo HTML;
+  - _headers (Netlify, Cloudflare Pages) y .htaccess (Apache) con las cabeceras de seguridad;
+  - robots.txt y .well-known/security.txt (RFC 9116).
 
 Uso:
   1. cd frontend && VITE_ESTATICO=1 npx vite build --base ./ --outDir dist-estatico
   2. Con la API corriendo en http://127.0.0.1:8000:
-     python docs/entregables/gen_demo_html.py <salida.html>
+     python docs/entregables/gen_demo_html.py <carpeta>/index.html
      O, si solo cambió la interfaz, reutilizando los datos de una demo ya generada (sin API):
-     python docs/entregables/gen_demo_html.py <salida.html> --datos-de <Demo_Tigo_Predice.html>
+     python docs/entregables/gen_demo_html.py <carpeta>/index.html --datos-de <carpeta>/index.html
 """
 
 import base64
+import hashlib
 import json
 import re
 import sys
 import urllib.request
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
 DIST = RAIZ / "frontend" / "dist-estatico"
 API = "http://127.0.0.1:8000"
+CONTACTO = "sandra.jimenez@tigo.com.hn"
+DESCRIPCION = (
+    "Prototipo presentado en el concurso interno AI Shark Tank · Tigo CX Month 2026. "
+    "Datos simulados; no es un canal oficial de atención de Tigo."
+)
 
 
 def pedir(ruta: str):
@@ -104,12 +115,70 @@ def escribir(salida: Path, datos: dict) -> None:
     html = re.sub(r'<link rel="stylesheet" crossorigin href="[^"]+">', lambda _: f"<style>{css}</style>", html)
     html = html.replace('href="./icono.svg"', f'href="data:image/svg+xml;base64,{icono}"')
     html = html.replace("<title>Tigo Predice</title>", "<title>Tigo Predice · Demo</title>")
+    datos_js = f"window.__DATOS__={carga};"
+    csp = politica(datos_js, js_seguro)
+    meta = (
+        f'<meta http-equiv="Content-Security-Policy" content="{csp}" />\n'
+        '<meta name="referrer" content="no-referrer" />\n'
+        '<meta name="robots" content="noindex, nofollow" />\n'
+        f'<meta name="description" content="{DESCRIPCION}" />\n'
+    )
+    # La CSP va antes que cualquier script para que los cubra a todos
+    html = html.replace("<title>", meta + "<title>", 1)
     html = html.replace(
         "</head>",
-        f'<script>window.__DATOS__={carga};</script>\n<script type="module">{js_seguro}</script>\n</head>',
+        f'<script>{datos_js}</script>\n<script type="module">{js_seguro}</script>\n</head>',
     )
     salida.write_text(html, encoding="utf-8", newline="\n")
+    escribir_hosting(salida.parent, csp)
     print("OK", salida, f"{len(html.encode('utf-8')) / 1e6:.1f} MB", f"{len(datos)} respuestas")
+
+
+def politica(*scripts: str) -> str:
+    """CSP estricta: solo corren los scripts incrustados (por su hash); sin conexiones ni recursos externos."""
+    hashes = " ".join(
+        f"'sha256-{base64.b64encode(hashlib.sha256(s.encode('utf-8')).digest()).decode()}'" for s in scripts
+    )
+    return (
+        f"default-src 'none'; script-src {hashes}; style-src 'unsafe-inline'; img-src data:; "
+        "connect-src 'none'; base-uri 'none'; form-action 'none'"
+    )
+
+
+def escribir_hosting(carpeta: Path, csp: str) -> None:
+    """Cabeceras de seguridad del hosting estático. frame-ancestors solo funciona como cabecera, no en <meta>."""
+    cabeceras = {
+        "Content-Security-Policy": f"{csp}; frame-ancestors 'none'",
+        "Strict-Transport-Security": "max-age=31536000",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "no-referrer",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "X-Robots-Tag": "noindex, nofollow",
+        "Cache-Control": "no-cache",
+    }
+    (carpeta / "_headers").write_text(
+        "/*\n" + "".join(f"  {k}: {v}\n" for k, v in cabeceras.items()), encoding="utf-8", newline="\n"
+    )
+    (carpeta / ".htaccess").write_text(
+        "DirectoryIndex index.html\nOptions -Indexes\n\n"
+        # Si el hosting despliega desde un repositorio (p. ej. Hostinger con GitHub), .git queda en la carpeta pública:
+        # ningún archivo oculto se sirve, salvo .well-known
+        "RedirectMatch 404 ^/\\.(?!well-known/)\n\n"
+        "<IfModule mod_rewrite.c>\n  RewriteEngine On\n  RewriteCond %{HTTPS} off\n"
+        "  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n</IfModule>\n\n"
+        "<IfModule mod_headers.c>\n"
+        + "".join(f'  Header always set {k} "{v}"\n' for k, v in cabeceras.items())
+        + "</IfModule>\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    (carpeta / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8", newline="\n")
+    vence = (datetime.now(UTC) + timedelta(days=365)).strftime("%Y-%m-%dT00:00:00Z")
+    (carpeta / ".well-known").mkdir(exist_ok=True)
+    (carpeta / ".well-known" / "security.txt").write_text(
+        f"Contact: mailto:{CONTACTO}\nExpires: {vence}\nPreferred-Languages: es, en\n", encoding="utf-8", newline="\n"
+    )
 
 
 if __name__ == "__main__":

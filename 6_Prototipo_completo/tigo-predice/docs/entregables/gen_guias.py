@@ -257,7 +257,7 @@ CRONOLOGIA = [
     ("~23", "Corrección remota y WhatsApp", "~70 · ~77", "Resultado del hogar y frase final"),
 ]
 ANTES = [
-    "Abra <b>Demo_Tigo_Predice.html</b> con doble clic: no necesita internet ni instalar nada. "
+    "Abra <b>2_Demo/index.html</b> con doble clic: no necesita internet ni instalar nada. "
     "(Con el prototipo completo, <b>iniciar_demo.bat</b> abre la misma app en http://127.0.0.1:8000.)",
     "Presione <b>Presentar</b>, arriba a la derecha. El modo presentación queda en pausa en la primera escena.",
     "Presione <b>F</b> para pantalla completa. En Teams, comparta la pantalla o la ventana del navegador.",

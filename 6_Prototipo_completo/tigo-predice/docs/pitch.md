@@ -10,7 +10,7 @@
 - Cada escena tiene una sola idea. Diga esa idea con sus palabras: no hace falta repetir el texto de abajo al pie de la letra.
 
 ## Antes de empezar
-1. Abra `Demo_Tigo_Predice.html` con doble clic. No necesita internet.
+1. Abra `2_Demo/index.html` con doble clic. No necesita internet.
 2. Presione el botón **Presentar** (arriba a la derecha). La presentación queda en pausa en la primera escena.
 3. Presione **F** para pantalla completa.
 4. En Teams, comparta **la pantalla** o la ventana del navegador.

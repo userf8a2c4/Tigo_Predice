@@ -3,7 +3,8 @@ PARA: josue.marquez@tigo.com.hn   <-- VERIFICAR antes de enviar. En la foto del 
 ASUNTO: Propuesta Tigo CX Month — "Tigo Predice": la IA que resuelve antes de que el cliente llame
 ADJUNTOS: 1_Presentacion/AI_Shark_Tank_Tigo_Predice.pptx (y su .pdf)  <-- con las secciones del formato del concurso
           3_Para_el_jurado/OnePager_Tigo_Predice.pdf · Propuesta_Tigo_Predice.pdf
-          2_Demo/Demo_Tigo_Predice.html  <-- la demo; se abre con doble clic, sin instalar nada.
+          2_Demo/index.html  <-- la demo; se abre con doble clic, sin instalar nada.
+          (Al adjuntarla puede renombrarla, por ejemplo, Tigo_Predice_Demo.html.)
           Si el correo bloquea el .html, mejor comparta por OneDrive el archivo Tigo_Predice_AI_Shark_Tank.zip
           (clic derecho > Compartir > Copiar vínculo) y pegue el vínculo en el correo.
 

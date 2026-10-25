@@ -21,7 +21,7 @@ Propuesta para **Tigo CX Month · Sharks** (octubre 2026), de Sandra Jimenez (As
 
 **Modo presentación:** el botón **Presentar** recorre el sistema en 4:32 (escenas en `frontend/src/escenas.ts`). Cada escena abre una pantalla real y una tarjeta a la izquierda muestra la idea y las cifras. Espacio pausa, ← y → cambian de escena y Esc sale. El guion de quien presenta está en `docs/pitch.md`.
 
-**Sin servidor:** `2_Demo/Demo_Tigo_Predice.html` (en la carpeta del proyecto, junto a `1_Presentacion` … `5_Envio`, donde están todos los entregables) es la misma demo en un solo archivo que se abre con doble clic, por ejemplo para enviarla al jurado. Se genera con `docs/entregables/gen_demo_html.py`; «Pon tus números» solo funciona en la versión completa.
+**Sin servidor:** `2_Demo/index.html` (en la carpeta del proyecto, junto a `1_Presentacion` … `5_Envio`, donde están todos los entregables) es la misma demo en un solo archivo que se abre con doble clic, por ejemplo para enviarla al jurado. La carpeta `2_Demo` completa se puede subir a un hosting estático: el generador escribe también la política de seguridad de contenido, `.htaccess`, `_headers`, `robots.txt` y `.well-known/security.txt`. Se genera con `docs/entregables/gen_demo_html.py`; «Pon tus números» solo funciona en la versión completa.
 
 Funciona **sin internet y sin clave de API** («Modo plantillas»). Para que Claude redacte los mensajes («Modo IA»), copie `.env.ejemplo` como `.env` y agregue `ANTHROPIC_API_KEY`.
 

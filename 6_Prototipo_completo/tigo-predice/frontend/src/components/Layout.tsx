@@ -139,10 +139,14 @@ export default function Layout() {
   );
 }
 
-/** Fuente de los datos de muestra, visible al pie de cada pantalla. */
+/** Qué es esta demo y de dónde salen sus datos, visible al pie de cada pantalla. */
 function FuenteDatos() {
   return (
     <footer className="mt-6 border-t border-slate-200 pt-3 text-[11px] leading-relaxed text-slate-500">
+      <p className="mb-1.5">
+        <b>Prototipo</b> presentado en el concurso interno AI Shark Tank · Tigo CX Month 2026. Datos simulados; no es un
+        canal oficial de atención de Tigo.
+      </p>
       <b>Fuente de los datos de muestra:</b> los clientes, hogares, la telemetría de los módems y las fallas son sintéticos,
       generados por el prototipo con semilla fija (<code>ml/generar_datos.py</code> y <code>ml/generar_hogar.py</code>) y
       parámetros de <code>config/negocio.toml</code>. La escala y los costos se calibran con datos públicos: Millicom, Form 20-F
