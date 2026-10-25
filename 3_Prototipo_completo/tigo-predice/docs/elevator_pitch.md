@@ -5,7 +5,7 @@
 > **Cómo usar este guion**
 > - Son unas **280 palabras**, que a ritmo tranquilo (unas 140 por minuto) dan **2 minutos**.
 > - Las marcas de tiempo sirven para ensayar con cronómetro. Lo que va *[entre corchetes]* es una indicación de escena: no se dice.
-> - Si hay pantalla, deje abierta `…/hogar?final` (el resultado de la demo) y señálela en el momento marcado.
+> - Si hay pantalla, deje abierto el resultado de la demo (agregue `#/hogar?final` a la dirección de la demo; en el prototipo completo, `/hogar?final`) y señálelo en el momento marcado.
 > - Todas las cifras son **simuladas o supuestas**. El guion lo dice una vez y con naturalidad: eso da credibilidad.
 
 ---

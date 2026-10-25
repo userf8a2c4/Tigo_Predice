@@ -99,6 +99,15 @@ body {
   to { opacity: 1; transform: none; }
 }
 
+/* Subtítulos del modo presentación: entrada suave y breve, sin distraer */
+.subtitulo {
+  animation: subtitulo 0.35s ease-out;
+}
+@keyframes subtitulo {
+  from { opacity: 0.4; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
 .destello {
   animation: destello 1.2s ease-out;
 }
@@ -130,5 +139,5 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pulso, .aparecer, .destello, .escribiendo span { animation: none; }
+  .pulso, .aparecer, .destello, .subtitulo, .escribiendo span { animation: none; }
 }

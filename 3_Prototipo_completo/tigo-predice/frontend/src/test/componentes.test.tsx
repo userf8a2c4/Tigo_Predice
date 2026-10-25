@@ -3,7 +3,8 @@ import { describe, expect, it } from "vitest";
 import type { Conversacion } from "../api";
 import Telefono from "../components/Telefono";
 import { Factores, PrioridadBadge } from "../components/ui";
-import { DURACION_TOTAL, ESCENAS, reloj } from "../escenas";
+import guion from "../../../docs/pitch.md?raw";
+import { DURACION_TOTAL, ESCENAS, reloj, subtituloEn, SUBTITULO_MAX_SEG } from "../escenas";
 import { colorRiesgo, lempiras, lempirasCorto, lempirasSig, pct, pctRiesgo, rangoL, sig } from "../formato";
 
 describe("redondeo sin falsa precisión", () => {
@@ -98,5 +99,40 @@ describe("escenas de la presentación", () => {
     const d = ESCENAS.findIndex((e) => e.id === "demo");
     expect(d).toBeGreaterThan(k);
     expect(ESCENAS[d].ruta).toBe("/hogar");
+  });
+});
+
+describe("subtítulos de la presentación", () => {
+  it("dicen lo mismo que el guion (docs/pitch.md)", () => {
+    const plano = (s: string) => s.replace(/\s+/g, " ");
+    const texto = plano(guion);
+    for (const e of ESCENAS)
+      for (const [, linea] of e.subtitulos) expect(texto).toContain(plano(linea.replace(/^…|…$/g, "")));
+  });
+
+  it("cada escena tiene subtítulos ordenados y dentro de su duración", () => {
+    for (const e of ESCENAS) {
+      expect(e.subtitulos.length).toBeGreaterThan(0);
+      const inicios = e.subtitulos.map(([t]) => t);
+      expect([...inicios].sort((a, b) => a - b)).toEqual(inicios);
+      expect(inicios[inicios.length - 1]).toBeLessThan(e.seg);
+    }
+  });
+
+  it("se pueden leer: como máximo unos 17 caracteres por segundo en pantalla", () => {
+    for (const e of ESCENAS)
+      e.subtitulos.forEach(([inicio, linea], k) => {
+        const fin = Math.min(k + 1 < e.subtitulos.length ? e.subtitulos[k + 1][0] : e.seg, inicio + SUBTITULO_MAX_SEG);
+        expect(linea.length / (fin - inicio)).toBeLessThanOrEqual(17);
+      });
+  });
+
+  it("muestran la frase que corresponde a cada momento", () => {
+    const karla = ESCENAS.find((e) => e.id === "karla")!;
+    expect(subtituloEn(karla, 0)).toBe(karla.subtitulos[0][1]);
+    expect(subtituloEn(karla, 9)).toBe(karla.subtitulos[2][1]);
+    const demo = ESCENAS.find((e) => e.id === "demo")!;
+    expect(subtituloEn(demo, 0.5)).toBeNull(); // antes de la primera frase
+    expect(subtituloEn(demo, 66)).toBeNull(); // pausa larga: el subtítulo se retira a los 8 s
   });
 });

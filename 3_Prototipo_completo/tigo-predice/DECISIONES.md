@@ -8,7 +8,7 @@
 | 4 | 13-oct | Stack completo **sin Docker**: Python 3.15 + FastAPI + LightGBM y React + Vite. | Docker no está instalado y no hace falta para la demo. |
 | 5 | 13-oct | Configuración en **TOML** (`config/negocio.toml`) en vez de YAML. | PyYAML no tiene versión para Python 3.15; `tomllib` viene con Python. |
 | 6 | 13-oct | `tareas.ps1` en lugar de `Makefile`. | Windows no trae `make`. |
-| 7 | 13-oct | Entorno virtual en `%USERPROFILE%\.venvs\tigo-predice`, **fuera de OneDrive**. | Evita que OneDrive sincronice miles de archivos. `AppData\Local` se descartó porque Windows lo redirige dentro de la app de Claude. |
+| 7 | 13-oct | Entorno virtual en `%USERPROFILE%\.venvs\tigo-predice`, **fuera de OneDrive**. | Evita que OneDrive sincronice miles de archivos. |
 | 8 | 13-oct | `uvicorn` simple, sin `[standard]`. | Los extras (`httptools`, `websockets`) no tienen versión para Python 3.15. La demo usa SSE, que no necesita WebSockets. |
 | 9 | 13-oct | Teléfonos guardados **enmascarados** (`+504 9***-1234`). | Evita generar por azar números reales. Es la práctica recomendada de privacidad. |
 | 10 | 13-oct | Señal causal de los datos sintéticos calibrada (`FUERZA_SENAL = 1.5`) para un **AUC de ~0.87**. | Con 1.0 el techo teórico era 0.81; con 1.8 subía a 0.91, que se vería falso. |

@@ -12,7 +12,7 @@
 
 ## Modo presentación (4:32)
 
-Botón **Presentar**: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).
+Botón **Presentar**: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; S muestra u oculta los subtítulos; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).
 
 | Min. | Escena | En pantalla | Idea |
 |---|---|---|---|
@@ -21,11 +21,11 @@ Botón **Presentar**: cada escena abre una pantalla real del sistema y, a la izq
 | 0:36 | No es un caso aislado | Hogares, visitas y cuántas se evitan | «Estimaciones a validar con Tigo» |
 | 0:56 | Nuestra idea | Detecta, resuelve y avisa | «Escuchar al módem a tiempo» |
 | 1:16 | Demo en vivo | Hogar en vivo corre sola (80 s) | Acompañe la franja azul |
-| 2:36 | IA vs. regla | 52 % vs. 26 % (simulado) | «Si no gana con datos reales, usamos la regla» |
-| 2:56 | Móvil | WhatsApp de falla masiva y CONATEL | «Cumplimos y ahorramos a la vez» |
-| 3:18 | Caso de negocio | L 4.3 M; equilibrio 22 % y 12 % | «Solo lo que se puede medir» |
-| 3:44 | Confianza | Privacidad y grupo control | «Solo el desempeño del módem» |
-| 3:58 | El pedido | 12 semanas, L 770 mil | «Ustedes deciden con números reales» |
+| 2:36 | IA frente a las alarmas | 52 % contra 26 % (datos de ejemplo) | «Si no gana con datos reales, usamos las alarmas» |
+| 2:56 | Celulares | WhatsApp cuando se cae una antena, y CONATEL | «Cumplimos la norma y ahorramos» |
+| 3:18 | Cuánto se ahorra | L 4.3 M; se paga con 22 % y 12 % | «Solo lo que se puede medir» |
+| 3:44 | Confianza | Privacidad y comparación con otros clientes | «Solo vemos si el aparato funciona» |
+| 3:58 | Lo que pedimos | 12 semanas, L 770 mil | «Ustedes deciden con resultados reales» |
 | 4:24 | Cierre | Gracias y contacto | «Tigo Predice evita que ocurra» |
 
 ## Inicio: el mapa de la app
@@ -59,7 +59,7 @@ Deje esta pantalla lista antes de presentar: caso «A distancia», velocidad 1×
 
 ## Hogar en vivo ★: el resultado
 
-Así termina la demo. Si algo falla en vivo, abra /hogar?final y explique esta pantalla.
+Así termina la demo. Si algo falla en vivo, abra #/hogar?final al final de la dirección (en el prototipo completo, /hogar?final) y explique esta pantalla.
 
 ![Hogar en vivo ★: el resultado](capturas/hogar.png)
 
@@ -88,7 +88,7 @@ Debajo de la demo: lo que soporte nivel 2 recibiría cada día. Muestra que es u
 
 ## Falla masiva en vivo (frente Móvil)
 
-El mismo motor en fallas masivas de red. Opcional en el pitch: muestre /falla?final si sobra tiempo.
+El mismo motor en fallas masivas de red. En el modo presentación se muestra su resultado; fuera de él, agregue #/falla?final a la dirección (en el prototipo completo, /falla?final).
 
 ![Falla masiva en vivo (frente Móvil)](capturas/falla.png)
 

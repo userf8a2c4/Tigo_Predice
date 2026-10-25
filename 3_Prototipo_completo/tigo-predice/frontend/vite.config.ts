@@ -2,15 +2,17 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vitest/config";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react(), tailwindcss()],
   server: {
     port: 5173,
     proxy: { "/api": "http://localhost:8000" },
+    // Solo en las pruebas: leer el guion (docs/pitch.md) para verificar que los subtítulos dicen lo mismo
+    ...(mode === "test" ? { fs: { allow: [".", "../docs"] } } : {}),
   },
   build: { chunkSizeWarningLimit: 1500 },
   test: {
     environment: "jsdom",
     setupFiles: ["./src/test/setup.ts"],
   },
-});
+}));

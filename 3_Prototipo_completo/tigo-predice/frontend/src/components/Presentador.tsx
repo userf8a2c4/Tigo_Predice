@@ -1,37 +1,64 @@
 import clsx from "clsx";
 import {
-  BrainCircuit, ChevronLeft, ChevronRight, FlaskConical, Lock, Maximize, MessageCircle, Pause, PhoneCall, Play,
-  RotateCcw, ShieldCheck, Truck, Wifi, Wrench, X,
+  BrainCircuit, Captions, CaptionsOff, ChevronLeft, ChevronRight, FlaskConical, Lock, Maximize, MessageCircle, Pause,
+  PhoneCall, Play, RotateCcw, ShieldCheck, Truck, Wifi, Wrench, X,
 } from "lucide-react";
 import { useCallback, useEffect, useState, type ReactNode, type RefObject } from "react";
 import { useNavigate } from "react-router-dom";
 import { api, type Config, type EscenarioHogar, type Inicio } from "../api";
-import { DURACION_TOTAL, ESCENAS, reloj, type Escena } from "../escenas";
+import { DURACION_TOTAL, ESCENAS, reloj, subtituloEn, type Escena } from "../escenas";
 import { pct } from "../formato";
 import { useDatos } from "../hooks";
 
 const PASO = 0.25; // segundos por tic del reloj
 const ULTIMA = ESCENAS.length - 1;
+const CLAVE_SUBTITULOS = "tigo-predice:subtitulos";
+
+// Preferencia de quien presenta en este navegador; si el almacenamiento no está disponible, arrancan apagados
+function leerSubtitulos() {
+  try {
+    return window.localStorage.getItem(CLAVE_SUBTITULOS) === "1";
+  } catch {
+    return false;
+  }
+}
+function guardarSubtitulos(v: boolean) {
+  try {
+    window.localStorage.setItem(CLAVE_SUBTITULOS, v ? "1" : "0");
+  } catch {
+    // sin almacenamiento: la elección dura mientras la página esté abierta
+  }
+}
 
 export interface Reproductor {
   pos: { i: number; t: number };
   corriendo: boolean;
   iniciado: boolean;
+  subtitulos: boolean;
   alternar: () => void;
+  alternarSubtitulos: () => void;
   ir: (i: number) => void;
   reiniciar: () => void;
 }
 
 /**
  * Reloj del modo presentación: avanza solo de escena en escena, abre la pantalla de cada una y responde al teclado
- * (Espacio pausa; ←/→ o un control remoto con Re Pág/Av Pág cambian de escena; F pantalla completa; Esc sale).
+ * (Espacio pausa; ←/→ o un control remoto con Re Pág/Av Pág cambian de escena; S subtítulos; F pantalla completa;
+ * Esc sale).
  */
 export function useReproductor(activo: boolean, principal: RefObject<HTMLElement | null>, salir: () => void): Reproductor {
   const navegar = useNavigate();
   const [pos, setPos] = useState({ i: 0, t: 0 });
   const [corriendo, setCorriendo] = useState(false);
   const [iniciado, setIniciado] = useState(false);
+  const [subtitulos, setSubtitulos] = useState(leerSubtitulos);
 
+  const alternarSubtitulos = useCallback(() => {
+    setSubtitulos((v) => {
+      guardarSubtitulos(!v);
+      return !v;
+    });
+  }, []);
   const ir = useCallback((i: number) => setPos({ i: Math.min(Math.max(i, 0), ULTIMA), t: 0 }), []);
   const alternar = useCallback(() => {
     setIniciado(true);
@@ -82,6 +109,7 @@ export function useReproductor(activo: boolean, principal: RefObject<HTMLElement
       else if (k === "ArrowRight" || k === "PageDown") { setIniciado(true); setPos((p) => ({ i: Math.min(p.i + 1, ULTIMA), t: 0 })); }
       else if (k === "ArrowLeft" || k === "PageUp") setPos((p) => ({ i: Math.max(p.i - 1, 0), t: 0 }));
       else if (k === "f" || k === "F") pantallaCompleta();
+      else if (k === "s" || k === "S") alternarSubtitulos();
       else if (k === "Home") reiniciar();
       else if (k === "Escape" && !document.fullscreenElement) salir();
       else return;
@@ -89,10 +117,10 @@ export function useReproductor(activo: boolean, principal: RefObject<HTMLElement
     };
     window.addEventListener("keydown", tecla);
     return () => window.removeEventListener("keydown", tecla);
-  }, [activo, alternar, reiniciar, salir]);
+  }, [activo, alternar, alternarSubtitulos, reiniciar, salir]);
 
   const fin = pos.i === ULTIMA && pos.t >= ESCENAS[ULTIMA].seg;
-  return { pos, corriendo: corriendo && !fin, iniciado, alternar, ir, reiniciar };
+  return { pos, corriendo: corriendo && !fin, iniciado, subtitulos, alternar, alternarSubtitulos, ir, reiniciar };
 }
 
 function pantallaCompleta() {
@@ -129,9 +157,30 @@ export function BarraPresentacion({ r, salir }: { r: Reproductor; salir: () => v
         <b className="text-white">{pos.i + 1}/{ESCENAS.length} · {escena.titulo}</b>
         <span className="ml-2 tabular-nums">{reloj(previo + pos.t)} / {reloj(DURACION_TOTAL)}</span>
       </div>
+      <button onClick={r.alternarSubtitulos} aria-pressed={r.subtitulos} title="Subtítulos (S)"
+        className={clsx("flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-semibold", r.subtitulos ? "bg-white text-tigo-900" : "text-white/80 hover:bg-white/10 hover:text-white")}>
+        {r.subtitulos ? <Captions size={18} /> : <CaptionsOff size={18} />} <span className="hidden lg:inline">Subtítulos</span>
+      </button>
       <button onClick={pantallaCompleta} className={boton} aria-label="Pantalla completa" title="Pantalla completa (F)"><Maximize size={18} /></button>
       <button onClick={r.reiniciar} className={boton} aria-label="Volver a la primera escena" title="Volver al inicio (Inicio)"><RotateCcw size={18} /></button>
       <button onClick={salir} className={boton} aria-label="Salir del modo presentación" title="Salir (Esc)"><X size={18} /></button>
+    </div>
+  );
+}
+
+// ------------------------------------------------------------------ subtítulos
+
+/** Franja de subtítulos sobre la pantalla del sistema (a la derecha de la tarjeta), con el texto del guion. */
+export function SubtitulosPresentacion({ r }: { r: Reproductor }) {
+  if (!r.subtitulos || !r.iniciado) return null;
+  const texto = subtituloEn(ESCENAS[r.pos.i], r.pos.t);
+  if (!texto) return null;
+  return (
+    <div className="pointer-events-none fixed bottom-16 left-[22rem] right-0 z-[1100] flex justify-center px-8">
+      <p key={texto}
+        className="subtitulo max-w-3xl rounded-2xl border-l-4 border-celeste bg-tigo-900/85 px-6 py-3 text-center text-lg font-medium leading-snug tracking-wide text-white shadow-2xl backdrop-blur-md lg:text-xl">
+        {texto}
+      </p>
     </div>
   );
 }
@@ -153,7 +202,8 @@ export function PanelEscena({ r }: { r: Reproductor }) {
           <Tarjeta escena={escena} d={datos} />
           {escena.id === "portada" && !r.iniciado && (
             <div className="mt-6 rounded-xl bg-white/10 px-3 py-2 text-sm text-white/85">
-              Presione <b>Espacio</b> o <b>Play</b> para comenzar. <b>F</b>: pantalla completa. <b>Esc</b>: salir.
+              Presione <b>Espacio</b> o <b>Play</b> para comenzar. <b>S</b>: subtítulos. <b>F</b>: pantalla completa.
+              <b> Esc</b>: salir.
             </div>
           )}
         </div>
@@ -204,8 +254,8 @@ function Tarjeta({ escena, d }: { escena: Escena; d: Datos }) {
       return (
         <Bloque kicker="No es un caso aislado" titulo={`${nombre} no es la única`}>
           <Cifra v={c.hogares_nacional} t="hogares con internet de Tigo en Honduras" fuente="Millicom, Form 20-F 2025" />
-          <Cifra v={`≈ ${c.hogar_visitas_mes}`} t="visitas técnicas al mes" fuente={`Estimado: ${pct(sup.tasa_visitas_hogar_mes?.base ?? 0.03)} de los hogares al mes, a validar`} />
-          <Cifra v={`1 de cada ${Math.round(1 / evitables)}`} t="se podía resolver sin técnico" fuente="Supuesto; la industria reporta 17–20 % «sin falla encontrada»" />
+          <Cifra v={`≈ ${c.hogar_visitas_mes}`} t="visitas de técnicos al mes" fuente={`Estimado: ${pct(sup.tasa_visitas_hogar_mes?.base ?? 0.03)} de los hogares al mes, a validar`} />
+          <Cifra v={`1 de cada ${Math.round(1 / evitables)}`} t="se podía resolver sin ir" fuente="Cálculo a confirmar; en la industria, 17–20 % de las visitas no encuentran nada roto" />
         </Bloque>
       );
     }
@@ -214,11 +264,11 @@ function Tarjeta({ escena, d }: { escena: Escena; d: Datos }) {
       return (
         <Bloque kicker="Nuestra idea" titulo="Escuchar al módem antes de que el cliente tenga que llamar">
           <Lista items={[
-            [BrainCircuit, "Detecta", `La IA lee la telemetría que el módem ya envía y cada semana marca al ${pct(Number(d.config.hogar.pct_marcados_semana ?? 0.02))} con más riesgo.`],
-            [Wrench, "Resuelve", "Se corrige a distancia. Si es físico, el técnico va una sola vez y con el diagnóstico."],
+            [BrainCircuit, "Detecta", `La inteligencia artificial revisa las señales que el módem ya envía y cada semana marca al ${pct(Number(d.config.hogar.pct_marcados_semana ?? 0.02))} con más riesgo.`],
+            [Wrench, "Resuelve", "Se arregla a distancia. Si algo está roto, el técnico va una sola vez y sabiendo qué arreglar."],
             [MessageCircle, "Avisa", "El cliente recibe un WhatsApp: no tiene que llamar ni esperar."],
           ]} />
-          <p className="mt-4 text-white/85">Y en <b className="text-celeste">Móvil</b>, el mismo motor avisa de las fallas masivas.</p>
+          <p className="mt-4 text-white/85">Y en <b className="text-celeste">celulares</b>, el mismo sistema avisa cuando se cae una antena.</p>
         </Bloque>
       );
 
@@ -226,36 +276,36 @@ function Tarjeta({ escena, d }: { escena: Escena; d: Datos }) {
       return (
         <Bloque kicker="Demo en vivo · prototipo funcionando" titulo={`Lo que habría pasado con ${nombre}`}>
           <Lista items={[
-            [BrainCircuit, "La IA la marca", "Antes de que llame, y antes que la regla de umbrales."],
-            [Wrench, "Se corrige de madrugada", "Firmware y canal del WiFi, a distancia."],
+            [BrainCircuit, "La inteligencia artificial lo detecta", "Antes de que ella llame, y antes que la alarma de siempre."],
+            [Wrench, "Se arregla de madrugada", "Se actualiza el módem y se ajusta el WiFi, a distancia."],
             [MessageCircle, "Le llega un WhatsApp", "No tuvo que llamar."],
-            [Truck, "Dos mundos", "Rojo: sin Tigo Predice. Verde: con Tigo Predice."],
+            [Truck, "Dos caminos", "Rojo: sin Tigo Predice. Verde: con Tigo Predice."],
           ]} />
-          <Cifra v={d.hogar.kpis.costo_accion} t={`cuesta la acción, frente a ${d.hogar.kpis.ahorro} de la visita y las llamadas`} fuente="Un mensaje de WhatsApp; la corrección remota es automática" />
+          <Cifra v={d.hogar.kpis.costo_accion} t={`cuesta la acción, frente a ${d.hogar.kpis.ahorro} de la visita y las llamadas`} fuente="Un mensaje de WhatsApp; el arreglo a distancia es automático" />
         </Bloque>
       );
 
     case "ia": {
       const h = d.inicio.hogar;
       return (
-        <Bloque kicker="La IA, medida contra lo que existe hoy" titulo="Ve lo que las alarmas de umbral todavía no ven">
-          <Cifra v={c.hogar_ia_vs_regla} t="más visitas evitables anticipadas" fuente="Datos simulados, mismo presupuesto de hogares marcados" />
+        <Bloque kicker="Inteligencia artificial frente a las alarmas de hoy" titulo="Ve lo que las alarmas todavía no ven">
+          <Cifra v={c.hogar_ia_vs_regla} t="más visitas evitables anticipadas" fuente="Con datos de ejemplo y la misma cantidad de casas revisadas" />
           <div className="mt-4 space-y-3">
-            <Barra t="IA de Tigo Predice" v={h.captura_ia} color="bg-celeste" />
-            <Barra t="Regla de umbrales" v={h.captura_regla} color="bg-white/50" />
+            <Barra t="Inteligencia artificial" v={h.captura_ia} color="bg-celeste" />
+            <Barra t="Alarmas de hoy" v={h.captura_regla} color="bg-white/50" />
           </div>
-          <p className="mt-4 text-sm text-white/75">Si con telemetría real la IA no supera a la regla por {String(d.config.hogar.go_ia_vs_regla_min ?? 1.3)}×, el piloto usa la regla.</p>
+          <p className="mt-4 text-sm text-white/75">Si con datos reales la inteligencia artificial no supera a las alarmas por {String(d.config.hogar.go_ia_vs_regla_min ?? 1.3)}×, se usan las alarmas de siempre.</p>
         </Bloque>
       );
     }
 
     case "movil":
       return (
-        <Bloque kicker="El mismo motor, en Móvil" titulo="Cuando cae un sitio, el cliente se entera por Tigo">
-          <Cifra v={`−${pct(d.inicio.piloto.reduccion)}`} t="llamadas en fallas masivas" fuente="Simulación con grupo control y efecto supuesto" />
+        <Bloque kicker="Lo mismo, en celulares" titulo="Cuando se cae una antena, el cliente se entera por Tigo">
+          <Cifra v={`−${pct(d.inicio.piloto.reduccion)}`} t="llamadas cuando se cae una antena" fuente="Con datos de ejemplo, comparando con clientes sin aviso" />
           <div className="mt-4 rounded-xl bg-white/10 p-3 ring-1 ring-white/15">
-            <div className="font-bold">CONATEL ya lo exige</div>
-            <div className="text-sm text-white/85">Informar a tiempo las averías y su plazo de normalización.</div>
+            <div className="font-bold">CONATEL, el ente regulador, ya lo exige</div>
+            <div className="text-sm text-white/85">Avisar a tiempo de las fallas y de cuándo se arreglan.</div>
             <div className="mt-1 text-[11px] text-white/60">Reglamento NR001/26, Art. 39, núm. 15 · La Gaceta, 28-feb-2026</div>
           </div>
         </Bloque>
@@ -263,11 +313,11 @@ function Tarjeta({ escena, d }: { escena: Escena; d: Datos }) {
 
     case "negocio":
       return (
-        <Bloque kicker="Caso de negocio conservador" titulo="Se paga con poco">
-          <Cifra v={c.neto_anio1_base} t="netos en el año 1 (Hogar + Móvil)" fuente={`Escenario base · rango ${c.neto_anio1_rango}`} />
-          <Cifra v={c.hogar_equilibrio_anio1} t="menos visitas evitables y Hogar ya se paga" fuente="Punto de equilibrio, año 1" />
-          <Cifra v={c.equilibrio_anio1} t="menos llamadas y Móvil ya se paga" fuente="Punto de equilibrio, año 1" />
-          <p className="mt-4 text-sm text-white/75">Solo cuenta lo medible: visitas y llamadas evitadas.</p>
+        <Bloque kicker="Cuánto se ahorra (cálculo prudente)" titulo="Se paga con poco">
+          <Cifra v={c.neto_anio1_base} t="de ahorro neto en el primer año (casas + celulares)" fuente={`Cálculo base · de lo peor a lo mejor: ${c.neto_anio1_rango}`} />
+          <Cifra v={c.hogar_equilibrio_anio1} t="menos visitas evitables y en casas ya se paga" fuente="Lo mínimo para pagarse en el primer año" />
+          <Cifra v={c.equilibrio_anio1} t="menos llamadas y en celulares ya se paga" fuente="Lo mínimo para pagarse en el primer año" />
+          <p className="mt-4 text-sm text-white/75">Solo cuenta lo que se puede medir: visitas y llamadas que no hacen falta.</p>
         </Bloque>
       );
 
@@ -275,20 +325,20 @@ function Tarjeta({ escena, d }: { escena: Escena; d: Datos }) {
       return (
         <Bloque kicker="Confianza" titulo="Seguro y medible">
           <Lista items={[
-            [Lock, "Solo el desempeño del módem", "Nada de contenido, navegación ni dispositivos del cliente."],
-            [FlaskConical, "Grupo control", `Un ${pct(Number(d.config.piloto.pct_control ?? 0.15))} queda como control: se mide el efecto real.`],
-            [ShieldCheck, "Marcos internacionales", "GDPR como referencia, ISO 27001 y OWASP."],
+            [Lock, "Solo cómo funciona el módem", "No vemos lo que el cliente hace en internet."],
+            [FlaskConical, "Se mide de verdad", `Un ${pct(Number(d.config.piloto.pct_control ?? 0.15))} de los clientes no recibe el servicio, para comparar.`],
+            [ShieldCheck, "Normas internacionales", "Seguimos las normas de privacidad y seguridad más exigentes (GDPR, ISO 27001, OWASP)."],
           ]} />
         </Bloque>
       );
 
     case "pedido":
       return (
-        <Bloque kicker="Lo que pedimos" titulo="Un piloto acotado, con salida clara">
-          <Cifra v="12 semanas" t={`en ${d.hogar.ciudad}, Hogar + Móvil`} fuente="Con grupo control" />
+        <Bloque kicker="Lo que pedimos" titulo="Una prueba pequeña, con fecha de fin">
+          <Cifra v="12 semanas" t={`en ${d.hogar.ciudad}, casas y celulares`} fuente="Comparando con clientes sin el servicio" />
           <Cifra v={c.piloto_costo_base} t={`≈ ${c.piloto_costo_usd}`} fuente={`Rango ${c.piloto_costo_rango}`} />
-          <Cifra v="Datos + equipo" t="archivos diarios del NOC, ACS y call center" fuente="y un equipo pequeño de Tigo" />
-          <p className="mt-4 text-lg font-bold">En la semana 12, con números reales, ustedes deciden <span className="text-celeste">GO o NO-GO</span>.</p>
+          <Cifra v="Datos + equipo" t="datos que Tigo ya tiene, de su red y su call center" fuente="y un equipo pequeño de Tigo" />
+          <p className="mt-4 text-lg font-bold">En la semana 12, con resultados reales, ustedes deciden <span className="text-celeste">si sigue o no</span>.</p>
         </Bloque>
       );
 

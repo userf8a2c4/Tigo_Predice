@@ -5,7 +5,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { api } from "../api";
 import { ESCENAS } from "../escenas";
 import { ConfigContext, PresentacionContext, useDatos } from "../hooks";
-import { BarraPresentacion, PanelEscena, useReproductor } from "./Presentador";
+import { BarraPresentacion, PanelEscena, SubtitulosPresentacion, useReproductor } from "./Presentador";
 
 const NAV_PILOTO = [
   { a: "/", texto: "Inicio", icono: Home },
@@ -132,6 +132,7 @@ export default function Layout() {
           </main>
         </div>
       </div>
+      {presentando && <SubtitulosPresentacion r={r} />}
       {presentando && <BarraPresentacion r={r} salir={salir} />}
       </div>
     </PresentacionContext.Provider>

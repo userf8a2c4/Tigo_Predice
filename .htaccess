@@ -25,7 +25,7 @@ RewriteCond %{THE_REQUEST} !\s/+(index\.html|robots\.txt|\.well-known/security\.
 RewriteRule ^ - [F]
 
 <IfModule mod_headers.c>
-  Header always set Content-Security-Policy "default-src 'none'; script-src 'sha256-GPPTq8ydPGuO8cU+AyCv0N4KkSz1hozYlrarDgIemo0=' 'sha256-tWr4kUbvp1sxLtiqrS+KhJ5y96FTVvrP842bEVzmrt0='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+  Header always set Content-Security-Policy "default-src 'none'; script-src 'sha256-GPPTq8ydPGuO8cU+AyCv0N4KkSz1hozYlrarDgIemo0=' 'sha256-OY3Ym60QTuD7cJs3nXypOCA8+UEuVsE+7Zp3kXnvZO4='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
   Header always set Strict-Transport-Security "max-age=31536000"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "no-referrer"

@@ -19,7 +19,7 @@ Propuesta para **Tigo CX Month · Sharks** (octubre 2026), de Sandra Michel Jime
 2. Doble clic en **`iniciar_demo.bat`**. La primera vez instala las versiones fijadas (`requirements.lock`), genera los datos, entrena los modelos, registra su huella SHA-256 y compila la interfaz. Toma unos 4 minutos; después arranca en unos 5 segundos.
 3. Se abre **http://127.0.0.1:8000** → **Hogar en vivo ★** → **▶ Iniciar**.
 
-**Modo presentación:** el botón **Presentar** recorre el sistema en 4:32 (escenas en `frontend/src/escenas.ts`). Cada escena abre una pantalla real y una tarjeta a la izquierda muestra la idea y las cifras. Espacio pausa, ← y → cambian de escena y Esc sale. El guion de quien presenta está en `docs/pitch.md`.
+**Modo presentación:** el botón **Presentar** recorre el sistema en 4:32 (escenas en `frontend/src/escenas.ts`). Cada escena abre una pantalla real y una tarjeta a la izquierda muestra la idea y las cifras. Espacio pausa, ← y → cambian de escena, S muestra u oculta los subtítulos y Esc sale. Los subtítulos dicen lo mismo que el guion (una prueba lo verifica). El guion de quien presenta está en `docs/pitch.md`.
 
 **Sin servidor:** `1_Demo/index.html` (en la carpeta del proyecto, junto a `2_Documentos`, donde están todos los entregables) es la misma demo en un solo archivo que se abre con doble clic, por ejemplo para enviarla al jurado. La carpeta `1_Demo` completa se puede subir a un hosting estático: el generador escribe también la política de seguridad de contenido, `.htaccess`, `_headers`, `robots.txt` y `.well-known/security.txt`, más el `.htaccess` de la raíz del repositorio para publicarlo conectado a un hosting. Se genera con `docs/entregables/gen_demo_html.py`; «Pon tus números» solo funciona en la versión completa.
 

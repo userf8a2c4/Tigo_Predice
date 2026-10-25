@@ -7,7 +7,8 @@ PARA EMPEZAR
    Abra 1_Demo\index.html con doble clic. Se abre en el navegador.
    Entre a «Hogar en vivo ★» y presione «Iniciar». Funciona sin internet y sin instalar nada.
    Para presentar: botón «Presentar» (arriba a la derecha). Recorre el sistema en 4:32;
-   Espacio pausa, las flechas cambian de escena y Esc sale. El guion está en 2_Documentos\1_Presentacion.
+   Espacio pausa, las flechas cambian de escena, S muestra u oculta los subtítulos y Esc sale.
+   El guion (el mismo texto de los subtítulos) está en 2_Documentos\1_Presentacion.
 
 CARPETAS
    1_Demo                    La demo (sitio web, index.html). En el dominio se ve solo la demo:
