@@ -288,6 +288,11 @@ def calcular(cfg: dict, escenario: str = "base", tus_numeros: dict | None = None
     }
 
 
+def config_para_navegador(cfg: dict) -> dict:
+    """Lo que necesita la copia de este cálculo en el navegador (frontend/src/roi.ts), para la demo sin servidor."""
+    return {k: cfg[k] for k in ("piloto", "hogar", "topes", "base_real", "supuestos")}
+
+
 def escenarios(cfg: dict, tus_numeros: dict | None = None) -> dict:
     return {e: calcular(cfg, e, tus_numeros) for e in ESCENARIOS}
 

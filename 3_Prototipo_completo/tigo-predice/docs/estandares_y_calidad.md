@@ -44,7 +44,9 @@ Revisión del 23 de octubre de 2026. Cada fila dice qué se cumple, con qué evi
 ## 4. Pruebas
 
 - **Python:** 230 pruebas (unitarias, API, seguridad y consistencia de cifras). Pasaron completas el 22 de octubre de 2026.
-- **Interfaz:** 15 pruebas, incluida la que verifica que los subtítulos del modo presentación digan lo mismo que el guion; pasan el 25 de octubre de 2026.
+- **Interfaz:** 25 pruebas; pasan el 25 de octubre de 2026. Entre ellas:
+  - los subtítulos del modo presentación dicen lo mismo que el guion;
+  - la calculadora de «Pon tus números» en el navegador da el mismo resultado que el cálculo en Python en 8 casos, incluidos los valores extremos que acepta la API (`docs/entregables/gen_paridad_roi.py` genera los casos).
 - **Limitación honesta:** el 23 de octubre, el Control inteligente de aplicaciones de Windows bloqueó una librería de scikit-learn en la computadora de desarrollo. Por eso las pruebas de Python no se pudieron repetir ese día. Los cambios de ese día en Python fueron de configuración (regla BLE, certifi) y de texto, y no tocaron la lógica.
 
 ## 5. Pendientes para llegar al máximo nivel

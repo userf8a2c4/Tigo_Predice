@@ -246,6 +246,101 @@ flowchart LR
 ```"""
 
 
+# Dónde se conecta la IA, qué funciona hoy y cómo pasa a la web en vivo y a producción
+CONEXION_IA = {
+    "resumen": (
+        "Tigo Predice usa dos tipos de IA. La predictiva detecta el problema antes que el cliente; la generativa "
+        "redacta el mensaje. La demo web muestra resultados del modelo y plantillas aprobadas, sin conectarse a nada; "
+        "el prototipo completo conecta ambas en vivo."
+    ),
+    "puntos": [
+        {
+            "ia": "IA predictiva (detecta)",
+            "que_hace": (
+                "Marca cada semana los hogares con más riesgo de llamar o necesitar visita en 7 días, y estima qué "
+                "afectados de una falla masiva llamarán en 72 horas. Explica cada caso por variables."
+            ),
+            "donde": (
+                "Modelos LightGBM calibrados en ml/modelos (se entrenan con ml/entrenar_hogar.py y "
+                "ml/entrenar_72h.py). El backend los usa en services/hogar_vivo.py y services/falla_vivo.py y verifica"
+                " la huella SHA-256 de cada modelo antes de cargarlo."
+            ),
+            "web": "Muestra resultados que el modelo real calculó antes, con datos simulados. No recalcula en vivo.",
+            "produccion": "Califica cada semana con la telemetría real de Tigo (CSV diario en el piloto).",
+        },
+        {
+            "ia": "IA generativa (redacta)",
+            "que_hace": (
+                "Redacta los avisos por WhatsApp y responde al cliente en la conversación, con reglas fijas: trato de "
+                "usted, sin horas inventadas, sin pedir datos sensibles y siempre con la opción de hablar con una "
+                "persona."
+            ),
+            "donde": (
+                "backend/app/llm_client.py con Claude (modelo claude-opus-5-5, configurable con TIGO_LLM_MODEL). Se "
+                "activa con ANTHROPIC_API_KEY en el archivo .env. Lo usan services/mensajes.py y services/chat.py. Los"
+                " avisos llevan solo datos mínimos y lo que escribe el cliente se envía sin datos sensibles. Si la IA "
+                "falla o no hay clave, se usa una plantilla aprobada."
+            ),
+            "web": "Usa las plantillas aprobadas. La clave de la IA nunca va dentro de la página.",
+            "produccion": (
+                "Con acuerdo de procesamiento de datos y retención cero, o con el modelo en la nube corporativa de "
+                "Tigo."
+            ),
+        },
+    ],
+    "opciones": [
+        {
+            "opcion": "A · Hoy: demo web sin conexión",
+            "estado": "Implementado",
+            "como": (
+                "La demo es un solo archivo con los resultados del modelo y las plantillas aprobadas. Su política de "
+                "seguridad no le permite conectarse a ningún servidor."
+            ),
+            "pasos": [
+                "Funciona sin internet, sin costo por uso y sin riesgo de exponer claves.",
+                "Arriba indica qué IA está activa: resultados del modelo y mensajes con plantillas.",
+                "Para mostrar la IA en vivo se usa el prototipo completo (iniciar_demo.bat con la clave en .env).",
+            ],
+        },
+        {
+            "opcion": "B · Después del concurso: IA generativa en vivo en la web",
+            "estado": "Diseñado, por implementar",
+            "como": (
+                "Un servicio pequeño en el servidor del sitio (por ejemplo, PHP si el plan de Hostinger lo permite, o "
+                "una función en la nube) guarda la clave fuera de la carpeta pública y solo acepta una tarea: redactar"
+                " los mensajes de la demo a partir de datos fijos."
+            ),
+            "pasos": [
+                "Crear una clave de Anthropic solo para la demo, con límite de gasto mensual.",
+                "Guardarla fuera de la carpeta pública del sitio (nunca en el repositorio ni en la página).",
+                (
+                    "Publicar el servicio: recibe solo campos fijos (tipo de aviso, causa, hora estimada), nunca texto"
+                    " libre."
+                ),
+                "Revisar cada respuesta con las mismas reglas del backend; si no pasa, usar la plantilla aprobada.",
+                "Limitar por visitante y por día, con tiempo máximo de 8 segundos por respuesta.",
+                "Abrir en la página solo la conexión a ese servicio (connect-src 'self') y mostrar «Modo IA».",
+                "Probar: reglas, límites, caída de la IA y que la clave no aparezca en la página ni en el repositorio.",
+            ],
+        },
+        {
+            "opcion": "C · Piloto y producción: backend dentro de Tigo",
+            "estado": "Plan del piloto",
+            "como": (
+                "El backend completo (IA predictiva y generativa) corre en la infraestructura de Tigo, con los datos "
+                "reales y los controles de la tabla de seguridad: SSO con MFA, gestor de secretos y bitácoras en el "
+                "SIEM."
+            ),
+            "pasos": [
+                "Semanas 0–2: validar el modelo con 3 meses de telemetría real.",
+                "Revisión de Seguridad de la Información, Privacidad y Legal antes del primer mensaje a clientes.",
+                "Clave de la IA en el gestor de secretos de Tigo, nunca en archivos.",
+            ],
+        },
+    ],
+}
+
+
 SEGURIDAD = [
     {"control": "Cabeceras de seguridad, CSP y HSTS", "estado": "Implementado y probado", "produccion": "Igual + WAF"},
     {
@@ -324,6 +419,20 @@ def markdown() -> str:
             ("frecuencia_produccion", "Producción"),
         ],
     )
+    L += ["", "## Conexión de IA", "", CONEXION_IA["resumen"], ""]
+    L += tabla(
+        CONEXION_IA["puntos"],
+        [
+            ("ia", "IA"),
+            ("que_hace", "Qué hace"),
+            ("donde", "Dónde se conecta"),
+            ("web", "Demo web"),
+            ("produccion", "Producción"),
+        ],
+    )
+    for o in CONEXION_IA["opciones"]:
+        L += ["", f"### {o['opcion']} ({o['estado']})", "", o["como"], ""]
+        L += [f"- {paso}" for paso in o["pasos"]]
     L += ["", "## Consentimiento, canal y cumplimiento", ""]
     L += [f"- **{c['tema']}:** {c['detalle']}" for c in CONSENTIMIENTO]
     L += ["", "## Seguridad y privacidad (detalle en docs/seguridad_y_privacidad.md)", ""]
@@ -348,6 +457,7 @@ def contenido() -> dict:
         "equipo": EQUIPO,
         "plan": PLAN,
         "seguridad": SEGURIDAD,
+        "conexion_ia": CONEXION_IA,
     }
 
 

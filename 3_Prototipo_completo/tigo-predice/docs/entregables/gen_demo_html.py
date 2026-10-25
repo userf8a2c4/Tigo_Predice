@@ -56,6 +56,14 @@ def datos_de_demo(html: Path) -> dict:
 
 def main(salida: Path, reutilizar: Path | None = None) -> None:
     datos = datos_de_demo(reutilizar) if reutilizar else recolectar()
+    # «Pon tus números» se calcula en el navegador (frontend/src/roi.ts) con los supuestos de config/negocio.toml
+    sys.path.insert(0, str(RAIZ))
+    from backend.app.services import produccion, roi
+    from ml.comun import cargar_config
+
+    datos["/config/negocio"] = roi.config_para_navegador(cargar_config())
+    # «Listo para producción» no depende de los modelos: se toma siempre de su fuente vigente
+    datos["/api/produccion"] = produccion.contenido()
     escribir(salida, datos)
 
 
@@ -196,9 +204,10 @@ RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # La dirección es solo el dominio: sin www, sin /index.html y sin carpetas
+# (2_Demo era la carpeta de la demo en una versión anterior: sus enlaces viejos también llegan a la raíz)
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^ https://%1/ [L,R=301]
-RewriteCond %{THE_REQUEST} \s/+({demo}(/|\s|\?)|index\.html)
+RewriteCond %{THE_REQUEST} \s/+(({demo}|2_Demo)(/|\s|\?)|index\.html)
 RewriteRule ^ / [L,R=301]
 
 # Lo único público: la demo y sus archivos de sitio

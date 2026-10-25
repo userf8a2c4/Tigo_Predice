@@ -1,4 +1,5 @@
 import type { FeatureCollection } from "geojson";
+import { casoNegocio, type ConfigNegocio } from "./roi";
 
 // Tipos y acceso a la API de Tigo Predice v03
 
@@ -443,6 +444,11 @@ export interface Produccion {
   equipo: { rol: string; dedicacion: string; responsabilidad: string }[];
   plan: { semanas: string; fase: string; actividades: string }[];
   seguridad: { control: string; estado: string; produccion: string }[];
+  conexion_ia: {
+    resumen: string;
+    puntos: { ia: string; que_hace: string; donde: string; web: string; produccion: string }[];
+    opciones: { opcion: string; estado: string; como: string; pasos: string[] }[];
+  };
 }
 
 // ------------------------------------------------------------------ Fase 2 (visión)
@@ -571,7 +577,11 @@ export const api = {
   pilotoHogar: () => pedir<PilotoHogar>("/api/hogar/piloto"),
   piloto: () => pedir<ResultadosPiloto>("/api/piloto/resultados"),
   potencia: (p: Record<string, number>) => pedir<Potencia>(`/api/piloto/potencia?${qs(p)}`),
-  roi: (tus: Record<string, number | undefined>) => pedir<CasoNegocio>(`/api/roi?${qs(tus)}`),
+  // Sin servidor, «Pon tus números» se calcula en el navegador con la misma cuenta del backend (src/roi.ts)
+  roi: (tus: Record<string, number | undefined>) =>
+    ESTATICO
+      ? pedirIncrustado<ConfigNegocio>("/config/negocio").then((cfg) => casoNegocio(cfg, tus))
+      : pedir<CasoNegocio>(`/api/roi?${qs(tus)}`),
   modelo: () => pedir<ModeloInfo>("/api/modelo"),
   produccion: () => pedir<Produccion>("/api/produccion"),
   // Fase 2

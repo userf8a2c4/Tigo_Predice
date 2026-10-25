@@ -4,8 +4,9 @@ import { useState } from "react";
 import { Bar, BarChart, CartesianGrid, Legend, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { ESTATICO, api, type Escenario } from "../api";
 import { Cargando, ErrorCaja, Tarjeta, Titulo } from "../components/ui";
-import { EJES, GRILLA, SERIES, enteroSig, lempirasSig, pct, rangoL } from "../formato";
+import { EJES, GRILLA, SERIES, entero, enteroSig, lempirasSig, pct, rangoL } from "../formato";
 import { useAncho, useConfig, useDatos } from "../hooks";
+import { LIMITES } from "../roi";
 
 export const NOMBRES_SUPUESTOS: Record<string, string> = {
   fallas_mes_piloto: "Fallas masivas por mes (ciudad piloto)",
@@ -73,6 +74,7 @@ export default function CasoNegocio() {
   const vacio = { visitas_mes_hogar_nacional: "", costo_por_visita: "", llamadas_mes_fallas_nacional: "", costo_por_llamada: "" };
   const [entrada, setEntrada] = useState<Record<Clave, string>>(vacio);
   const [tus, setTus] = useState<Record<string, number | undefined>>({});
+  const [aviso, setAviso] = useState<string | null>(null);
   const { datos, error } = useDatos(() => api.roi(tus), [JSON.stringify(tus)]);
 
   if (error) return <ErrorCaja error={error} />;
@@ -135,28 +137,35 @@ export default function CasoNegocio() {
           <Titulo extra={usaTus ? <span className={clsx("rounded-full px-2 py-0.5 text-xs ring-1", FUENTE["dato Tigo"])}>usando dato Tigo</span> : null}>
             <span className="flex items-center gap-2"><Calculator size={18} /> Pon tus números</span>
           </Titulo>
-          <p className="mb-3 text-sm text-slate-500">Cuatro datos reales de Tigo convierten este caso en definitivo. Todo se recalcula al instante.</p>
-          {ESTATICO ? (
-            <p className="rounded-xl bg-celeste-50 p-3 text-sm text-slate-600">
-              En esta versión sin servidor se muestra el caso base. Para recalcular con los datos de Tigo, abra la demo completa
-              (<b>iniciar_demo.bat</b>).
-            </p>
-          ) : (
-          <form className="grid grid-cols-1 gap-3 sm:grid-cols-2" onSubmit={(e) => {
+          <p className="mb-3 text-sm text-slate-500">
+            Cuatro datos reales de Tigo convierten este caso en definitivo. Deje en blanco los que no tenga: se usa el supuesto.
+            {ESTATICO && " El cálculo se hace en este navegador; los datos no salen de la página."}
+          </p>
+          <form className="grid grid-cols-1 gap-3 sm:grid-cols-2" noValidate onSubmit={(e) => {
             e.preventDefault();
-            setTus(Object.fromEntries(CAMPOS.map(({ k }) => [k, entrada[k] ? Number(entrada[k]) : undefined])));
+            const malo = CAMPOS.find(({ k }) => {
+              if (!entrada[k].trim()) return false;
+              const x = Number(entrada[k]);
+              return !Number.isFinite(x) || x <= 0 || x > LIMITES[k];
+            });
+            if (malo) {
+              setAviso(`«${malo.t}» debe ser un número mayor que 0 y de hasta ${entero(LIMITES[malo.k])}.`);
+              return;
+            }
+            setAviso(null);
+            setTus(Object.fromEntries(CAMPOS.map(({ k }) => [k, entrada[k].trim() ? Number(entrada[k]) : undefined])));
           }}>
             {CAMPOS.map(({ k, t }) => (
-              <Campo key={k} id={k} t={t} ph={placeholder[k]} v={entrada[k]} on={(x) => setEntrada({ ...entrada, [k]: x })} />
+              <Campo key={k} id={k} t={t} ph={placeholder[k]} max={LIMITES[k]} v={entrada[k]} on={(x) => setEntrada({ ...entrada, [k]: x })} />
             ))}
+            {aviso && <p role="alert" className="text-sm font-medium text-alerta sm:col-span-2">{aviso}</p>}
             <div className="flex gap-2 sm:col-span-2">
               <button type="submit" className="rounded-xl bg-tigo px-4 py-2 text-sm font-semibold text-white">Recalcular</button>
-              <button type="button" onClick={() => { setEntrada(vacio); setTus({}); }} className="flex items-center gap-1 rounded-xl px-3 py-2 text-sm text-slate-500 hover:text-tigo">
+              <button type="button" onClick={() => { setEntrada(vacio); setTus({}); setAviso(null); }} className="flex items-center gap-1 rounded-xl px-3 py-2 text-sm text-slate-500 hover:text-tigo">
                 <RotateCcw size={14} /> Supuestos
               </button>
             </div>
           </form>
-          )}
         </Tarjeta>
       </div>
 
@@ -296,11 +305,11 @@ function Mini({ t, v, s }: { t: string; v: string; s: string }) {
   );
 }
 
-function Campo({ id, t, ph, v, on }: { id: string; t: string; ph: string; v: string; on: (x: string) => void }) {
+function Campo({ id, t, ph, max, v, on }: { id: string; t: string; ph: string; max: number; v: string; on: (x: string) => void }) {
   return (
     <div>
       <label htmlFor={id} className="text-sm font-medium text-slate-700">{t}</label>
-      <input id={id} type="number" min={0} inputMode="numeric" value={v} placeholder={`supuesto: ${ph}`} onChange={(e) => on(e.target.value)}
+      <input id={id} type="number" min={0} max={max} step="any" inputMode="decimal" value={v} placeholder={`supuesto: ${ph}`} onChange={(e) => on(e.target.value)}
         className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-tigo" />
     </div>
   );

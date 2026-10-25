@@ -1,8 +1,15 @@
 import clsx from "clsx";
-import { ArrowRight, Database, LockKeyhole, ShieldCheck, TriangleAlert, Users } from "lucide-react";
-import { api } from "../api";
+import { ArrowRight, BrainCircuit, Database, LockKeyhole, ShieldCheck, TriangleAlert, Users } from "lucide-react";
+import { api, type Produccion } from "../api";
 import { Cargando, ErrorCaja, Tarjeta, Titulo } from "../components/ui";
 import { useDatos } from "../hooks";
+
+// Color del estado de cada forma de conectar la IA
+const ESTADO_IA: Record<string, string> = {
+  Implementado: "bg-exito/10 text-exito ring-exito/30",
+  "Diseñado, por implementar": "bg-ambar/15 text-amber-800 ring-ambar/40",
+  "Plan del piloto": "bg-tigo/10 text-tigo ring-tigo/20",
+};
 
 const NIVEL: Record<string, string> = {
   Alta: "bg-alerta/15 text-alerta",
@@ -26,6 +33,8 @@ export default function Produccion() {
           Lo regulatorio se valida con Legal de Tigo antes de enviar el primer mensaje.
         </p>
       </div>
+
+      <ConexionIA c={p.conexion_ia} />
 
       <Tarjeta className="p-5">
         <Titulo><span className="flex items-center gap-2"><Database size={18} /> Integración: qué dato, de dónde y cada cuánto</span></Titulo>
@@ -123,5 +132,41 @@ export default function Produccion() {
         </div>
       </Tarjeta>
     </div>
+  );
+}
+
+function ConexionIA({ c }: { c: Produccion["conexion_ia"] }) {
+  return (
+    <Tarjeta className="p-5">
+      <Titulo><span className="flex items-center gap-2"><BrainCircuit size={18} /> Conexión de IA: dónde se conecta y cómo pasa a producción</span></Titulo>
+      <p className="mb-4 text-sm text-slate-600">{c.resumen}</p>
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+        {c.puntos.map((p) => (
+          <div key={p.ia} className="rounded-xl border border-slate-200 p-4">
+            <div className="font-bold text-tigo">{p.ia}</div>
+            <p className="mt-1 text-sm text-slate-700">{p.que_hace}</p>
+            <dl className="mt-3 space-y-2 text-sm">
+              <div><dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Dónde se conecta</dt><dd className="text-slate-700">{p.donde}</dd></div>
+              <div><dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">En la demo web</dt><dd className="text-slate-700">{p.web}</dd></div>
+              <div><dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">En producción</dt><dd className="text-slate-700">{p.produccion}</dd></div>
+            </dl>
+          </div>
+        ))}
+      </div>
+      <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-3">
+        {c.opciones.map((o) => (
+          <div key={o.opcion} className="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <div className="font-bold text-slate-800">{o.opcion}</div>
+              <span className={clsx("rounded-full px-2 py-0.5 text-xs font-semibold ring-1", ESTADO_IA[o.estado] ?? "bg-slate-100 text-slate-600 ring-slate-200")}>{o.estado}</span>
+            </div>
+            <p className="mt-1 text-sm text-slate-700">{o.como}</p>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+              {o.pasos.map((paso) => <li key={paso}>{paso}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </Tarjeta>
   );
 }

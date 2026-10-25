@@ -6,7 +6,7 @@
 
 ![Concurso](https://img.shields.io/badge/AI%20Shark%20Tank-Tigo%20CX%20Month%202026-0A22B8)
 ![Categoría](https://img.shields.io/badge/categor%C3%ADa-Experiencia%20del%20cliente-4CC9F0)
-![Pruebas](https://img.shields.io/badge/pruebas%20autom%C3%A1ticas-245-2BB673)
+![Pruebas](https://img.shields.io/badge/pruebas%20autom%C3%A1ticas-255-2BB673)
 ![Regulación](https://img.shields.io/badge/alineado%20con-CONATEL%20NR001%2F26-FFC629)
 ![Accesibilidad](https://img.shields.io/badge/WCAG%202.2%20AA-0%20infracciones%20(axe--core)-2BB673)
 ![Marcos de referencia](https://img.shields.io/badge/marcos%20de%20referencia-OWASP%20Top%2010%3A2025%20%C2%B7%20GDPR%20%C2%B7%20ISO%2027001-00377B)
@@ -63,7 +63,7 @@ Con el mismo presupuesto, se compara contra las alarmas por umbral que Tigo ya t
 <td width="50%" valign="top">
 
 ### Caso de negocio conservador
-Solo ahorro duro, con costos hondureños, escenarios y punto de equilibrio. En el prototipo completo, «Pon tus números» recalcula con datos de Tigo.
+Solo ahorro duro, con costos hondureños, escenarios y punto de equilibrio. «Pon tus números» recalcula todo con cuatro datos reales de Tigo, también en la demo web, sin servidor.
 
 <img src="assets/readme/negocio.png" alt="Pantalla Caso de negocio" width="100%">
 </td>
@@ -141,7 +141,7 @@ Probado en Windows 11 con Python 3.15 y Node 24: doble clic en `3_Prototipo_comp
 Si el **Control inteligente de aplicaciones** de Windows está activo, puede bloquear librerías científicas sin firma (como scikit-learn) y el prototipo completo no arrancará. La demo de `1_Demo` no tiene ese problema.
 
 - **Stack:** Python (FastAPI, LightGBM con calibración isotónica y explicaciones SHAP, SQLite) y React con Vite, TypeScript, Tailwind y Recharts.
-- **Pruebas:** 230 de Python (última ejecución completa: 22-oct-2026) y 15 de la interfaz, más análisis estático con reglas de seguridad y auditoría de dependencias sin vulnerabilidades conocidas.
+- **Pruebas:** 230 de Python (última ejecución completa: 22-oct-2026) y 25 de la interfaz, más análisis estático con reglas de seguridad y auditoría de dependencias sin vulnerabilidades conocidas.
 - **Reproducible:** el pipeline completo regenera los mismos datos, modelos y cifras desde cero.
 
 Detalles en el [README del prototipo](3_Prototipo_completo/tigo-predice/README.md).

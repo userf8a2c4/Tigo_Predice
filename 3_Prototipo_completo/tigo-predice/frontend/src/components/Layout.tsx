@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { BrainCircuit, Calculator, FlaskConical, Home, MessageCircle, MonitorPlay, Radio, Router, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { api } from "../api";
+import { ESTATICO, api } from "../api";
 import { ESCENAS } from "../escenas";
 import { ConfigContext, PresentacionContext, useDatos } from "../hooks";
 import { BarraPresentacion, PanelEscena, SubtitulosPresentacion, useReproductor } from "./Presentador";
@@ -84,7 +84,7 @@ export default function Layout() {
           <nav className="mt-1 space-y-0.5 opacity-80">{NAV_FASE2.map((n) => <Enlace key={n.a} {...n} />)}</nav>
           <div className="mt-auto space-y-1.5 rounded-xl bg-tigo-900/60 p-3 text-xs text-white/70">
             <div>Modelo: <span className="font-semibold text-white">{config?.modelo ?? "…"}</span></div>
-            <div title={config?.llm_estado}>Mensajes: <span className="font-semibold text-white">{config?.llm_estado ?? "…"}</span></div>
+            <div title={config?.llm_estado}>Mensajes: <span className="font-semibold text-white">{ESTATICO ? "plantillas aprobadas (demo sin conexión)" : config?.llm_estado ?? "…"}</span></div>
             <div>Concurso Tigo CX Month · Sharks</div>
           </div>
         </aside>}
@@ -95,13 +95,23 @@ export default function Layout() {
             <span className="rounded-full bg-ambar/15 px-3 py-1 text-xs font-semibold text-amber-800 ring-1 ring-ambar/40">
               ⚠ Datos simulados<span className="hidden sm:inline"> — supuestos a validar con Tigo</span>
             </span>
-            <span
-              title={config?.llm_estado}
-              className={clsx("flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ring-1",
-                modoIA ? "bg-exito/10 text-exito ring-exito/30" : "bg-slate-100 text-slate-600 ring-slate-200")}
-            >
-              <Sparkles size={12} /> {config ? (modoIA ? "Modo IA" : "Modo plantillas") : "…"}
-            </span>
+            {ESTATICO ? (
+              // Demo web sin conexión: deja claro qué IA está activa y cómo (detalle en «Listo para producción»)
+              <span
+                title="En la demo web, la IA predictiva muestra resultados que el modelo real calculó con datos simulados y los mensajes usan plantillas aprobadas. La IA en vivo se conecta en el prototipo completo; ver «Listo para producción» → Conexión de IA."
+                className="flex items-center gap-1 rounded-full bg-tigo/10 px-3 py-1 text-xs font-semibold text-tigo ring-1 ring-tigo/20"
+              >
+                <Sparkles size={12} /> IA predictiva: resultados del modelo<span className="hidden xl:inline"> · Mensajes: plantillas aprobadas</span>
+              </span>
+            ) : (
+              <span
+                title={config?.llm_estado}
+                className={clsx("flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ring-1",
+                  modoIA ? "bg-exito/10 text-exito ring-exito/30" : "bg-slate-100 text-slate-600 ring-slate-200")}
+              >
+                <Sparkles size={12} /> {config ? (modoIA ? "Modo IA" : "Modo plantillas") : "…"}
+              </span>
+            )}
             <button onClick={() => setPresentando((v) => !v)}
               className="ml-auto flex items-center gap-2 rounded-xl bg-tigo px-4 py-2 text-sm font-bold text-white shadow hover:brightness-110"
               title={presentando ? "Salir del modo presentación (Esc)" : "Modo presentación (menos de 5 minutos)"}>
