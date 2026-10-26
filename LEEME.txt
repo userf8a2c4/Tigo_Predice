@@ -8,7 +8,7 @@ PARA EMPEZAR
    Entre a «Hogar en vivo ★» y presione «Iniciar». Funciona sin internet y sin instalar nada.
    Para presentar: botón «Presentar» (arriba a la derecha). Recorre el sistema en 4:32;
    Espacio pausa, las flechas cambian de escena, S muestra u oculta los subtítulos,
-   V activa la vista simple (menos información en pantalla) y Esc sale.
+   V cambia entre Resumen (láminas para directivos) y Completo (el sistema entero) y Esc sale.
    El guion (el mismo texto de los subtítulos) está en 2_Documentos\1_Presentacion.
 
 CARPETAS

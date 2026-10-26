@@ -12,7 +12,7 @@
 
 ## Modo presentación (4:32)
 
-Botón **Presentar**: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; S muestra u oculta los subtítulos; V activa la vista simple; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).
+Botón **Presentar**: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; S muestra u oculta los subtítulos; V cambia entre Resumen y Completo; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).
 
 | Min. | Escena | En pantalla | Idea |
 |---|---|---|---|

@@ -99,16 +99,6 @@ body {
   to { opacity: 1; transform: none; }
 }
 
-/* Vista simple del modo presentación: la tarjeta de la que se habla se ilumina y el resto del sistema se atenúa.
-   El desplazamiento de <main> recorta la sombra, así que la tarjeta lateral, la barra y los subtítulos no se atenúan. */
-.resaltado {
-  position: relative;
-  z-index: 1050; /* sobre los controles del mapa (1000) y bajo los subtítulos (1100) */
-  border-radius: 1rem;
-  box-shadow: 0 0 0 4px var(--color-celeste), 0 0 0 100vmax rgb(0 35 87 / 0.45);
-  transition: box-shadow 0.35s ease-out;
-}
-
 /* Subtítulos del modo presentación: entrada suave y breve, sin distraer */
 .subtitulo {
   animation: subtitulo 0.35s ease-out;
@@ -150,5 +140,4 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .pulso, .aparecer, .destello, .subtitulo, .escribiendo span { animation: none; }
-  .resaltado { transition: none; }
 }

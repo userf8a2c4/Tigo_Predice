@@ -4,7 +4,7 @@ import type { Conversacion } from "../api";
 import Telefono from "../components/Telefono";
 import { Factores, PrioridadBadge } from "../components/ui";
 import guion from "../../../docs/pitch.md?raw";
-import { DURACION_TOTAL, ESCENAS, FOCOS, reloj, subtituloEn, SUBTITULO_MAX_SEG } from "../escenas";
+import { CAPTURAS_SISTEMA, DURACION_TOTAL, ESCENAS, reloj, subtituloEn, SUBTITULO_MAX_SEG } from "../escenas";
 import { colorRiesgo, lempiras, lempirasCorto, lempirasSig, pct, pctRiesgo, rangoL, sig } from "../formato";
 
 describe("redondeo sin falsa precisión", () => {
@@ -137,17 +137,20 @@ describe("subtítulos de la presentación", () => {
   });
 });
 
-describe("vista simple de la presentación", () => {
+describe("modo resumen de la presentación (láminas con capturas del sistema)", () => {
   const paginas = Object.values(import.meta.glob("../pages/*.tsx", { query: "?raw", import: "default", eager: true }) as Record<string, string>).join("\n");
+  const capturas = Object.keys(import.meta.glob("../assets/capturas/*.webp")).map((r) => r.split("/").pop()!.replace(".webp", ""));
 
-  it("cada parte que se resalta existe en alguna pantalla del sistema", () => {
-    for (const f of FOCOS) expect(paginas).toContain(`foco="${f}"`);
-    for (const e of ESCENAS) if (e.resaltar) expect(FOCOS).toContain(e.resaltar);
+  it("cada captura sale de una tarjeta marcada en alguna pantalla del sistema", () => {
+    for (const f of CAPTURAS_SISTEMA) {
+      expect(paginas).toContain(`"${f}"`);
+      expect(capturas).toContain(f);
+    }
   });
 
-  it("en la demo en vivo y en la escala se ve toda la pantalla, sin foco", () => {
-    expect(ESCENAS.find((e) => e.id === "demo")?.resaltar).toBeUndefined();
-    expect(ESCENAS.find((e) => e.id === "escala")?.resaltar).toBeUndefined();
+  it("cada lámina usa capturas que existen, y la demo en vivo no usa lámina", () => {
+    for (const e of ESCENAS) for (const c of e.capturas ?? []) expect(CAPTURAS_SISTEMA).toContain(c);
+    expect(ESCENAS.find((e) => e.id === "demo")?.capturas).toBeUndefined();
   });
 
   it("no cambia los tiempos: la presentación sigue durando 4:32", () => {

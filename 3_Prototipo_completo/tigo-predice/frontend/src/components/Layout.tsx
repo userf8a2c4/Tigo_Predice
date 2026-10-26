@@ -5,6 +5,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { ESTATICO, api } from "../api";
 import { ESCENAS } from "../escenas";
 import { ConfigContext, PresentacionContext, useDatos } from "../hooks";
+import LaminaEjecutiva from "./LaminaEjecutiva";
 import { BarraPresentacion, PanelEscena, SubtitulosPresentacion, useReproductor } from "./Presentador";
 
 const NAV_PILOTO = [
@@ -67,16 +68,18 @@ export default function Layout() {
   const salir = useCallback(() => setPresentando(false), []);
   const r = useReproductor(presentando, principal, salir);
   const presentacion = useMemo(
-    () => ({ escena: presentando ? ESCENAS[r.pos.i].id : null, simple: presentando && r.simple, abrir: () => setPresentando(true) }),
-    [presentando, r.pos.i, r.simple],
+    () => ({ escena: presentando ? ESCENAS[r.pos.i].id : null, resumen: presentando && r.resumen, abrir: () => setPresentando(true) }),
+    [presentando, r.pos.i, r.resumen],
   );
+  // Modo resumen: cada escena es una lámina a todo el ancho; la demo en vivo sigue mostrando el sistema
+  const lamina = presentando && r.resumen && ESCENAS[r.pos.i].id !== "demo";
 
   return (
     <ConfigContext.Provider value={config}>
     <PresentacionContext.Provider value={presentacion}>
       <div className="flex h-full flex-col">
       <div className="flex min-h-0 flex-1">
-        {presentando ? <PanelEscena r={r} /> : <aside className="hidden w-64 shrink-0 flex-col bg-tigo p-4 text-white lg:flex">
+        {presentando && !lamina ? <PanelEscena r={r} /> : !presentando && <aside className="hidden w-64 shrink-0 flex-col bg-tigo p-4 text-white lg:flex">
           <Logo />
           <div className="mt-6 px-3 text-[11px] font-semibold uppercase tracking-wider text-celeste">Fase 1 · Piloto Hogar + Móvil</div>
           <nav className="mt-1 space-y-0.5">{NAV_PILOTO.map((n) => <Enlace key={n.a} {...n} />)}</nav>
@@ -112,8 +115,8 @@ export default function Layout() {
                 <Sparkles size={12} /> {config ? (modoIA ? "Modo IA" : "Modo plantillas") : "…"}
               </span>
             )}
-            {/* En la vista simple de la presentación, el encabezado deja solo los avisos */}
-            {!(presentando && r.simple) && <>
+            {/* En el modo resumen de la presentación, el encabezado deja solo los avisos */}
+            {!(presentando && r.resumen) && <>
             <button onClick={() => setPresentando((v) => !v)}
               className="ml-auto flex items-center gap-2 rounded-xl bg-tigo px-4 py-2 text-sm font-bold text-white shadow hover:brightness-110"
               title={presentando ? "Salir del modo presentación (Esc)" : "Modo presentación (menos de 5 minutos)"}>
@@ -139,8 +142,9 @@ export default function Layout() {
           </nav>
           <main ref={principal} tabIndex={0} className="flex-1 overflow-y-auto p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-celeste sm:p-4 lg:p-6">
             <div className="mx-auto w-full max-w-[1800px]">
-              <Outlet />
-              <FuenteDatos />
+              {lamina ? <LaminaEjecutiva escena={ESCENAS[r.pos.i]} /> : <Outlet />}
+              {/* Las láminas citan su propia fuente; el aviso de datos simulados sigue arriba */}
+              {!lamina && <FuenteDatos />}
             </div>
           </main>
         </div>

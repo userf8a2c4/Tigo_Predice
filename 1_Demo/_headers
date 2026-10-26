@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'none'; script-src 'sha256-POz1S8pKK8FmLAko7NHAmmZExSsV2VefXq0WZ3/2H6o=' 'sha256-GF7ggK+eOsXrHou6ffgZ1Af37LxBRJSeG83Rj5xcGRY='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'sha256-POz1S8pKK8FmLAko7NHAmmZExSsV2VefXq0WZ3/2H6o=' 'sha256-oW6aIBjRsU4p/ndMnvabh67q551zBkEGtxrn9MhY8SI='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
   Strict-Transport-Security: max-age=31536000
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer

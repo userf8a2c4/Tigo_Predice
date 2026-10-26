@@ -55,9 +55,9 @@ export function usePideFinal() {
 /** Modo presentación: escena en curso (null si no se está presentando) y cómo abrirlo desde cualquier pantalla. */
 export interface EstadoPresentacion {
   escena: Escena["id"] | null;
-  /** Vista simple: tarjetas cortas, foco en una parte del sistema y encabezado sin botones. */
-  simple: boolean;
+  /** Modo resumen: láminas para directivos en lugar del sistema entero (salvo la demo en vivo). */
+  resumen: boolean;
   abrir: () => void;
 }
-export const PresentacionContext = createContext<EstadoPresentacion>({ escena: null, simple: false, abrir: () => undefined });
+export const PresentacionContext = createContext<EstadoPresentacion>({ escena: null, resumen: false, abrir: () => undefined });
 export const usePresentacion = () => useContext(PresentacionContext);

@@ -354,8 +354,8 @@ table.t {{ font-size: 10.5px; }}
         "<p style='font-size:12px;color:#5b6575'>Los números rojos de cada captura corresponden a la leyenda de la "
         "derecha. Todo usa datos simulados.</p></div></div></section>",
         "<section class='pagina'><div class='cab'><h2>Modo presentación (4:32)</h2><span>Tigo Predice</span></div>"
-        "<p class='intro'>Botón <b>Presentar</b>: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; S muestra u oculta los subtítulos; V activa la vista simple; Esc vuelve a la demo para las preguntas. El guion va en un "
-        "documento aparte.</p>"
+        "<p class='intro'>Botón <b>Presentar</b>: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; S muestra u oculta los subtítulos; V cambia entre Resumen (láminas para directivos) y Completo; Esc vuelve a la demo para "
+        "las preguntas. El guion va en un documento aparte.</p>"
         "<table class='recorrido'><tr><th>Min.</th><th>Escena</th><th>En pantalla</th><th>Idea</th></tr>"
         + "".join(
             f"<tr><td>{a}</td><td><b>{b}</b></td><td>{c}</td><td><i>{d}</i></td></tr>" for a, b, c, d in RECORRIDO
@@ -407,7 +407,7 @@ def guia_markdown() -> str:
         "",
         "Botón **Presentar**: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las "
         "cifras. Espacio pausa; ← y → (o un control remoto) cambian de "
-        "escena; S muestra u oculta los subtítulos; V activa la vista simple; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).",
+        "escena; S muestra u oculta los subtítulos; V cambia entre Resumen y Completo; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).",
         "",
         "| Min. | Escena | En pantalla | Idea |",
         "|---|---|---|---|",

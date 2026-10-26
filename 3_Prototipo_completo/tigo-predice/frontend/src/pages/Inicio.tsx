@@ -21,7 +21,7 @@ export default function Inicio() {
 
   return (
     <div className="space-y-5">
-      <Tarjeta foco="inicio" className="bg-gradient-to-br from-tigo-900 via-tigo to-tigo-700 p-6 text-white lg:p-8">
+      <Tarjeta className="bg-gradient-to-br from-tigo-900 via-tigo to-tigo-700 p-6 text-white lg:p-8">
         <div className="text-sm font-semibold tracking-wide text-celeste">ATENCIÓN PROACTIVA CON IA · PILOTO HOGAR + MÓVIL · 60 DÍAS · SAN PEDRO SULA</div>
         <h1 className="mt-2 max-w-4xl text-2xl font-extrabold leading-tight sm:text-3xl lg:text-4xl">{d.posicionamiento}</h1>
         <p className="mt-3 max-w-3xl text-lg text-white/90">{d.lema}</p>
@@ -52,7 +52,7 @@ export default function Inicio() {
       </div>
 
       <div id="como-funciona" className="grid scroll-mt-4 grid-cols-1 gap-5 xl:grid-cols-[1fr_1fr]">
-        <Tarjeta foco="como-funciona" className="p-5">
+        <Tarjeta className="p-5">
           <Titulo extra={<span className="flex items-center gap-1 text-xs font-semibold text-tigo"><Router size={14} /> Frente principal</span>}>
             Hogar: cómo funciona
           </Titulo>

@@ -81,7 +81,7 @@ Solo ahorro duro, con costos hondureños, escenarios y punto de equilibrio. «Po
 
 ### Modo presentación
 
-El botón **Presentar** (arriba a la derecha) recorre el sistema en **4:32**, dentro de los 5 minutos del concurso. Cada escena abre una pantalla real y, a la izquierda, una tarjeta muestra la idea y las cifras, para que quien presenta cuente la historia sin memorizar números. Espacio pausa; ← y → (o un control remoto de presentaciones) cambian de escena; **S** muestra u oculta los subtítulos, que dicen lo mismo que el guion; **V** activa la vista simple (una sola idea por tarjeta y foco en una parte del sistema); Esc vuelve a la demo para las preguntas. El guion va aparte: [`Guion_de_la_presentacion.pdf`](2_Documentos/1_Presentacion/Guion_de_la_presentacion.pdf).
+El botón **Presentar** (arriba a la derecha) recorre el sistema en **4:32**, dentro de los 5 minutos del concurso. Cada escena abre una pantalla real y, a la izquierda, una tarjeta muestra la idea y las cifras, para que quien presenta cuente la historia sin memorizar números. Espacio pausa; ← y → (o un control remoto de presentaciones) cambian de escena; **S** muestra u oculta los subtítulos, que dicen lo mismo que el guion; **V** cambia entre **Resumen** (láminas para directivos: conclusión, 3 indicadores y una captura real del sistema) y **Completo** (el sistema entero); Esc vuelve a la demo para las preguntas. El guion va aparte: [`Guion_de_la_presentacion.pdf`](2_Documentos/1_Presentacion/Guion_de_la_presentacion.pdf).
 
 <img src="assets/readme/presentacion.png" alt="Modo presentación: tarjeta con la idea a la izquierda y la demo Hogar en vivo a la derecha" width="100%">
 

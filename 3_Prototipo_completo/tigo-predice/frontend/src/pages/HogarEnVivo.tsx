@@ -285,7 +285,7 @@ export default function HogarEnVivo() {
         <div className="min-w-0 space-y-3">
           {/* Alto fijo: las acciones que van apareciendo no empujan el teléfono */}
           {diagnostico ? (
-            <div ref={tarjetaDiag} className={clsx("tarjeta aparecer p-4 lg:overflow-y-auto", altoDiag)}>
+            <div ref={tarjetaDiag} data-foco="hogar-diagnostico" className={clsx("tarjeta aparecer p-4 lg:overflow-y-auto", altoDiag)}>
               <div className="flex items-center gap-2 text-sm font-bold text-tigo"><BrainCircuit size={18} /> Por qué la IA lo marcó ({fechaDe(ev.ia)})</div>
               <ul className="mt-2 space-y-1.5 text-sm">
                 {esc.explicacion.map((m) => (
@@ -313,7 +313,9 @@ export default function HogarEnVivo() {
               riesgo. Aquí aparecerá su diagnóstico.
             </Tarjeta>
           )}
-          <Telefono conv={conv} alto={presentando ? "clamp(260px, 38vh, 520px)" : "clamp(300px, 44vh, 520px)"} />
+          <div data-foco="hogar-telefono">
+            <Telefono conv={conv} alto={presentando ? "clamp(260px, 38vh, 520px)" : "clamp(300px, 44vh, 520px)"} />
+          </div>
         </div>
       </div>
       {!presentando && <ListaHoy />}

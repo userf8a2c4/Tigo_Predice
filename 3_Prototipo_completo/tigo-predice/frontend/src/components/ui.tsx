@@ -6,7 +6,7 @@ import { colorRiesgo, pct } from "../formato";
 
 /**
  * `desplazable`: nombre de la región cuando el contenido se desplaza a lo ancho; así se puede recorrer con el teclado.
- * `foco`: nombre con el que la vista simple del modo presentación resalta esta tarjeta (ver `resaltar` en escenas.ts).
+ * `foco`: nombre con el que docs/entregables/gen_capturas.mjs recorta esta tarjeta para las láminas del modo resumen.
  */
 export function Tarjeta({ children, className, desplazable, foco }: { children: ReactNode; className?: string; desplazable?: string; foco?: string }) {
   if (!desplazable) return <div data-foco={foco} className={clsx("tarjeta", className)}>{children}</div>;

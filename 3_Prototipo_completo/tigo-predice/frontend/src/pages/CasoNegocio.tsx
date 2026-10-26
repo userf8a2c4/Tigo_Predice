@@ -112,7 +112,7 @@ export default function CasoNegocio() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.4fr_1fr]">
-        <Tarjeta foco="negocio-neto" className="bg-gradient-to-br from-tigo to-tigo-700 p-6 text-white">
+        <Tarjeta className="bg-gradient-to-br from-tigo to-tigo-700 p-6 text-white">
           <div className="text-sm text-white/70">Neto del año 1, con inversión (escenario base, ambos frentes)</div>
           <div className="mt-1 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">{lempirasSig(b.nacional.neto_anio1)}</div>
           <ul className="mt-3 space-y-1.5 text-white/90">
@@ -170,7 +170,7 @@ export default function CasoNegocio() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.2fr_1fr]">
-        <Tarjeta className="p-5" desplazable="Escalamiento nacional (anual)">
+        <Tarjeta className="p-5" desplazable="Escalamiento nacional (anual)" foco="negocio-escenarios">
           <Titulo>Escalamiento nacional (anual)</Titulo>
           <table className="w-full min-w-[520px] text-sm">
             <thead><tr className="text-right text-xs uppercase tracking-wide text-slate-500"><th className="text-left" />{COLUMNAS.map((k) => <th key={k} className="pb-2">{k}</th>)}</tr></thead>

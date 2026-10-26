@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import {
-  BrainCircuit, Captions, CaptionsOff, ChevronLeft, ChevronRight, FlaskConical, Focus, Lock, Maximize, MessageCircle,
-  Pause, PhoneCall, Play, RotateCcw, ShieldCheck, Truck, Wifi, Wrench, X,
+  BrainCircuit, Captions, CaptionsOff, ChevronLeft, ChevronRight, FlaskConical, Lock, Maximize, MessageCircle, Pause,
+  PhoneCall, Play, RotateCcw, ShieldCheck, Truck, Wifi, Wrench, X,
 } from "lucide-react";
 import { useCallback, useEffect, useState, type ReactNode, type RefObject } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ import { useDatos } from "../hooks";
 const PASO = 0.25; // segundos por tic del reloj
 const ULTIMA = ESCENAS.length - 1;
 const CLAVE_SUBTITULOS = "tigo-predice:subtitulos";
-const CLAVE_SIMPLE = "tigo-predice:vista-simple";
+const CLAVE_RESUMEN = "tigo-predice:modo-resumen";
 
 // Preferencias de quien presenta en este navegador; si el almacenamiento no está disponible, arrancan apagadas
 function leerPreferencia(clave: string) {
@@ -36,17 +36,18 @@ export interface Reproductor {
   corriendo: boolean;
   iniciado: boolean;
   subtitulos: boolean;
-  simple: boolean;
+  /** Modo resumen: cada escena como una lámina para directivos; el modo completo muestra el sistema entero. */
+  resumen: boolean;
   alternar: () => void;
   alternarSubtitulos: () => void;
-  alternarSimple: () => void;
+  alternarResumen: () => void;
   ir: (i: number) => void;
   reiniciar: () => void;
 }
 
 /**
  * Reloj del modo presentación: avanza solo de escena en escena, abre la pantalla de cada una y responde al teclado
- * (Espacio pausa; ←/→ o un control remoto con Re Pág/Av Pág cambian de escena; S subtítulos; V vista simple;
+ * (Espacio pausa; ←/→ o un control remoto con Re Pág/Av Pág cambian de escena; S subtítulos; V resumen o completo;
  * F pantalla completa; Esc sale).
  */
 export function useReproductor(activo: boolean, principal: RefObject<HTMLElement | null>, salir: () => void): Reproductor {
@@ -55,7 +56,7 @@ export function useReproductor(activo: boolean, principal: RefObject<HTMLElement
   const [corriendo, setCorriendo] = useState(false);
   const [iniciado, setIniciado] = useState(false);
   const [subtitulos, setSubtitulos] = useState(() => leerPreferencia(CLAVE_SUBTITULOS));
-  const [simple, setSimple] = useState(() => leerPreferencia(CLAVE_SIMPLE));
+  const [resumen, setResumen] = useState(() => leerPreferencia(CLAVE_RESUMEN));
 
   const alternarSubtitulos = useCallback(() => {
     setSubtitulos((v) => {
@@ -63,9 +64,9 @@ export function useReproductor(activo: boolean, principal: RefObject<HTMLElement
       return !v;
     });
   }, []);
-  const alternarSimple = useCallback(() => {
-    setSimple((v) => {
-      guardarPreferencia(CLAVE_SIMPLE, !v);
+  const alternarResumen = useCallback(() => {
+    setResumen((v) => {
+      guardarPreferencia(CLAVE_RESUMEN, !v);
       return !v;
     });
   }, []);
@@ -110,33 +111,6 @@ export function useReproductor(activo: boolean, principal: RefObject<HTMLElement
     return () => window.clearTimeout(id);
   }, [activo, pos.i, navegar, principal]);
 
-  // Vista simple: ilumina la parte del sistema de la que habla la escena y atenúa el resto.
-  // Empieza después del desplazamiento inicial de la escena (350 ms) para que ese no lo deshaga, y como los datos
-  // de cada pantalla cargan después de navegar, busca la tarjeta durante un momento.
-  useEffect(() => {
-    const nombre = ESCENAS[pos.i].resaltar;
-    if (!activo || !simple || !nombre) return;
-    let marcada: Element | null = null;
-    let intentos = 0;
-    let id = 0;
-    const inicio = window.setTimeout(() => {
-      id = window.setInterval(() => {
-        const el = document.querySelector(`[data-foco="${nombre}"]`);
-        if (el) {
-          el.classList.add("resaltado");
-          el.scrollIntoView({ block: "center", behavior: "smooth" });
-          marcada = el;
-        }
-        if (el || ++intentos >= 20) window.clearInterval(id);
-      }, 100);
-    }, 400);
-    return () => {
-      window.clearTimeout(inicio);
-      window.clearInterval(id);
-      marcada?.classList.remove("resaltado");
-    };
-  }, [activo, simple, pos.i]);
-
   useEffect(() => {
     if (!activo) return;
     const tecla = (e: KeyboardEvent) => {
@@ -147,7 +121,7 @@ export function useReproductor(activo: boolean, principal: RefObject<HTMLElement
       else if (k === "ArrowLeft" || k === "PageUp") setPos((p) => ({ i: Math.max(p.i - 1, 0), t: 0 }));
       else if (k === "f" || k === "F") pantallaCompleta();
       else if (k === "s" || k === "S") alternarSubtitulos();
-      else if (k === "v" || k === "V") alternarSimple();
+      else if (k === "v" || k === "V") alternarResumen();
       else if (k === "Home") reiniciar();
       else if (k === "Escape" && !document.fullscreenElement) salir();
       else return;
@@ -155,10 +129,10 @@ export function useReproductor(activo: boolean, principal: RefObject<HTMLElement
     };
     window.addEventListener("keydown", tecla);
     return () => window.removeEventListener("keydown", tecla);
-  }, [activo, alternar, alternarSubtitulos, alternarSimple, reiniciar, salir]);
+  }, [activo, alternar, alternarSubtitulos, alternarResumen, reiniciar, salir]);
 
   const fin = pos.i === ULTIMA && pos.t >= ESCENAS[ULTIMA].seg;
-  return { pos, corriendo: corriendo && !fin, iniciado, subtitulos, simple, alternar, alternarSubtitulos, alternarSimple, ir, reiniciar };
+  return { pos, corriendo: corriendo && !fin, iniciado, subtitulos, resumen, alternar, alternarSubtitulos, alternarResumen, ir, reiniciar };
 }
 
 function pantallaCompleta() {
@@ -199,10 +173,15 @@ export function BarraPresentacion({ r, salir }: { r: Reproductor; salir: () => v
         className={clsx("flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-semibold", r.subtitulos ? "bg-white text-tigo-900" : "text-white/80 hover:bg-white/10 hover:text-white")}>
         {r.subtitulos ? <Captions size={18} /> : <CaptionsOff size={18} />} <span className="hidden lg:inline">Subtítulos</span>
       </button>
-      <button onClick={r.alternarSimple} aria-pressed={r.simple} title="Vista simple: menos información en pantalla (V)"
-        className={clsx("flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-semibold", r.simple ? "bg-white text-tigo-900" : "text-white/80 hover:bg-white/10 hover:text-white")}>
-        <Focus size={18} /> <span className="hidden lg:inline">Vista simple</span>
-      </button>
+      <div role="group" aria-label="Modo de la presentación (V)" title="Resumen: láminas para directivos · Completo: el sistema entero (V)"
+        className="flex rounded-lg bg-white/10 p-0.5">
+        {([[true, "Resumen"], [false, "Completo"]] as const).map(([valor, texto]) => (
+          <button key={texto} aria-pressed={r.resumen === valor} onClick={() => r.resumen !== valor && r.alternarResumen()}
+            className={clsx("rounded-md px-2.5 py-1 font-semibold", r.resumen === valor ? "bg-white text-tigo-900" : "text-white/80 hover:text-white")}>
+            {texto}
+          </button>
+        ))}
+      </div>
       <button onClick={pantallaCompleta} className={boton} aria-label="Pantalla completa" title="Pantalla completa (F)"><Maximize size={18} /></button>
       <button onClick={r.reiniciar} className={boton} aria-label="Volver a la primera escena" title="Volver al inicio (Inicio)"><RotateCcw size={18} /></button>
       <button onClick={salir} className={boton} aria-label="Salir del modo presentación" title="Salir (Esc)"><X size={18} /></button>
@@ -217,8 +196,10 @@ export function SubtitulosPresentacion({ r }: { r: Reproductor }) {
   if (!r.subtitulos || !r.iniciado) return null;
   const texto = subtituloEn(ESCENAS[r.pos.i], r.pos.t);
   if (!texto) return null;
+  // En el modo resumen las láminas usan todo el ancho (salvo la demo en vivo, que conserva la columna lateral)
+  const sinColumna = r.resumen && ESCENAS[r.pos.i].id !== "demo";
   return (
-    <div className="pointer-events-none fixed bottom-16 left-[22rem] right-0 z-[1100] flex justify-center px-8">
+    <div className={clsx("pointer-events-none fixed bottom-16 right-0 z-[1100] flex justify-center px-8", sinColumna ? "left-0" : "left-[22rem]")}>
       <p key={texto}
         className="subtitulo max-w-3xl rounded-2xl border-l-4 border-celeste bg-tigo-900/85 px-6 py-3 text-center text-lg font-medium leading-snug tracking-wide text-white shadow-2xl backdrop-blur-md lg:text-xl">
         {texto}
@@ -241,10 +222,10 @@ export function PanelEscena({ r }: { r: Reproductor }) {
       <div className="text-[11px] font-semibold uppercase tracking-wider text-white/70">Tigo Predice · {r.pos.i + 1} de {ESCENAS.length}</div>
       {datos ? (
         <div key={escena.id} className="aparecer mt-4 flex flex-1 flex-col">
-          {r.simple ? <TarjetaSimple escena={escena} d={datos} /> : <Tarjeta escena={escena} d={datos} />}
+          <Tarjeta escena={escena} d={datos} />
           {escena.id === "portada" && !r.iniciado && (
             <div className="mt-6 rounded-xl bg-white/10 px-3 py-2 text-sm text-white/85">
-              Presione <b>Espacio</b> o <b>Play</b> para comenzar. <b>S</b>: subtítulos. <b>V</b>: vista simple.
+              Presione <b>Espacio</b> o <b>Play</b> para comenzar. <b>S</b>: subtítulos. <b>V</b>: resumen o completo.
               <b> F</b>: pantalla completa. <b>Esc</b>: salir.
             </div>
           )}
@@ -392,73 +373,6 @@ function Tarjeta({ escena, d }: { escena: Escena; d: Datos }) {
           <div className="text-sm text-white/70">sandra.jimenez@tigo.com.hn</div>
         </Bloque>
       );
-  }
-}
-
-/** Vista simple: una sola idea por escena, con un título corto y como máximo una cifra. */
-function TarjetaSimple({ escena, d }: { escena: Escena; d: Datos }) {
-  const c = d.inicio.cifras;
-  const nombre = d.hogar.hogar.nombre.split(" ")[0];
-  const evitables = d.config.supuestos.pct_visitas_evitables?.base ?? 0.25;
-  switch (escena.id) {
-    case "portada":
-      return <Bloque kicker="AI Shark Tank · Tigo CX Month 2026" titulo={d.inicio.posicionamiento}><span /></Bloque>;
-    case "karla":
-      return (
-        <Bloque kicker="Una historia que se repite" titulo={`${nombre} trabaja desde su casa`}>
-          <Cifra v={d.hogar.kpis.ahorro} t="le cuesta a Tigo cada vez que pasa" fuente="Costos hondureños estimados" />
-        </Bloque>
-      );
-    case "escala":
-      return (
-        <Bloque kicker="No es un caso aislado" titulo={`${nombre} no es la única`}>
-          <Cifra v={`1 de cada ${Math.round(1 / evitables)}`} t="visitas se podía resolver sin ir" fuente="Cálculo a confirmar con Tigo" />
-        </Bloque>
-      );
-    case "idea":
-      return (
-        <Bloque kicker="Nuestra idea" titulo="Escuchar al módem a tiempo">
-          <p className="text-xl font-bold text-celeste">Detecta · Resuelve · Avisa</p>
-        </Bloque>
-      );
-    case "demo":
-      return (
-        <Bloque kicker="Demo en vivo" titulo={`Lo que habría pasado con ${nombre}`}>
-          <Cifra v={d.hogar.kpis.costo_accion} t={`un WhatsApp, en vez de ${d.hogar.kpis.ahorro}`} fuente="Con datos de ejemplo" />
-        </Bloque>
-      );
-    case "ia":
-      return (
-        <Bloque kicker="Inteligencia artificial" titulo="Ve lo que las alarmas no ven">
-          <Cifra v={c.hogar_ia_vs_regla} t="más visitas evitables anticipadas" fuente="Con datos de ejemplo" />
-        </Bloque>
-      );
-    case "movil":
-      return (
-        <Bloque kicker="Celulares" titulo="Si cae una antena, el cliente se entera por Tigo">
-          <Cifra v={`−${pct(d.inicio.piloto.reduccion)}`} t="llamadas" fuente="Con datos de ejemplo" />
-        </Bloque>
-      );
-    case "negocio":
-      return (
-        <Bloque kicker="Cuánto se ahorra" titulo="Se paga con poco">
-          <Cifra v={c.neto_anio1_base} t="de ahorro neto el primer año" fuente="Cálculo base" />
-        </Bloque>
-      );
-    case "confianza":
-      return (
-        <Bloque kicker="Confianza" titulo="Seguro y medible">
-          <p className="text-lg text-white/90">Solo vemos si el módem funciona.</p>
-        </Bloque>
-      );
-    case "pedido":
-      return (
-        <Bloque kicker="Lo que pedimos" titulo="Una prueba pequeña">
-          <Cifra v={c.piloto_costo_base} t={`12 semanas en ${d.hogar.ciudad}`} fuente={`≈ ${c.piloto_costo_usd}`} />
-        </Bloque>
-      );
-    case "cierre":
-      return <Tarjeta escena={escena} d={d} />;
   }
 }
 
