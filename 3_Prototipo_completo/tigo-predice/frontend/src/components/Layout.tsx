@@ -67,8 +67,8 @@ export default function Layout() {
   const salir = useCallback(() => setPresentando(false), []);
   const r = useReproductor(presentando, principal, salir);
   const presentacion = useMemo(
-    () => ({ escena: presentando ? ESCENAS[r.pos.i].id : null, abrir: () => setPresentando(true) }),
-    [presentando, r.pos.i],
+    () => ({ escena: presentando ? ESCENAS[r.pos.i].id : null, simple: presentando && r.simple, abrir: () => setPresentando(true) }),
+    [presentando, r.pos.i, r.simple],
   );
 
   return (
@@ -112,6 +112,8 @@ export default function Layout() {
                 <Sparkles size={12} /> {config ? (modoIA ? "Modo IA" : "Modo plantillas") : "…"}
               </span>
             )}
+            {/* En la vista simple de la presentación, el encabezado deja solo los avisos */}
+            {!(presentando && r.simple) && <>
             <button onClick={() => setPresentando((v) => !v)}
               className="ml-auto flex items-center gap-2 rounded-xl bg-tigo px-4 py-2 text-sm font-bold text-white shadow hover:brightness-110"
               title={presentando ? "Salir del modo presentación (Esc)" : "Modo presentación (menos de 5 minutos)"}>
@@ -125,6 +127,7 @@ export default function Layout() {
               className="flex items-center gap-2 rounded-xl bg-tigo/10 px-3 py-2 text-sm font-semibold text-tigo hover:bg-tigo/15" title="Falla masiva en vivo">
               <Radio size={16} /> <span className="hidden xl:inline">Falla masiva</span>
             </button>
+            </>}
           </header>
           <nav className={clsx("flex gap-1 overflow-x-auto border-b border-slate-200 bg-white px-2 py-1.5 lg:hidden", presentando && "hidden")}>
             {[...NAV_PILOTO, ...NAV_FASE2].map(({ a, texto }) => (

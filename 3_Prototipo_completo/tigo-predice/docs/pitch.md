@@ -17,7 +17,8 @@ Tigo Predice descubre que el internet de una casa va a fallar **antes** de que e
 2. Presione el botón **Presentar** (arriba a la derecha). La presentación queda en pausa en la primera escena.
 3. Presione **F** para pantalla completa.
 4. En Teams, comparta **la pantalla** o la ventana del navegador.
-5. Cuando le den la palabra, presione **Espacio** y empiece a hablar.
+5. Si prefiere menos información en pantalla, active la **vista simple** con la tecla **V**: cada tarjeta muestra una sola idea y en el sistema se ilumina solo la parte de la que habla. La presentación recuerda la elección.
+6. Cuando le den la palabra, presione **Espacio** y empiece a hablar.
 
 | Tecla | Qué hace |
 |---|---|
@@ -25,6 +26,7 @@ Tigo Predice descubre que el internet de una casa va a fallar **antes** de que e
 | → o Av Pág | Pasa a la siguiente escena (sirve con un control remoto de presentaciones) |
 | ← o Re Pág | Vuelve a la escena anterior |
 | S | Muestra u oculta los subtítulos (arrancan apagados) |
+| V | Vista simple: una sola idea por tarjeta y foco en una parte del sistema |
 | F | Pantalla completa |
 | Inicio | Vuelve a la primera escena |
 | Esc | Sale del modo presentación |

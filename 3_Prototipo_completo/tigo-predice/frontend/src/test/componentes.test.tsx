@@ -4,7 +4,7 @@ import type { Conversacion } from "../api";
 import Telefono from "../components/Telefono";
 import { Factores, PrioridadBadge } from "../components/ui";
 import guion from "../../../docs/pitch.md?raw";
-import { DURACION_TOTAL, ESCENAS, reloj, subtituloEn, SUBTITULO_MAX_SEG } from "../escenas";
+import { DURACION_TOTAL, ESCENAS, FOCOS, reloj, subtituloEn, SUBTITULO_MAX_SEG } from "../escenas";
 import { colorRiesgo, lempiras, lempirasCorto, lempirasSig, pct, pctRiesgo, rangoL, sig } from "../formato";
 
 describe("redondeo sin falsa precisión", () => {
@@ -134,5 +134,23 @@ describe("subtítulos de la presentación", () => {
     const demo = ESCENAS.find((e) => e.id === "demo")!;
     expect(subtituloEn(demo, 0.5)).toBeNull(); // antes de la primera frase
     expect(subtituloEn(demo, 66)).toBeNull(); // pausa larga: el subtítulo se retira a los 8 s
+  });
+});
+
+describe("vista simple de la presentación", () => {
+  const paginas = Object.values(import.meta.glob("../pages/*.tsx", { query: "?raw", import: "default", eager: true }) as Record<string, string>).join("\n");
+
+  it("cada parte que se resalta existe en alguna pantalla del sistema", () => {
+    for (const f of FOCOS) expect(paginas).toContain(`foco="${f}"`);
+    for (const e of ESCENAS) if (e.resaltar) expect(FOCOS).toContain(e.resaltar);
+  });
+
+  it("en la demo en vivo y en la escala se ve toda la pantalla, sin foco", () => {
+    expect(ESCENAS.find((e) => e.id === "demo")?.resaltar).toBeUndefined();
+    expect(ESCENAS.find((e) => e.id === "escala")?.resaltar).toBeUndefined();
+  });
+
+  it("no cambia los tiempos: la presentación sigue durando 4:32", () => {
+    expect(reloj(DURACION_TOTAL)).toBe("4:32");
   });
 });

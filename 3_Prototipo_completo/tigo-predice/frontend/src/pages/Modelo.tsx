@@ -40,7 +40,7 @@ function ModeloHogar({ datos }: { datos: ModeloInfo }) {
       </div>
 
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.2fr_1fr]">
-        <Tarjeta className="p-4">
+        <Tarjeta foco="modelo-captura" className="p-4">
           <Titulo>% de las visitas evitables que se anticipan (mismo presupuesto: {pct(m.presupuesto)} de hogares por semana)</Titulo>
           <div className="h-[clamp(220px,34vh,380px)]">
             <ResponsiveContainer>

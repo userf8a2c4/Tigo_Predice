@@ -271,7 +271,12 @@ RECORRIDO = [
     ("0:36", "No es un caso aislado", "Hogares, visitas y cuántas se evitan", "«Estimaciones a validar con Tigo»"),
     ("0:56", "Nuestra idea", "Detecta, resuelve y avisa", "«Escuchar al módem a tiempo»"),
     ("1:16", "Demo en vivo", "Hogar en vivo corre sola (80 s)", "Acompañe la franja azul"),
-    ("2:36", "IA frente a las alarmas", "52 % contra 26 % (datos de ejemplo)", "«Si no gana con datos reales, usamos las alarmas»"),
+    (
+        "2:36",
+        "IA frente a las alarmas",
+        "52 % contra 26 % (datos de ejemplo)",
+        "«Si no gana con datos reales, usamos las alarmas»",
+    ),
     ("2:56", "Celulares", "WhatsApp cuando se cae una antena, y CONATEL", "«Cumplimos la norma y ahorramos»"),
     ("3:18", "Cuánto se ahorra", "L 4.3 M; se paga con 22 % y 12 %", "«Solo lo que se puede medir»"),
     ("3:44", "Confianza", "Privacidad y comparación con otros clientes", "«Solo vemos si el aparato funciona»"),
@@ -349,7 +354,8 @@ table.t {{ font-size: 10.5px; }}
         "<p style='font-size:12px;color:#5b6575'>Los números rojos de cada captura corresponden a la leyenda de la "
         "derecha. Todo usa datos simulados.</p></div></div></section>",
         "<section class='pagina'><div class='cab'><h2>Modo presentación (4:32)</h2><span>Tigo Predice</span></div>"
-        "<p class='intro'>Botón <b>Presentar</b>: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; S muestra u oculta los subtítulos; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte.</p>"
+        "<p class='intro'>Botón <b>Presentar</b>: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las cifras. Espacio pausa; ← y → (o un control remoto) cambian de escena; S muestra u oculta los subtítulos; V activa la vista simple; Esc vuelve a la demo para las preguntas. El guion va en un "
+        "documento aparte.</p>"
         "<table class='recorrido'><tr><th>Min.</th><th>Escena</th><th>En pantalla</th><th>Idea</th></tr>"
         + "".join(
             f"<tr><td>{a}</td><td><b>{b}</b></td><td>{c}</td><td><i>{d}</i></td></tr>" for a, b, c, d in RECORRIDO
@@ -401,7 +407,7 @@ def guia_markdown() -> str:
         "",
         "Botón **Presentar**: cada escena abre una pantalla real del sistema y, a la izquierda, una tarjeta con la idea y las "
         "cifras. Espacio pausa; ← y → (o un control remoto) cambian de "
-        "escena; S muestra u oculta los subtítulos; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).",
+        "escena; S muestra u oculta los subtítulos; V activa la vista simple; Esc vuelve a la demo para las preguntas. El guion va en un documento aparte ([pitch.md](pitch.md)).",
         "",
         "| Min. | Escena | En pantalla | Idea |",
         "|---|---|---|---|",

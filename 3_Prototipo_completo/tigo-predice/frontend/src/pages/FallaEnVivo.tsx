@@ -176,7 +176,7 @@ export default function FallaEnVivo() {
 
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="space-y-3">
-          <Tarjeta className="relative p-2">
+          <Tarjeta foco="falla-resultado" className="relative p-2">
             <MapaBase altura="clamp(240px, 46vh, 600px)" centro={centroCiudad} zoom={11.75}>
               {caido && (
                 <>

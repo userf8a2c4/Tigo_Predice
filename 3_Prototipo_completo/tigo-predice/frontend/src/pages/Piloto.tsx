@@ -23,7 +23,7 @@ export default function Piloto() {
 function Decision({ decision, motivo, criterios, titulo }: { decision: "GO" | "NO-GO"; motivo: string; criterios: Criterio[]; titulo: string }) {
   const go = decision === "GO";
   return (
-    <Tarjeta className={clsx("p-5", go ? "ring-2 ring-exito" : "ring-2 ring-alerta")}>
+    <Tarjeta foco="piloto-decision" className={clsx("p-5", go ? "ring-2 ring-exito" : "ring-2 ring-alerta")}>
       <Titulo>{titulo}</Titulo>
       <div className={clsx("text-4xl font-extrabold sm:text-5xl", go ? "text-exito" : "text-alerta")}>{decision}</div>
       <p className="mt-1 text-sm text-slate-600">{motivo}</p>

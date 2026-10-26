@@ -228,7 +228,7 @@ export default function HogarEnVivo() {
 
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="space-y-3">
-          <Tarjeta className="relative p-3">
+          <Tarjeta foco="hogar-casa" className="relative p-3">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <div className="font-semibold text-tigo">
                 {esc.hogar.nombre} · {esc.hogar.tecnologia} · {esc.hogar.modem}

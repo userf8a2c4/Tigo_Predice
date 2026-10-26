@@ -56,7 +56,7 @@ export default function Produccion() {
         </div>
       </Tarjeta>
 
-      <Tarjeta className="p-5">
+      <Tarjeta foco="produccion-seguridad" className="p-5">
         <Titulo><span className="flex items-center gap-2"><LockKeyhole size={18} /> Seguridad y privacidad: prototipo y producción</span></Titulo>
         <p className="mb-3 text-sm text-slate-600">
           Marcos internacionales: ISO 27001/27701/42001, SOC 2, NIST, OWASP (API y LLM) y GDPR como estándar de referencia.

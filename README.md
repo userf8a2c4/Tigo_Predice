@@ -6,7 +6,7 @@
 
 ![Concurso](https://img.shields.io/badge/AI%20Shark%20Tank-Tigo%20CX%20Month%202026-0A22B8)
 ![Categoría](https://img.shields.io/badge/categor%C3%ADa-Experiencia%20del%20cliente-4CC9F0)
-![Pruebas](https://img.shields.io/badge/pruebas%20autom%C3%A1ticas-255-2BB673)
+![Pruebas](https://img.shields.io/badge/pruebas%20autom%C3%A1ticas-258-2BB673)
 ![Regulación](https://img.shields.io/badge/alineado%20con-CONATEL%20NR001%2F26-FFC629)
 ![Accesibilidad](https://img.shields.io/badge/WCAG%202.2%20AA-0%20infracciones%20(axe--core)-2BB673)
 ![Marcos de referencia](https://img.shields.io/badge/marcos%20de%20referencia-OWASP%20Top%2010%3A2025%20%C2%B7%20GDPR%20%C2%B7%20ISO%2027001-00377B)
@@ -81,7 +81,7 @@ Solo ahorro duro, con costos hondureños, escenarios y punto de equilibrio. «Po
 
 ### Modo presentación
 
-El botón **Presentar** (arriba a la derecha) recorre el sistema en **4:32**, dentro de los 5 minutos del concurso. Cada escena abre una pantalla real y, a la izquierda, una tarjeta muestra la idea y las cifras, para que quien presenta cuente la historia sin memorizar números. Espacio pausa; ← y → (o un control remoto de presentaciones) cambian de escena; **S** muestra u oculta los subtítulos, que dicen lo mismo que el guion; Esc vuelve a la demo para las preguntas. El guion va aparte: [`Guion_de_la_presentacion.pdf`](2_Documentos/1_Presentacion/Guion_de_la_presentacion.pdf).
+El botón **Presentar** (arriba a la derecha) recorre el sistema en **4:32**, dentro de los 5 minutos del concurso. Cada escena abre una pantalla real y, a la izquierda, una tarjeta muestra la idea y las cifras, para que quien presenta cuente la historia sin memorizar números. Espacio pausa; ← y → (o un control remoto de presentaciones) cambian de escena; **S** muestra u oculta los subtítulos, que dicen lo mismo que el guion; **V** activa la vista simple (una sola idea por tarjeta y foco en una parte del sistema); Esc vuelve a la demo para las preguntas. El guion va aparte: [`Guion_de_la_presentacion.pdf`](2_Documentos/1_Presentacion/Guion_de_la_presentacion.pdf).
 
 <img src="assets/readme/presentacion.png" alt="Modo presentación: tarjeta con la idea a la izquierda y la demo Hogar en vivo a la derecha" width="100%">
 
@@ -141,7 +141,7 @@ Probado en Windows 11 con Python 3.15 y Node 24: doble clic en `3_Prototipo_comp
 Si el **Control inteligente de aplicaciones** de Windows está activo, puede bloquear librerías científicas sin firma (como scikit-learn) y el prototipo completo no arrancará. La demo de `1_Demo` no tiene ese problema.
 
 - **Stack:** Python (FastAPI, LightGBM con calibración isotónica y explicaciones SHAP, SQLite) y React con Vite, TypeScript, Tailwind y Recharts.
-- **Pruebas:** 230 de Python (última ejecución completa: 22-oct-2026) y 25 de la interfaz, más análisis estático con reglas de seguridad y auditoría de dependencias sin vulnerabilidades conocidas.
+- **Pruebas:** 230 de Python (última ejecución completa: 22-oct-2026) y 28 de la interfaz, más análisis estático con reglas de seguridad y auditoría de dependencias sin vulnerabilidades conocidas.
 - **Reproducible:** el pipeline completo regenera los mismos datos, modelos y cifras desde cero.
 
 Detalles en el [README del prototipo](3_Prototipo_completo/tigo-predice/README.md).
